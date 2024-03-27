@@ -1,76 +1,92 @@
-"use client";
-import React from "react";
-import * as zod from "zod";
-import { useRouter } from "next/navigation";
+'use client'
+import { useRouter } from 'next/navigation'
+import React, { useState } from 'react'
+import { useForm } from 'react-hook-form'
+
+import { Button } from '@/components/ui/button'
+
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as zod from 'zod'
 /* import Image from "next/image";
 import { useState } from "react";
 
 import LoadingDots from "./loading-dots"; */
-import { useForm } from "react-hook-form";
-import { LoginAction } from "./actions/loginAction";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { UsuarioAtual } from "@/utils/UsuarioAtual";
+import { LoginAction } from './actions/loginAction'
+import LoadingDots from './loading-dots'
+
 const loginSchema = zod.object({
-  email: zod
+  S_EMAIL: zod
     .string()
-    .min(1, { message: "Digite um e-mail" })
-    .max(150, { message: "Tamanho máximo do e-mail é 150 caracteres." }),
-  senha: zod
+    .min(1, { message: 'Digite um e-mail' })
+    .max(150, { message: 'Tamanho máximo do e-mail é 150 caracteres.' }),
+  S_SENHA: zod
     .string()
-    .min(1, { message: "Digite sua senha" })
-    .max(150, { message: "Tamanho máximo da senha é 150 caracteres." }),
-});
-export type loginType = zod.infer<typeof loginSchema>;
+    .min(1, { message: 'Digite sua senha' })
+    .max(150, { message: 'Tamanho máximo da senha é 150 caracteres.' })
+})
+export type loginType = zod.infer<typeof loginSchema>
 export default function Form() {
+  const [loading, setLoading] = useState(false)
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors }
   } = useForm<loginType>({
-    defaultValues: { email: "", senha: "" },
-    resolver: zodResolver(loginSchema),
-  });
-  const router = useRouter();
+    defaultValues: { S_EMAIL: '', S_SENHA: '' },
+    resolver: zodResolver(loginSchema)
+  })
+  const router = useRouter()
   const login = async (dados: loginType) => {
-    const resposta = await LoginAction(dados).catch(() => reset());
-    console.log(resposta.message)
+    setLoading(true)
+    const resposta = await LoginAction(dados).catch(() => reset())
+    setLoading(false)
     // router.push("/");
-  };
-
+  }
   return (
     <>
       {/*@ts-expect-error: tipagem está correta.*/}
       <form action={handleSubmit(login)} className="w-full text-center">
-        <label className="text-lg w-12 text-blue12" htmlFor="S_EMAIL">
-          E-mail:
-        </label>
-        <input
-          className="w-full rounded-3xl p-1 mb-12 text-blue12 dark:text-blue1 dark:bg-gray-700 border-2 border-blue7 focus:outline-none focus:border-colors-dark-orange"
-          {...register("email")}
-          name="email"
-          type="email"
-          max={150}
-        />
-        {errors.email && <p className="text-red-600">{errors.email.message}</p>}
-        <br />
-        <label className="text-lg w-12" htmlFor="S_SENHA">
-          Senha:
-        </label>
-        <input
-          className="w-full rounded-3xl p-1 mb-12 text-blue12 dark:text-blue1 dark:bg-gray-700 border-2 border-blue7 focus:outline-none focus:border-colors-dark-orange"
-          {...register("senha")}
-          name="senha"
-          max={150}
-          type="password"
-        />
-        {errors.senha && <p className="text-red-600">{errors.senha.message}</p>}
-        <input
+        <div className="mb-8">
+          <label className="text-lg" htmlFor="S_EMAIL">
+            E-mail:
+          </label>
+          <input
+            className="w-full rounded-3xl p-1 dark:text-white dark:bg-gray-700 border-2 focus:outline-none focus:border-colors-dark-orange"
+            {...register('S_EMAIL')}
+            name="email"
+            type="email"
+            max={150}
+          />
+          {errors.S_EMAIL && (
+            <p className="text-red-600">{errors.S_EMAIL.message}</p>
+          )}
+        </div>
+        <div className="mb-12">
+          <label className="text-lg w-12" htmlFor="S_SENHA">
+            Senha:
+          </label>
+          <input
+            className="w-full rounded-3xl p-1 dark:text-white dark:bg-gray-700 border-2 focus:outline-none focus:border-colors-dark-orange"
+            {...register('S_EMAIL')}
+            name="senha"
+            max={150}
+            type="password"
+          />
+          {errors.S_SENHA && (
+            <p className="text-red-600">{errors.S_SENHA.message}</p>
+          )}
+        </div>
+        <Button
           type="submit"
-          className="rounded-xl py-1 px-12 border-2 border-colors-dark-orange hover:bg-colors-dark-orange"
-          value="Login"
-        />
+          value={'Login'}
+          variant={'destructive'}
+          disabled={loading}
+          className="rounded-xl bg-colors-dark-orange border-colors-dark-orange hover:bg-colors-dark-orangeHover"
+        >
+          {loading ? <LoadingDots /> : <p>Login</p>}
+        </Button>
       </form>
     </>
-  );
+  )
 }

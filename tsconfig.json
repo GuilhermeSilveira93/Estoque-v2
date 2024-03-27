@@ -1,5 +1,7 @@
 {
+  "extends": "@kalilasc/typescript-config/nextjs.json",
   "compilerOptions": {
+    "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -20,9 +22,16 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"],
-      "@/images/*": ["assets/images/*"]
+      "@/images/*": ["assets/images/*"],
+      "@/styles/*": ["src/styles/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "next.config.js",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
   "exclude": ["node_modules"]
 }

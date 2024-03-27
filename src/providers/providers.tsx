@@ -1,10 +1,11 @@
-"use client";
-import React from "react";
-import { ReactNode } from "react";
-import { ThemeProviders } from "./themeProvider";
+'use client'
+import React from 'react'
+import { ReactNode } from 'react'
+
+import { ThemeProviders } from './themeProvider'
 type Props = {
-  children: ReactNode;
-};
+  children: ReactNode
+}
 export const Providers = ({ children }: Props) => {
-  return <ThemeProviders>{children}</ThemeProviders>;
-};
+  return <ThemeProviders>{children}</ThemeProviders>
+}

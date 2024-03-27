@@ -1,8 +1,8 @@
 export const metadata = {
-  title: 'Login',
+  title: 'Login'
 }
 export default function RootLayout({
-  children,
+  children
 }: {
   children: React.ReactNode
 }) {
