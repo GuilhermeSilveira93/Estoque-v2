@@ -13,13 +13,16 @@ export const LoginAction = async (dados: loginType) => {
         S_EMAIL,
         S_SENHA
       })
-      .then(async (res) => {
-        if (res) {
+      .then(async (res: { data: { message: string; code: number } }) => {
+        console.log(res)
+        /*         if (res.data.token) {
           SetCookie('token', res.data.token)
           return res.data
-        }
+        } */
+        return res.data
       })
       .catch((errors: AxiosError) => {
+        console.log(errors.response?.data)
         return errors.response?.data
       })
   } catch (e) {

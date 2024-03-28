@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Toaster } from '@/components/ui/toaster'
+import { Toaster } from '@/components/ui/sonner'
 
 import '@/styles/globals.css'
 import { Providers } from '@/providers/providers'
@@ -15,7 +15,7 @@ export default function RootLayout({
         <Providers>
           <main className="flex flex-row">
             {children}
-            <Toaster />
+            <Toaster richColors position="top-right" />
           </main>
         </Providers>
       </body>

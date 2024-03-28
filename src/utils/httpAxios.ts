@@ -1,14 +1,14 @@
-import axios from "axios";
+import axios from 'axios'
 
 export const http = axios.create({
-  baseURL: 'http://localhost:3001',
-/*   proxy: {
+  baseURL: 'http://localhost:3002'
+  /*   proxy: {
     protocol: 'http',
     host: 'localhost',
-    port: 3001,
+    port: 3002,
   }, */
-/*   headers: {
+  /*   headers: {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
   } */
-});
+})
