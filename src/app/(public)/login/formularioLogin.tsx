@@ -4,13 +4,11 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { Button } from '@/components/ui/button'
+import { useToast } from '@/components/ui/use-toast'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
-/* import Image from "next/image";
-import { useState } from "react";
 
-import LoadingDots from "./loading-dots"; */
 import { LoginAction } from './actions/loginAction'
 import LoadingDots from './loading-dots'
 
@@ -27,10 +25,10 @@ const loginSchema = zod.object({
 export type loginType = zod.infer<typeof loginSchema>
 export default function Form() {
   const [loading, setLoading] = useState(false)
+  const { toast } = useToast()
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors }
   } = useForm<loginType>({
     defaultValues: { S_EMAIL: '', S_SENHA: '' },
@@ -39,7 +37,20 @@ export default function Form() {
   const router = useRouter()
   const login = async (dados: loginType) => {
     setLoading(true)
-    const resposta = await LoginAction(dados).catch(() => reset())
+    await LoginAction(dados)
+      .then((res) => {
+        toast({
+          title: 'teste',
+          description: res.message
+        })
+      })
+      .catch(() => {
+        toast({
+          variant: 'destructive',
+          title: 'Erro',
+          description: 'Não foi possivel gerar o login'
+        })
+      })
     setLoading(false)
     // router.push("/");
   }
@@ -54,7 +65,7 @@ export default function Form() {
           <input
             className="w-full rounded-3xl p-1 dark:text-white dark:bg-gray-700 border-2 focus:outline-none focus:border-colors-dark-orange"
             {...register('S_EMAIL')}
-            name="email"
+            name="S_EMAIL"
             type="email"
             max={150}
           />
@@ -68,8 +79,8 @@ export default function Form() {
           </label>
           <input
             className="w-full rounded-3xl p-1 dark:text-white dark:bg-gray-700 border-2 focus:outline-none focus:border-colors-dark-orange"
-            {...register('S_EMAIL')}
-            name="senha"
+            {...register('S_SENHA')}
+            name="S_SENHA"
             max={150}
             type="password"
           />
