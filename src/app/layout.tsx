@@ -11,9 +11,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body>
+      <body className="h-screen flex justify-center items-center bg-colors-light-background dark:bg-colors-dark-background">
         <Providers>
-          <main className="h-screen flex justify-center items-center bg-colors-light-background dark:bg-colors-dark-background">
+          <main className="h-screen flex">
             {children}
             <Toaster richColors position="top-right" />
           </main>
