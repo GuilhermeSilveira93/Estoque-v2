@@ -7,9 +7,6 @@ const paginasPrivadas = ['/']
 
 export default async function middleware(req: NextRequest) {
   const token = req.cookies.get('token')?.value || null
-  console.log('token')
-  console.log(token)
-  console.log('token')
   const user: userTokenPayLoad = token
     ? JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString('utf-8'))
     : token

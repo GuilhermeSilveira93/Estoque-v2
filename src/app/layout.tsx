@@ -10,10 +10,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR" className="scroll-smooth">
+    <html lang="pt-BR">
       <body>
         <Providers>
-          <main className="flex flex-row">
+          <main className="h-screen flex justify-center items-center bg-colors-light-background dark:bg-colors-dark-background">
             {children}
             <Toaster richColors position="top-right" />
           </main>

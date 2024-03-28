@@ -1,22 +1,20 @@
 export const colors = {
   dark: {
-    orange: '#FF8500',
-    orangeHover: '#ff9d32',
-    blue: '#465DFF',
-    blueHover: '#6c7eff',
-    green: '#00EDA8',
-    greenHover: '#00dc9c',
-    gray: '#293541',
-    grayHover: '#43576b'
+    primaria: 'rgb(0, 255, 159)',
+    secundaria: '#465DFF',
+    terciaria: '#FF8500',
+    background: '#282c2f',
+    texto: '#fff',
+    textoalt: '#000',
+    card: '#474e53'
   },
   light: {
-    orange: '#FF8500',
-    orangeHover: '#ff9d32',
-    blue: '#465DFF',
-    blueHover: '#6c7eff',
-    green: '#00EDA8',
-    greenHover: '#00dc9c',
-    gray: '#293541',
-    grayHover: '#43576b'
+    primaria: '#FF8500',
+    secundaria: '#465DFF',
+    terciaria: 'rgb(0, 255, 159)',
+    background: '#d6d6d6',
+    texto: '#000',
+    textoalt: '#fff',
+    card: '#efefef'
   }
 } as const
