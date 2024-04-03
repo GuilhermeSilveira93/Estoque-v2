@@ -7,8 +7,8 @@ export const http = axios.create({
     host: 'localhost',
     port: 3002
   }
-  /*   headers: {
+})
+/*   headers: {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
   } */
-})
