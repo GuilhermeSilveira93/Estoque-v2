@@ -1,13 +1,12 @@
 'use server'
 import { loginType } from '@/@types/LoginZod'
-import { SetCookie } from '@/utils'
-import { http } from '@/utils/httpAxios'
+import { SetCookie, api } from '@/@utils'
 import { AxiosError } from 'axios'
 
 export const LoginAction = async (dados: loginType) => {
   const { S_EMAIL, S_SENHA } = dados
   try {
-    return await http
+    return await api
       .post('auth/login', {
         S_EMAIL,
         S_SENHA
@@ -21,6 +20,9 @@ export const LoginAction = async (dados: loginType) => {
         return rest
       })
       .catch((errors: AxiosError) => {
+        if (errors.isAxiosError) {
+          return { message: 'Erro ao logar, entre em contato com suporte' }
+        }
         return errors.response?.data
       })
   } catch (e) {

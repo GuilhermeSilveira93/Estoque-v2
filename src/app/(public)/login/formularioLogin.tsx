@@ -1,10 +1,9 @@
 'use client'
 import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import React, { ReactComponentElement, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
+import { Button, Input } from '@/components/ui'
 
 import { loginSchema, loginType } from '@/@types/LoginZod'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -13,7 +12,13 @@ import { toast } from 'sonner'
 import { LoginAction } from './actions/loginAction'
 import LoadingDots from './loading-dots'
 
-export default function Form() {
+export default function Form({
+  children,
+  className
+}: {
+  children: ReactComponentElement<'image'>
+  className: string
+}) {
   const [loading, setLoading] = useState(false)
   const {
     register,
@@ -26,8 +31,8 @@ export default function Form() {
   const router = useRouter()
   const login = async (dados: loginType) => {
     setLoading(true)
-    const response = (): Promise<{ message: string }> =>
-      new Promise((resolve, reject) => {
+    const response = (): Promise<{ message: string }> => {
+      return new Promise((resolve, reject) => {
         LoginAction(dados)
           .then((res) => {
             if (res.code === 202) {
@@ -40,6 +45,7 @@ export default function Form() {
             reject(err)
           })
       })
+    }
     toast.promise(response, {
       loading: 'Consultando seu usuário.',
       success: (data) => {
@@ -52,9 +58,13 @@ export default function Form() {
     setLoading(false)
   }
   return (
-    <>
-      {/*@ts-expect-error: tipagem está correta.*/}
-      <form action={handleSubmit(login)} className="w-full text-center">
+    <div>
+      <form
+        /*@ts-expect-error: tipagem está correta.*/
+        action={handleSubmit(login)}
+        className={className}
+      >
+        {children}
         <div className="mb-8">
           <label className="text-lg" htmlFor="S_EMAIL">
             E-mail:
@@ -90,10 +100,11 @@ export default function Form() {
           variant={'outline'}
           value={'Login'}
           disabled={loading}
+          className="rounded-xl"
         >
           {loading ? <LoadingDots /> : <p>Login</p>}
         </Button>
       </form>
-    </>
+    </div>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Toaster } from '@/components/ui/sonner'
+import { Toaster } from '@/components/ui'
 
 import '@/styles/globals.css'
 import { Providers } from '@/providers/providers'
@@ -11,12 +11,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className="h-screen flex justify-center items-center bg-colors-light-background dark:bg-colors-dark-background">
+      <body className="h-screen w-screen bg-colors-light-background dark:bg-colors-dark-background">
         <Providers>
-          <main className="h-screen flex">
-            {children}
-            <Toaster richColors position="top-right" />
-          </main>
+          {children}
+          <Toaster richColors position="top-right" />
         </Providers>
       </body>
     </html>
