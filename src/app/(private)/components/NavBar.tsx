@@ -9,29 +9,27 @@ import {
   SheetTrigger
 } from '@/components/ui'
 
-import { Menu } from 'lucide-react'
+import { Menu } from './Menu'
 
 const NavBar = async () => {
   return (
-    <nav className="bg-colors-light-card rounded-sm dark:bg-colors-dark-card h-screen">
-      <Sheet>
-        <SheetTrigger>
-          <Menu size={42} className="" />
-        </SheetTrigger>
-        <SheetContent
-          className="max-w-1/5 sm:w-[540px] bg-colors-light-card dark:bg-colors-dark-card"
-          side={'left'}
-        >
-          <SheetHeader>
-            <SheetTitle>Are you absolutely sure?</SheetTitle>
-            <SheetDescription>
-              This action cannot be undone. This will permanently delete your
-              account and remove your data from our servers.
-            </SheetDescription>
-          </SheetHeader>
-        </SheetContent>
-      </Sheet>
-    </nav>
+    <Sheet>
+      <SheetTrigger className="absolute top-0 right-0">
+        <Menu />
+      </SheetTrigger>
+      <SheetContent
+        className="max-w-1/5 sm:w-[540px] bg-colors-light-card dark:bg-colors-dark-card"
+        side={'right'}
+      >
+        <SheetHeader>
+          <SheetTitle>Are you absolutely sure?</SheetTitle>
+          <SheetDescription>
+            This action cannot be undone. This will permanently delete your
+            account and remove your data from our servers.
+          </SheetDescription>
+        </SheetHeader>
+      </SheetContent>
+    </Sheet>
   )
 }
 export default NavBar

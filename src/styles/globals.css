@@ -9,10 +9,11 @@
   font-family: 'UniviaPro-Bold' ;
   src: url('../../assets/fonts/UniviaPro-Bold.ttf');
 }
-
 *{
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   font-family: 'UniviaPro-Regular';
 }
+
+

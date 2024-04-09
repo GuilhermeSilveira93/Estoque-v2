@@ -1,11 +1,8 @@
 'use client'
 import React from 'react'
-import { ReactNode } from 'react'
 
 import { ThemeProviders } from './themeProvider'
-type Props = {
-  children: ReactNode
-}
-export const Providers = ({ children }: Props) => {
+
+export const Providers = ({ children }: { children: React.ReactNode }) => {
   return <ThemeProviders>{children}</ThemeProviders>
 }

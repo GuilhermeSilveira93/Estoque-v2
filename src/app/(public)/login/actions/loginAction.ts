@@ -20,7 +20,7 @@ export const LoginAction = async (dados: loginType) => {
         return rest
       })
       .catch((errors: AxiosError) => {
-        if (errors.isAxiosError) {
+        if (errors.code === 'ECONNREFUSED') {
           return { message: 'Erro ao logar, entre em contato com suporte' }
         }
         return errors.response?.data
