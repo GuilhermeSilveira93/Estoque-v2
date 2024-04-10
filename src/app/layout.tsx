@@ -1,12 +1,11 @@
-import { Metadata } from 'next'
+import { Metadata, Viewport } from 'next'
 import React from 'react'
 
+import { ThemeChanger } from '@/components/theme-mode'
 import { Toaster } from '@/components/ui'
 
 import '@/styles/globals.css'
 import { Providers } from '@/providers/providers'
-
-import { ThemeChanger } from '@/components/theme-mode'
 
 const title = 'Estoque Softrack'
 const description = 'Desenvolvido por Guilherme Silveira'
@@ -18,8 +17,10 @@ export const metadata: Metadata = {
     title,
     description
   },
-  metadataBase: new URL('https://nextjs-postgres-auth.vercel.app'),
-  themeColor: '#FFF'
+  metadataBase: new URL('https://nextjs-postgres-auth.vercel.app')
+}
+export const viewport: Viewport = {
+  themeColor: '#000'
 }
 export default function RootLayout({
   children
