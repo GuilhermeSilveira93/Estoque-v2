@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://nextjs-postgres-auth.vercel.app')
 }
 export const viewport: Viewport = {
-  themeColor: '#000'
+  themeColor: '#ddd'
 }
 export default function RootLayout({
   children
@@ -29,9 +29,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className="max-h-screen h-screen w-screen bg-colors-light-background dark:bg-colors-dark-background">
+      <body>
         <Providers>
-          {children}
+          <main className="w-full h-screen max-h-screen bg-colors-light-background">
+            {children}
+          </main>
           <Toaster richColors position="top-right" />
           <ThemeChanger />
         </Providers>

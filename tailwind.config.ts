@@ -21,6 +21,10 @@ const config: Config = {
     extend: {
       colors: {
         colors,
+        backgroundImage: {
+          snakesftk: "url('./assets/images/Snake.png'')",
+          'footer-texture': "url('/img/footer-texture.png')"
+        },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',

@@ -15,5 +15,6 @@
   margin: 0;
   font-family: 'UniviaPro-Regular';
 }
-
-
+main{ 
+background: url('../../assets/images/Snake.png') no-repeat center top;
+}
