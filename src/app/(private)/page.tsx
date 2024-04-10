@@ -8,6 +8,14 @@ import { fetchTabela } from './fetchTabela'
 
 const DashBoard = async ({ searchParams }: HomeProps) => {
   const produtos = await fetchTabela({ searchParams })
+  const soma = produtos.reduce(
+    (acc, produto) => {
+      acc.total += produto.quantidade
+      return acc
+    },
+    { total: 0 }
+  )
+  console.log(soma.total)
   return (
     <Container>
       <header className="flex flex-wrap row gap-2">
