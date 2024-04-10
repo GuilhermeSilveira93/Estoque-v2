@@ -29,9 +29,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body>
+      <body className="bg-gradient-to-bl to-66% from-33% from-colors-light-background to-colors-light-secundaria dark:from-colors-dark-terciaria dark:to-colors-dark-background">
         <Providers>
-          <main className="w-full h-screen max-h-screen bg-colors-light-background">
+          <div className="fixed w-screen h-screen bg-softrack-pattern bg-repeat bg-cover -z-10 opacity-30" />
+          <main className="w-full mx-auto max-w-screen-3xl h-screen">
             {children}
           </main>
           <Toaster richColors position="top-right" />

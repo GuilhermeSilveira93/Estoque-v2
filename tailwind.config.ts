@@ -4,6 +4,7 @@ import type { Config } from 'tailwindcss'
 
 /** @type {import('tailwindcss').Config} */
 const config: Config = {
+  darkMode: ['class'],
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -13,18 +14,14 @@ const config: Config = {
   theme: {
     container: {
       center: true,
-      padding: '2rem',
-      screens: {
-        '2xl': '1400px'
-      }
+      padding: '2rem'
     },
     extend: {
+      screens: {
+        '3xl': '1920px'
+      },
       colors: {
         colors,
-        backgroundImage: {
-          snakesftk: "url('./assets/images/Snake.png'')",
-          'footer-texture': "url('/img/footer-texture.png')"
-        },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -79,8 +76,7 @@ const config: Config = {
         'accordion-up': 'accordion-up 0.2s ease-out'
       },
       backgroundImage: {
-        'softrack-pattern':
-          "url('../../assets/images/patterns-softrack_partes-02.png')",
+        'softrack-pattern': "url('../../assets/images/Snake.png')",
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'

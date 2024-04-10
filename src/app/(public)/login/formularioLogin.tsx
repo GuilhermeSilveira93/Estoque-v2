@@ -16,8 +16,8 @@ export default function Form({
   children,
   className
 }: {
-  children: ReactComponentElement<'image'>
-  className: string
+  children: ReactComponentElement<'image'>,
+  className?: string
 }) {
   const [loading, setLoading] = useState(false)
   const {
