@@ -3,8 +3,11 @@ import React from 'react'
 import { Container } from '@/components/ui'
 
 import { HomeProps } from '@/@types'
+
+import { fetchTabela } from './fetchTabela'
+
 const DashBoard = async ({ searchParams }: HomeProps) => {
-  const { ID, Search } = searchParams
+  const produtos = await fetchTabela({ searchParams })
   return (
     <Container>
       <header className="flex flex-wrap row gap-2">

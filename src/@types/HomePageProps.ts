@@ -1,6 +1,7 @@
 export type HomeProps = {
   searchParams: {
-    ID: string
+    ID: string,
+    S_ATIVO: string,
     Search: string
   }
 }

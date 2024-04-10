@@ -8,6 +8,23 @@ export const api = axios.create({
     port: 3002
   }
 })
+api.interceptors.request.use(
+  function (config) {
+    console.log('aqui interceptor')
+    return config
+  },
+  function (error) {
+    return Promise.reject(error)
+  }
+)
+axios.interceptors.response.use(
+  function (response) {
+    return response
+  },
+  function (error) {
+    return Promise.reject(error)
+  }
+)
 /*   headers: {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
