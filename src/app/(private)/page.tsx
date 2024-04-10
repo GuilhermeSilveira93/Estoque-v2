@@ -1,7 +1,9 @@
 import React from 'react'
 
 import { Container } from '@/components/ui'
-const DashBoard = () => {
+
+import { HomeProps } from '@/@types'
+const DashBoard = async ({ searchParams }: HomeProps) => {
   return (
     <Container>
       <h1>dash</h1>
