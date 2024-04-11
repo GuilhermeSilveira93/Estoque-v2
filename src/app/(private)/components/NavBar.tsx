@@ -14,7 +14,7 @@ import { Menu } from './Menu'
 const NavBar = async () => {
   return (
     <Sheet>
-      <SheetTrigger className="fixed top-0 right-0">
+      <SheetTrigger className="fixed top-0 right-0 z-10">
         <Menu />
       </SheetTrigger>
       <SheetContent

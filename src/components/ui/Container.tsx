@@ -2,8 +2,11 @@ import React from 'react'
 
 export const Container = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="shadow-xl h-screen shadow-colors-dark-terciaria bg-gradient-to-b from-20% to-0% from-colors-dark-terciaria to-colors-dark-background">
-      {children}
+    <div className="relative shadow-xl h-screen shadow-colors-dark-terciaria">
+      <div className="-z-10 min-h-[20%] w-full bg-colors-light-primaria dark:bg-colors-dark-primaria" />
+      <div className="-z-10 h-[80%] w-full bg-colors-light-background dark:bg-colors-dark-background">
+        {children}
+      </div>
     </div>
   )
 }

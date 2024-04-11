@@ -10,7 +10,7 @@ export const api = axios.create({
 })
 api.interceptors.request.use(
   function (config) {
-    console.log('aqui interceptor')
+    console.log(config)
     return config
   },
   function (error) {

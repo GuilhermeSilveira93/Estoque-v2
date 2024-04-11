@@ -3,38 +3,18 @@ import React from 'react'
 import { Container } from '@/components/ui'
 
 import { HomeProps } from '@/@types'
+import { Produto } from '@/@types/api'
 
 import { fetchTabela } from './fetchTabela'
 
 const DashBoard = async ({ searchParams }: HomeProps) => {
   const produtos = await fetchTabela({ searchParams })
-  const produtos2 = [
-    {
-      ID_PRODUTO: 42,
-      produto: 'CAIXA AMPLIFICADOR DIVISOR COM PINO (AS0001-F)',
-      quantidade: 43
-    },
-    {
-      ID_PRODUTO: 40,
-      produto: 'CAIXA AMPLIFICADOR DIVISOR G2',
-      quantidade: 69
-    }
-  ]
-  const hum = produtos2.reduce(
-    (acc, produto) => {
-      acc.total += produto.quantidade
-      console.log(produto)
-      return acc
-    },
-    { total: 0 }
-  )
-  console.log(hum)
   return (
     <Container>
-      <header className="flex flex-wrap row gap-2">
-        <div className="p-2 border"></div>
-        <div className="p-2 border"></div>
-        <div className="p-2 border"></div>
+      <header className="absolute w-full h-60 lg:-mt-32 -mt-[118px] grid grid-flow-row gap-4 grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
+        <div className="p-4 border-4 border-colors-light-terciaria dark:border-colors-dark-terciaria rounded-xl"></div>
+        <div className="p-4 border-4 border-colors-light-terciaria dark:border-colors-dark-terciaria rounded-xl"></div>
+        <div className="p-4 border-4 border-colors-light-terciaria dark:border-colors-dark-terciaria rounded-xl"></div>
       </header>
     </Container>
   )
