@@ -6,11 +6,11 @@ import { colors } from '@/components/colors'
 
 import { Menu as MenuIcon } from 'lucide-react'
 export const Menu = () => {
-  const { systemTheme } = useTheme()
+  const { systemTheme, theme } = useTheme()
   return (
     <MenuIcon
       size={42}
-      color={colors[systemTheme ? systemTheme : 'dark'].primaria}
+      color={colors[theme && theme === 'light' ? theme : 'dark'].background}
     />
   )
 }
