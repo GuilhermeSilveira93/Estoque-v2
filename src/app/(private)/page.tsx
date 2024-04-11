@@ -9,8 +9,7 @@ import { fetchTabela } from '@/@utils'
 
 const DashBoard = async ({ searchParams }: HomeProps) => {
   const produtos = await fetchTabela({ searchParams })
-  console.log(produtos)
-  // const cabecalhos = Object.keys(produtos[0]!)
+  const cabecalhos = Object.keys(produtos[0]!)
   return (
     <Container>
       <HeaderHome produtos={produtos} />
