@@ -29,7 +29,7 @@ export const Tabela = ({
     ? data.slice((Number(Page) - 1) * limit, Number(Page) * limit)
     : data.slice(0, limit)
   return (
-    <Table>
+    <Table className="text-center">
       <TableHeader>
         <TableRow>
           {tableHeader.map((item) => {
@@ -55,10 +55,7 @@ export const Tabela = ({
       <TableBody>
         {dataResultPage.map((item) => {
           return (
-            <TableRow
-              key={item.ID_PRODUTO}
-              className="cursor-pointer hover:bg-blue5 dark:hover:bg-gray-700"
-            >
+            <TableRow key={item.ID_PRODUTO} className="dark:hover:bg-gray-700">
               {tableHeader.map((header) => {
                 let existe = false
                 for (let i = 0; i < ocultar.length; i++) {

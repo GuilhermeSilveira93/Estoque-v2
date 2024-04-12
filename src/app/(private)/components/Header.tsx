@@ -11,7 +11,7 @@ const HeaderHome = ({ produtos }: { produtos: Produto[] }) => {
     { total: 0 }
   )
   return (
-    <header className="w-full h-60 -mt-[118px] grid grid-flow-row grid-rows-2 gap-6 p-6 grid-cols-4 xl:grid-cols-3 xl:grid-rows-1">
+    <header className="w-full h-40 grid grid-flow-row grid-rows-2 gap-10 grid-cols-4 xl:grid-cols-3 xl:grid-rows-1 mb-4">
       <section className="p-4 border-4 max-xl:col-span-2 bg-colors-light-card dark:bg-colors-dark-card border-colors-light-primaria dark:border-colors-dark-primaria rounded-xl shadow">
         <div className="flex flex-row items-center justify-between space-y-0 pb-2">
           <h1 className="tracking-tight font-medium">Total em estoque</h1>

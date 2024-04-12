@@ -12,23 +12,21 @@ const DashBoard = async ({ searchParams }: HomeProps) => {
   // eslint-disable-next-line prettier/prettier
   const cabecalhos = produtos.length > 0 ? Object.keys(produtos[0]!) : ['']
   return (
-    <Container>
+    <>
       <HeaderHome produtos={produtos} />
-      <section className="px-4">
+      <section>
         <div className='bg-colors-light-card  dark:bg-colors-dark-card rounded-b-xl overflow-hidden'>
         <SearchData Search={searchParams.Search} />
-        <ScrollArea className='m-auto w-full h-full text-center'>
           <Tabela
               data={produtos}
 							tableHeader={cabecalhos}
 							searchParams={searchParams}
 							ocultar={["ID_PRODUTO"]}
            />
-        </ScrollArea>
-        </div>
         
+        </div>
       </section>
-    </Container>
+    </>
   )
 }
 export default DashBoard
