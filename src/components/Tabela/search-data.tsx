@@ -28,7 +28,7 @@ export const SearchData = ({ Search }: SearchProps) => {
   const handleSearch = (data: SearchSchemaType) => {
     let sendTo = ''
     if (data.Search !== undefined && data.Search !== '') {
-      sendTo = createParam('Search',data.Search)  
+      sendTo = createParam('Search',data.Search.toUpperCase())  
     }else{
       sendTo = deleteParam(['Search'])
     }
