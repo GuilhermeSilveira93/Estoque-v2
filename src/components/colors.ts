@@ -6,7 +6,7 @@ export const colors = {
     background: '#282c2f',
     texto: '#fff',
     textoalt: '#000',
-    card: '#474e53'
+    card: '#474e53',
   },
   light: {
     primaria: '#FF8500',
@@ -15,6 +15,6 @@ export const colors = {
     background: '#d6d6d6',
     texto: '#000',
     textoalt: '#fff',
-    card: '#efefef'
-  }
-} as const
+    card: '#efefef',
+  },
+} as const;

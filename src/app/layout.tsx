@@ -1,42 +1,42 @@
-import { Metadata, Viewport } from 'next'
-import React from 'react'
+import { Metadata, Viewport } from 'next';
+import React from 'react';
 
-import { ThemeChanger } from '@/components/theme-mode'
-import { Toaster } from '@/components/ui'
+import { ThemeChanger } from '@/components/theme-mode';
+import { Toaster } from '@/components/ui';
 
-import '@/styles/globals.css'
-import { Providers } from '@/providers/providers'
+import '@/styles/globals.css';
+import { Providers } from '@/providers/providers';
 
-const title = 'Estoque Softrack'
-const description = 'Desenvolvido por Guilherme Silveira'
+const title = 'Estoque Softrack';
+const description = 'Desenvolvido por Guilherme Silveira';
 export const metadata: Metadata = {
   title,
   description,
   twitter: {
     card: 'summary_large_image',
     title,
-    description
+    description,
   },
-  metadataBase: new URL('https://nextjs-postgres-auth.vercel.app')
-}
+  metadataBase: new URL('https://nextjs-postgres-auth.vercel.app'),
+};
 export const viewport: Viewport = {
-  themeColor: '#ddd'
-}
+  themeColor: '#ddd',
+};
 export default function RootLayout({
-  children
+  children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode,
 }>) {
   return (
     <html lang="pt-BR">
       <body className="flex">
         <Providers>
-          <div className="fixed w-screen h-screen bg-softrack-pattern bg-repeat bg-cover -z-10 opacity-30" />
+          <div className="fixed -z-10 h-screen w-screen bg-softrack-pattern bg-cover bg-repeat opacity-30" />
           {children}
           <Toaster richColors position="top-right" />
           <ThemeChanger />
         </Providers>
       </body>
     </html>
-  )
+  );
 }

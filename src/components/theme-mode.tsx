@@ -1,18 +1,18 @@
-'use client'
+'use client';
 
-import { useTheme } from 'next-themes'
+import { useTheme } from 'next-themes';
 
-import { useMount } from '@/hooks/use-mount'
-import { LoaderIcon, Moon, Sun } from 'lucide-react'
+import { useMount } from '@/hooks/use-mount';
+import { LoaderIcon, Moon, Sun } from 'lucide-react';
 
-import { colors } from './colors'
+import { colors } from './colors';
 
 export const ThemeChanger = () => {
-  const { theme, setTheme, systemTheme } = useTheme()
+  const { theme, setTheme, systemTheme } = useTheme();
 
-  const currentTheme = theme === 'system' ? systemTheme : theme
+  const currentTheme = theme === 'system' ? systemTheme : theme;
 
-  const mounted = useMount()
+  const mounted = useMount();
 
   return (
     <div className="absolute bottom-0 right-0">
@@ -34,5 +34,5 @@ export const ThemeChanger = () => {
         )}
       </button>
     </div>
-  )
-}
+  );
+};

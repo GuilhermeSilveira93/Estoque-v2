@@ -1,2 +1,2 @@
-export * from './search-data'
-export * from './Tabela'
+export * from './search-data';
+export * from './Tabela';

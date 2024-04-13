@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 
 import {
   Sheet,
@@ -6,19 +6,19 @@ import {
   SheetDescription,
   SheetHeader,
   SheetTitle,
-  SheetTrigger
-} from '@/components/ui'
+  SheetTrigger,
+} from '@/components/ui';
 
-import { Menu } from './Menu'
+import { Menu } from './Menu';
 
 const NavBar = async () => {
   return (
     <Sheet>
-      <SheetTrigger className="fixed top-0 right-0 z-10">
+      <SheetTrigger className="fixed right-0 top-0 z-10">
         <Menu />
       </SheetTrigger>
       <SheetContent
-        className="max-w-1/5 sm:w-[540px] bg-colors-light-card dark:bg-colors-dark-card"
+        className="max-w-1/5 bg-colors-light-card dark:bg-colors-dark-card sm:w-[540px]"
         side={'right'}
       >
         <SheetHeader>
@@ -30,6 +30,6 @@ const NavBar = async () => {
         </SheetHeader>
       </SheetContent>
     </Sheet>
-  )
-}
-export default NavBar
+  );
+};
+export default NavBar;

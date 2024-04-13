@@ -1,13 +1,13 @@
-import { redirect } from 'next/navigation'
+import { redirect } from 'next/navigation';
 
-import { ValidateUserPermissions, ValidateUserPermissionsProps } from '.'
+import { ValidateUserPermissions, ValidateUserPermissionsProps } from '.';
 
 export const verifyPermissionsPage = async (
-  props: ValidateUserPermissionsProps
+  props: ValidateUserPermissionsProps,
 ) => {
-  const userCanSeeComponent = await ValidateUserPermissions(props)
+  const userCanSeeComponent = await ValidateUserPermissions(props);
 
   if (!userCanSeeComponent) {
-    return redirect('/')
+    return redirect('/');
   }
-}
+};

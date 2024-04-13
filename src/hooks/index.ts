@@ -1,1 +1,1 @@
-export * from './customParams'
+export * from './customParams';

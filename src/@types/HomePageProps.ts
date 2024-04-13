@@ -3,6 +3,6 @@ export type HomeProps = {
     ID: string,
     S_ATIVO: string,
     Search: string,
-    Page: string
-  }
-}
+    Page: string,
+  },
+};

@@ -1,62 +1,62 @@
-'use client'
-import { useRouter } from 'next/navigation'
-import React, { ReactComponentElement, useState } from 'react'
-import { useForm } from 'react-hook-form'
+'use client';
+import { useRouter } from 'next/navigation';
+import React, { ReactComponentElement, useState } from 'react';
+import { useForm } from 'react-hook-form';
 
-import { Button, Input } from '@/components/ui'
+import { Button, Input } from '@/components/ui';
 
-import { loginSchema, loginType } from '@/@types/LoginZod'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { toast } from 'sonner'
+import { loginSchema, loginType } from '@/@types/LoginZod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { toast } from 'sonner';
 
-import { LoginAction } from './actions/loginAction'
-import LoadingDots from './loading-dots'
+import { LoginAction } from './actions/loginAction';
+import LoadingDots from './loading-dots';
 
 export default function Form({
   children,
-  className
+  className,
 }: {
   children: ReactComponentElement<'image'>,
-  className?: string
+  className?: string,
 }) {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
   } = useForm<loginType>({
     defaultValues: { S_EMAIL: '', S_SENHA: '' },
-    resolver: zodResolver(loginSchema)
-  })
-  const router = useRouter()
+    resolver: zodResolver(loginSchema),
+  });
+  const router = useRouter();
   const login = async (dados: loginType) => {
-    setLoading(true)
+    setLoading(true);
     const response = (): Promise<{ message: string }> => {
       return new Promise((resolve, reject) => {
         LoginAction(dados)
           .then((res) => {
             if (res.code === 202) {
-              resolve(res)
-              router.push('/')
+              resolve(res);
+              router.push('/');
             }
-            reject(res)
+            reject(res);
           })
           .catch((err) => {
-            reject(err)
-          })
-      })
-    }
+            reject(err);
+          });
+      });
+    };
     toast.promise(response, {
       loading: 'Consultando seu usuário.',
       success: (data) => {
-        return data.message
+        return data.message;
       },
       error: (data) => {
-        return data.message
-      }
-    })
-    setLoading(false)
-  }
+        return data.message;
+      },
+    });
+    setLoading(false);
+  };
   return (
     <div>
       <form
@@ -70,7 +70,7 @@ export default function Form({
             E-mail:
           </label>
           <Input
-            className="w-full rounded-3xl p-1 text-colors-light-texto bg-colors-light-background focus:border-colors-dark-terciaria border-2 focus:outline-none dark:text-colors-dark-texto dark:bg-colors-dark-background dark:focus:border-colors-dark-terciaria"
+            className="w-full rounded-3xl border-2 bg-colors-light-background p-1 text-colors-light-texto focus:border-colors-dark-terciaria focus:outline-none dark:bg-colors-dark-background dark:text-colors-dark-texto dark:focus:border-colors-dark-terciaria"
             {...register('S_EMAIL')}
             name="S_EMAIL"
             type="email"
@@ -81,11 +81,11 @@ export default function Form({
           )}
         </div>
         <div className="mb-12">
-          <label className="text-lg w-12" htmlFor="S_SENHA">
+          <label className="w-12 text-lg" htmlFor="S_SENHA">
             Senha:
           </label>
           <Input
-            className="w-full rounded-3xl p-1 text-colors-light-texto bg-colors-light-background focus:border-colors-dark-terciaria border-2 focus:outline-none dark:text-colors-dark-texto dark:bg-colors-dark-background dark:focus:border-colors-dark-terciaria"
+            className="w-full rounded-3xl border-2 bg-colors-light-background p-1 text-colors-light-texto focus:border-colors-dark-terciaria focus:outline-none dark:bg-colors-dark-background dark:text-colors-dark-texto dark:focus:border-colors-dark-terciaria"
             {...register('S_SENHA')}
             name="S_SENHA"
             max={150}
@@ -106,5 +106,5 @@ export default function Form({
         </Button>
       </form>
     </div>
-  )
+  );
 }

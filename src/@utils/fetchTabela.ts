@@ -1,17 +1,17 @@
-import { HomeProps } from '@/@types'
-import { Produto } from '@/@types/api'
-import { api } from '@/@utils'
+import { HomeProps } from '@/@types';
+import { Produto } from '@/@types/api';
+import { api } from '@/@utils';
 
 export const fetchTabela = async ({
-  searchParams
+  searchParams,
 }: HomeProps): Promise<Produto[]> => {
-  const { ID: ID_PRODUTO, S_ATIVO, Search } = searchParams
+  const { ID: ID_PRODUTO, S_ATIVO, Search } = searchParams;
   return await api
     .get('/produto/tabela', { params: { S_ATIVO, ID_PRODUTO, Search } })
     .then((res) => {
-      return res.data
+      return res.data;
     })
     .catch((err) => {
-      return []
-    })
-}
+      return [];
+    });
+};

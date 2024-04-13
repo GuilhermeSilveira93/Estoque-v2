@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 import {
   Table,
@@ -6,48 +6,48 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow
-} from '@/components/ui'
+  TableRow,
+} from '@/components/ui';
 
-import { HomeProps } from '@/@types'
-import { Produto } from '@/@types/api'
+import { HomeProps } from '@/@types';
+import { Produto } from '@/@types/api';
 type TabelaProps = {
   data: Produto[],
   tableHeader: string[],
   ocultar: string[],
-  searchParams: HomeProps['searchParams']
-}
+  searchParams: HomeProps['searchParams'],
+};
 export const Tabela = ({
   data,
   tableHeader,
   searchParams,
-  ocultar
+  ocultar,
 }: TabelaProps) => {
-  const { Page } = searchParams
-  const limit = 8
+  const { Page } = searchParams;
+  const limit = 8;
   const dataResultPage = Page
     ? data.slice((Number(Page) - 1) * limit, Number(Page) * limit)
-    : data.slice(0, limit)
+    : data.slice(0, limit);
   return (
     <Table className="text-center">
       <TableHeader>
         <TableRow>
           {tableHeader.map((item) => {
-            let existe = false
+            let existe = false;
             for (let i = 0; i < ocultar.length; i++) {
               if (item === ocultar[i]) {
-                existe = true
+                existe = true;
               }
             }
             if (!existe) {
               return (
                 <TableHead
-                  className="text-center font-black text-xl text-blue12 dark:text-blue1"
+                  className="text-blue12 dark:text-blue1 text-center text-xl font-black"
                   key={item}
                 >
                   {item}
                 </TableHead>
-              )
+              );
             }
           })}
         </TableRow>
@@ -57,20 +57,20 @@ export const Tabela = ({
           return (
             <TableRow key={item.ID_PRODUTO} className="dark:hover:bg-gray-700">
               {tableHeader.map((header) => {
-                let existe = false
+                let existe = false;
                 for (let i = 0; i < ocultar.length; i++) {
                   if (header === ocultar[i]) {
-                    existe = true
+                    existe = true;
                   }
                 }
                 if (!existe) {
-                  return <TableCell key={header}>{item[header]}</TableCell>
+                  return <TableCell key={header}>{item[header]}</TableCell>;
                 }
               })}
             </TableRow>
-          )
+          );
         })}
       </TableBody>
     </Table>
-  )
-}
+  );
+};
