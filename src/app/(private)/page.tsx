@@ -2,7 +2,6 @@ import React from 'react'
 
 import HeaderHome from './components/Header'
 import { SearchData, Tabela } from '@/components/Tabela'
-import { Container, ScrollArea } from '@/components/ui'
 
 import { HomeProps } from '@/@types'
 import { fetchTabela } from '@/@utils'

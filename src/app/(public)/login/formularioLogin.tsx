@@ -77,7 +77,9 @@ export default function Form({
             max={150}
           />
           {errors.S_EMAIL && (
-            <p className="text-red-600">{errors.S_EMAIL.message}</p>
+            <p className="text-colors-dark-terciaria dark:text-colors-dark-terciaria">
+              {errors.S_EMAIL.message}
+            </p>
           )}
         </div>
         <div className="mb-12">
@@ -92,15 +94,16 @@ export default function Form({
             type="password"
           />
           {errors.S_SENHA && (
-            <p className="text-red-600">{errors.S_SENHA.message}</p>
+            <p className="text-colors-dark-terciaria dark:text-colors-dark-terciaria">
+              {errors.S_SENHA.message}
+            </p>
           )}
         </div>
         <Button
           type="submit"
-          variant={'outline'}
           value={'Login'}
           disabled={loading}
-          className="rounded-xl"
+          className="w-full"
         >
           {loading ? <LoadingDots /> : <p>Login</p>}
         </Button>

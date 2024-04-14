@@ -7,7 +7,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from '@/components/ui';
+} from '@/components/ui/sheet';
 
 import { Menu } from './Menu';
 
