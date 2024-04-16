@@ -77,6 +77,8 @@ const config: Config = {
       },
       backgroundImage: {
         'softrack-pattern': "url('../../assets/images/Snake.png')",
+        logoProd: "url('../../assets/images/LogoProd.png')",
+        'logoProd-Dark': "url('../../assets/images/Snake.png')",
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',

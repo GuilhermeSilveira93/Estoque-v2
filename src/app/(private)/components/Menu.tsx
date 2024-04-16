@@ -6,7 +6,7 @@ import { colors } from '@/components/colors';
 
 import { Menu as MenuIcon } from 'lucide-react';
 export const Menu = () => {
-  const { systemTheme, theme } = useTheme();
+  const { theme } = useTheme();
   return (
     <MenuIcon
       size={42}

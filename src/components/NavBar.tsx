@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import { Menu } from '../app/(private)/components/Menu';
 import {
   Sheet,
   SheetContent,
@@ -8,8 +9,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-
-import { Menu } from './Menu';
 
 const NavBar = async () => {
   return (

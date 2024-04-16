@@ -1,10 +1,12 @@
 import React from 'react'
 
 import HeaderHome from './components/Header'
-import { SearchData, Tabela } from '@/components/Tabela'
+import { SearchData } from './components/search-data'
+import { Tabela } from './components/Tabela'
 
 import { HomeProps } from '@/@types'
 import { fetchTabela } from '@/@utils'
+
 
 const DashBoard = async ({ searchParams }: HomeProps) => {
   const produtos = await fetchTabela({ searchParams })

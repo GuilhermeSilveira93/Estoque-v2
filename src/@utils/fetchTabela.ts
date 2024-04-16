@@ -5,9 +5,9 @@ import { api } from '@/@utils';
 export const fetchTabela = async ({
   searchParams,
 }: HomeProps): Promise<Produto[]> => {
-  const { ID: ID_PRODUTO, S_ATIVO, Search } = searchParams;
+  const { ID: ID_PRODUTO, S_ATIVO, Search, Page } = searchParams;
   return await api
-    .get('/produto/tabela', { params: { S_ATIVO, ID_PRODUTO, Search } })
+    .get('/produto/tabela', { params: { S_ATIVO, ID_PRODUTO, Search, Page } })
     .then((res) => {
       return res.data;
     })

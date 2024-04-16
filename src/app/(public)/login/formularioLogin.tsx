@@ -1,24 +1,22 @@
 'use client';
+import { useTheme } from 'next-themes';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import React, { ReactComponentElement, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { Button, Input } from '@/components/ui';
 
 import { loginSchema, loginType } from '@/@types/LoginZod';
+import logoProd from '@/images/LogoProd.png';
+import logoProdDark from '@/images/LogoProdDark.png';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 
 import { LoginAction } from './actions/loginAction';
 import LoadingDots from './loading-dots';
 
-export default function Form({
-  children,
-  className,
-}: {
-  children: ReactComponentElement<'image'>,
-  className?: string,
-}) {
+export default function Form({ className }: { className?: string }) {
   const [loading, setLoading] = useState(false);
   const {
     register,
@@ -29,6 +27,7 @@ export default function Form({
     resolver: zodResolver(loginSchema),
   });
   const router = useRouter();
+  const { theme } = useTheme();
   const login = async (dados: loginType) => {
     setLoading(true);
     const response = (): Promise<{ message: string }> => {
@@ -64,7 +63,11 @@ export default function Form({
         action={handleSubmit(login)}
         className={className}
       >
-        {children}
+        <Image
+          src={theme === 'light' ? logoProdDark : logoProd}
+          alt="Login Icon"
+          loading="lazy"
+        />
         <div className="mb-8">
           <label className="text-lg" htmlFor="S_EMAIL">
             E-mail:
@@ -103,7 +106,7 @@ export default function Form({
           type="submit"
           value={'Login'}
           disabled={loading}
-          className="w-full"
+          className="w-full text-card-foreground"
         >
           {loading ? <LoadingDots /> : <p>Login</p>}
         </Button>

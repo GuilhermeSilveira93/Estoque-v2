@@ -17,17 +17,7 @@ type TabelaProps = {
   ocultar: string[],
   searchParams: HomeProps['searchParams'],
 };
-export const Tabela = ({
-  data,
-  tableHeader,
-  searchParams,
-  ocultar,
-}: TabelaProps) => {
-  const { Page } = searchParams;
-  const limit = 8;
-  const dataResultPage = Page
-    ? data.slice((Number(Page) - 1) * limit, Number(Page) * limit)
-    : data.slice(0, limit);
+export const Tabela = ({ data, tableHeader, ocultar }: TabelaProps) => {
   return (
     <Table className="text-center">
       <TableHeader>
@@ -53,7 +43,7 @@ export const Tabela = ({
         </TableRow>
       </TableHeader>
       <TableBody>
-        {dataResultPage.map((item) => {
+        {data.map((item) => {
           return (
             <TableRow key={item.ID_PRODUTO} className="dark:hover:bg-gray-700">
               {tableHeader.map((header) => {
