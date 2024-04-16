@@ -29,9 +29,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className="flex">
+      <body>
         <Providers>
-          <div className="fixed -z-10 h-screen w-screen bg-softrack-pattern bg-cover bg-repeat opacity-30" />
           {children}
           <Toaster richColors position="top-right" />
           <ThemeChanger />
