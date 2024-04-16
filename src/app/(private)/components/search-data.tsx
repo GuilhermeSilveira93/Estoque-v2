@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import React from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { useCustomParam } from '@/hooks'
@@ -20,11 +20,11 @@ type SearchProps = {
 export const SearchData = ({ Search }: SearchProps) => {
   const router = useRouter()
   const {createParam, deleteParam} = useCustomParam()
-  const {handleSubmit, register} = useForm<SearchSchemaType>({
+  const {handleSubmit, register, reset} = useForm<SearchSchemaType>({
     defaultValues: {Search},
     resolver: zodResolver(SearchSchema)
   })
-  const handleSearch = (data: SearchSchemaType) => {
+  const handleSearch = useCallback((data: SearchSchemaType) => {
     let sendTo = ''
     if (data.Search !== undefined && data.Search !== '') {
       sendTo = createParam('Search',data.Search.toUpperCase())  
@@ -32,8 +32,21 @@ export const SearchData = ({ Search }: SearchProps) => {
       sendTo = deleteParam(['Search'])
     }
     router.push(sendTo)
-  }
+  },[createParam,deleteParam,router])
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        reset();
+        router.push(deleteParam(['Search']))
+      }
+    }
 
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [reset,deleteParam,router])
   return (
     <form onSubmit={handleSubmit(handleSearch)}>
       <div className="relative w-full border">
