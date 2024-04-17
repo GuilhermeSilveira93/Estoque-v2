@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-import HeaderHome from './components/Header'
 import Pagination from './components/pagination'
 import { SearchData } from './components/search-data'
 import { Tabela } from './components/Tabela'
