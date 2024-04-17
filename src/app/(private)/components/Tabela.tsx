@@ -18,10 +18,13 @@ type TabelaProps = {
   searchParams: HomeProps['searchParams'],
 };
 export const Tabela = ({ data, tableHeader, ocultar }: TabelaProps) => {
+  const PascalCase = (texto: string) => {
+    return texto.charAt(0).toUpperCase() + texto.substring(1).toLowerCase();
+  };
   return (
-    <Table className="text-center">
+    <Table className="text-center text-card-foreground">
       <TableHeader>
-        <TableRow>
+        <TableRow className="hover:bg-card">
           {tableHeader.map((item) => {
             let existe = false;
             for (let i = 0; i < ocultar.length; i++) {
@@ -32,10 +35,10 @@ export const Tabela = ({ data, tableHeader, ocultar }: TabelaProps) => {
             if (!existe) {
               return (
                 <TableHead
-                  className="text-blue12 dark:text-blue1 text-center text-xl font-black"
+                  className="border-b-0 border-card-foreground text-center text-3xl font-black text-card-foreground"
                   key={item}
                 >
-                  {item}
+                  {PascalCase(item)}
                 </TableHead>
               );
             }
@@ -45,7 +48,7 @@ export const Tabela = ({ data, tableHeader, ocultar }: TabelaProps) => {
       <TableBody>
         {data.map((item) => {
           return (
-            <TableRow key={item.ID_PRODUTO} className="dark:hover:bg-gray-700">
+            <TableRow key={item.ID_PRODUTO} className="border-card-foreground">
               {tableHeader.map((header) => {
                 let existe = false;
                 for (let i = 0; i < ocultar.length; i++) {

@@ -15,15 +15,15 @@ const DashBoard = async ({ searchParams }: HomeProps) => {
   const cabecalhos = produtos.data.length > 0 ? Object.keys(produtos.data[0]!) : ['']
   return (
     <>
-      <h1>Produtos</h1>
+      <h1 className='tracking-tighter font-bold text-3xl text-primary-foreground'>Produtos</h1>
       <section>
-        <div className='bg-colors-light-card  dark:bg-colors-dark-card rounded-b-xl overflow-hidden'>
+        <div className='bg-card rounded-b-xl overflow-hidden'>
         <SearchData Search={searchParams.Search} />
           <Tabela
               data={produtos.data}
 							tableHeader={cabecalhos}
 							searchParams={searchParams}
-							ocultar={[""]}
+							ocultar={["ID_PRODUTO"]}
            />
         </div>
       </section>

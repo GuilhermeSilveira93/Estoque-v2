@@ -11,13 +11,13 @@ type PaginationProps = {
 };
 const Pagination = ({ total }: PaginationProps) => {
   return (
-    <div className="flex items-center justify-between">
-      <span className="text-sm text-muted-foreground">
-        Total de {total} item(s)
-      </span>
+    <div className="grid grid-flow-col grid-cols-3">
+      <div />
 
-      <div className="flex items-center gap-6 lg:gap-8">
-        <div className="text-sm font-medium"></div>
+      <div className="flex items-center justify-center gap-6 lg:gap-8">
+        <span className="text-sm text-foreground">
+          Total de {total} item(s)
+        </span>
         <div className="flex items-center gap-2">
           <Button variant="outline" className="h-8 w-8 p-0">
             <ChevronsLeft className="h-4 w-4" />
@@ -37,6 +37,7 @@ const Pagination = ({ total }: PaginationProps) => {
           </Button>
         </div>
       </div>
+      <div />
     </div>
   );
 };
