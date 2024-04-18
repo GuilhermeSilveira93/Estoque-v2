@@ -1,33 +1,35 @@
-import React, { useEffect, useState } from 'react'
+/* eslint-disable prettier/prettier */
+import React from 'react';
 
-import Pagination from './components/pagination'
-import { SearchData } from './components/search-data'
-import { Tabela } from './components/Tabela'
+import Pagination from './components/pagination';
+import { SearchData } from './components/search-data';
+import { Tabela } from './components/Tabela';
 
-import { HomeProps } from '@/@types'
-import { fetchTabela } from '@/@utils'
-
-
+import { HomeProps } from '@/@types';
+import { ProdutoKeys } from '@/@types/api';
+import { fetchTabela } from '@/@utils';
 const DashBoard = async ({ searchParams }: HomeProps) => {
-  const produtos = await fetchTabela({ searchParams })
+  const produtos = await fetchTabela({ searchParams });
   // eslint-disable-next-line prettier/prettier
-  const cabecalhos = produtos.data.length > 0 ? Object.keys(produtos.data[0]!) : ['']
+  const tableHeader = Object.keys(produtos.data[0]!) as ProdutoKeys[];
   return (
     <>
-      <h1 className='tracking-tighter font-bold text-3xl text-primary-foreground'>Produtos</h1>
+      <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
+        Produtos
+      </h1>
       <section>
-        <div className='bg-card rounded-b-xl overflow-hidden'>
-        <SearchData Search={searchParams.Search} />
+        <div className="overflow-hidden rounded-b-xl bg-card">
+          <SearchData Search={searchParams.Search} />
           <Tabela
-              data={produtos.data}
-							tableHeader={cabecalhos}
-							searchParams={searchParams}
-							ocultar={["ID_PRODUTO"]}
-           />
+            data={produtos.data}
+            tableHeader={tableHeader}
+            searchParams={searchParams}
+            ocultar={['ID_PRODUTO']}
+          />
         </div>
       </section>
-        <Pagination total={produtos.total}/>
+      <Pagination total={produtos.total} />
     </>
-  )
-}
-export default DashBoard
+  );
+};
+export default DashBoard;

@@ -13,11 +13,12 @@ import { HomeProps } from '@/@types';
 import { Produto } from '@/@types/api';
 type TabelaProps = {
   data: Produto[],
-  tableHeader: string[],
   ocultar: string[],
   searchParams: HomeProps['searchParams'],
+  tableHeader: ProdutoKeys[],
 };
-export const Tabela = ({ data, tableHeader, ocultar }: TabelaProps) => {
+type ProdutoKeys = keyof Produto;
+export const Tabela = ({ data, ocultar, tableHeader }: TabelaProps) => {
   const PascalCase = (texto: string) => {
     return texto.charAt(0).toUpperCase() + texto.substring(1).toLowerCase();
   };

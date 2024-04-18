@@ -73,7 +73,7 @@ export default function Form({ className }: { className?: string }) {
             E-mail:
           </label>
           <Input
-            className="w-full rounded-3xl border-2 bg-colors-light-background p-1 text-colors-light-texto focus:border-colors-dark-terciaria focus:outline-none dark:bg-colors-dark-background dark:text-colors-dark-texto dark:focus:border-colors-dark-terciaria"
+            className="w-full rounded-3xl border-2 p-1 focus:outline-none"
             {...register('S_EMAIL')}
             name="S_EMAIL"
             type="email"
@@ -90,7 +90,7 @@ export default function Form({ className }: { className?: string }) {
             Senha:
           </label>
           <Input
-            className="w-full rounded-3xl border-2 bg-colors-light-background p-1 text-colors-light-texto focus:border-colors-dark-terciaria focus:outline-none dark:bg-colors-dark-background dark:text-colors-dark-texto dark:focus:border-colors-dark-terciaria"
+            className="w-full rounded-3xl border-2 p-1 focus:outline-none"
             {...register('S_SENHA')}
             name="S_SENHA"
             max={150}
@@ -106,7 +106,7 @@ export default function Form({ className }: { className?: string }) {
           type="submit"
           value={'Login'}
           disabled={loading}
-          className="w-full text-card-foreground"
+          className="w-full text-primary-foreground"
         >
           {loading ? <LoadingDots /> : <p>Login</p>}
         </Button>

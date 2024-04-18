@@ -1,34 +1,38 @@
 'use client';
-import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
+import { useMemo } from 'react';
 
-import { Button } from '@/components/ui';
 import {
   Pagination as Page,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination';
 
+import { getElementsAroundIndex } from '@/@utils/getArrayPages';
 import { useCustomParam } from '@/hooks';
-import {
-  ChevronLeft,
-  ChevronRight,
-  ChevronsLeft,
-  ChevronsRight,
-} from 'lucide-react';
 type PaginationProps = {
   total: number,
 };
 const Pagination = ({ total }: PaginationProps) => {
   const { createParam } = useCustomParam();
+  const { get } = useSearchParams();
+  const currentPage = Number(get('Page')) ?? 1;
   const pages = Math.floor(total / 10);
   const goPage = (page: number): string => {
+    if (page === 1) {
+      return createParam('Page', '0');
+    }
     return createParam('Page', page.toString());
   };
+  const numberPage = Array.from({ length: pages }).map((_, i) => i + 1);
+  const pagesAtt = getElementsAroundIndex({
+    array: numberPage,
+    selectedIndex: currentPage === 1 ? 0 : currentPage - 1,
+  });
+
   return (
     <div className="grid grid-flow-col grid-cols-4">
       <div />
@@ -38,19 +42,27 @@ const Pagination = ({ total }: PaginationProps) => {
           <div className="flex items-center gap-2">
             <Page>
               <PaginationContent>
-                <PaginationItem>
-                  <PaginationPrevious href="#" />
-                </PaginationItem>
-                {Array.from({ length: pages }).map((_, i) => (
-                  <PaginationItem key={i}>
-                    <PaginationLink href={goPage(i + 1)}>
-                      {i + 1}
-                    </PaginationLink>
+                {currentPage > 1 && (
+                  <PaginationItem>
+                    <PaginationPrevious href={goPage(currentPage - 1)} />
                   </PaginationItem>
-                ))}
-                <PaginationItem>
-                  <PaginationNext href="#" />
-                </PaginationItem>
+                )}
+                {pagesAtt.map((value) => {
+                  return (
+                    <PaginationLink
+                      key={value}
+                      href={goPage(value)}
+                      isActive={value === currentPage}
+                    >
+                      {value}
+                    </PaginationLink>
+                  );
+                })}
+                {currentPage !== numberPage.length && (
+                  <PaginationItem>
+                    <PaginationNext href={goPage(currentPage + 1)} />
+                  </PaginationItem>
+                )}
               </PaginationContent>
             </Page>
           </div>

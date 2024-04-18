@@ -6,7 +6,6 @@ export const fetchTabela = async ({
   searchParams,
 }: HomeProps): Promise<{ data: Produto[], total: number }> => {
   const { ID_PRODUTO, S_ATIVO, Search, Page } = searchParams;
-  console.log(ID_PRODUTO);
   return await api
     .get('/produto/tabela', {
       params: {

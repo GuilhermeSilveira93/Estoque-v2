@@ -3,3 +3,4 @@ export type Produto = {
   produto: string,
   quantidade: number,
 };
+export type ProdutoKeys = keyof Produto;
