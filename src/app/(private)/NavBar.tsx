@@ -27,7 +27,6 @@ const NavBar = async () => {
             Olá, {user.S_NOME}!
           </SheetTitle>
         </SheetHeader>
-
         <div className="flex-1 bg-gray-500"></div>
         <SheetFooter className="">
           <SheetClose asChild>
