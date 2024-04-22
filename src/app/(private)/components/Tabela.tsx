@@ -6,7 +6,7 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow,
+  TableRow
 } from '@/components/ui';
 
 import { HomeProps } from '@/@types';
@@ -15,7 +15,7 @@ type TabelaProps = {
   data: Produto[],
   ocultar: string[],
   searchParams: HomeProps['searchParams'],
-  tableHeader: ProdutoKeys[],
+  tableHeader: ProdutoKeys[]
 };
 type ProdutoKeys = keyof Produto;
 export const Tabela = ({ data, ocultar, tableHeader }: TabelaProps) => {

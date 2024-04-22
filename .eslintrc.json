@@ -6,7 +6,9 @@
     "project": true
   },
   "rules": {
-    "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
+    "@typescript-eslint/no-non-null-asserted-optional-chain": "warn",
+    "semi": "warn",
+    "comma-dangle": "off",
     "prettier/prettier": [
       "error",
       {

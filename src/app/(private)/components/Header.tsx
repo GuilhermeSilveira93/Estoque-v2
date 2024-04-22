@@ -9,7 +9,7 @@ const HeaderHome = ({ produtos }: { produtos: Produto[] }) => {
         acc.total += produto.quantidade;
         return acc;
       },
-      { total: 0 },
+      { total: 0 }
     );
   }, [produtos]);
   return (

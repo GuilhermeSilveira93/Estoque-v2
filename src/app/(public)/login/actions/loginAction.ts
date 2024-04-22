@@ -9,7 +9,7 @@ export const LoginAction = async (dados: loginType) => {
     return await api
       .post('auth/login', {
         S_EMAIL,
-        S_SENHA,
+        S_SENHA
       })
       .then((res) => {
         const { token, ...rest } = res.data;

@@ -1,10 +1,10 @@
 type getElementsAroundIndexProps = {
   array: number[],
-  selectedIndex: number,
+  selectedIndex: number
 };
 export const getElementsAroundIndex = ({
   array,
-  selectedIndex,
+  selectedIndex
 }: getElementsAroundIndexProps) => {
   if (selectedIndex === -1) {
     return [1, 2, 3];

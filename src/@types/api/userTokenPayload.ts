@@ -4,5 +4,5 @@ export type userTokenPayLoad = {
   S_NOME: string,
   ID_GRUPO: number,
   iat: number,
-  exp: number,
+  exp: number
 };

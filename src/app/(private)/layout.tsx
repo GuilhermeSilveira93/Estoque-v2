@@ -1,12 +1,12 @@
-import NavBar from './NavBar';
+import NavBar from './NavBar/NavBar';
 
 export const metadata = {
-  title: 'Home',
+  title: 'Home'
 };
 export default function RootLayout({
-  children,
+  children
 }: {
-  children: React.ReactNode,
+  children: React.ReactNode
 }) {
   return (
     <>

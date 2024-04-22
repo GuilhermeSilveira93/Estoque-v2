@@ -3,7 +3,7 @@ import { Produto } from '@/@types/api';
 import { api } from '@/@utils';
 
 export const fetchTabela = async ({
-  searchParams,
+  searchParams
 }: HomeProps): Promise<{ data: Produto[], total: number }> => {
   const { ID_PRODUTO, S_ATIVO, Search, Page } = searchParams;
   return await api
@@ -12,8 +12,8 @@ export const fetchTabela = async ({
         S_ATIVO,
         ID_PRODUTO: Number(ID_PRODUTO),
         Search,
-        Page: Number(Page),
-      },
+        Page: Number(Page)
+      }
     })
     .then((res) => {
       return res.data;

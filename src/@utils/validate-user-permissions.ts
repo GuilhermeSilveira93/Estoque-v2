@@ -4,12 +4,12 @@ import { getUserCurrent } from './get-user-current';
 
 export type ValidateUserPermissionsProps = {
   rolesRequired: RolesRequiredProps[],
-  requireAll?: boolean,
+  requireAll?: boolean
 };
 
 export const ValidateUserPermissions = async ({
   requireAll = false,
-  rolesRequired,
+  rolesRequired
 }: ValidateUserPermissionsProps) => {
   const { ID_GRUPO } = await getUserCurrent();
   if (rolesRequired) {
@@ -20,11 +20,11 @@ export const ValidateUserPermissions = async ({
 
     if (requireAll) {
       hasAllPermissions = rolesRequired.every(
-        (role) => String(role) === String(ID_GRUPO),
+        (role) => String(role) === String(ID_GRUPO)
       );
     } else {
       hasAllPermissions = rolesRequired.some(
-        (role) => String(role) === String(ID_GRUPO),
+        (role) => String(role) === String(ID_GRUPO)
       );
     }
 

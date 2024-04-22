@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Menu } from './components/Menu';
+import { Menu } from '../components/Menu';
 import { Button } from '@/components/ui';
 import {
   Sheet,
@@ -9,10 +9,12 @@ import {
   SheetFooter,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
+  SheetTrigger
 } from '@/components/ui/sheet';
 
 import { getUserCurrent } from '@/@utils';
+
+import { NavigationMenu } from './NavMenus';
 
 const NavBar = async () => {
   const user = await getUserCurrent();
@@ -21,18 +23,18 @@ const NavBar = async () => {
       <SheetTrigger className="fixed right-0 top-0 z-10">
         <Menu />
       </SheetTrigger>
-      <SheetContent className="flex flex-col flex-wrap">
+      <SheetContent className="flex flex-col flex-wrap bg-background">
         <SheetHeader>
           <SheetTitle className="text-center text-foreground">
             Olá, {user.S_NOME}!
           </SheetTitle>
         </SheetHeader>
-        <div className="flex-1 bg-gray-500"></div>
+        <div className="flex-1">
+          <NavigationMenu />
+        </div>
         <SheetFooter className="">
           <SheetClose asChild>
-            <Button className="w-full" type="submit">
-              Sair
-            </Button>
+            <Button className="w-full">Sair</Button>
           </SheetClose>
         </SheetFooter>
       </SheetContent>

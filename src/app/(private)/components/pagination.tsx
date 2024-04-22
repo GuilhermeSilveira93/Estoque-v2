@@ -1,6 +1,5 @@
 'use client';
 import { useSearchParams } from 'next/navigation';
-import { useMemo } from 'react';
 
 import {
   Pagination as Page,
@@ -8,18 +7,18 @@ import {
   PaginationItem,
   PaginationLink,
   PaginationNext,
-  PaginationPrevious,
+  PaginationPrevious
 } from '@/components/ui/pagination';
 
 import { getElementsAroundIndex } from '@/@utils/getArrayPages';
 import { useCustomParam } from '@/hooks';
 type PaginationProps = {
-  total: number,
+  total: number
 };
 const Pagination = ({ total }: PaginationProps) => {
   const { createParam } = useCustomParam();
   const { get } = useSearchParams();
-  const currentPage = Number(get('Page')) ?? 1;
+  const currentPage = Number(get('Page'));
   const pages = Math.floor(total / 10);
   const goPage = (page: number): string => {
     if (page === 1) {
@@ -30,7 +29,7 @@ const Pagination = ({ total }: PaginationProps) => {
   const numberPage = Array.from({ length: pages }).map((_, i) => i + 1);
   const pagesAtt = getElementsAroundIndex({
     array: numberPage,
-    selectedIndex: currentPage === 1 ? 0 : currentPage - 1,
+    selectedIndex: currentPage === 1 ? 0 : currentPage - 1
   });
 
   return (
@@ -47,20 +46,25 @@ const Pagination = ({ total }: PaginationProps) => {
                     <PaginationPrevious href={goPage(currentPage - 1)} />
                   </PaginationItem>
                 )}
-                {pagesAtt.map((value) => {
+                {pagesAtt.map((page) => {
                   return (
                     <PaginationLink
-                      key={value}
-                      href={goPage(value)}
-                      isActive={value === currentPage}
+                      key={page}
+                      href={goPage(page)}
+                      isActive={
+                        page === currentPage ||
+                        (page === 1 && currentPage === 0)
+                      }
                     >
-                      {value}
+                      {page}
                     </PaginationLink>
                   );
                 })}
                 {currentPage !== numberPage.length && (
                   <PaginationItem>
-                    <PaginationNext href={goPage(currentPage + 1)} />
+                    <PaginationNext
+                      href={goPage(currentPage === 0 ? 2 : currentPage + 1)}
+                    />
                   </PaginationItem>
                 )}
               </PaginationContent>

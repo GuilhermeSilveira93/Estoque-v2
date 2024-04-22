@@ -21,10 +21,10 @@ export default function Form({ className }: { className?: string }) {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }
   } = useForm<loginType>({
     defaultValues: { S_EMAIL: '', S_SENHA: '' },
-    resolver: zodResolver(loginSchema),
+    resolver: zodResolver(loginSchema)
   });
   const router = useRouter();
   const { theme } = useTheme();
@@ -52,7 +52,7 @@ export default function Form({ className }: { className?: string }) {
       },
       error: (data) => {
         return data.message;
-      },
+      }
     });
     setLoading(false);
   };

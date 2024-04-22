@@ -5,8 +5,8 @@ export const api = axios.create({
   proxy: {
     protocol: 'http',
     host: 'localhost',
-    port: 3002,
-  },
+    port: 3002
+  }
 });
 api.interceptors.request.use(
   function (config) {
@@ -14,7 +14,7 @@ api.interceptors.request.use(
   },
   function (error) {
     return Promise.reject(error);
-  },
+  }
 );
 axios.interceptors.response.use(
   function (response) {
@@ -22,7 +22,7 @@ axios.interceptors.response.use(
   },
   function (error) {
     return Promise.reject(error);
-  },
+  }
 );
 /*   headers: {
     'Content-Type': 'application/json',

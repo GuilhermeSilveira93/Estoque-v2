@@ -15,17 +15,17 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title,
-    description,
+    description
   },
-  metadataBase: new URL('https://nextjs-postgres-auth.vercel.app'),
+  metadataBase: new URL('https://nextjs-postgres-auth.vercel.app')
 };
 export const viewport: Viewport = {
-  themeColor: '#ddd',
+  themeColor: '#ddd'
 };
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
-  children: React.ReactNode,
+  children: React.ReactNode
 }>) {
   return (
     <html lang="pt-BR">
