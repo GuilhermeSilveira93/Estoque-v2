@@ -1,6 +1,7 @@
 import { HomeProps } from '@/@types';
 import { Produto } from '@/@types/api';
-import { api } from '@/@utils';
+
+import { api } from './api';
 
 export const fetchTabela = async ({
   searchParams

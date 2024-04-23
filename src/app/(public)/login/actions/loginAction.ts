@@ -1,6 +1,7 @@
 'use server';
 import { loginType } from '@/@types/LoginZod';
-import { SetCookie, api } from '@/@utils';
+import { SetCookie } from '@/@utils';
+import { api } from '@/api';
 import { AxiosError } from 'axios';
 
 export const LoginAction = async (dados: loginType) => {
