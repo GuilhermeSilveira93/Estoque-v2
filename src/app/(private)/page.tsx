@@ -7,7 +7,7 @@ import { Tabela } from './components/Tabela';
 
 import { HomeProps } from '@/@types';
 import { ProdutoKeys } from '@/@types/api';
-import { fetchTabela } from '@/@utils';
+import { fetchTabela } from '@/api';
 export const revalidate = 30;
 const DashBoard = async ({ searchParams }: HomeProps) => {
   const produtos = await fetchTabela({ searchParams });
