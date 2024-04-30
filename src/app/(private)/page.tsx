@@ -11,7 +11,6 @@ import { fetchTabela } from '@/api';
 export const revalidate = 30;
 const DashBoard = async ({ searchParams }: HomeProps) => {
   const produtos = await fetchTabela({ searchParams });
-  // eslint-disable-next-line prettier/prettier
   const tableHeader = Object.keys(produtos.data[0]!) as ProdutoKeys[];
   return (
     <>
