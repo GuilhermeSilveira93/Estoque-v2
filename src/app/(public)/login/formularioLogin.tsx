@@ -105,7 +105,7 @@ export default function Form({ className }: { className?: string }) {
         <Button
           type="submit"
           value={'Login'}
-          disabled={loading}
+          disabled
           className="w-full text-primary-foreground"
         >
           {loading ? <LoadingDots /> : <p>Login</p>}

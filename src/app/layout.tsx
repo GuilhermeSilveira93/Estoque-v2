@@ -31,7 +31,7 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body>
         <Providers>
-          {children}
+          <div className="min-h-screen min-w-full">{children}</div>
           <Toaster richColors position="top-right" />
           <ThemeChanger />
         </Providers>

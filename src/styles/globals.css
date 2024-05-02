@@ -16,7 +16,9 @@
   margin: 0;
   font-family: 'UniviaPro-Regular';
 }
-
+:disabled {
+  cursor: not-allowed;
+}
 
 @layer base {
   :root {

@@ -7,7 +7,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <main className="to-66% from-33% flex-1 bg-gradient-to-r from-background to-secondary-foreground">
+    <main className="to-66% from-33% bg-gradient-to-r from-primary to-primary-foreground">
       {children}
     </main>
   );
