@@ -1,15 +1,15 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 
-import Pagination from './components/pagination';
-import { SearchData } from './components/search-data';
-import { Tabela } from './components/Tabela';
+import Pagination from '../components/pagination';
+import { SearchData } from '../components/search-data';
+import { Tabela } from '../components/Tabela';
 
 import { HomeProps } from '@/@types';
 import { ProdutoKeys } from '@/@types/api';
 import { fetchTabela } from '@/api';
 export const revalidate = 30;
-const DashBoard = async ({ searchParams }: HomeProps) => {
+const HomePage = async ({ searchParams }: HomeProps) => {
   const produtos = await fetchTabela({ searchParams });
   const tableHeader = Object.keys(produtos.data[0]!) as ProdutoKeys[];
   return (
@@ -32,4 +32,4 @@ const DashBoard = async ({ searchParams }: HomeProps) => {
     </>
   );
 };
-export default DashBoard;
+export default HomePage;

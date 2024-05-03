@@ -8,8 +8,8 @@ export const api = axios.create({
   }
 });
 api.interceptors.request.use(
-  function (config) {
-    return config;
+  function (request) {
+    return request;
   },
   function (error) {
     return Promise.reject(error);

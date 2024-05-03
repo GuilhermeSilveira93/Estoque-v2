@@ -21,8 +21,8 @@ export const NavigationMenu = () => {
             <NavigationMenuTrigger className="w-full">
               Home Page
             </NavigationMenuTrigger>
-            <NavigationMenuContent className="min-w-full">
-              <ul className="relative left-0 grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+            <NavigationMenuContent>
+              <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-4">
                 <ListItem href="/" title="Home">
                   Tabela do Estoque.
                 </ListItem>
@@ -40,8 +40,8 @@ export const NavigationMenu = () => {
             <NavigationMenuTrigger className="w-full">
               Movimentação
             </NavigationMenuTrigger>
-            <NavigationMenuContent className="min-w-full">
-              <ul className="relative left-0 grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+            <NavigationMenuContent>
+              <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-4">
                 <ListItem href="/docs" title="Entrada">
                   Realize entrada de materiais.
                 </ListItem>

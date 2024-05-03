@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { Menu } from '../components/Menu';
-import { Button } from '@/components/ui';
 import {
   Sheet,
   SheetClose,
@@ -14,10 +13,12 @@ import {
 
 import { getUserCurrent } from '@/@utils';
 
+import { LogoutButton } from './LogOut';
 import { NavigationMenu } from './NavMenus';
 
 const NavBar = async () => {
   const user = await getUserCurrent();
+
   return (
     <Sheet>
       <SheetTrigger className="fixed right-0 top-0 z-10">
@@ -34,7 +35,7 @@ const NavBar = async () => {
         </div>
         <SheetFooter className="">
           <SheetClose asChild>
-            <Button className="w-full">Sair</Button>
+            <LogoutButton />
           </SheetClose>
         </SheetFooter>
       </SheetContent>
