@@ -6,14 +6,15 @@ import { api } from './api';
 export const fetchTabela = async ({
   searchParams
 }: HomeProps): Promise<{ data: Produto[], total: number }> => {
-  const { ID_PRODUTO, S_ATIVO, Search, Page } = searchParams;
+  const { ID_PRODUTO, S_ATIVO, Search, Page, LimitPerPage } = searchParams;
   return await api
     .get('/produto/tabela', {
       params: {
         S_ATIVO,
-        ID_PRODUTO: Number(ID_PRODUTO),
+        ID_PRODUTO,
         Search,
-        Page: Number(Page)
+        Page,
+        LimitPerPage
       }
     })
     .then((res) => {

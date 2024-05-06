@@ -22,7 +22,10 @@ export const LoginAction = async (dados: loginType) => {
       })
       .catch((errors: AxiosError) => {
         if (errors.code === 'ECONNREFUSED') {
-          return { message: 'Erro ao logar, entre em contato com suporte' };
+          return {
+            message:
+              'Sistema temporariamente fora do ar. Tente novamente mais tarde.'
+          };
         }
         return errors.response?.data;
       });

@@ -12,6 +12,8 @@ import {
 
 import { getElementsAroundIndex } from '@/@utils/getArrayPages';
 import { useCustomParam } from '@/hooks';
+
+import { LimitOfTable } from './limitOfTable';
 type PaginationProps = {
   total: number
 };
@@ -19,7 +21,9 @@ const Pagination = ({ total }: PaginationProps) => {
   const { createParam } = useCustomParam();
   const { get } = useSearchParams();
   const currentPage = Number(get('Page'));
-  const pages = Math.floor(total / 10);
+
+  const LimitPerPage = get('LimitPerPage') ?? '10';
+  const pages = Math.floor(total / Number(LimitPerPage));
   const goPage = (page: number): string => {
     if (page === 1) {
       return createParam('Page', '0');
@@ -72,6 +76,7 @@ const Pagination = ({ total }: PaginationProps) => {
           </div>
         </div>
       </div>
+      <LimitOfTable />
     </div>
   );
 };

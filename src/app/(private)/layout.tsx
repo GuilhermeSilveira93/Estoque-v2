@@ -1,7 +1,7 @@
 import NavBar from './NavBar/NavBar';
 
 export const metadata = {
-  title: 'Home'
+  title: 'Estoque Softrack'
 };
 export default function RootLayout({
   children
