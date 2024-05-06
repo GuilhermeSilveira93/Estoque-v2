@@ -3,12 +3,14 @@ import { useCallback, useMemo } from "react";
 
 export const useCustomParam = () => {
   const pathName = usePathname();
+  console.log(pathName);
   const searchParams = useSearchParams();
+  console.log(searchParams);
   const param = useMemo(
     () => new URLSearchParams(searchParams),
     [searchParams],
   );
-
+console.log(param);
   const createParam = useCallback(
     (name: string, value: string) => {
       param.set(name, value);

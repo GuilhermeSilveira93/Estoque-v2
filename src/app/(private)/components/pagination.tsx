@@ -30,6 +30,7 @@ const Pagination = ({ total }: PaginationProps) => {
     }
     return createParam('Page', page.toString());
   };
+  console.log(goPage);
   const numberPage = Array.from({ length: pages }).map((_, i) => i + 1);
   const pagesAtt = getElementsAroundIndex({
     array: numberPage,
