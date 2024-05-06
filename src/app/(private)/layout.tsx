@@ -10,9 +10,11 @@ export default function RootLayout({
 }) {
   return (
     <>
-      <NavBar />
-      <div className="flex min-h-screen w-full flex-wrap items-stretch justify-center bg-gradient-to-t from-background from-80% to-primary to-80%">
-        <main className="w-full max-w-screen-3xl p-6">{children}</main>
+      <aside>
+        <NavBar />
+      </aside>
+      <div className="min-h-screen w-full bg-gradient-to-t from-background from-80% to-primary to-80%">
+        <main className="m-auto w-full max-w-screen-3xl p-6">{children}</main>
       </div>
     </>
   );

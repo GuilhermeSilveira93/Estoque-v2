@@ -56,6 +56,9 @@ const config: Config = {
           foreground: 'hsl(var(--card-foreground))'
         }
       },
+      spacing: {
+        '148': '37rem'
+      },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',

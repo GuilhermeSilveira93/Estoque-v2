@@ -48,8 +48,7 @@ export const SearchData = ({ Search }: SearchProps) => {
     };
   }, [reset,deleteParam,router]);
   return (
-    <form onSubmit={handleSubmit(handleSearch)}>
-      <div className="relative w-full border">
+    <form onSubmit={handleSubmit(handleSearch)} className="w-full border sticky">
         <input
           className="outline-none bg-colors-light-card dark:bg-colors-dark-card p-2 w-full focus:outline-colors-dark-secundaria dark:focus:outline-colors-dark-terciaria"
           type="text"
@@ -57,7 +56,6 @@ export const SearchData = ({ Search }: SearchProps) => {
           {...register('Search')}
         />
         <X className="absolute text-blue12 hover:scale-150 w-4 h-4 top-3 right-3 cursor-pointer" />
-      </div>
     </form>
   );
 };

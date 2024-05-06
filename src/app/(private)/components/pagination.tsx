@@ -18,67 +18,58 @@ type PaginationProps = {
   total: number
 };
 const Pagination = ({ total }: PaginationProps) => {
-  const { createParam } = useCustomParam();
+  const { createParam, deleteParam } = useCustomParam();
   const { get } = useSearchParams();
   const currentPage = Number(get('Page'));
 
   const LimitPerPage = get('LimitPerPage') ?? '10';
   const pages = Math.floor(total / Number(LimitPerPage));
+
   const goPage = (page: number): string => {
-    if (page === 1) {
-      return createParam('Page', '0');
+    switch (page) {
+      case 0:
+        return deleteParam(['Page']);
+      case 1:
+        return deleteParam(['Page']);
+      default:
+        return createParam('Page', page.toString());
     }
-    return createParam('Page', page.toString());
   };
-  console.log(goPage);
+
   const numberPage = Array.from({ length: pages }).map((_, i) => i + 1);
   const pagesAtt = getElementsAroundIndex({
     array: numberPage,
     selectedIndex: currentPage === 1 ? 0 : currentPage - 1
   });
-
   return (
-    <div className="grid grid-flow-col grid-cols-4">
-      <div />
-      <div className="col-span-2 grid">
-        <div className="flex items-center justify-center gap-6 lg:gap-8">
-          <span className="text-sm text-foreground">{total} item(s)</span>
-          <div className="flex items-center gap-2">
-            <Page>
-              <PaginationContent>
-                {currentPage > 1 && (
-                  <PaginationItem>
-                    <PaginationPrevious href={goPage(currentPage - 1)} />
-                  </PaginationItem>
-                )}
-                {pagesAtt.map((page) => {
-                  return (
-                    <PaginationLink
-                      key={page}
-                      href={goPage(page)}
-                      isActive={
-                        page === currentPage ||
-                        (page === 1 && currentPage === 0)
-                      }
-                    >
-                      {page}
-                    </PaginationLink>
-                  );
-                })}
-                {currentPage !== numberPage.length && (
-                  <PaginationItem>
-                    <PaginationNext
-                      href={goPage(currentPage === 0 ? 2 : currentPage + 1)}
-                    />
-                  </PaginationItem>
-                )}
-              </PaginationContent>
-            </Page>
-          </div>
-        </div>
-      </div>
-      <LimitOfTable />
-    </div>
+    <>
+      <Page>
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious href={goPage(0)} />
+          </PaginationItem>
+          {pagesAtt.map((page) => {
+            return (
+              <PaginationLink
+                key={page}
+                href={goPage(page)}
+                isActive={
+                  page === currentPage || (page === 1 && currentPage === 0)
+                }
+              >
+                {page}
+              </PaginationLink>
+            );
+          })}
+          {currentPage !== numberPage.length && (
+            <PaginationItem>
+              <PaginationNext href={goPage(pages)} />
+            </PaginationItem>
+          )}
+        </PaginationContent>
+      </Page>
+      <LimitOfTable LimitPerPage={LimitPerPage} />
+    </>
   );
 };
 export default Pagination;

@@ -1,6 +1,10 @@
 {
   "root": true,
-  "extends": "@kalilasc/eslint-config/nextjs",
+  "extends": [
+    "@kalilasc/eslint-config/nextjs",
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": true

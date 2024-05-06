@@ -11,6 +11,9 @@ import {
 
 import { HomeProps } from '@/@types';
 import { Produto } from '@/@types/api';
+
+import EditProd from './editProd';
+
 type TabelaProps = {
   data: Produto[],
   ocultar: string[],
@@ -24,8 +27,8 @@ export const Tabela = ({ data, ocultar, tableHeader }: TabelaProps) => {
   };
   return (
     <Table className="text-center text-card-foreground">
-      <TableHeader>
-        <TableRow className="hover:bg-card">
+      <TableHeader className="sticky top-0 border-b-2 bg-card">
+        <TableRow className="hover:bg-card ">
           {tableHeader.map((item) => {
             let existe = false;
             for (let i = 0; i < ocultar.length; i++) {
@@ -44,6 +47,9 @@ export const Tabela = ({ data, ocultar, tableHeader }: TabelaProps) => {
               );
             }
           })}
+          <TableHead className="border-b-0 border-card-foreground text-center text-3xl font-black text-card-foreground">
+            Ações
+          </TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -58,9 +64,16 @@ export const Tabela = ({ data, ocultar, tableHeader }: TabelaProps) => {
                   }
                 }
                 if (!existe) {
-                  return <TableCell key={header}>{item[header]}</TableCell>;
+                  return (
+                    <>
+                      <TableCell key={item[header]}>{item[header]}</TableCell>
+                    </>
+                  );
                 }
               })}
+              <TableCell align="center">
+                <EditProd />
+              </TableCell>
             </TableRow>
           );
         })}
