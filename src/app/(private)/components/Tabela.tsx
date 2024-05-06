@@ -29,10 +29,10 @@ export const Tabela = ({ data, ocultar, tableHeader }: TabelaProps) => {
     <Table className="text-center text-card-foreground">
       <TableHeader className="sticky top-0 border-b-2 bg-card">
         <TableRow className="hover:bg-card ">
-          {tableHeader.map((item) => {
+          {tableHeader.map((header) => {
             let existe = false;
             for (let i = 0; i < ocultar.length; i++) {
-              if (item === ocultar[i]) {
+              if (header === ocultar[i]) {
                 existe = true;
               }
             }
@@ -40,9 +40,9 @@ export const Tabela = ({ data, ocultar, tableHeader }: TabelaProps) => {
               return (
                 <TableHead
                   className="border-b-0 border-card-foreground text-center text-3xl font-black text-card-foreground"
-                  key={item}
+                  key={header}
                 >
-                  {PascalCase(item)}
+                  {PascalCase(header)}
                 </TableHead>
               );
             }
