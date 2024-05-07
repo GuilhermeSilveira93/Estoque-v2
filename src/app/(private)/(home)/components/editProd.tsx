@@ -1,4 +1,4 @@
-import { Input } from '@/components/ui';
+import { Button, Input } from '@/components/ui';
 import { Label } from '@/components/ui/label';
 import {
   Popover,
@@ -7,6 +7,7 @@ import {
 } from '@/components/ui/popover';
 
 import { Produto } from '@/@types/api';
+import { PascalCase } from '@/@utils';
 import { Settings } from 'lucide-react';
 const EditProd = async ({ produto }: { produto: Produto }) => {
   return (
@@ -16,10 +17,12 @@ const EditProd = async ({ produto }: { produto: Produto }) => {
       </PopoverTrigger>
       <PopoverContent side="left" align="center">
         <form>
+          <h1>Editar: {PascalCase(produto.produto)}</h1>
           <Label htmlFor="Nome" className="font-bold text-secondary">
             Nome
           </Label>
-          <Input placeholder={produto?.produto} className="" />
+          <Input placeholder={produto.produto} className="" />
+          <Button title="Enviar" type="submit" />
         </form>
       </PopoverContent>
     </Popover>

@@ -11,6 +11,7 @@ import {
 
 import { HomeProps } from '@/@types';
 import { Produto } from '@/@types/api';
+import { PascalCase } from '@/@utils';
 
 import EditProd from './editProd';
 
@@ -22,9 +23,6 @@ type TabelaProps = {
 };
 type ProdutoKeys = keyof Produto;
 export const Tabela = ({ data, ocultar, tableHeader }: TabelaProps) => {
-  const PascalCase = (texto: string) => {
-    return texto.charAt(0).toUpperCase() + texto.substring(1).toLowerCase();
-  };
   return (
     <Table className="text-center text-card-foreground">
       <TableHeader className="sticky top-0 border-b-2 bg-card">
