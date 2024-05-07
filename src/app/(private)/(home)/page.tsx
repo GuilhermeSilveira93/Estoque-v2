@@ -1,9 +1,9 @@
 import { redirect } from 'next/navigation';
 import React from 'react';
 
-import Pagination from '../components/pagination';
-import { SearchData } from '../components/search-data';
-import { Tabela } from '../components/Tabela';
+import Pagination from './components/pagination';
+import { SearchData } from './components/search-data';
+import { Tabela } from './components/Tabela';
 
 import { HomeProps } from '@/@types';
 import { ProdutoKeys } from '@/@types/api';

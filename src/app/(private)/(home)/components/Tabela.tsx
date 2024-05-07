@@ -66,13 +66,16 @@ export const Tabela = ({ data, ocultar, tableHeader }: TabelaProps) => {
                 if (!existe) {
                   return (
                     <>
-                      <TableCell key={item[header]}>{item[header]}</TableCell>
+                      <TableCell key={`${item[header]}${item.quantidade}`}>
+                        {item[header]}
+                      </TableCell>
                     </>
                   );
                 }
+                return null;
               })}
               <TableCell align="center">
-                <EditProd />
+                <EditProd produto={item} />
               </TableCell>
             </TableRow>
           );
