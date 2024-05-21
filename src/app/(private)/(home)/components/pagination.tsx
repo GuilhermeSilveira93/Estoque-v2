@@ -51,7 +51,7 @@ const Pagination = ({ total }: PaginationProps) => {
           {pagesAtt.map((page) => {
             return (
               <PaginationLink
-                key={page}
+                key={page + 'Page'}
                 href={goPage(page)}
                 isActive={
                   page === currentPage || (page === 1 && currentPage === 0)

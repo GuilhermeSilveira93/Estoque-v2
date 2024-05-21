@@ -11,11 +11,11 @@ import { fetchTabela } from '@/api';
 export const revalidate = 30;
 const HomePage = async ({ searchParams }: HomeProps) => {
   const produtos = await fetchTabela({ searchParams });
-  if (produtos.data.length === 0) {
+  if (produtos?.data?.length === 0) {
     redirect('/');
   }
   // eslint-disable-next-line prettier/prettier, @typescript-eslint/no-non-null-asserted-optional-chain
-  const tableHeader = Object.keys(produtos?.data[0]!) as ProdutoKeys[];
+  const tableHeader = Object.keys(produtos?.data[0]!) as ProdutoKeys[] ?? [];
   return (
     <section className="max-h-96 ">
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
@@ -30,7 +30,7 @@ const HomePage = async ({ searchParams }: HomeProps) => {
             data={produtos.data}
             tableHeader={tableHeader}
             searchParams={searchParams}
-            ocultar={['ID_PRODUTO']}
+            ocultar={['ID_PRODUTO','S_ATIVO']}
           />
         </div>
         <footer className="flex w-full">
