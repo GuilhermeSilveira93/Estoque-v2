@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { userTokenPayLoad } from './@types';
 import { isTokenExpired } from './@utils';
 const paginasPublicas = ['/login'];
-const paginasPrivadas = ['/'];
+const paginasPrivadas = ['/', 'dashboard'];
 
 export default async function middleware(req: NextRequest) {
   const token = req.cookies.get('token')?.value;
@@ -23,6 +23,7 @@ export default async function middleware(req: NextRequest) {
     ) {
       return NextResponse.redirect(new URL('/', req.url));
     }
+    return NextResponse.redirect(new URL('/login', req.url));
   } catch (error) {
     console.log(error);
   }
