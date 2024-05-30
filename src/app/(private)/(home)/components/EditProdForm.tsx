@@ -1,20 +1,22 @@
 'use client';
+import { useRouter } from 'next/navigation';
 import React from 'react';
-import { Controller, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 import { Button, Input } from '@/components/ui';
-import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 
+import { atualizarProduto } from '@/@actions';
 import { Produto } from '@/@types/api';
 import { EditProdSchema, EditProdType } from '@/@types/EditProd';
 import { PascalCase } from '@/@utils/pascalCaseString';
-import { atualizarProduto } from '@/api';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { toast } from 'sonner';
 type EditProdFormProps = {
   produto: Produto
 };
 const EditProdForm = ({ produto }: EditProdFormProps) => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -28,9 +30,28 @@ const EditProdForm = ({ produto }: EditProdFormProps) => {
     resolver: zodResolver(EditProdSchema)
   });
   const updateProd = async (data: EditProdType) => {
-    const { S_NOME, S_ATIVO } = data;
-    await atualizarProduto({ ID_PRODUTO: produto.ID_PRODUTO, S_ATIVO, S_NOME });
-    console.log(data);
+    const response = (): Promise<{ message: string }> => {
+      return new Promise((resolve, reject) => {
+        atualizarProduto({ ID_PRODUTO: produto.ID_PRODUTO, data })
+          .then((res) => {
+            console.log('aquitar');
+            router.refresh();
+            resolve(res);
+          })
+          .catch((err) => {
+            reject(JSON.stringify(err));
+          });
+      });
+    };
+    toast.promise(response, {
+      loading: 'Atualizando Produto...',
+      success: (data) => {
+        return data.message;
+      },
+      error: (data) => {
+        return data.message;
+      }
+    });
   };
   return (
     /*@ts-expect-error: tipagem está correta.*/
