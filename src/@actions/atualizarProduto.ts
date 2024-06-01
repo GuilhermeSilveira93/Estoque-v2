@@ -1,8 +1,8 @@
 'use server';
-import { EditProdType } from '@/@types/EditProd';
+import { EditProdType } from '@/@schemas/home/EditProdSchema';
 import { api } from '@/api';
 
-type atualizarProdutoParam = {
+export type atualizarProdutoParam = {
   data: EditProdType,
   ID_PRODUTO: number
 };

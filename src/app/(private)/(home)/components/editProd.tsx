@@ -4,10 +4,12 @@ import {
   PopoverTrigger
 } from '@/components/ui/popover';
 
+import { atualizarProduto } from '@/@actions';
 import { Produto } from '@/@types/api';
 import { Settings } from 'lucide-react';
 
 import EditProdForm from './EditProdForm';
+
 const EditProd = async ({ produto }: { produto: Produto }) => {
   return (
     <Popover>
@@ -15,7 +17,7 @@ const EditProd = async ({ produto }: { produto: Produto }) => {
         <Settings className="cursor-pointer text-secondary" />
       </PopoverTrigger>
       <PopoverContent side="left" align="center">
-        <EditProdForm produto={produto} />
+        <EditProdForm produto={produto} atualizarProduto={atualizarProduto} />
       </PopoverContent>
     </Popover>
   );
