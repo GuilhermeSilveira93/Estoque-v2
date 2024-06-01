@@ -8,8 +8,8 @@ import { Label } from '@/components/ui/label';
 
 import { atualizarProduto } from '@/@actions';
 import { Produto } from '@/@types/api';
-import { EditProdSchema, EditProdType } from '@/@types/EditProd';
 import { PascalCase } from '@/@utils/pascalCaseString';
+import { useProdEditForm } from '@/hooks/home';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 type EditProdFormProps = {
@@ -17,24 +17,12 @@ type EditProdFormProps = {
 };
 const EditProdForm = ({ produto }: EditProdFormProps) => {
   const router = useRouter();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm<EditProdType>({
-    mode: 'all',
-    defaultValues: {
-      S_NOME: produto.produto,
-      S_ATIVO: produto.S_ATIVO === 'S'
-    },
-    resolver: zodResolver(EditProdSchema)
-  });
+  const { form } = useProdEditForm(produto);
   const updateProd = async (data: EditProdType) => {
     const response = (): Promise<{ message: string }> => {
       return new Promise((resolve, reject) => {
         atualizarProduto({ ID_PRODUTO: produto.ID_PRODUTO, data })
           .then((res) => {
-            console.log('aquitar');
             router.refresh();
             resolve(res);
           })
@@ -55,15 +43,15 @@ const EditProdForm = ({ produto }: EditProdFormProps) => {
   };
   return (
     /*@ts-expect-error: tipagem está correta.*/
-    <form action={handleSubmit(updateProd)}>
+    <form action={form.handleSubmit(updateProd)}>
       <h1>Editar: {PascalCase(produto.produto)}</h1>
       <Label htmlFor="S_NOME" className="font-bold text-secondary">
         Nome
       </Label>
-      <Input {...register('S_NOME')} placeholder={produto.produto} />
-      {errors.S_NOME && (
+      <Input {...form.register('S_NOME')} placeholder={produto.produto} />
+      {form.formState.errors.S_NOME && (
         <p className="text-colors-dark-terciaria dark:text-colors-dark-terciaria">
-          {errors.S_NOME.message}
+          {form.formState.errors.S_NOME.message}
         </p>
       )}
       <div className="flex items-center gap-2 py-4">
@@ -73,12 +61,12 @@ const EditProdForm = ({ produto }: EditProdFormProps) => {
         <input
           type="checkbox"
           defaultChecked={produto.S_ATIVO === 'S'}
-          {...register('S_ATIVO')}
+          {...form.register('S_ATIVO')}
         />
       </div>
-      {errors.S_ATIVO && (
+      {form.formState.errors.S_ATIVO && (
         <p className="text-colors-dark-terciaria dark:text-colors-dark-terciaria">
-          {errors.S_ATIVO.message}
+          {form.formState.errors.S_ATIVO.message}
         </p>
       )}
       <Button title="Enviar" value={'Enviar'} type="submit">
