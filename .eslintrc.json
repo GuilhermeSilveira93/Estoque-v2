@@ -10,6 +10,7 @@
     "project": true
   },
   "rules": {
+    "no-unused-vars": [2, {"vars": "all", "args": "after-used"}],
     "@typescript-eslint/no-non-null-asserted-optional-chain": "warn",
     "semi": "warn",
     "comma-dangle": "off",
