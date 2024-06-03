@@ -5,11 +5,17 @@ import Pagination from './components/pagination';
 import { SearchData } from './components/search-data';
 import { Tabela } from './components/Tabela';
 
+import { Produtos } from '@/@classes/(home)/getProductsTable';
+import { RequestAdapterFactory } from '@/@classes/RequestAdapter';
 import { HomeProps } from '@/@types';
 import { ProdutoKeys } from '@/@types/api';
 import { fetchTabela } from '@/api';
 export const revalidate = 30;
 const HomePage = async ({ searchParams }: HomeProps) => {
+  const novosProdutos = new Produtos(RequestAdapterFactory());
+  console.log((await novosProdutos.getAll({searchParams})).body);
+
+
   const produtos = await fetchTabela({ searchParams });
   if (produtos?.data?.length === 0) {
     redirect('/');
