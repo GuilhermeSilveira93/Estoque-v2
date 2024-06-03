@@ -4,6 +4,7 @@ type HttpRequest = {
   url: string,
   method: 'get' | 'post' | 'put' | 'delete' | 'patch',
   body?: any,
+  params?: any,
   headers?: any
 };
 export interface HttpClient<T = any> {
