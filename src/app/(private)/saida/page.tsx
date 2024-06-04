@@ -1,19 +1,16 @@
 import SaidaForm from './components/Form';
-import Content from '@/components/ui/content';
-import Main from '@/components/ui/main';
 
+import { RolesRequiredProps } from '@/@types';
+import { verifyPermissionsPage } from '@/@utils';
 import { stringData } from '@/hooks';
-import { plscale } from '@/lib/api';
-import { RolesRequiredProps } from '@/types/roles-required';
-import { verifyPermissionsPage } from '@/utils/verify-permissions-page';
 const Saida = async ({ searchParams }) => {
   const data = new Date();
   data.setHours(data.getHours() - 3);
   const dataString = stringData(data);
   await verifyPermissionsPage({
-    rolesRequired: [RolesRequiredProps.group_1, RolesRequiredProps.group_2]
+    rolesRequired: [RolesRequiredProps.ADM, RolesRequiredProps.DESENV]
   });
-  const [empresas, clientes, produtos] = await Promise.all([
+  /* const [empresas, clientes, produtos] = await Promise.all([
     await plscale
       .get('/st_empresa')
       .then((res) => res.data)
@@ -34,11 +31,10 @@ const Saida = async ({ searchParams }) => {
       .catch(() => {
         console.log('produtos');
       })
-  ]);
+  ]); */
   return (
     <Main>
       <Content>
-        <></>
         <SaidaForm
           defaultValue={searchParams['ID_EMPRESA']}
           empresas={empresas}
