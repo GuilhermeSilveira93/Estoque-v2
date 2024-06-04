@@ -3,11 +3,11 @@ import { Produto } from '@/@types/api';
 
 import { HttpClient } from '../RequestAdapter';
 interface ProdutosInterface {
-  getAll: ({searchParams}: HomeProps) => Promise<{ statusCode: number, body: {data: Produto[], total: number} }>;
+  get: ({searchParams}: HomeProps) => Promise<{ statusCode: number, body: {data: Produto[], total: number} }>;
 }
 export class Produtos implements ProdutosInterface {
   constructor (readonly httpClient: HttpClient) {}
-  async getAll({searchParams}: HomeProps):Promise<{ statusCode: number, body: {data: Produto[], total: number} }>{
+  async get({searchParams}: HomeProps):Promise<{ statusCode: number, body: {data: Produto[], total: number} }>{
     const { ID_PRODUTO, S_ATIVO, Search, Page, LimitPerPage } = searchParams;
     return await this.httpClient.request({
       method: 'get',
@@ -18,7 +18,7 @@ export class Produtos implements ProdutosInterface {
         Search,
         Page,
         LimitPerPage
-      }
+      },
     });
   }
 }

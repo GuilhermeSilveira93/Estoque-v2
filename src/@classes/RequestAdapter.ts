@@ -16,6 +16,7 @@ export class AxiosAdapterRequest implements HttpClient {
     try {
       axiosResponse = await api({
         url: data.url,
+        params: data.params,
         method: data.method,
         data: data.body,
         headers: data.headers

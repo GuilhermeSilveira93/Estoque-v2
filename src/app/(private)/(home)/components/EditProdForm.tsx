@@ -29,11 +29,11 @@ const EditProdForm = ({ produto, atualizarProduto }: useProdEditFormProps) => {
             name="S_NOME"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>Produto</FormLabel>
                 <FormControl>
                   <Input
                     type="text"
-                    placeholder="Digite seu email"
+                    placeholder="Digite o nome do Produto"
                     {...field}
                   />
                 </FormControl>
@@ -61,7 +61,7 @@ const EditProdForm = ({ produto, atualizarProduto }: useProdEditFormProps) => {
 
           <div className="grid">
             <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? 'Loading...' : 'Sign In'}
+              {isSubmitting ? 'Loading...' : 'Salvar'}
             </Button>
           </div>
         </form>
