@@ -4,6 +4,7 @@ import { Produto } from '@/@types/api';
 import { HttpClient } from '../RequestAdapter';
 interface ProdutosInterface {
   get: ({searchParams}: HomeProps) => Promise<{ statusCode: number, body: {data: Produto[], total: number} }>;
+  attProd: ({ID_PRODUTO, S_NOME, S_ATIVO}:{ID_PRODUTO: number,S_NOME:string, S_ATIVO:boolean}) => Promise<{statusCode: number, body: {message:string}}>
 }
 export class Produtos implements ProdutosInterface {
   constructor (readonly httpClient: HttpClient) {}
@@ -20,5 +21,13 @@ export class Produtos implements ProdutosInterface {
         LimitPerPage
       },
     });
+  }
+  async attProd({ ID_PRODUTO, S_NOME, S_ATIVO }: { ID_PRODUTO: number, S_NOME: string, S_ATIVO: boolean }):Promise<{statusCode: number, body: {message:string}}>{
+    const resposta = await this.httpClient.request({
+      method: 'patch',
+      url: 'produto',
+      body: { ID_PRODUTO, S_NOME, S_ATIVO}
+    });
+    return resposta;
   }
 }

@@ -13,7 +13,7 @@ import logoProdDark from '@/images/LogoProdDark.png';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 
-import { LoginAction } from './actions/loginAction';
+import { LoginAction } from '../../../@actions/loginAction';
 import LoadingDots from './loading-dots';
 
 export default function Form({ className }: { className?: string }) {
@@ -34,11 +34,8 @@ export default function Form({ className }: { className?: string }) {
       return new Promise((resolve, reject) => {
         LoginAction(dados)
           .then((res) => {
-            if (res.code === 202) {
-              resolve(res);
-              router.push('/');
-            }
-            reject(res);
+            resolve(res);
+            router.push('/');
           })
           .catch((err) => {
             reject(err);

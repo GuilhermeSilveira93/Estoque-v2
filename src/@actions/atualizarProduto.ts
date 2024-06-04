@@ -1,7 +1,7 @@
 'use server';
+import { Produtos } from '@/@classes/(home)/Produtos';
+import { RequestAdapterFactory } from '@/@classes/RequestAdapter';
 import { EditProdType } from '@/@schemas/home/EditProdSchema';
-import { api } from '@/api';
-
 export type atualizarProdutoParam = {
   data: EditProdType,
   ID_PRODUTO: number
@@ -12,12 +12,16 @@ export const atualizarProduto = async ({
 }: atualizarProdutoParam): Promise<{ message: string }> => {
   const { S_ATIVO, S_NOME } = data;
   try {
-    const response = await api.patch('produto', {
+    const response = await new Produtos(RequestAdapterFactory()).attProd({
       ID_PRODUTO,
-      S_NOME,
-      S_ATIVO
+      S_ATIVO,
+      S_NOME
     });
-    return response.data;
+    if (response.statusCode !== 202)
+      throw new Error('Algo deu errado, entre em contato com suporte', {
+        cause: 'ServerError'
+      });
+    return response.body;
   } catch (error) {
     return { message: JSON.stringify(error) };
   }

@@ -12,10 +12,6 @@ import { ProdutoKeys } from '@/@types/api';
 export const revalidate = 30;
 const HomePage = async ({ searchParams }: HomeProps) => {
   const produtos = (await new Produtos(RequestAdapterFactory()).get({searchParams})).body;
-  
-
-
-  // const produtos = await fetchTabela({ searchParams });
   if (produtos?.data?.length === 0) {
     redirect('/');
   }

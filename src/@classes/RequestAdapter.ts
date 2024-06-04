@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { api } from '@/api';
 import { AxiosError, AxiosResponse } from 'axios';
 type HttpRequest = {
@@ -7,10 +8,10 @@ type HttpRequest = {
   params?: any,
   headers?: any
 };
-export interface HttpClient<T = any> {
-  request: (data: HttpRequest) => Promise<T>;
+export interface HttpClient {
+  request: (data: HttpRequest) => Promise<any>;
 }
-export class AxiosAdapterRequest implements HttpClient {
+export class AdapterRequest implements HttpClient {
   async request(data: HttpRequest) {
     let axiosResponse: AxiosResponse;
     try {
@@ -32,5 +33,4 @@ export class AxiosAdapterRequest implements HttpClient {
   }
 }
 
-export const RequestAdapterFactory = (): HttpClient =>
-  new AxiosAdapterRequest();
+export const RequestAdapterFactory = (): HttpClient => new AdapterRequest();
