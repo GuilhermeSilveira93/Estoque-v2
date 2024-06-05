@@ -53,7 +53,9 @@ const DashBoard = async ({ searchParams }: any) => {
         </Card>
         <Card>
           <CardTitle title="Create project"></CardTitle>
-          <CardContent></CardContent>
+          <CardContent>
+            <pre>{JSON.stringify(dados.meses)}</pre>
+          </CardContent>
         </Card>
       </div>
     </header>
