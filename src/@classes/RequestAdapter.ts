@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { api } from '@/api';
 import { AxiosError, AxiosResponse } from 'axios';
 type HttpRequest = {
