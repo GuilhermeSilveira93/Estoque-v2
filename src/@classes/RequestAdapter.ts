@@ -8,7 +8,7 @@ type HttpRequest = {
   headers?: any
 };
 export interface HttpClient {
-  request: (data: HttpRequest) => Promise<any>;
+  request: (data: HttpRequest) => Promise<{ statusCode: number, body: any }>;
 }
 export class AdapterRequest implements HttpClient {
   constructor() {}

@@ -5,12 +5,12 @@ import Pagination from './components/pagination';
 import { SearchData } from './components/search-data';
 import { Tabela } from './components/Tabela';
 
-import { Produtos } from '@/@classes/(home)/Produtos';
+import { Produtos } from '@/@classes';
 import { HomeProps } from '@/@types';
 import { ProdutoKeys } from '@/@types/api';
 export const revalidate = 30;
 const HomePage = async ({ searchParams }: HomeProps) => {
-  const produtos = (await new Produtos().get({searchParams})).body;
+  const produtos = (await new Produtos().getTabela({searchParams})).body;
   if (produtos?.data?.length === 0) {
     redirect('/');
   }

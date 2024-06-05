@@ -1,12 +1,27 @@
 import { HomeProps } from '@/@types';
 import { Produto } from '@/@types/api';
 
-import { AdapterRequest } from '../RequestAdapter';
+import { AdapterRequest } from './RequestAdapter';
+type T = {
+  statusCode: number,
+  body: {
+    ID_LOTE: number,
+    D_DATA_INICIO: Date,
+    ID_FORNECEDOR?: number,
+    ID_CLIENTE?: number,
+    ST_PRODUTO_LOTE: {
+      N_QUANTIDADE: number,
+      ST_PRODUTO: {
+        S_NOME: string
+      }
+    }[]
+  }[]
+};
 export class Produtos extends AdapterRequest {
   constructor() {
     super();
   }
-  async get({ searchParams }: HomeProps): Promise<{
+  async getTabela({ searchParams }: HomeProps): Promise<{
     statusCode: number,
     body: { data: Produto[], total: number }
   }> {
@@ -38,5 +53,11 @@ export class Produtos extends AdapterRequest {
       body: { ID_PRODUTO, S_NOME, S_ATIVO }
     });
     return resposta;
+  }
+  async getMovimentacao(): Promise<T> {
+    return await this.request({
+      method: 'get',
+      url: '/produto/movimentacao'
+    });
   }
 }

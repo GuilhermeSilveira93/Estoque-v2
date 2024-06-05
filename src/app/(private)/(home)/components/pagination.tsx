@@ -19,10 +19,10 @@ type PaginationProps = {
 };
 const Pagination = ({ total }: PaginationProps) => {
   const { createParam, deleteParam } = useCustomParam();
-  const { get } = useSearchParams();
-  const currentPage = Number(get('Page'));
+  const searchParams = useSearchParams();
+  const currentPage = Number(searchParams.get('Page')) ?? 0;
 
-  const LimitPerPage = get('LimitPerPage') ?? '10';
+  const LimitPerPage = searchParams.get('LimitPerPage') ?? '10';
   const pages = Math.floor(total / Number(LimitPerPage));
 
   const goPage = (page: number): string => {

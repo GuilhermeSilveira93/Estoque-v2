@@ -1,5 +1,5 @@
 'use server';
-import { Produtos } from '@/@classes/(home)/Produtos';
+import { Produtos } from '@/@classes';
 import { EditProdType } from '@/@schemas/home/EditProdSchema';
 export type atualizarProdutoParam = {
   data: EditProdType,

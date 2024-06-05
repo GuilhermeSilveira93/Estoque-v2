@@ -14,7 +14,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 
 import { LoginAction } from '../../../@actions/loginAction';
-import LoadingDots from './loading-dots';
 
 export default function Form({ className }: { className?: string }) {
   const [loading, setLoading] = useState(false);
@@ -105,7 +104,7 @@ export default function Form({ className }: { className?: string }) {
           disabled={loading}
           className="w-full text-primary-foreground"
         >
-          {loading ? <LoadingDots /> : <p>Login</p>}
+          <p>Login</p>
         </Button>
       </form>
     </div>
