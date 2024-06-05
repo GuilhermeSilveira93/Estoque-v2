@@ -12,6 +12,7 @@ export interface HttpClient {
   request: (data: HttpRequest) => Promise<any>;
 }
 export class AdapterRequest implements HttpClient {
+  constructor() {}
   async request(data: HttpRequest) {
     let axiosResponse: AxiosResponse;
     try {
