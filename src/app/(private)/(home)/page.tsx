@@ -6,12 +6,11 @@ import { SearchData } from './components/search-data';
 import { Tabela } from './components/Tabela';
 
 import { Produtos } from '@/@classes/(home)/Produtos';
-import { RequestAdapterFactory } from '@/@classes/RequestAdapter';
 import { HomeProps } from '@/@types';
 import { ProdutoKeys } from '@/@types/api';
 export const revalidate = 30;
 const HomePage = async ({ searchParams }: HomeProps) => {
-  const produtos = (await new Produtos(RequestAdapterFactory()).get({searchParams})).body;
+  const produtos = (await new Produtos().get({searchParams})).body;
   if (produtos?.data?.length === 0) {
     redirect('/');
   }

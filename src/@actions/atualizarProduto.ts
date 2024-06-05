@@ -1,6 +1,5 @@
 'use server';
 import { Produtos } from '@/@classes/(home)/Produtos';
-import { RequestAdapterFactory } from '@/@classes/RequestAdapter';
 import { EditProdType } from '@/@schemas/home/EditProdSchema';
 export type atualizarProdutoParam = {
   data: EditProdType,
@@ -12,7 +11,7 @@ export const atualizarProduto = async ({
 }: atualizarProdutoParam): Promise<{ message: string }> => {
   const { S_ATIVO, S_NOME } = data;
   try {
-    const response = await new Produtos(RequestAdapterFactory()).attProd({
+    const response = await new Produtos().attProd({
       ID_PRODUTO,
       S_ATIVO,
       S_NOME

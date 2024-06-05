@@ -32,5 +32,3 @@ export class AdapterRequest implements HttpClient {
     };
   }
 }
-
-export const RequestAdapterFactory = (): HttpClient => new AdapterRequest();
