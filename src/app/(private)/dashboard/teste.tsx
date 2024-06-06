@@ -3,8 +3,14 @@ import { useTheme } from 'next-themes';
 
 import { colors } from '@/components/colors';
 
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer
+} from 'recharts';
 
 export const TesteGraph = ({ produtos }: any) => {
   const { theme, systemTheme } = useTheme();
@@ -15,8 +21,8 @@ export const TesteGraph = ({ produtos }: any) => {
         <BarChart
           data={produtos.meses}
           margin={{
-            top: 10,
-            right: 30,
+            top: 30,
+            right: 0,
             left: 0,
             bottom: 0
           }}
@@ -24,15 +30,13 @@ export const TesteGraph = ({ produtos }: any) => {
           <CartesianGrid strokeDasharray="3 3" />
           <Tooltip contentStyle={{ backgroundColor: colors.dark.card }} />
           <XAxis dataKey="name" />
-          <Area
-            type="monotone"
+          <Bar
             dataKey="saida"
             stackId="1"
             stroke={colors[th].terciaria}
             fill={colors[th].terciaria}
           />
-          <Area
-            type="monotone"
+          <Bar
             dataKey="entrada"
             stackId="1"
             stroke={colors[th].primaria}
