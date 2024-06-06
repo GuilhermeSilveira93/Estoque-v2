@@ -3,7 +3,7 @@ import { Acesso } from '@/@classes/(sign-in)/Acesso';
 import { loginType } from '@/@types/LoginZod';
 import { SetCookie } from '@/@utils';
 
-export const LoginAction = async (
+export const FuncLoginAction = async (
   dados: loginType
 ): Promise<{ message: string }> => {
   const { S_EMAIL, S_SENHA } = dados;

@@ -5,17 +5,10 @@ import { AdapterRequest } from './RequestAdapter';
 type T = {
   statusCode: number,
   body: {
-    ID_LOTE: number,
-    D_DATA_INICIO: Date,
-    ID_FORNECEDOR?: number,
-    ID_CLIENTE?: number,
-    ST_PRODUTO_LOTE: {
-      N_QUANTIDADE: number,
-      ST_PRODUTO: {
-        S_NOME: string
-      }
-    }[]
-  }[]
+    entrada: number,
+    saida: number,
+    meses: { name: string, entrada: number, saida: number }[]
+  }
 };
 export class Produtos extends AdapterRequest {
   constructor() {
