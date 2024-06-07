@@ -1,6 +1,13 @@
-import { Card, CardTitle, CardContent, CardHeader } from '@/components/ui/card';
+import {
+  Card,
+  CardTitle,
+  CardContent,
+  CardHeader,
+  CardDescription
+} from '@/components/ui/card';
 
 import { Produtos } from '@/@classes';
+import { ArrowUpRight, ArrowDownLeft } from 'lucide-react';
 
 const DashBoard = async ({ searchParams }: any) => {
   const produtos = (await new Produtos().getMovimentacao()).body;
@@ -17,7 +24,14 @@ const DashBoard = async ({ searchParams }: any) => {
           <CardContent>
             <CardHeader>
               <CardTitle>+ {produtos.entrada}</CardTitle>
-              <h2>Total Entrada</h2>
+              <CardDescription className="flex flex-row items-center">
+                Total Entrada
+                <ArrowUpRight
+                  size={28}
+                  strokeWidth={3}
+                  className="text-primary"
+                />
+              </CardDescription>
             </CardHeader>
           </CardContent>
         </Card>
@@ -25,7 +39,14 @@ const DashBoard = async ({ searchParams }: any) => {
           <CardContent>
             <CardHeader>
               <CardTitle>- {produtos.saida}</CardTitle>
-              <h2>Total saida</h2>
+              <CardDescription className="flex flex-row items-center">
+                Total Saida
+                <ArrowDownLeft
+                  size={28}
+                  strokeWidth={3}
+                  className="text-destructive"
+                />
+              </CardDescription>
             </CardHeader>
           </CardContent>
         </Card>

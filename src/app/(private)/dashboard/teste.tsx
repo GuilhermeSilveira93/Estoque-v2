@@ -14,7 +14,7 @@ import {
 
 export const TesteGraph = ({ produtos }: any) => {
   const { theme, systemTheme } = useTheme();
-  const th = theme === 'system' ? systemTheme : theme;
+  const th: string = theme === 'system' ? systemTheme : theme;
   return (
     <>
       <ResponsiveContainer width="100%" minHeight={160} maxHeight={160}>
