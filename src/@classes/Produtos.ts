@@ -5,9 +5,13 @@ import { AdapterRequest } from './RequestAdapter';
 type T = {
   statusCode: number,
   body: {
-    entrada: number,
-    saida: number,
-    meses: { name: string, entrada: number, saida: number }[]
+    itensEstoque: number,
+    anos: {
+      ano: string,
+      entrada: number,
+      saida: number,
+      meses: { name: string, entrada: number, saida: number }[]
+    }[]
   }
 };
 export class Produtos extends AdapterRequest {
