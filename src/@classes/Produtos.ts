@@ -23,17 +23,21 @@ export class Produtos extends AdapterRequest {
     body: { data: Produto[], total: number }
   }> {
     const { ID_PRODUTO, S_ATIVO, Search, Page, LimitPerPage } = searchParams;
-    return await this.request({
-      method: 'get',
-      url: '/produto/tabela',
-      params: {
-        S_ATIVO,
-        ID_PRODUTO,
-        Search,
-        Page,
-        LimitPerPage
-      }
-    });
+    try {
+      return await this.request({
+        method: 'get',
+        url: '/produto/tabela',
+        params: {
+          S_ATIVO,
+          ID_PRODUTO,
+          Search,
+          Page,
+          LimitPerPage
+        }
+      });
+    } catch (error) {
+      return { body: { data: [], total: 0 }, statusCode: 204 };
+    }
   }
   async attProd({
     ID_PRODUTO,

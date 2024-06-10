@@ -1,18 +1,15 @@
 import {
   Card,
   CardTitle,
-  CardContent,
   CardHeader,
-  CardDescription,
-  CardFooter
+  CardDescription
 } from '@/components/ui/card';
 
 import { Produtos } from '@/@classes';
-import { ArrowUpRight, ArrowDownLeft } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 const DashBoard = async ({ searchParams }: any) => {
   const produtos = (await new Produtos().getMovimentacao()).body;
-  console.log(produtos);
   const anoAtual = produtos.anos.length - 1;
   return (
     <header>

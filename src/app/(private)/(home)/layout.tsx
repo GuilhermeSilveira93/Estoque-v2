@@ -1,4 +1,3 @@
-
 export const metadata = {
   title: 'Home - Estoque'
 };
@@ -7,5 +6,5 @@ export default function HomeLayout({
 }: {
   children: React.ReactNode
 }) {
-  return children
+  return children;
 }

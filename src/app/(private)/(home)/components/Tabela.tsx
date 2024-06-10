@@ -18,11 +18,11 @@ import EditProd from './editProd';
 type TabelaProps = {
   data: Produto[],
   ocultar: string[],
-  searchParams: HomeProps['searchParams'],
-  tableHeader: ProdutoKeys[]
+  searchParams: HomeProps['searchParams']
 };
 type ProdutoKeys = keyof Produto;
-export const Tabela = ({ data, ocultar, tableHeader }: TabelaProps) => {
+export const Tabela = ({ data, ocultar }: TabelaProps) => {
+  const tableHeader = Object.keys(data[0]) as ProdutoKeys[];
   return (
     <Table className="text-center text-card-foreground">
       <TableHeader className="sticky top-0 border-b-2 bg-card">
