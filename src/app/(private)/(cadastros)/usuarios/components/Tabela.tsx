@@ -9,20 +9,19 @@ import {
   TableRow
 } from '@/components/ui';
 
-import { HomeProps } from '@/@types';
-import { Produto } from '@/@types/api';
+import { UserProps } from '@/@types';
+import { Usuario, UsuarioKeys } from '@/@types/api';
 import { PascalCase } from '@/@utils';
 
-import EditProd from './editProd';
+import EditUser from './editUser';
 
 type TabelaProps = {
-  data: Produto[],
+  data: Usuario[],
   ocultar: string[],
-  searchParams: HomeProps['searchParams']
+  searchParams: UserProps['searchParams']
 };
-type ProdutoKeys = keyof Produto;
 export const Tabela = ({ data, ocultar }: TabelaProps) => {
-  const tableHeader = Object.keys(data[0] as Produto) as ProdutoKeys[];
+  const tableHeader = Object.keys(data[0] as Usuario) as UsuarioKeys[];
   return (
     <Table className="text-center text-card-foreground">
       <TableHeader className="sticky top-0 border-b-2 bg-card">
@@ -47,19 +46,19 @@ export const Tabela = ({ data, ocultar }: TabelaProps) => {
       </TableHeader>
       <TableBody>
         {data.map((item) => (
-          <TableRow key={item.ID_PRODUTO} className="border-card-foreground">
+          <TableRow key={item.ID_USUARIO} className="border-card-foreground">
             {tableHeader.map((header, index) => {
               if (!ocultar.includes(header)) {
                 return (
-                  <TableCell key={`${item.ID_PRODUTO}-${header + index}`}>
+                  <TableCell key={`${item.ID_USUARIO}-${header + index}`}>
                     {item[header]}
                   </TableCell>
                 );
               }
               return null;
             })}
-            <TableCell key={`${item.ID_PRODUTO}-actions`} align="center">
-              <EditProd key={`${item.ID_PRODUTO}-editProd`} produto={item} />
+            <TableCell key={`${item.ID_USUARIO}-actions`} align="center">
+              <EditUser key={`${item.ID_USUARIO}-editProd`} usuario={item} />
             </TableCell>
           </TableRow>
         ))}

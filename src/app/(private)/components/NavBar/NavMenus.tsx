@@ -61,7 +61,7 @@ export const NavigationMenu = () => {
             </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="space-3 grid p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-4">
-                <ListItem href="/docs" title="Usuários">
+                <ListItem href="/usuarios" title="Usuários">
                   Crie/edite usuários.
                 </ListItem>
               </ul>

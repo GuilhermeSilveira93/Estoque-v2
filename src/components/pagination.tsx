@@ -15,9 +15,10 @@ import { useCustomParam } from '@/hooks';
 
 import { LimitOfTable } from './limitOfTable';
 type PaginationProps = {
-  total: number
+  total: number,
+  dataLenght: number
 };
-const Pagination = ({ total }: PaginationProps) => {
+const Pagination = ({ total, dataLenght }: PaginationProps) => {
   const { createParam, deleteParam } = useCustomParam();
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get('Page')) ?? 0;

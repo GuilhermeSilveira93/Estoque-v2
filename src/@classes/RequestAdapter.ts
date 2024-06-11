@@ -7,12 +7,15 @@ type HttpRequest = {
   params?: any,
   headers?: any
 };
-export interface HttpClient {
-  request: (data: HttpRequest) => Promise<{ statusCode: number, body: any }>;
+export interface HttpClient<T = never> {
+  // eslint-disable-next-line no-unused-vars
+  request: (data: HttpRequest) => Promise<{ statusCode: number, body: T }>;
 }
 export class AdapterRequest implements HttpClient {
   constructor() {}
-  async request(data: HttpRequest) {
+  async request<T = never>(
+    data: HttpRequest
+  ): Promise<{ statusCode: number, body: T }> {
     let axiosResponse: AxiosResponse;
     try {
       axiosResponse = await api({
