@@ -35,7 +35,7 @@ export const NavigationMenu = () => {
         </NavigationMenuList>
       </Navigation>
       <Navigation className="min-w-full" orientation="horizontal">
-        <NavigationMenuList className="">
+        <NavigationMenuList>
           <NavigationMenuItem className="relative">
             <NavigationMenuTrigger className="w-full">
               Movimentação
@@ -47,6 +47,22 @@ export const NavigationMenu = () => {
                 </ListItem>
                 <ListItem href="/docs" title="Saida">
                   Realize entrada de materiais.
+                </ListItem>
+              </ul>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </Navigation>
+      <Navigation className="min-w-full" orientation="horizontal">
+        <NavigationMenuList>
+          <NavigationMenuItem className="relative">
+            <NavigationMenuTrigger className="w-full">
+              Cadastro
+            </NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <ul className="space-3 grid p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-4">
+                <ListItem href="/docs" title="Usuários">
+                  Crie/edite usuários.
                 </ListItem>
               </ul>
             </NavigationMenuContent>

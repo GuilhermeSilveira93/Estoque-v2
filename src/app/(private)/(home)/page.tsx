@@ -6,11 +6,10 @@ import { Tabela } from './components/Tabela';
 
 import { Produtos } from '@/@classes';
 import { HomeProps } from '@/@types';
-import { ProdutoKeys } from '@/@types/api';
 export const revalidate = 30;
 const HomePage = async ({ searchParams }: HomeProps) => {
   const produtos = (await new Produtos().getTabela({ searchParams }))?.body;
-  console.log(produtos.data.length);
+  console.log(produtos);
   if (!produtos.data) return null;
   // eslint-disable-next-line prettier/prettier, @typescript-eslint/no-non-null-asserted-optional-chain
   return (

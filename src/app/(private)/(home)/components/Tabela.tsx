@@ -10,7 +10,7 @@ import {
 } from '@/components/ui';
 
 import { HomeProps } from '@/@types';
-import { Produto } from '@/@types/api';
+import { Produto, ProdutoKeys } from '@/@types/api';
 import { PascalCase } from '@/@utils';
 
 import EditProd from './editProd';
@@ -20,7 +20,6 @@ type TabelaProps = {
   ocultar: string[],
   searchParams: HomeProps['searchParams']
 };
-type ProdutoKeys = keyof Produto;
 export const Tabela = ({ data, ocultar }: TabelaProps) => {
   const tableHeader = Object.keys(data[0]) as ProdutoKeys[];
   return (

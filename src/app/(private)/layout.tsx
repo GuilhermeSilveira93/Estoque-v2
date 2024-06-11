@@ -1,4 +1,5 @@
-import NavBar from './NavBar/NavBar';
+import NavBar from './components/NavBar/NavBar';
+import {} from './components/index';
 
 export const metadata = {
   title: 'Estoque Softrack'

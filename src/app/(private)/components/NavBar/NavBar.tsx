@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Menu } from '../(home)/components/Menu';
+import { Menu } from '../../(home)/components/Menu';
 import {
   Sheet,
   SheetClose,
