@@ -7,6 +7,9 @@ export type Usuario = {
   D_EXPIRACAO_SENHA: string,
   S_ATIVO: 'S' | 'N',
   S_CHAVE: string,
-  N_TENTATIVAS_LOGIN?: number
+  N_TENTATIVAS_LOGIN?: number,
+  ST_GRUPO: {
+    N_NIVEL: number
+  }
 };
 export type UsuarioKeys = keyof Usuario;

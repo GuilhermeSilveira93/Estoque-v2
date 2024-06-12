@@ -10,5 +10,5 @@ export const getUserCurrent = async (): Promise<userTokenPayLoad> => {
     );
     return { ...user };
   }
-  return { exp: 0, iat: 0, ID_GRUPO: 0, ID_USUARIO: 0, S_NOME: '', sub: 0 };
+  return { exp: 0, iat: 0, ID_GRUPO: 0, ID_USUARIO: 0, S_NOME: '', sub: 0, ST_GRUPO: {N_NIVEL: 999} };
 };

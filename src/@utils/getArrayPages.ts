@@ -1,11 +1,21 @@
 type getElementsAroundIndexProps = {
   array: number[],
   selectedIndex: number
+  pages: number
 };
 export const getElementsAroundIndex = ({
   array,
-  selectedIndex
+  selectedIndex,
+  pages
 }: getElementsAroundIndexProps) => {
+  switch (pages) {
+    case 1:
+      return [1];
+      case 2:
+        return [1,2];
+    default:
+      break;
+  }
   if (selectedIndex === -1) {
     return [1, 2, 3];
   }

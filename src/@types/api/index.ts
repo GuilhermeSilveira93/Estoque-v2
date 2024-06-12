@@ -3,3 +3,4 @@ export * from './ReqTabela';
 export * from './userTokenPayload';
 export * from './env';
 export * from './ReqUsers';
+export * from './ReqGrupo';

@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { userTokenPayLoad } from './@types';
 import { isTokenExpired } from './@utils';
 const paginasPublicas = ['/login'];
-const paginasPrivadas = ['/', 'dashboard'];
+const paginasPrivadas = ['/', '/dashboard', '/usuarios'];
 
 export default async function middleware(req: NextRequest) {
   const token = req.cookies.get('token')?.value;

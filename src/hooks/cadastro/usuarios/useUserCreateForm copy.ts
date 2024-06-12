@@ -1,37 +1,33 @@
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
-import { atualizarUsuarioParam } from '@/@actions';
-import { EditUserSchema, EditUserType } from '@/@schemas/cadastros/usuarios/EditUserSchema';
-import { Usuario } from '@/@types/api';
+import { criarUsuarioProps } from '@/@actions';
+import { CreateUserSchema, CreateUserType } from '@/@schemas/cadastros/usuarios/CreateUserSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
-export type useUserEditFormProps = {
-  usuario: Usuario,
-  atualizarUsuario: ({ data, ID_USUARIO }: atualizarUsuarioParam) => Promise<{
+export type useUserCreateFormProps = {
+  criarUsuario: ({ data }: criarUsuarioProps) => Promise<{
     message: string;
 }>
 };
-export const useUserEditForm = ({
-  usuario,
-  atualizarUsuario
-}: useUserEditFormProps) => {
+export const useUserCreateForm = ({
+  criarUsuario
+}: useUserCreateFormProps) => {
   const router = useRouter();
-  const form = useForm<EditUserType>({
+  const form = useForm<CreateUserType>({
     mode: 'all',
     defaultValues: {
-      S_NOME: usuario.S_NOME,
-      S_ATIVO: usuario.S_ATIVO === 'S',
-      ID_GRUPO: usuario.ID_GRUPO.toString() as '1' | '2' | '3',
-      S_EMAIL: usuario.S_EMAIL,
-      S_Senha: undefined
+      S_NOME: '',
+      ID_GRUPO: '3' as '1' | '2' | '3',
+      S_EMAIL: '',
+      S_Senha: ''
     },
-    resolver: zodResolver(EditUserSchema)
+    resolver: zodResolver(CreateUserSchema)
   });
-  const updateUser = async (data: EditUserType):Promise<void> => {
+  const createUser = async (data: CreateUserType):Promise<void> => {
     const response = (): Promise<{ message: string }> => {
       return new Promise((resolve, reject) => {
-        atualizarUsuario({ ID_USUARIO: usuario.ID_USUARIO, data })
+        criarUsuario({ data })
           .then((res) => {
             router.refresh();
             resolve(res);
@@ -54,6 +50,6 @@ export const useUserEditForm = ({
   return {
     form,
     isSubmitting: form.formState.isSubmitting,
-    updateUser: form.handleSubmit(updateUser)
+    createUser: form.handleSubmit(createUser)
   };
 };

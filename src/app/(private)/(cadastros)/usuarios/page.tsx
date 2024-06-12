@@ -1,3 +1,4 @@
+import CreateUser from './components/createUser';
 import { Tabela } from './components/Tabela';
 import Pagination from '@/components/pagination';
 import { SearchData } from '@/components/search-data';
@@ -37,7 +38,8 @@ const UserPage = async ({
                 'ID_GRUPO',
                 'D_EXPIRACAO_SENHA',
                 'N_TENTATIVAS_LOGIN',
-                'S_CHAVE'
+                'S_CHAVE',
+                'ST_GRUPO'
               ]}
             />
           ) : (
@@ -50,6 +52,7 @@ const UserPage = async ({
           {users.total > 0 && <Pagination total={users.total} />}
         </footer>
       </section>
+      <CreateUser />
     </section>
   );
 };

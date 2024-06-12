@@ -10,7 +10,7 @@ import { Settings } from 'lucide-react';
 
 import EditProdForm from './EditProdForm';
 
-const EditProd = async ({ produto }: { produto: Produto }) => {
+const EditProd = ({ produto }: { produto: Produto }) => {
   return (
     <Popover>
       <PopoverTrigger asChild>

@@ -15,16 +15,15 @@ import { useCustomParam } from '@/hooks';
 
 import { LimitOfTable } from './limitOfTable';
 type PaginationProps = {
-  total: number,
-  dataLenght: number
+  total: number
 };
-const Pagination = ({ total, dataLenght }: PaginationProps) => {
+const Pagination = ({ total }: PaginationProps) => {
   const { createParam, deleteParam } = useCustomParam();
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get('Page')) ?? 0;
 
   const LimitPerPage = searchParams.get('LimitPerPage') ?? '10';
-  const pages = Math.floor(total / Number(LimitPerPage));
+  const pages = Math.ceil(total / Number(LimitPerPage));
 
   const goPage = (page: number): string => {
     switch (page) {
@@ -40,6 +39,7 @@ const Pagination = ({ total, dataLenght }: PaginationProps) => {
   const numberPage = Array.from({ length: pages }).map((_, i) => i + 1);
   const pagesAtt = getElementsAroundIndex({
     array: numberPage,
+    pages,
     selectedIndex: currentPage === 1 ? 0 : currentPage - 1
   });
   return (
