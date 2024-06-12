@@ -11,6 +11,7 @@ export const criarUsuario = async ({
     const response = await new Usuarios().createUser({
       data
     });
+    console.log(response);
     if (response.statusCode !== 202)
       throw new Error('Algo deu errado, entre em contato com suporte', {
         cause: 'ServerError'

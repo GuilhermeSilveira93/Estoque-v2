@@ -46,7 +46,7 @@ export class Usuarios extends AdapterRequest {
   }): Promise<{ statusCode: number, body: { message: string } }> {
     return await this.request({
       method: 'post',
-      url: `/usuario/`,
+      url: `/usuario`,
       body: { ...data, ID_GRUPO: Number(data.ID_GRUPO) }
     });
   }

@@ -38,7 +38,7 @@ export const useUserCreateForm = ({
       });
     };
     toast.promise(response, {
-      loading: 'Atualizando Usuário...',
+      loading: 'Criando Usuário...',
       success: (data) => {
         return data.message;
       },
