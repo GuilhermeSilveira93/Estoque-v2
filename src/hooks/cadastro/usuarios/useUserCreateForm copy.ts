@@ -20,7 +20,7 @@ export const useUserCreateForm = ({
       S_NOME: '',
       ID_GRUPO: '3' as '1' | '2' | '3',
       S_EMAIL: '',
-      S_Senha: ''
+      S_SENHA: ''
     },
     resolver: zodResolver(CreateUserSchema)
   });

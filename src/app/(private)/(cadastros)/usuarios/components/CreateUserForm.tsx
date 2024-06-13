@@ -70,7 +70,7 @@ const CreateUserForm = memo(({ criarUsuario, grupos }: CreateUserFormProps) => {
           />
           <FormField
             control={form.control}
-            name="S_Senha"
+            name="S_SENHA"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Senha: </FormLabel>
