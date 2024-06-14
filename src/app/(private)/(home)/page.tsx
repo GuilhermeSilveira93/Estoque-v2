@@ -12,7 +12,7 @@ const HomePage = async ({ searchParams }: HomeProps) => {
   return (
     <section className="max-h-96 ">
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
-        Produtos
+        Estoque
       </h1>
       <section className="rounded-b-xl bg-card">
         <header>

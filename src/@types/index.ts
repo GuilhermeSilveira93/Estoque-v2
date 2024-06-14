@@ -4,3 +4,4 @@ export * from './api/ReqLogin';
 export * from './api/userTokenPayload';
 export * from './HomePageProps';
 export * from './CadastroUsuarioProps';
+export * from './CadastropProdutoProps';

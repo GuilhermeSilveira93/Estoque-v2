@@ -16,7 +16,7 @@ export const ListItem = ({
   return (
     <li className="col-span-2 space-y-1 border border-accent p-3 transition-all hover:border-accent-foreground hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
       <Link className={cn('', className)} {...props}>
-        <div className="text-LG leading-none text-secondary">{title}</div>
+        <div className="text-LG leading-none text-primary">{title}</div>
         <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
           {children}
         </p>

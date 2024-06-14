@@ -1,9 +1,9 @@
-import CreateUser from '../usuarios/components/createUser';
-import { Tabela } from '../usuarios/components/Tabela';
+import { Tabela } from '../produtos/components/Tabela';
+import CreateProd from './components/createProd';
 import Pagination from '@/components/pagination';
 import { SearchData } from '@/components/search-data';
 
-import { Usuarios } from '@/@classes/Usuarios';
+import { Produtos } from '@/@classes';
 
 const UserPage = async ({
   searchParams
@@ -16,31 +16,22 @@ const UserPage = async ({
     LimitPerPage: string
   }
 }) => {
-  const users = (await new Usuarios().getAll({ searchParams })).body;
+  const produtos = (await new Produtos().getAll()).body;
   return (
     <section className="max-h-96 ">
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
-        Usuários
+        Produtos
       </h1>
       <section className="rounded-b-xl bg-card">
         <header>
           <SearchData Search={searchParams.Search} />
         </header>
         <div className="max-h-148 overflow-auto">
-          {users.total > 0 ? (
+          {produtos.total > 0 ? (
             <Tabela
-              data={users.data}
+              data={produtos.data}
               searchParams={searchParams}
-              ocultar={[
-                'ID_USUARIO',
-                'S_ATIVO',
-                'S_SENHA',
-                'ID_GRUPO',
-                'D_EXPIRACAO_SENHA',
-                'N_TENTATIVAS_LOGIN',
-                'S_CHAVE',
-                'ST_GRUPO'
-              ]}
+              ocultar={[]}
             />
           ) : (
             <div className="flex h-32 items-center justify-center">
@@ -49,10 +40,10 @@ const UserPage = async ({
           )}
         </div>
         <footer className="flex w-full">
-          {users.total > 0 && <Pagination total={users.total} />}
+          {produtos.total > 0 && <Pagination total={produtos.total} />}
         </footer>
       </section>
-      <CreateUser />
+      <CreateProd />
     </section>
   );
 };

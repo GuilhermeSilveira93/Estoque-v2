@@ -1,30 +1,34 @@
 import { HomeProps } from '@/@types';
-import { Produto } from '@/@types/api';
+import { Tabela, Produtos as ProdutosType } from '@/@types/api';
 
 import { AdapterRequest } from './RequestAdapter';
-type T = {
-  statusCode: number,
-  body: {
-    itensEstoque: number,
-    anos: {
-      ano: string,
-      entrada: number,
-      saida: number,
-      meses: { name: string, entrada: number, saida: number }[]
-    }[]
-  }
+type GetMovimentacaoType = {
+  itensEstoque: number,
+  anos: {
+    ano: string,
+    entrada: number,
+    saida: number,
+    meses: { name: string, entrada: number, saida: number }[]
+  }[]
 };
 export class Produtos extends AdapterRequest {
   constructor() {
     super();
   }
-  async getTabela({ searchParams }: HomeProps): Promise<{
-    statusCode: number,
-    body: { data: Produto[], total: number }
-  }> {
+  async getAll() {
+    try {
+      return await this.request<{ data: ProdutosType[], total: number }>({
+        method: 'get',
+        url: '/produto'
+      });
+    } catch (error) {
+      return { body: { data: [], total: 0 }, statusCode: 204 };
+    }
+  }
+  async getTabela({ searchParams }: HomeProps) {
     const { ID_PRODUTO, S_ATIVO, Search, Page, LimitPerPage } = searchParams;
     try {
-      return await this.request({
+      return await this.request<{ data: Tabela[], total: number }>({
         method: 'get',
         url: '/produto/tabela',
         params: {
@@ -47,16 +51,16 @@ export class Produtos extends AdapterRequest {
     ID_PRODUTO: number,
     S_NOME: string,
     S_ATIVO: boolean
-  }): Promise<{ statusCode: number, body: { message: string } }> {
-    const resposta = await this.request({
+  }) {
+    const resposta = await this.request<{ message: string }>({
       method: 'patch',
       url: 'produto',
       body: { ID_PRODUTO, S_NOME, S_ATIVO }
     });
     return resposta;
   }
-  async getMovimentacao(): Promise<T> {
-    return await this.request({
+  async getMovimentacao() {
+    return await this.request<GetMovimentacaoType>({
       method: 'get',
       url: '/produto/movimentacao'
     });

@@ -1,25 +1,30 @@
+import { memo } from 'react';
+
 import {
   Popover,
   PopoverContent,
   PopoverTrigger
 } from '@/components/ui/popover';
 
-import { atualizarProduto } from '@/@actions';
-import { Produto } from '@/@types/api';
+import { atualizarUsuario } from '@/@actions';
+import { Produtos } from '@/@types/api';
 import { Settings } from 'lucide-react';
 
 import EditProdForm from './EditProdForm';
-
-const EditProd = ({ produto }: { produto: Produto }) => {
+type EditProdProps = {
+  produto: Produtos
+};
+const EditUser = memo(({ produto }: EditProdProps) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
         <Settings className="cursor-pointer text-secondary" />
       </PopoverTrigger>
       <PopoverContent side="left" align="center">
-        <EditProdForm produto={produto} atualizarProduto={atualizarProduto} />
+        <EditProdForm produto={produto} atualizarUsuario={atualizarUsuario} />
       </PopoverContent>
     </Popover>
   );
-};
-export default EditProd;
+});
+EditUser.displayName = 'EditUser';
+export default EditUser;

@@ -11,23 +11,13 @@ import {
   FormLabel,
   FormMessage
 } from '@/components/ui/form';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue
-} from '@/components/ui/select';
 
-import { Grupo } from '@/@types/api';
-import { useUserEditForm, useUserEditFormProps } from '@/hooks/cadastro';
-type EditProdFormProps = useUserEditFormProps & {
-  grupos: Grupo[]
-};
+import { useProdEditForm, useProdEditFormProps } from '@/hooks/cadastro';
+type EditProdFormProps = useProdEditFormProps & {};
 const EditProdForm = memo(
-  ({ usuario, atualizarUsuario, grupos }: EditProdFormProps) => {
-    const { form, updateUser, isSubmitting } = useUserEditForm({
-      usuario,
+  ({ produto, atualizarUsuario }: EditProdFormProps) => {
+    const { form, updateUser, isSubmitting } = useProdEditForm({
+      produto,
       atualizarUsuario
     });
     return (
@@ -85,37 +75,7 @@ const EditProdForm = memo(
                 </FormItem>
               )}
             />
-            <FormField
-              control={form.control}
-              name="ID_GRUPO"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Grupo</FormLabel>
-                  <Select
-                    {...field}
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue datatype="number" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {grupos.map((grupo) => (
-                        <SelectItem
-                          key={grupo.ID_GRUPO + 'GrupoID'}
-                          value={grupo.ID_GRUPO.toString()}
-                        >
-                          {grupo.S_NOME}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+
             <FormField
               control={form.control}
               name="S_ATIVO"

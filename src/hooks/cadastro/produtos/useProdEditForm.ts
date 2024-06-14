@@ -3,43 +3,38 @@ import { useForm } from 'react-hook-form';
 
 import { atualizarUsuarioParam } from '@/@actions';
 import { EditUserSchema, EditUserType } from '@/@schemas/cadastros/usuarios/EditUserSchema';
-import { Usuario } from '@/@types/api';
+import { Produtos } from '@/@types/api';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
-export type useUserEditFormProps = {
-  usuario: Usuario,
+export type useProdEditFormProps = {
+  produto: Produtos,
   atualizarUsuario: ({ data, ID_USUARIO }: atualizarUsuarioParam) => Promise<{
     message: string;
 }>
 };
-export const useUserEditForm = ({
-  usuario,
+export const useProdEditForm = ({
+  produto,
   atualizarUsuario
-}: useUserEditFormProps) => {
+}: useProdEditFormProps) => {
   const router = useRouter();
   const form = useForm<EditUserType>({
     mode: 'all',
     defaultValues: {
-      S_NOME: usuario.S_NOME,
-      S_ATIVO: usuario.S_ATIVO === 'S',
-      ID_GRUPO: usuario.ID_GRUPO.toString() as '1' | '2' | '3',
-      S_EMAIL: usuario.S_EMAIL,
-      S_SENHA: undefined
     },
     resolver: zodResolver(EditUserSchema)
   });
   const updateUser = async (data: EditUserType):Promise<void> => {
     const response = (): Promise<{ message: string }> => {
       return new Promise((resolve, reject) => {
-        atualizarUsuario({ ID_USUARIO: usuario.ID_USUARIO, data })
+        /* atualizarUsuario({ ID_USUARIO: usuario.ID_USUARIO, data })
           .then((res) => {
             router.refresh();
             resolve(res);
           })
           .catch((err) => {
             reject(JSON.stringify(err));
-          });
-      });
+          });*/
+      }); 
     };
     toast.promise(response, {
       loading: 'Atualizando Usuário...',

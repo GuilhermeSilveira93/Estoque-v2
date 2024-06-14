@@ -10,19 +10,16 @@ import {
 } from '@/components/ui';
 
 import { HomeProps } from '@/@types';
-import { Produto } from '@/@types/api';
+import { TabelaType, TabelaTypeKeys } from '@/@types/api';
 import { PascalCase } from '@/@utils';
 
-import EditProd from './editProd';
-
 type TabelaProps = {
-  data: Produto[],
+  data: TabelaType[],
   ocultar: string[],
   searchParams: HomeProps['searchParams']
 };
-type ProdutoKeys = keyof Produto;
 export const Tabela = ({ data, ocultar }: TabelaProps) => {
-  const tableHeader = Object.keys(data[0] as Produto) as ProdutoKeys[];
+  const tableHeader = Object.keys(data[0] as TabelaType) as TabelaTypeKeys[];
   return (
     <Table className="text-center text-card-foreground">
       <TableHeader className="sticky top-0 border-b-2 bg-card">
@@ -40,9 +37,6 @@ export const Tabela = ({ data, ocultar }: TabelaProps) => {
             }
             return null;
           })}
-          <TableHead className="border-b-0 border-card-foreground text-center text-3xl font-black text-card-foreground">
-            Ações
-          </TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -58,9 +52,6 @@ export const Tabela = ({ data, ocultar }: TabelaProps) => {
               }
               return null;
             })}
-            <TableCell key={`${item.ID_PRODUTO}-actions`} align="center">
-              <EditProd key={`${item.ID_PRODUTO}-editProd`} produto={item} />
-            </TableCell>
           </TableRow>
         ))}
       </TableBody>

@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import { Menu } from '../../(home)/components/Menu';
 import {
   Sheet,
   SheetClose,
@@ -14,6 +13,7 @@ import {
 import { getUserCurrent } from '@/@utils';
 
 import { LogoutButton } from './LogOut';
+import { Menu } from './Menu';
 import { NavigationMenu } from './NavMenus';
 
 const NavBar = async () => {

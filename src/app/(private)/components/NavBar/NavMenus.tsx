@@ -60,9 +60,18 @@ export const NavigationMenu = () => {
               Cadastro
             </NavigationMenuTrigger>
             <NavigationMenuContent>
-              <ul className="space-3 grid p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-4">
+              <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-4">
                 <ListItem href="/usuarios" title="Usuários">
                   Crie/edite usuários.
+                </ListItem>
+                <ListItem href="/produtos" title="Produtos">
+                  Crie/edite produtos.
+                </ListItem>
+                <ListItem href="/empresas" title="Empresas">
+                  Crie/edite Empresas.
+                </ListItem>
+                <ListItem href="/clientes" title="Clientes">
+                  Crie/edite Clientes.
                 </ListItem>
               </ul>
             </NavigationMenuContent>

@@ -13,7 +13,7 @@ import logoProdDark from '@/images/LogoProdDark.png';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 
-import { FuncLoginAction } from '../../../@actions/loginAction';
+import { LoginAction } from '../../../@actions/loginAction';
 
 export default function Form({ className }: { className?: string }) {
   const [loading, setLoading] = useState(false);
@@ -31,7 +31,7 @@ export default function Form({ className }: { className?: string }) {
     setLoading(true);
     const response = (): Promise<{ message: string }> => {
       return new Promise((resolve, reject) => {
-        FuncLoginAction(dados)
+        LoginAction(dados)
           .then((res) => {
             resolve(res);
             router.push('/');
