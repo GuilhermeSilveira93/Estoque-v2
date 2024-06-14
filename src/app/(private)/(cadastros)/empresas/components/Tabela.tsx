@@ -10,19 +10,21 @@ import {
 } from '@/components/ui';
 
 import { Tipos } from '@/@classes/Tipos';
-import { HomeProps } from '@/@types';
-import { Produtos, ProdutosKeys } from '@/@types/api';
+import { Empresas, EmpresasKeys } from '@/@types/api';
+import { FiltersPage } from '@/@types/FiltersType';
 import { PascalCase } from '@/@utils';
 
 import EditProd from './editProd';
 
 type TabelaProps = {
-  data: Produtos[],
+  data: Empresas[],
   ocultar: string[],
-  searchParams: HomeProps['searchParams']
+  searchParams: FiltersPage & {
+    ID_EMPRESA: string
+  }
 };
 export const Tabela = async ({ data, ocultar }: TabelaProps) => {
-  const tableHeader = Object.keys(data[0] as Produtos) as ProdutosKeys[];
+  const tableHeader = Object.keys(data[0] as Empresas) as EmpresasKeys[];
   const tipos = (await new Tipos().getAll()).body;
   return (
     <>
@@ -48,28 +50,28 @@ export const Tabela = async ({ data, ocultar }: TabelaProps) => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data.map((produto) => {
+          {data.map((empresa) => {
             return (
               <TableRow
-                key={produto.ID_PRODUTO}
+                key={empresa.ID_EMPRESA}
                 className="border-card-foreground"
               >
                 {tableHeader.map((header, index) => {
                   if (!ocultar.includes(header)) {
                     return (
                       <TableCell
-                        key={`${produto.ID_PRODUTO}-${header + index}`}
+                        key={`${empresa.ID_EMPRESA}-${header + index}`}
                       >
-                        {produto[header] !== undefined && produto[header]}
+                        {empresa[header] !== undefined && empresa[header]}
                       </TableCell>
                     );
                   }
                   return null;
                 })}
-                <TableCell key={`${produto.ID_PRODUTO}-actions`} align="center">
+                <TableCell key={`${empresa.ID_EMPRESA}-actions`} align="center">
                   <EditProd
-                    key={`${produto.ID_PRODUTO}-editProd`}
-                    produto={produto}
+                    key={`${empresa.ID_EMPRESA}-editProd`}
+                    empresa={empresa}
                     tipos={tipos.data}
                   />
                 </TableCell>

@@ -1,39 +1,43 @@
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
-import { atualizarUsuarioParam } from '@/@actions';
-import { EditUserSchema, EditUserType } from '@/@schemas/cadastros/usuarios/EditUserSchema';
+import { atualizarProdutoParam } from '@/@actions';
+import { EditProdSchema, EditProdType } from '@/@schemas';
 import { Produtos } from '@/@types/api';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 export type useProdEditFormProps = {
   produto: Produtos,
-  atualizarUsuario: ({ data, ID_USUARIO }: atualizarUsuarioParam) => Promise<{
+  atualizarProduto: ({ data, ID_PRODUTO }: atualizarProdutoParam) => Promise<{
     message: string;
 }>
 };
 export const useProdEditForm = ({
   produto,
-  atualizarUsuario
+  atualizarProduto
 }: useProdEditFormProps) => {
   const router = useRouter();
-  const form = useForm<EditUserType>({
+  const form = useForm<EditProdType>({
     mode: 'all',
     defaultValues: {
+      ID_TIPO: produto.ID_TIPO.toString(),
+      N_SERIAL: produto.N_SERIAL,
+      S_NOME: produto.S_NOME,
+      S_ATIVO: produto.S_ATIVO === 'S'
     },
-    resolver: zodResolver(EditUserSchema)
+    resolver: zodResolver(EditProdSchema)
   });
-  const updateUser = async (data: EditUserType):Promise<void> => {
+const updateProd = async (data: EditProdType): Promise<void> => {
     const response = (): Promise<{ message: string }> => {
       return new Promise((resolve, reject) => {
-        /* atualizarUsuario({ ID_USUARIO: usuario.ID_USUARIO, data })
+        atualizarProduto({ ID_PRODUTO: produto.ID_PRODUTO, data })
           .then((res) => {
             router.refresh();
             resolve(res);
           })
           .catch((err) => {
             reject(JSON.stringify(err));
-          });*/
+          });
       }); 
     };
     toast.promise(response, {
@@ -49,6 +53,6 @@ export const useProdEditForm = ({
   return {
     form,
     isSubmitting: form.formState.isSubmitting,
-    updateUser: form.handleSubmit(updateUser)
+    updateProd: form.handleSubmit(updateProd)
   };
 };

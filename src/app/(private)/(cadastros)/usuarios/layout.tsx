@@ -1,7 +1,7 @@
 export const metadata = {
   title: 'Usuários - Estoque'
 };
-export default function HomeLayout({
+export default function UsuariosLayout({
   children
 }: {
   children: React.ReactNode

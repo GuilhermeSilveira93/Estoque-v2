@@ -31,7 +31,7 @@ export default function RootLayout({
     <html lang="pt-BR" suppressHydrationWarning>
       <body>
         <Providers>
-          <div className="min-h-screen min-w-full">{children}</div>
+          <div className="max-h-screen min-h-screen min-w-full">{children}</div>
           <Toaster richColors position="top-right" />
           <ThemeChanger />
         </Providers>

@@ -20,7 +20,7 @@ type SearchProps = {
 export const SearchData = ({ Search }: SearchProps) => {
   const router = useRouter();
   const {createParam, deleteParam} = useCustomParam();
-  const {handleSubmit, register, reset} = useForm<SearchSchemaType>({
+  const {handleSubmit, register, reset, setValue} = useForm<SearchSchemaType>({
     defaultValues: {Search},
     resolver: zodResolver(SearchSchema)
   });
@@ -55,7 +55,11 @@ export const SearchData = ({ Search }: SearchProps) => {
           placeholder="Pesquisar"
           {...register('Search')}
         />
-        <X className="absolute text-blue12 hover:scale-150 w-4 h-4 top-3 right-3 cursor-pointer" />
+        
+        <X className="absolute text-blue12 hover:scale-150 w-4 h-4 top-3 right-3 cursor-pointer" onClick={()=>{
+                  router.push(deleteParam(['Search']));
+        }}/>
+        
     </form>
   );
 };

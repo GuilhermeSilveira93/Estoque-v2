@@ -1,29 +1,32 @@
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
-import { criarUsuarioProps } from '@/@actions';
-import { CreateProdSchema, CreateProdType } from '@/@schemas/cadastros/produtos/CreateProdSchema';
+import {
+  CreateProdSchema,
+  CreateProdType
+} from '@/@schemas/cadastros/produtos/CreateProdSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 export type useProdCreateFormProps = {
-  criarProduto: ({ data }: criarUsuarioProps) => Promise<{
-    message: string;
-}>
+  criarProduto: (data: CreateProdType) => Promise<{
+    message: string
+  }>
 };
-export const useUserCreateForm = ({
-  criarProduto
-}: useProdCreateFormProps) => {
+export const useProdCreateForm = ({ criarProduto }: useProdCreateFormProps) => {
   const router = useRouter();
   const form = useForm<CreateProdType>({
     mode: 'all',
     defaultValues: {
+      ID_TIPO: '9',
+      N_SERIAL: '',
+      S_NOME: ''
     },
     resolver: zodResolver(CreateProdSchema)
   });
-  const createProd = async (data: CreateProdType):Promise<void> => {
+  const createProd = async (data: CreateProdType): Promise<void> => {
     const response = (): Promise<{ message: string }> => {
       return new Promise((resolve, reject) => {
-        criarProduto({ data })
+        criarProduto(data)
           .then((res) => {
             router.refresh();
             resolve(res);
@@ -34,7 +37,7 @@ export const useUserCreateForm = ({
       });
     };
     toast.promise(response, {
-      loading: 'Criando Usuário...',
+      loading: 'Criando Produto...',
       success: (data) => {
         return data.message;
       },

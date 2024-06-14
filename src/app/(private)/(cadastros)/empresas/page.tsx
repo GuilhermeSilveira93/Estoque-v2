@@ -1,34 +1,32 @@
-import React from 'react';
-
+import CreateProd from './components/createProd';
 import { Tabela } from './components/Tabela';
 import Pagination from '@/components/pagination';
 import { SearchData } from '@/components/search-data';
 
-import { Produtos } from '@/@classes';
+import { Empresas } from '@/@classes/Empresas';
 import { FiltersPage } from '@/@types/FiltersType';
-
-type HomePageProps = {
+export type EmpresasPageProps = {
   searchParams: FiltersPage & {
     ID_PRODUTO: string
   }
 };
-const HomePage = async ({ searchParams }: HomePageProps) => {
-  const produtos = (await new Produtos().getTabela({ searchParams }))?.body;
+const EmpresasPage = async ({ searchParams }: EmpresasPageProps) => {
+  const empresas = (await new Empresas().getAll({ searchParams })).body;
   return (
     <section>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
-        Estoque
+        Produtos
       </h1>
       <section className="rounded-b-xl bg-card">
         <header>
           <SearchData Search={searchParams.Search} />
         </header>
         <div className="max-h-132 overflow-auto">
-          {produtos.total > 0 ? (
+          {empresas.total > 0 ? (
             <Tabela
-              data={produtos.data}
+              data={empresas.data}
               searchParams={searchParams}
-              ocultar={['ID_PRODUTO', 'S_ATIVO']}
+              ocultar={[]}
             />
           ) : (
             <div className="flex h-32 items-center justify-center">
@@ -37,10 +35,11 @@ const HomePage = async ({ searchParams }: HomePageProps) => {
           )}
         </div>
         <footer className="flex w-full">
-          {produtos.total > 0 && <Pagination total={produtos.total} />}
+          {empresas.total > 0 && <Pagination total={empresas.total} />}
         </footer>
       </section>
+      <CreateProd />
     </section>
   );
 };
-export default HomePage;
+export default EmpresasPage;

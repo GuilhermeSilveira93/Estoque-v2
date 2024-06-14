@@ -8,6 +8,6 @@ export const EditProdSchema = zod.object({
     S_ATIVO: zod
     .boolean(),
     N_SERIAL: zod.string().max(150, { message: 'Tamanho máximo do e-mail é 150 caracteres.' }).optional(),
-    ID_TIPO: zod.enum(['1','2','3'], {message: 'Você está muito longe de casa, aqui é o Brasil!'}),
+    ID_TIPO: zod.string().min(1, { message: 'Precisa ter um tipo!' }).max(1, { message: 'Tamanho máximo do e-mail é 150 caracteres.' }),
 });
 export type EditProdType = zod.infer<typeof EditProdSchema>

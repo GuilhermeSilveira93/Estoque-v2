@@ -1,6 +1,6 @@
 'use server';
 import { Produtos } from '@/@classes';
-import { EditProdType } from '@/@schemas/home/EditProdSchema';
+import { EditProdType } from '@/@schemas';
 export type atualizarProdutoParam = {
   data: EditProdType,
   ID_PRODUTO: number
@@ -9,12 +9,10 @@ export const atualizarProduto = async ({
   data,
   ID_PRODUTO
 }: atualizarProdutoParam): Promise<{ message: string }> => {
-  const { S_ATIVO, S_NOME } = data;
   try {
     const response = await new Produtos().attProd({
       ID_PRODUTO,
-      S_ATIVO,
-      S_NOME
+      data
     });
     if (response.statusCode !== 202)
       throw new Error('Algo deu errado, entre em contato com suporte', {

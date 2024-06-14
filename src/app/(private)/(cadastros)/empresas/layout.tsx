@@ -1,7 +1,7 @@
 export const metadata = {
-  title: 'Usuários - Estoque'
+  title: 'Empresas - Estoque'
 };
-export default function ProdutosLayout({
+export default function EmpresasLayout({
   children
 }: {
   children: React.ReactNode

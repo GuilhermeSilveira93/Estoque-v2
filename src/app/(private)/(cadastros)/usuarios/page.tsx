@@ -4,29 +4,24 @@ import Pagination from '@/components/pagination';
 import { SearchData } from '@/components/search-data';
 
 import { Usuarios } from '@/@classes/Usuarios';
-
-const UserPage = async ({
-  searchParams
-}: {
-  searchParams: {
-    ID_USUARIO: string,
-    S_ATIVO: string,
-    Search: string,
-    Page: string,
-    LimitPerPage: string
+import { FiltersPage } from '@/@types/FiltersType';
+type UserPageProps = {
+  searchParams: FiltersPage & {
+    ID_USUARIO: string
   }
-}) => {
+};
+const UsuariosPage = async ({ searchParams }: UserPageProps) => {
   const users = (await new Usuarios().getAll({ searchParams })).body;
   return (
-    <section className="max-h-96 ">
+    <section>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
-        Usuários
+        Empresas
       </h1>
       <section className="rounded-b-xl bg-card">
         <header>
           <SearchData Search={searchParams.Search} />
         </header>
-        <div className="max-h-148 overflow-auto">
+        <div className="max-h-132 overflow-auto">
           {users.total > 0 ? (
             <Tabela
               data={users.data}
@@ -56,4 +51,4 @@ const UserPage = async ({
     </section>
   );
 };
-export default UserPage;
+export default UsuariosPage;

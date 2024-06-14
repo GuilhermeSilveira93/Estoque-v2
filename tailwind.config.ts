@@ -57,7 +57,7 @@ const config: Config = {
         }
       },
       spacing: {
-        '148': '37rem'
+        '132': '33rem'
       },
       borderRadius: {
         lg: 'var(--radius)',

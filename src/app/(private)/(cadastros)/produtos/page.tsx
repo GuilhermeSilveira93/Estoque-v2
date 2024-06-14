@@ -4,21 +4,17 @@ import Pagination from '@/components/pagination';
 import { SearchData } from '@/components/search-data';
 
 import { Produtos } from '@/@classes';
+import { FiltersPage } from '@/@types/FiltersType';
 
-const UserPage = async ({
-  searchParams
-}: {
-  searchParams: {
-    ID_USUARIO: string,
-    S_ATIVO: string,
-    Search: string,
-    Page: string,
-    LimitPerPage: string
+type ProdutosPageProps = {
+  searchParams: FiltersPage & {
+    ID_PRODUTO: string
   }
-}) => {
-  const produtos = (await new Produtos().getAll()).body;
+};
+const ProdutosPage = async ({ searchParams }: ProdutosPageProps) => {
+  const produtos = (await new Produtos().getAll({ searchParams })).body;
   return (
-    <section className="max-h-96 ">
+    <section>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
         Produtos
       </h1>
@@ -26,12 +22,18 @@ const UserPage = async ({
         <header>
           <SearchData Search={searchParams.Search} />
         </header>
-        <div className="max-h-148 overflow-auto">
+        <div className="max-h-132 overflow-auto">
           {produtos.total > 0 ? (
             <Tabela
               data={produtos.data}
               searchParams={searchParams}
-              ocultar={[]}
+              ocultar={[
+                'ID_PRODUTO',
+                'ID_TIPO',
+                'N_SERIAL',
+                'ST_TIPO',
+                'S_ATIVO'
+              ]}
             />
           ) : (
             <div className="flex h-32 items-center justify-center">
@@ -47,4 +49,4 @@ const UserPage = async ({
     </section>
   );
 };
-export default UserPage;
+export default ProdutosPage;

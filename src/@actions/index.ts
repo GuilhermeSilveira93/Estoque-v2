@@ -3,3 +3,4 @@ export * from './atualizarProduto';
 export * from './loginAction';
 export * from './atualizarUsuario';
 export * from './criarUsuario';
+export * from './criarProduto';
