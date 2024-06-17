@@ -15,7 +15,7 @@ const UsuariosPage = async ({ searchParams }: UserPageProps) => {
   return (
     <section>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
-        Empresas
+        Usuários
       </h1>
       <section className="rounded-b-xl bg-card">
         <header>
