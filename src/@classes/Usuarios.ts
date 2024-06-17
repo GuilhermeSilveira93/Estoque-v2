@@ -1,18 +1,18 @@
 import { CreateUserType } from '@/@schemas/cadastros/usuarios/CreateUserSchema';
 import { EditUserType } from '@/@schemas/cadastros/usuarios/EditUserSchema';
-import { UserProps } from '@/@types';
 import { Usuario } from '@/@types/api';
+import { UserPageProps } from '@/app/(private)/(cadastros)/usuarios/page';
 
 import { AdapterRequest } from './RequestAdapter';
 type getAllBodyType = {
   data: Usuario[],
-  total: 0
+  total: number
 };
 export class Usuarios extends AdapterRequest {
   constructor() {
     super();
   }
-  async getAll({ searchParams }: UserProps): Promise<{
+  async getAll({ searchParams }: UserPageProps): Promise<{
     statusCode: number,
     body: { data: Usuario[], total: number }
   }> {
