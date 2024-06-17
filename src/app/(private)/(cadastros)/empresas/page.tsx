@@ -1,4 +1,4 @@
-import CreateProd from './components/createProd';
+import CreateEmpresa from './components/CreateEmpresa';
 import { Tabela } from './components/Tabela';
 import Pagination from '@/components/pagination';
 import { SearchData } from '@/components/search-data';
@@ -39,7 +39,7 @@ const EmpresasPage = async ({ searchParams }: EmpresaPageProps) => {
           {empresas.total > 0 && <Pagination total={empresas.total} />}
         </footer>
       </section>
-      <CreateProd />
+      <CreateEmpresa />
     </section>
   );
 };

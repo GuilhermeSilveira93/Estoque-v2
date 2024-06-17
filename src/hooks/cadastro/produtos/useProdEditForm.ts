@@ -27,7 +27,7 @@ export const useProdEditForm = ({
     },
     resolver: zodResolver(EditProdSchema)
   });
-const updateEmpresa = async (data: EditProdType): Promise<void> => {
+const updateProd = async (data: EditProdType): Promise<void> => {
     const response = (): Promise<{ message: string }> => {
       return new Promise((resolve, reject) => {
         atualizarProduto({ ID_PRODUTO: produto.ID_PRODUTO, data })
@@ -53,6 +53,6 @@ const updateEmpresa = async (data: EditProdType): Promise<void> => {
   return {
     form,
     isSubmitting: form.formState.isSubmitting,
-    updateEmpresa: form.handleSubmit(updateEmpresa)
+    updateProd: form.handleSubmit(updateProd)
   };
 };

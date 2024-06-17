@@ -3,9 +3,7 @@ import { memo } from 'react';
 import { Button } from '@/components/ui';
 import {
   Dialog,
-  DialogClose,
   DialogContent,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger
@@ -28,13 +26,6 @@ const CreateProd = memo(async () => {
           <DialogTitle>Cadastro de Produto</DialogTitle>
         </DialogHeader>
         <CreateProdForm criarProduto={criarProduto} tipos={tipos.data} />
-        <DialogFooter className="sm:justify-start">
-          <DialogClose asChild>
-            <Button type="button" variant="secondary">
-              Close
-            </Button>
-          </DialogClose>
-        </DialogFooter>
       </DialogContent>
     </Dialog>
   );

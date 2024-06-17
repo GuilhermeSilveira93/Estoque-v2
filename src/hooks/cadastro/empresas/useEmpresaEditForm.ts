@@ -21,6 +21,7 @@ export const useEmpresaEditForm = ({
     mode: 'all',
     defaultValues: {
       S_NOME: empresa.S_NOME,
+      S_ATIVO: empresa.S_ATIVO === 'S'
     },
     resolver: zodResolver(EditEmpresaSchema)
   });

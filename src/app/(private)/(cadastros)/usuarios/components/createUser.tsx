@@ -3,9 +3,7 @@ import { memo } from 'react';
 import { Button } from '@/components/ui';
 import {
   Dialog,
-  DialogClose,
   DialogContent,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger
@@ -28,13 +26,6 @@ const CreateUser = memo(async () => {
           <DialogTitle>Cadastro de Usuário</DialogTitle>
         </DialogHeader>
         <CreateUserForm criarUsuario={criarUsuario} grupos={grupos.data} />
-        <DialogFooter className="sm:justify-start">
-          <DialogClose asChild>
-            <Button type="button" variant="secondary">
-              Close
-            </Button>
-          </DialogClose>
-        </DialogFooter>
       </DialogContent>
     </Dialog>
   );

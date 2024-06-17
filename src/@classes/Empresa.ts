@@ -1,4 +1,4 @@
-import { EditEmpresaType } from '@/@schemas';
+import { CreateEmpresaType, EditEmpresaType } from '@/@schemas';
 import { EmpresaType } from '@/@types/api';
 import { EmpresaPageProps } from '@/app/(private)/(cadastros)/empresas/page';
 
@@ -33,14 +33,18 @@ export class Empresa extends AdapterRequest {
     try {
       return await this.request<{ message: string }>({
         method: 'patch',
-        url: '/empresa',
-        params: {
-          ID_EMPRESA,
-          ...data
-        }
+        url: `/empresa/${ID_EMPRESA}`,
+        body: data
       });
     } catch (error) {
       return { statusCode: 404, body: { message: JSON.stringify(error) } };
     }
+  }
+  async createEmp(data: CreateEmpresaType) {
+    return await this.request<{ message: string }>({
+      method: 'post',
+      url: '/empresa',
+      body: data
+    });
   }
 }

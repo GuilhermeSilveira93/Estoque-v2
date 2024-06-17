@@ -1,34 +1,29 @@
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
-import {
-  CreateProdSchema,
-  CreateProdType
-} from '@/@schemas/cadastros/produtos/CreateProdSchema';
+import { CreateEmpresaSchema, CreateEmpresaType } from '@/@schemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 export type useEmpresaCreateFormProps = {
-  criarProduto: (data: CreateProdType) => Promise<{
+  criarEmpresa: (data: CreateEmpresaType) => Promise<{
     message: string
   }>
 };
 export const useEmpresaCreateForm = ({
-  criarProduto
+  criarEmpresa
 }: useEmpresaCreateFormProps) => {
   const router = useRouter();
-  const form = useForm<CreateProdType>({
+  const form = useForm<CreateEmpresaType>({
     mode: 'all',
     defaultValues: {
-      ID_TIPO: '9',
-      N_SERIAL: '',
       S_NOME: ''
     },
-    resolver: zodResolver(CreateProdSchema)
+    resolver: zodResolver(CreateEmpresaSchema)
   });
-  const createProd = async (data: CreateProdType): Promise<void> => {
+  const createEmpresa = async (data: CreateEmpresaType): Promise<void> => {
     const response = (): Promise<{ message: string }> => {
       return new Promise((resolve, reject) => {
-        criarProduto(data)
+        criarEmpresa(data)
           .then((res) => {
             router.refresh();
             resolve(res);
@@ -51,6 +46,6 @@ export const useEmpresaCreateForm = ({
   return {
     form,
     isSubmitting: form.formState.isSubmitting,
-    createProd: form.handleSubmit(createProd)
+    createEmpresa: form.handleSubmit(createEmpresa)
   };
 };
