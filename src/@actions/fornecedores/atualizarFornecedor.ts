@@ -1,6 +1,6 @@
 'use server';
 import { Fornecedor } from '@/@classes/Fornecedor';
-import { EditFornecedorType } from '@/@schemas/cadastros/fornecedores/EditEmpresaSchema';
+import { EditFornecedorType } from '@/@schemas/cadastros/empresas copy/EditEmpresaSchema';
 export type atualizarFornecedorParam = {
   data: EditFornecedorType,
   ID_FORNECEDOR: number
