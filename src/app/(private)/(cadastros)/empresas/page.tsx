@@ -1,39 +1,33 @@
-import { Tabela } from '../produtos/components/Tabela';
 import CreateProd from './components/createProd';
+import { Tabela } from './components/Tabela';
 import Pagination from '@/components/pagination';
 import { SearchData } from '@/components/search-data';
 
-import { Produtos } from '@/@classes';
+import { Empresa } from '@/@classes/Empresa';
 import { FiltersPage } from '@/@types/FiltersType';
 
-export type ProdutosPageProps = {
+export type EmpresaPageProps = {
   searchParams: FiltersPage & {
-    ID_PRODUTO: string
+    ID_EMPRESA: string
   }
 };
-const ProdutosPage = async ({ searchParams }: ProdutosPageProps) => {
-  const produtos = (await new Produtos().getAll({ searchParams })).body;
+const EmpresasPage = async ({ searchParams }: EmpresaPageProps) => {
+  const empresas = (await new Empresa().getAll({ searchParams })).body;
   return (
     <section>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
-        Produtos
+        Empresas
       </h1>
       <section className="rounded-b-xl bg-card">
         <header>
           <SearchData Search={searchParams.Search} />
         </header>
         <div className="max-h-132 overflow-auto">
-          {produtos.total > 0 ? (
+          {empresas.total > 0 ? (
             <Tabela
-              data={produtos.data}
+              data={empresas.data}
               searchParams={searchParams}
-              ocultar={[
-                'ID_PRODUTO',
-                'ID_TIPO',
-                'N_SERIAL',
-                'ST_TIPO',
-                'S_ATIVO'
-              ]}
+              ocultar={['ID_EMPRESA', 'D_DATA']}
             />
           ) : (
             <div className="flex h-32 items-center justify-center">
@@ -42,11 +36,11 @@ const ProdutosPage = async ({ searchParams }: ProdutosPageProps) => {
           )}
         </div>
         <footer className="flex w-full">
-          {produtos.total > 0 && <Pagination total={produtos.total} />}
+          {empresas.total > 0 && <Pagination total={empresas.total} />}
         </footer>
       </section>
       <CreateProd />
     </section>
   );
 };
-export default ProdutosPage;
+export default EmpresasPage;

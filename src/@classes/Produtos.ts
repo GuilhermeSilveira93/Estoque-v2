@@ -1,6 +1,6 @@
 import { CreateProdType, EditProdType } from '@/@schemas';
 import { Produtos as ProdutosType, TabelaType } from '@/@types/api';
-import { HomePageProps } from '@/app/(private)/(home)/page';
+import { ProdutosPageProps } from '@/app/(private)/(cadastros)/produtos/page';
 
 import { AdapterRequest } from './RequestAdapter';
 type attProdParams = {
@@ -20,7 +20,7 @@ export class Produtos extends AdapterRequest {
   constructor() {
     super();
   }
-  async getAll({ searchParams }: HomePageProps) {
+  async getAll({ searchParams }: ProdutosPageProps) {
     const { ID_PRODUTO, S_ATIVO, Search, Page, LimitPerPage } = searchParams;
     try {
       return await this.request<{ data: ProdutosType[], total: number }>({
@@ -38,7 +38,7 @@ export class Produtos extends AdapterRequest {
       return { body: { data: [], total: 0 }, statusCode: 204 };
     }
   }
-  async getTabela({ searchParams }: HomePageProps) {
+  async getTabela({ searchParams }: ProdutosPageProps) {
     const { ID_PRODUTO, S_ATIVO, Search, Page, LimitPerPage } = searchParams;
     try {
       return await this.request<{ data: TabelaType[], total: number }>({

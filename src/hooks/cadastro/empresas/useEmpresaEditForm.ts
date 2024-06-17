@@ -2,7 +2,7 @@ import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
 import { atualizarEmpresaParam } from '@/@actions';
-import { EditEmpresaType, EditProdSchema, EditProdType } from '@/@schemas';
+import { EditEmpresaSchema, EditEmpresaType } from '@/@schemas';
 import { EmpresaType } from '@/@types/api';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
@@ -12,17 +12,17 @@ export type useEmpresaEditFormProps = {
     message: string;
 }>
 };
-export const useProdEditForm = ({
+export const useEmpresaEditForm = ({
   empresa,
   atualizarEmpresa
 }: useEmpresaEditFormProps) => {
   const router = useRouter();
-  const form = useForm<EditProdType>({
+  const form = useForm<EditEmpresaType>({
     mode: 'all',
     defaultValues: {
       S_NOME: empresa.S_NOME,
     },
-    resolver: zodResolver(EditProdSchema)
+    resolver: zodResolver(EditEmpresaSchema)
   });
 const updateEmpresa = async (data: EditEmpresaType): Promise<void> => {
     const response = (): Promise<{ message: string }> => {

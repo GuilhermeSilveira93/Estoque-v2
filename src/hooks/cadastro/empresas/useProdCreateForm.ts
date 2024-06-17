@@ -1,33 +1,32 @@
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
-import { atualizarEmpresaParam } from '@/@actions';
-import { EditEmpresaType, EditProdSchema, EditProdType } from '@/@schemas';
-import { EmpresaType } from '@/@types/api';
+import {
+  CreateProdSchema,
+  CreateProdType
+} from '@/@schemas/cadastros/produtos/CreateProdSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
-export type useEmpresaEditFormProps = {
-  empresa: EmpresaType,
-  atualizarEmpresa: ({ data, ID_EMPRESA }: atualizarEmpresaParam) => Promise<{
-    message: string;
-}>
+export type useProdCreateFormProps = {
+  criarProduto: (data: CreateProdType) => Promise<{
+    message: string
+  }>
 };
-export const useProdEditForm = ({
-  empresa,
-  atualizarEmpresa
-}: useEmpresaEditFormProps) => {
+export const useProdCreateForm = ({ criarProduto }: useProdCreateFormProps) => {
   const router = useRouter();
-  const form = useForm<EditProdType>({
+  const form = useForm<CreateProdType>({
     mode: 'all',
     defaultValues: {
-      S_NOME: empresa.S_NOME,
+      ID_TIPO: '9',
+      N_SERIAL: '',
+      S_NOME: ''
     },
-    resolver: zodResolver(EditProdSchema)
+    resolver: zodResolver(CreateProdSchema)
   });
-const updateEmpresa = async (data: EditEmpresaType): Promise<void> => {
+  const createProd = async (data: CreateProdType): Promise<void> => {
     const response = (): Promise<{ message: string }> => {
       return new Promise((resolve, reject) => {
-        atualizarEmpresa({ ID_EMPRESA: empresa.ID_EMPRESA, data })
+        criarProduto(data)
           .then((res) => {
             router.refresh();
             resolve(res);
@@ -35,10 +34,10 @@ const updateEmpresa = async (data: EditEmpresaType): Promise<void> => {
           .catch((err) => {
             reject(JSON.stringify(err));
           });
-      }); 
+      });
     };
     toast.promise(response, {
-      loading: 'Atualizando Usuário...',
+      loading: 'Criando Produto...',
       success: (data) => {
         return data.message;
       },
@@ -50,6 +49,6 @@ const updateEmpresa = async (data: EditEmpresaType): Promise<void> => {
   return {
     form,
     isSubmitting: form.formState.isSubmitting,
-    updateEmpresa: form.handleSubmit(updateEmpresa)
+    createProd: form.handleSubmit(createProd)
   };
 };

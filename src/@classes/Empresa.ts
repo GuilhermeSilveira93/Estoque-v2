@@ -1,34 +1,25 @@
-import { CreateProdType, EditProdType } from '@/@schemas';
-import { Produtos as ProdutosType, TabelaType } from '@/@types/api';
-import { HomePageProps } from '@/app/(private)/(home)/page';
+import { EditEmpresaType } from '@/@schemas';
+import { EmpresaType } from '@/@types/api';
+import { EmpresaPageProps } from '@/app/(private)/(cadastros)/empresas/page';
 
 import { AdapterRequest } from './RequestAdapter';
-type attProdParams = {
-  ID_PRODUTO: number,
-  data: EditProdType
+type attEmpresaParams = {
+  ID_EMPRESA: number,
+  data: EditEmpresaType
 };
-type GetMovimentacaoType = {
-  itensEstoque: number,
-  anos: {
-    ano: string,
-    entrada: number,
-    saida: number,
-    meses: { name: string, entrada: number, saida: number }[]
-  }[]
-};
-export class Produtos extends AdapterRequest {
+export class Empresa extends AdapterRequest {
   constructor() {
     super();
   }
-  async getAll({ searchParams }: HomePageProps) {
-    const { ID_PRODUTO, S_ATIVO, Search, Page, LimitPerPage } = searchParams;
+  async getAll({ searchParams }: EmpresaPageProps) {
+    const { ID_EMPRESA, S_ATIVO, Search, Page, LimitPerPage } = searchParams;
     try {
-      return await this.request<{ data: ProdutosType[], total: number }>({
+      return await this.request<{ data: EmpresaType[], total: number }>({
         method: 'get',
-        url: '/produto',
+        url: '/empresa',
         params: {
           S_ATIVO,
-          ID_PRODUTO,
+          ID_EMPRESA,
           Search,
           Page,
           LimitPerPage
@@ -38,43 +29,18 @@ export class Produtos extends AdapterRequest {
       return { body: { data: [], total: 0 }, statusCode: 204 };
     }
   }
-  async getTabela({ searchParams }: HomePageProps) {
-    const { ID_PRODUTO, S_ATIVO, Search, Page, LimitPerPage } = searchParams;
+  async attEmpresa({ ID_EMPRESA, data }: attEmpresaParams) {
     try {
-      return await this.request<{ data: TabelaType[], total: number }>({
-        method: 'get',
-        url: '/produto/tabela',
+      return await this.request<{ message: string }>({
+        method: 'patch',
+        url: '/empresa',
         params: {
-          S_ATIVO,
-          ID_PRODUTO,
-          Search,
-          Page,
-          LimitPerPage
+          ID_EMPRESA,
+          ...data
         }
       });
     } catch (error) {
-      return { body: { data: [], total: 0 }, statusCode: 204 };
+      return { statusCode: 404, body: { message: JSON.stringify(error) } };
     }
-  }
-  async attProd({ ID_PRODUTO, data }: attProdParams) {
-    const resposta = await this.request<{ message: string }>({
-      method: 'patch',
-      url: `produto/${ID_PRODUTO}`,
-      body: { ...data, ID_TIPO: Number(data.ID_TIPO) }
-    });
-    return resposta;
-  }
-  async getMovimentacao() {
-    return await this.request<GetMovimentacaoType>({
-      method: 'get',
-      url: '/produto/movimentacao'
-    });
-  }
-  async createProd(data: CreateProdType) {
-    return await this.request<{ message: string }>({
-      method: 'post',
-      url: '/produto',
-      body: { ...data, ID_TIPO: Number(data.ID_TIPO) }
-    });
   }
 }

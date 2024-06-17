@@ -1,17 +1,17 @@
 'use server';
-import { Produtos } from '@/@classes';
-import { EditProdType } from '@/@schemas';
-export type atualizarProdutoParam = {
-  data: EditProdType,
-  ID_PRODUTO: number
+import { Empresa } from '@/@classes/Empresa';
+import { EditEmpresaType } from '@/@schemas';
+export type atualizarEmpresaParam = {
+  data: EditEmpresaType,
+  ID_EMPRESA: number
 };
-export const atualizarProduto = async ({
+export const atualizarEmpresa = async ({
   data,
-  ID_PRODUTO
-}: atualizarProdutoParam): Promise<{ message: string }> => {
+  ID_EMPRESA
+}: atualizarEmpresaParam): Promise<{ message: string }> => {
   try {
-    const response = await new Produtos().attProd({
-      ID_PRODUTO,
+    const response = await new Empresa().attEmpresa({
+      ID_EMPRESA,
       data
     });
     if (response.statusCode !== 202)
