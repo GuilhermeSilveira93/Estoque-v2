@@ -7,12 +7,14 @@ import {
 } from '@/@schemas/cadastros/produtos/CreateProdSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
-export type useProdCreateFormProps = {
+export type useEmpresaCreateFormProps = {
   criarProduto: (data: CreateProdType) => Promise<{
     message: string
   }>
 };
-export const useProdCreateForm = ({ criarProduto }: useProdCreateFormProps) => {
+export const useEmpresaCreateForm = ({
+  criarProduto
+}: useEmpresaCreateFormProps) => {
   const router = useRouter();
   const form = useForm<CreateProdType>({
     mode: 'all',
