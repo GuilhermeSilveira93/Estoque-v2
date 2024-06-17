@@ -9,14 +9,15 @@ import {
   TableRow
 } from '@/components/ui';
 
-import { HomeProps } from '@/@types';
 import { TabelaType, TabelaTypeKeys } from '@/@types/api';
 import { PascalCase } from '@/@utils';
+
+import { HomePageProps } from '../page';
 
 type TabelaProps = {
   data: TabelaType[],
   ocultar: string[],
-  searchParams: HomeProps['searchParams']
+  searchParams: HomePageProps['searchParams']
 };
 export const Tabela = ({ data, ocultar }: TabelaProps) => {
   const tableHeader = Object.keys(data[0] as TabelaType) as TabelaTypeKeys[];

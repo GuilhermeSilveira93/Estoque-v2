@@ -9,23 +9,19 @@ import {
   TableRow
 } from '@/components/ui';
 
-import { Tipos } from '@/@classes/Tipos';
 import { Empresas, EmpresasKeys } from '@/@types/api';
-import { FiltersPage } from '@/@types/FiltersType';
 import { PascalCase } from '@/@utils';
 
-import EditProd from './editProd';
+import { EmpresasPageProps } from '../page';
+import EditEmpresa from './editEmpresa';
 
 type TabelaProps = {
   data: Empresas[],
   ocultar: string[],
-  searchParams: FiltersPage & {
-    ID_EMPRESA: string
-  }
+  searchParams: EmpresasPageProps['searchParams']
 };
 export const Tabela = async ({ data, ocultar }: TabelaProps) => {
   const tableHeader = Object.keys(data[0] as Empresas) as EmpresasKeys[];
-  const tipos = (await new Tipos().getAll()).body;
   return (
     <>
       <Table className="text-center text-card-foreground">
@@ -69,10 +65,9 @@ export const Tabela = async ({ data, ocultar }: TabelaProps) => {
                   return null;
                 })}
                 <TableCell key={`${empresa.ID_EMPRESA}-actions`} align="center">
-                  <EditProd
+                  <EditEmpresa
                     key={`${empresa.ID_EMPRESA}-editProd`}
-                    empresa={empresa}
-                    tipos={tipos.data}
+                    empresas={empresa}
                   />
                 </TableCell>
               </TableRow>

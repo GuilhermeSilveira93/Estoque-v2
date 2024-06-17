@@ -7,7 +7,7 @@ import { SearchData } from '@/components/search-data';
 import { Produtos } from '@/@classes';
 import { FiltersPage } from '@/@types/FiltersType';
 
-type HomePageProps = {
+export type HomePageProps = {
   searchParams: FiltersPage & {
     ID_PRODUTO: string
   }

@@ -10,16 +10,16 @@ import {
 } from '@/components/ui';
 
 import { Tipos } from '@/@classes/Tipos';
-import { HomeProps } from '@/@types';
 import { Produtos, ProdutosKeys } from '@/@types/api';
 import { PascalCase } from '@/@utils';
 
+import { ProdutosPageProps } from '../page';
 import EditProd from './editProd';
 
 type TabelaProps = {
   data: Produtos[],
   ocultar: string[],
-  searchParams: HomeProps['searchParams']
+  searchParams: ProdutosPageProps['searchParams']
 };
 export const Tabela = async ({ data, ocultar }: TabelaProps) => {
   const tableHeader = Object.keys(data[0] as Produtos) as ProdutosKeys[];

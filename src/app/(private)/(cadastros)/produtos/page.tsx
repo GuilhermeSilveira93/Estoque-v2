@@ -6,7 +6,7 @@ import { SearchData } from '@/components/search-data';
 import { Produtos } from '@/@classes';
 import { FiltersPage } from '@/@types/FiltersType';
 
-type ProdutosPageProps = {
+export type ProdutosPageProps = {
   searchParams: FiltersPage & {
     ID_PRODUTO: string
   }

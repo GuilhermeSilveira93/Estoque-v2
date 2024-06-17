@@ -19,14 +19,15 @@ import {
   SelectValue
 } from '@/components/ui/select';
 
-import { TiposType } from '@/@types/api/ReqTipos';
-import { useProdEditForm, useProdEditFormProps } from '@/hooks/cadastro';
-type EditProdFormProps = useProdEditFormProps & {
-  tipos: TiposType[]
+import { Empresas } from '@/@types/api';
+import { useProdEditForm } from '@/hooks/cadastro';
+import { useEmpresaCreateFormProps } from '@/hooks/cadastro/empresa/useEmpresaCreateForm';
+type EditEmpresaFormProps = useEmpresaCreateFormProps & {
+  empresas: Empresas
 };
 
-const EditProdForm = memo(
-  ({ produto, atualizarProduto, tipos }: EditProdFormProps) => {
+const EditEmpresaForm = memo(
+  ({ empresas, atualizarEmpresa }: EditEmpresaFormProps) => {
     const { form, updateProd, isSubmitting } = useProdEditForm({
       produto,
       atualizarProduto
@@ -129,5 +130,5 @@ const EditProdForm = memo(
     );
   }
 );
-EditProdForm.displayName = 'EditProdForm';
-export default EditProdForm;
+EditEmpresaForm.displayName = 'EditEmpresaForm';
+export default EditEmpresaForm;
