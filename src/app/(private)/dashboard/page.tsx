@@ -5,11 +5,11 @@ import {
   CardDescription
 } from '@/components/ui/card';
 
-import { Produtos } from '@/@classes';
+import { Produto } from '@/@classes';
 import { ArrowUpRight } from 'lucide-react';
 
 const DashBoard = async ({ searchParams }: any) => {
-  const produtos = (await new Produtos().getMovimentacao()).body;
+  const produtos = (await new Produto().getMovimentacao()).body;
   const anoAtual = produtos.anos.length - 1;
   return (
     <header>

@@ -1,5 +1,5 @@
 'use server';
-import { Produtos } from '@/@classes';
+import { Produto } from '@/@classes';
 import { EditProdType } from '@/@schemas';
 export type atualizarProdutoParam = {
   data: EditProdType,
@@ -10,7 +10,7 @@ export const atualizarProduto = async ({
   ID_PRODUTO
 }: atualizarProdutoParam): Promise<{ message: string }> => {
   try {
-    const response = await new Produtos().attProd({
+    const response = await new Produto().attProd({
       ID_PRODUTO,
       data
     });

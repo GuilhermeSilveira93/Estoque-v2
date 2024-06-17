@@ -6,27 +6,24 @@ import {
   PopoverTrigger
 } from '@/components/ui/popover';
 
-import { atualizarProduto } from '@/@actions';
-import { Produtos } from '@/@types/api';
-import { TiposType } from '@/@types/api/ReqTipos';
+import { atualizarFornecedor } from '@/@actions';
+import { FornecedorType } from '@/@types/api';
 import { Settings } from 'lucide-react';
 
 import EditProdForm from './EditProdForm';
 type EditProdProps = {
-  produto: Produtos,
-  tipos: TiposType[]
+  fornecedor: FornecedorType
 };
-const EditProd = memo(async ({ produto, tipos }: EditProdProps) => {
+const EditProd = memo(async ({ fornecedor }: EditProdProps) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
         <Settings className="cursor-pointer text-secondary" />
       </PopoverTrigger>
       <PopoverContent side="left" align="center">
-        <EditProdForm
-          produto={produto}
-          atualizarProduto={atualizarProduto}
-          tipos={tipos}
+        <EditFornecedorForm
+          fornecedor={fornecedor}
+          atualizarFornecedor={atualizarFornecedor}
         />
       </PopoverContent>
     </Popover>

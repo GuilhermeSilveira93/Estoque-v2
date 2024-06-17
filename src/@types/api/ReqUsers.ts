@@ -1,4 +1,4 @@
-export type Usuario = {
+export type UsuarioType = {
   ID_USUARIO: number,
   S_NOME: string,
   S_EMAIL: string,
@@ -12,4 +12,4 @@ export type Usuario = {
     N_NIVEL: number
   }
 };
-export type UsuarioKeys = keyof Usuario;
+export type UsuarioKeys = keyof UsuarioType;

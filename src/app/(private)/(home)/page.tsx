@@ -4,7 +4,7 @@ import { Tabela } from './components/Tabela';
 import Pagination from '@/components/pagination';
 import { SearchData } from '@/components/search-data';
 
-import { Produtos } from '@/@classes';
+import { Produto } from '@/@classes';
 import { FiltersPage } from '@/@types/FiltersType';
 
 export type HomePageProps = {
@@ -13,7 +13,7 @@ export type HomePageProps = {
   }
 };
 const HomePage = async ({ searchParams }: HomePageProps) => {
-  const produtos = (await new Produtos().getTabela({ searchParams }))?.body;
+  const produtos = (await new Produto().getTabela({ searchParams }))?.body;
   return (
     <section>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">

@@ -1,8 +1,8 @@
-import { Grupo } from '@/@types/api';
+import { GrupoType } from '@/@types/api';
 
 import { AdapterRequest } from './RequestAdapter';
 type getAllBodyType = {
-  data: Grupo[]
+  data: GrupoType[]
 };
 export class Grupos extends AdapterRequest {
   constructor() {
@@ -10,7 +10,7 @@ export class Grupos extends AdapterRequest {
   }
   async getAll(): Promise<{
     statusCode: number,
-    body: { data: Grupo[] }
+    body: { data: GrupoType[] }
   }> {
     try {
       return await this.request<getAllBodyType>({

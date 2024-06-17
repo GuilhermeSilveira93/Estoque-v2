@@ -1,12 +1,11 @@
 'use server';
-import { Produtos } from '@/@classes';
+import { Produto } from '@/@classes';
 import { CreateProdType } from '@/@schemas';
 export const criarProduto = async (
   data: CreateProdType
 ): Promise<{ message: string }> => {
   try {
-    const response = await new Produtos().createProd(data);
-    console.log(response);
+    const response = await new Produto().createProd(data);
     if (response.statusCode !== 202)
       throw new Error('Algo deu errado, entre em contato com suporte', {
         cause: 'ServerError'

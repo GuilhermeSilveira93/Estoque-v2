@@ -16,7 +16,7 @@ type GetMovimentacaoType = {
     meses: { name: string, entrada: number, saida: number }[]
   }[]
 };
-export class Produtos extends AdapterRequest {
+export class Produto extends AdapterRequest {
   constructor() {
     super();
   }

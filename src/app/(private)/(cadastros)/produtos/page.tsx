@@ -3,7 +3,7 @@ import CreateProd from './components/createProd';
 import Pagination from '@/components/pagination';
 import { SearchData } from '@/components/search-data';
 
-import { Produtos } from '@/@classes';
+import { Produto } from '@/@classes';
 import { FiltersPage } from '@/@types/FiltersType';
 
 export type ProdutosPageProps = {
@@ -12,7 +12,7 @@ export type ProdutosPageProps = {
   }
 };
 const ProdutosPage = async ({ searchParams }: ProdutosPageProps) => {
-  const produtos = (await new Produtos().getAll({ searchParams })).body;
+  const produtos = (await new Produto().getAll({ searchParams })).body;
   return (
     <section>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
