@@ -10,7 +10,7 @@ import {
   SheetTrigger
 } from '@/components/ui/sheet';
 
-import { getUserCurrent } from '@/@utils';
+import { PascalCase, getUserCurrent } from '@/@utils';
 
 import { LogoutButton } from './LogOut';
 import { Menu } from './Menu';
@@ -27,7 +27,7 @@ const NavBar = async () => {
       <SheetContent className="flex flex-col flex-wrap bg-background">
         <SheetHeader>
           <SheetTitle className="text-center text-foreground">
-            Olá, {user.S_NOME}!
+            Olá, {PascalCase(user.S_NOME)}!
           </SheetTitle>
         </SheetHeader>
         <div className="flex-1">

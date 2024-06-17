@@ -34,7 +34,10 @@ export class Empresa extends AdapterRequest {
       return await this.request<{ message: string }>({
         method: 'patch',
         url: `/empresa/${ID_EMPRESA}`,
-        body: data
+        body: {
+          ...data,
+          S_NOME: data.S_NOME.toUpperCase()
+        }
       });
     } catch (error) {
       return { statusCode: 404, body: { message: JSON.stringify(error) } };
@@ -44,7 +47,9 @@ export class Empresa extends AdapterRequest {
     return await this.request<{ message: string }>({
       method: 'post',
       url: '/empresa',
-      body: data
+      body: {
+        S_NOME: data.S_NOME.toUpperCase()
+      }
     });
   }
 }

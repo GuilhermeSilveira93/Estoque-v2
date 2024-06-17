@@ -60,7 +60,11 @@ export class Produtos extends AdapterRequest {
     const resposta = await this.request<{ message: string }>({
       method: 'patch',
       url: `produto/${ID_PRODUTO}`,
-      body: { ...data, ID_TIPO: Number(data.ID_TIPO) }
+      body: {
+        ...data,
+        ID_TIPO: Number(data.ID_TIPO),
+        S_NOME: data.S_NOME.toUpperCase()
+      }
     });
     return resposta;
   }
@@ -74,7 +78,11 @@ export class Produtos extends AdapterRequest {
     return await this.request<{ message: string }>({
       method: 'post',
       url: '/produto',
-      body: { ...data, ID_TIPO: Number(data.ID_TIPO) }
+      body: {
+        ...data,
+        S_NOME: data.S_NOME.toUpperCase(),
+        ID_TIPO: Number(data.ID_TIPO)
+      }
     });
   }
 }

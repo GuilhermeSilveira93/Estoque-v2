@@ -73,6 +73,12 @@ export const NavigationMenu = () => {
                 <ListItem href="/clientes" title="Clientes">
                   Crie/edite Clientes.
                 </ListItem>
+                <ListItem href="/fornecedores" title="Fornecedores">
+                  Crie/edite Fornecedores.
+                </ListItem>
+                <ListItem href="/tipos" title="Tipos">
+                  Crie/edite Tipos de Produtos.
+                </ListItem>
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>

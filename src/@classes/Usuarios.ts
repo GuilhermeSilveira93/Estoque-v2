@@ -47,7 +47,11 @@ export class Usuarios extends AdapterRequest {
     return await this.request({
       method: 'post',
       url: `/usuario`,
-      body: { ...data, ID_GRUPO: Number(data.ID_GRUPO) }
+      body: {
+        ...data,
+        ID_GRUPO: Number(data.ID_GRUPO),
+        S_NOME: data.S_NOME.toUpperCase()
+      }
     });
   }
 }
