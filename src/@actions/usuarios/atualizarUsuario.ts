@@ -1,5 +1,5 @@
 'use server';
-import { Usuarios } from '@/@classes/Usuarios';
+import { Usuario } from '@/@classes/Usuario';
 import { EditUserType } from '@/@schemas/cadastros/usuarios/EditUserSchema';
 export type atualizarUsuarioParam = {
   data: EditUserType,
@@ -10,7 +10,7 @@ export const atualizarUsuario = async ({
   ID_USUARIO
 }: atualizarUsuarioParam): Promise<{ message: string }> => {
   try {
-    const response = await new Usuarios().atualizarUsuario({
+    const response = await new Usuario().atualizarUsuario({
       ID_USUARIO,
       data
     });

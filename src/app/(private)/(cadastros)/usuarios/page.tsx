@@ -3,7 +3,7 @@ import { Tabela } from '../usuarios/components/Tabela';
 import Pagination from '@/components/pagination';
 import { SearchData } from '@/components/search-data';
 
-import { Usuarios } from '@/@classes/Usuarios';
+import { Usuario } from '@/@classes/Usuario';
 import { FiltersPage } from '@/@types/FiltersType';
 export type UserPageProps = {
   searchParams: FiltersPage & {
@@ -11,7 +11,7 @@ export type UserPageProps = {
   }
 };
 const UsuariosPage = async ({ searchParams }: UserPageProps) => {
-  const users = (await new Usuarios().getAll({ searchParams })).body;
+  const users = (await new Usuario().getAll({ searchParams })).body;
   return (
     <section>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">

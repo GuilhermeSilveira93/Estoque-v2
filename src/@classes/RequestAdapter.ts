@@ -3,6 +3,14 @@ import { AxiosError, AxiosResponse } from 'axios';
 type HttpRequest = {
   url: string,
   method: 'get' | 'post' | 'put' | 'delete' | 'patch',
+  responseType?:
+    | 'arraybuffer'
+    | 'blob'
+    | 'document'
+    | 'formdata'
+    | 'json'
+    | 'stream'
+    | 'text',
   body?: any,
   params?: any,
   headers?: any
@@ -20,6 +28,7 @@ export class AdapterRequest implements HttpClient {
     try {
       axiosResponse = await api({
         url: data.url,
+        responseType: data.responseType,
         params: data.params,
         method: data.method,
         data: data.body,

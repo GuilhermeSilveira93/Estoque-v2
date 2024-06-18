@@ -1,5 +1,5 @@
 'use server';
-import { Usuarios } from '@/@classes/Usuarios';
+import { Usuario } from '@/@classes/Usuario';
 import { CreateUserType } from '@/@schemas/cadastros/usuarios/CreateUserSchema';
 export type criarUsuarioProps = {
   data: CreateUserType
@@ -8,7 +8,7 @@ export const criarUsuario = async ({
   data
 }: criarUsuarioProps): Promise<{ message: string }> => {
   try {
-    const response = await new Usuarios().createUser({
+    const response = await new Usuario().createUser({
       data
     });
     if (response.statusCode !== 202)
