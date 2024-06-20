@@ -1,11 +1,11 @@
 'use server';
-import { Empresa } from '@/@classes/Empresa';
-import { CreateEmpresaType } from '@/@schemas';
-export const criarEmpresa = async (
-  data: CreateEmpresaType
+import { Fornecedor } from '@/@classes/Fornecedor';
+import { CreateFornecedorType } from '@/@schemas';
+export const criarFornecedor = async (
+  data: CreateFornecedorType
 ): Promise<{ message: string }> => {
   try {
-    const response = await new Empresa().createEmp(data);
+    const response = await new Fornecedor().createFornecedor(data);
     if (response.statusCode !== 202)
       throw new Error('Algo deu errado, entre em contato com suporte', {
         cause: 'ServerError'

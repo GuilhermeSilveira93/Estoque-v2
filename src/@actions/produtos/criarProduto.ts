@@ -12,6 +12,6 @@ export const criarProduto = async (
       });
     return response.body;
   } catch (error) {
-    throw new Error(error.message);
+    throw new Error(error.message as string, { cause: error.cause });
   }
 };

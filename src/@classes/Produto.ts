@@ -57,7 +57,7 @@ export class Produto extends AdapterRequest {
     }
   }
   async attProd({ ID_PRODUTO, data }: attProdParams) {
-    const resposta = await this.request<{ message: string }>({
+    return await this.request<{ message: string }>({
       method: 'patch',
       url: `produto/${ID_PRODUTO}`,
       body: {
@@ -66,7 +66,6 @@ export class Produto extends AdapterRequest {
         S_NOME: data.S_NOME.toUpperCase()
       }
     });
-    return resposta;
   }
   async getMovimentacao() {
     return await this.request<GetMovimentacaoType>({
@@ -75,14 +74,18 @@ export class Produto extends AdapterRequest {
     });
   }
   async createProd(data: CreateProdType) {
-    return await this.request<{ message: string }>({
-      method: 'post',
-      url: '/produto',
-      body: {
-        ...data,
-        S_NOME: data.S_NOME.toUpperCase(),
-        ID_TIPO: Number(data.ID_TIPO)
-      }
-    });
+    try {
+      return await this.request<{ message: string }>({
+        method: 'post',
+        url: '/produto',
+        body: {
+          ...data,
+          S_NOME: data.S_NOME.toUpperCase(),
+          ID_TIPO: Number(data.ID_TIPO)
+        }
+      });
+    } catch (error) {
+      throw new Error(error.message, { cause: error.cause });
+    }
   }
 }

@@ -34,13 +34,22 @@ export class AdapterRequest implements HttpClient {
         data: data.body,
         headers: data.headers
       });
+      return {
+        statusCode: axiosResponse.status,
+        body: axiosResponse.data
+      };
     } catch (error) {
       const _error = error as AxiosError<{ message: string }>;
-      throw new Error(_error.response?.data.message, { cause: _error.code });
+      switch (_error.code) {
+        case 'ERR_BAD_REQUEST':
+          throw new Error('Falha ao realizar operação.', {
+            cause: _error.code
+          });
+        default:
+          throw new Error(_error.response?.data.message, {
+            cause: _error.code
+          });
+      }
     }
-    return {
-      statusCode: axiosResponse.status,
-      body: axiosResponse.data
-    };
   }
 }

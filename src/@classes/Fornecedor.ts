@@ -1,4 +1,5 @@
-import { atualizarFornecedorParam } from '@/@actions/fornecedores/atualizarProduto';
+import { atualizarFornecedorParam } from '@/@actions';
+import { CreateFornecedorType } from '@/@schemas';
 import { FornecedorType } from '@/@types/api';
 import { FornecedorPageProps } from '@/app/(private)/(cadastros)/fornecedores/page';
 
@@ -39,5 +40,14 @@ export class Fornecedor extends AdapterRequest {
     } catch (error) {
       return { statusCode: 404, body: { message: JSON.stringify(error) } };
     }
+  }
+  async createFornecedor(data: CreateFornecedorType) {
+    return await this.request<{ message: string }>({
+      method: 'post',
+      url: '/fornecedor',
+      body: {
+        S_NOME: data.S_NOME.toUpperCase()
+      }
+    });
   }
 }

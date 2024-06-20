@@ -1,4 +1,4 @@
-import CreateProd from './components/createProd';
+import CreateFornecedor from './components/createFornecedor';
 import { Tabela } from './components/Tabela';
 import Pagination from '@/components/pagination';
 import { SearchData } from '@/components/search-data';
@@ -16,7 +16,7 @@ const FornecedoresPage = async ({ searchParams }: FornecedorPageProps) => {
   return (
     <section>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
-        Produtos
+        Fornecedores
       </h1>
       <section className="rounded-b-xl bg-card">
         <header>
@@ -27,7 +27,7 @@ const FornecedoresPage = async ({ searchParams }: FornecedorPageProps) => {
             <Tabela
               data={fornecedores.data}
               searchParams={searchParams}
-              ocultar={[]}
+              ocultar={['ID_FORNECEDOR']}
             />
           ) : (
             <div className="flex h-32 items-center justify-center">
@@ -39,7 +39,7 @@ const FornecedoresPage = async ({ searchParams }: FornecedorPageProps) => {
           {fornecedores.total > 0 && <Pagination total={fornecedores.total} />}
         </footer>
       </section>
-      <CreateProd />
+      <CreateFornecedor />
     </section>
   );
 };

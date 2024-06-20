@@ -1,6 +1,6 @@
 'use server';
 import { Fornecedor } from '@/@classes/Fornecedor';
-import { EditFornecedorType } from '@/@schemas/cadastros/empresas copy/EditEmpresaSchema';
+import { EditFornecedorType } from '@/@schemas/cadastros/fornecedor/EditEmpresaSchema';
 export type atualizarFornecedorParam = {
   data: EditFornecedorType,
   ID_FORNECEDOR: number
@@ -20,6 +20,6 @@ export const atualizarFornecedor = async ({
       });
     return response.body;
   } catch (error) {
-    return { message: JSON.stringify(error) };
+    throw new Error(error as string);
   }
 };

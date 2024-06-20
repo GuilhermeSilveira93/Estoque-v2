@@ -1,29 +1,35 @@
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
-import { CreateEmpresaSchema, CreateEmpresaType } from '@/@schemas';
+import { CreateEmpresaSchema } from '@/@schemas';
+import {
+  CreateFornecedorSchema,
+  CreateFornecedorType
+} from '@/@schemas/cadastros/fornecedor/CreateEmpresaSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
-export type useEmpresaCreateFormProps = {
-  criarEmpresa: (data: CreateEmpresaType) => Promise<{
+export type useFornecedorCreateFormProps = {
+  criarFornecedor: (data: CreateFornecedorType) => Promise<{
     message: string
   }>
 };
-export const useEmpresaCreateForm = ({
-  criarEmpresa
-}: useEmpresaCreateFormProps) => {
+export const useFornecedorCreateForm = ({
+  criarFornecedor
+}: useFornecedorCreateFormProps) => {
   const router = useRouter();
-  const form = useForm<CreateEmpresaType>({
+  const form = useForm<CreateFornecedorType>({
     mode: 'all',
     defaultValues: {
       S_NOME: ''
     },
-    resolver: zodResolver(CreateEmpresaSchema)
+    resolver: zodResolver(CreateFornecedorSchema)
   });
-  const createEmpresa = async (data: CreateEmpresaType): Promise<void> => {
+  const createFornecedor = async (
+    data: CreateFornecedorType
+  ): Promise<void> => {
     const response = (): Promise<{ message: string }> => {
       return new Promise((resolve, reject) => {
-        criarEmpresa(data)
+        criarFornecedor(data)
           .then((res) => {
             router.refresh();
             resolve(res);
@@ -34,7 +40,7 @@ export const useEmpresaCreateForm = ({
       });
     };
     toast.promise(response, {
-      loading: 'Criando Produto...',
+      loading: 'Criando Fornecedor...',
       success: (data) => {
         return data.message;
       },
@@ -46,6 +52,6 @@ export const useEmpresaCreateForm = ({
   return {
     form,
     isSubmitting: form.formState.isSubmitting,
-    createEmpresa: form.handleSubmit(createEmpresa)
+    createFornecedor: form.handleSubmit(createFornecedor)
   };
 };

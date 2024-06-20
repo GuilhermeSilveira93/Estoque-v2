@@ -9,26 +9,24 @@ import {
   DialogTrigger
 } from '@/components/ui/dialog';
 
-import { criarProduto } from '@/@actions';
-import { Tipos } from '@/@classes/Tipos';
+import { criarFornecedor } from '@/@actions';
 
-import CreateProdForm from './CreateProdForm';
+import CreateFornecedorForm from './createFornecedorForm';
 
-const CreateProd = memo(async () => {
-  const tipos = (await new Tipos().getAll()).body;
+const CreateFornecedor = memo(async () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="default">Criar Produto +</Button>
+        <Button variant="default">Criar Fornecedor +</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Cadastro de Produto</DialogTitle>
         </DialogHeader>
-        <CreateProdForm criarProduto={criarProduto} tipos={tipos.data} />
+        <CreateFornecedorForm criarFornecedor={criarFornecedor} />
       </DialogContent>
     </Dialog>
   );
 });
-CreateProd.displayName = 'CreateProd';
-export default CreateProd;
+CreateFornecedor.displayName = 'CreateFornecedor';
+export default CreateFornecedor;

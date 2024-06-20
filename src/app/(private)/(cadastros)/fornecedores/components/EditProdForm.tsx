@@ -11,30 +11,23 @@ import {
   FormLabel,
   FormMessage
 } from '@/components/ui/form';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue
-} from '@/components/ui/select';
 
-import { TiposType } from '@/@types/api/ReqTipos';
-import { useProdEditForm, useProdEditFormProps } from '@/hooks/cadastro';
-type EditProdFormProps = useProdEditFormProps & {
-  tipos: TiposType[]
-};
+import {
+  useFornecedorEditForm,
+  useFornecedorEditFormProps
+} from '@/hooks/cadastro';
+type EditProdFormProps = useFornecedorEditFormProps;
 
 const EditProdForm = memo(
-  ({ produto, atualizarProduto, tipos }: EditProdFormProps) => {
-    const { form, updateProd, isSubmitting } = useProdEditForm({
-      produto,
-      atualizarProduto
+  ({ fornecedor, atualizarFornecedor }: EditProdFormProps) => {
+    const { form, updateFornecedor, isSubmitting } = useFornecedorEditForm({
+      fornecedor,
+      atualizarFornecedor
     });
     return (
       <>
         <FormRoot {...form}>
-          <form onSubmit={updateProd} className="space-y-3">
+          <form onSubmit={updateFornecedor} className="space-y-3">
             <FormField
               control={form.control}
               name="S_NOME"
@@ -45,54 +38,6 @@ const EditProdForm = memo(
                     <Input
                       type="text"
                       placeholder="Digite o nome do produto"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="ID_TIPO"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Tipo do Produto:</FormLabel>
-                  <Select
-                    {...field}
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue datatype="number" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {tipos.map((tipo) => (
-                        <SelectItem
-                          key={tipo.ID_TIPO + 'GrupoID'}
-                          value={tipo.ID_TIPO.toString()}
-                        >
-                          {tipo.S_NOME}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="N_SERIAL"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Serial: </FormLabel>
-                  <FormControl>
-                    <Input
-                      type="text"
-                      placeholder="Serial do produto"
                       {...field}
                     />
                   </FormControl>

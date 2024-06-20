@@ -9,21 +9,21 @@ import {
   TableRow
 } from '@/components/ui';
 
-import { Tipos } from '@/@classes/Tipos';
-import { Produtos, ProdutosKeys } from '@/@types/api';
+import { FornecedorKeys, FornecedorType } from '@/@types/api';
 import { PascalCase } from '@/@utils';
 
-import { ProdutosPageProps } from '../page';
-import EditProd from './editProd';
+import { FornecedorPageProps } from '../page';
+import EditFornecedor from './editFornecedor';
 
 type TabelaProps = {
-  data: Produtos[],
+  data: FornecedorType[],
   ocultar: string[],
-  searchParams: ProdutosPageProps['searchParams']
+  searchParams: FornecedorPageProps['searchParams']
 };
 export const Tabela = async ({ data, ocultar }: TabelaProps) => {
-  const tableHeader = Object.keys(data[0] as Produtos) as ProdutosKeys[];
-  const tipos = (await new Tipos().getAll()).body;
+  const tableHeader = Object.keys(
+    data[0] as FornecedorType
+  ) as FornecedorKeys[];
   return (
     <>
       <Table className="text-center text-card-foreground">
@@ -48,29 +48,31 @@ export const Tabela = async ({ data, ocultar }: TabelaProps) => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data.map((produto) => {
+          {data.map((fornecedor) => {
             return (
               <TableRow
-                key={produto.ID_PRODUTO}
+                key={fornecedor.ID_FORNECEDOR}
                 className="border-card-foreground"
               >
                 {tableHeader.map((header, index) => {
                   if (!ocultar.includes(header)) {
                     return (
                       <TableCell
-                        key={`${produto.ID_PRODUTO}-${header + index}`}
+                        key={`${fornecedor.ID_FORNECEDOR}-${header + index}`}
                       >
-                        {produto[header] !== undefined && produto[header]}
+                        {fornecedor[header] !== undefined && fornecedor[header]}
                       </TableCell>
                     );
                   }
                   return null;
                 })}
-                <TableCell key={`${produto.ID_PRODUTO}-actions`} align="center">
-                  <EditProd
-                    key={`${produto.ID_PRODUTO}-editProd`}
-                    produto={produto}
-                    tipos={tipos.data}
+                <TableCell
+                  key={`${fornecedor.ID_FORNECEDOR}-actions`}
+                  align="center"
+                >
+                  <EditFornecedor
+                    key={`${fornecedor.ID_FORNECEDOR}-editProd`}
+                    fornecedor={fornecedor}
                   />
                 </TableCell>
               </TableRow>

@@ -20,6 +20,6 @@ export const atualizarProduto = async ({
       });
     return response.body;
   } catch (error) {
-    return { message: JSON.stringify(error) };
+    throw new Error(error as string);
   }
 };
