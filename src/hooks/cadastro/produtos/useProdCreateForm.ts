@@ -28,11 +28,11 @@ export const useProdCreateForm = ({ criarProduto }: useProdCreateFormProps) => {
       return new Promise((resolve, reject) => {
         criarProduto(data)
           .then((res) => {
-            router.refresh();
             resolve(res);
+            router.refresh();
           })
           .catch((err) => {
-            reject(JSON.stringify(err));
+            reject({ message: err });
           });
       });
     };

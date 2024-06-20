@@ -11,6 +11,7 @@
   },
   "rules": {
     "no-unused-vars": [2, {"vars": "all", "args": "after-used"}],
+    "react/prop-types": "off",
     "@typescript-eslint/no-non-null-asserted-optional-chain": "warn",
     "semi": "warn",
     "comma-dangle": "off",

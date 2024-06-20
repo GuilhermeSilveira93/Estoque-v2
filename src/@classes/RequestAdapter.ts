@@ -36,9 +36,7 @@ export class AdapterRequest implements HttpClient {
       });
     } catch (error) {
       const _error = error as AxiosError<{ message: string }>;
-      throw new Error(_error?.response?.data?.message, {
-        cause: _error.cause
-      });
+      throw new Error(_error.response?.data.message, { cause: _error.code });
     }
     return {
       statusCode: axiosResponse.status,
