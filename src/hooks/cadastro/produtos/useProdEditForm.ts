@@ -41,7 +41,7 @@ const updateProd = async (data: EditProdType): Promise<void> => {
       }); 
     };
     toast.promise(response, {
-      loading: 'Atualizando Usuário...',
+      loading: 'Atualizando Produto...',
       success: (data) => {
         return data.message;
       },

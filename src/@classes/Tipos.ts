@@ -17,4 +17,20 @@ export class Tipos extends AdapterRequest {
       });
     }
   }
+  async attTipo({ ID_TIPO, data }: { ID_TIPO: number, data: TiposType }) {
+    try {
+      return await this.request<{ message: string }>({
+        method: 'patch',
+        url: `/empresa/${ID_TIPO}`,
+        body: {
+          ...data,
+          S_NOME: data.S_NOME.toUpperCase()
+        }
+      });
+    } catch (error) {
+      throw new Error((error as Error).message as string, {
+        cause: (error as Error).cause
+      });
+    }
+  }
 }

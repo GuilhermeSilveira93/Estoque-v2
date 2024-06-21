@@ -1,31 +1,34 @@
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
-import { CreateFornecedorSchema, CreateFornecedorType } from '@/@schemas';
+import { atualizarTipoParam } from '@/@actions';
+import { EditTipoSchema, EditTipoType } from '@/@schemas';
+import { TiposType } from '@/@types/api';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
-export type useFornecedorCreateFormProps = {
-  criarFornecedor: (data: CreateFornecedorType) => Promise<{
-    message: string
-  }>
+export type useTipoEditFormProps = {
+  tipo: TiposType,
+  atualizarTipo: ({ data, ID_TIPO }: atualizarTipoParam) => Promise<{
+    message: string;
+}>
 };
-export const useFornecedorCreateForm = ({
-  criarFornecedor
-}: useFornecedorCreateFormProps) => {
+export const useTipoEditForm = ({
+  tipo,
+  atualizarTipo
+}: useTipoEditFormProps) => {
   const router = useRouter();
-  const form = useForm<CreateFornecedorType>({
+  const form = useForm<EditTipoType>({
     mode: 'all',
     defaultValues: {
-      S_NOME: ''
+      S_NOME: tipo.S_NOME,
+      S_ATIVO: tipo.S_ATIVO === 'S'
     },
-    resolver: zodResolver(CreateFornecedorSchema)
+    resolver: zodResolver(EditTipoSchema)
   });
-  const createFornecedor = async (
-    data: CreateFornecedorType
-  ): Promise<void> => {
+const updateTipo = async (data: EditTipoType): Promise<void> => {
     const response = (): Promise<{ message: string }> => {
       return new Promise((resolve, reject) => {
-        criarFornecedor(data)
+        atualizarTipo({ ID_TIPO: tipo.ID_TIPO, data })
           .then((res) => {
             router.refresh();
             resolve(res);
@@ -33,10 +36,10 @@ export const useFornecedorCreateForm = ({
           .catch((err) => {
             reject({ message: err });
           });
-      });
+      }); 
     };
     toast.promise(response, {
-      loading: 'Criando Fornecedor...',
+      loading: 'Atualizando Tipos...',
       success: (data) => {
         return data.message;
       },
@@ -48,6 +51,6 @@ export const useFornecedorCreateForm = ({
   return {
     form,
     isSubmitting: form.formState.isSubmitting,
-    createFornecedor: form.handleSubmit(createFornecedor)
+    updateTipo: form.handleSubmit(updateTipo)
   };
 };

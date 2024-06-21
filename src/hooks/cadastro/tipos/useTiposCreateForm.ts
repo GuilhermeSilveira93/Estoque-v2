@@ -1,31 +1,27 @@
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
-import { CreateFornecedorSchema, CreateFornecedorType } from '@/@schemas';
+import { CreateTipoSchema, CreateTipoType } from '@/@schemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
-export type useFornecedorCreateFormProps = {
-  criarFornecedor: (data: CreateFornecedorType) => Promise<{
+export type useTipoCreateFormProps = {
+  criarTipo: (data: CreateTipoType) => Promise<{
     message: string
   }>
 };
-export const useFornecedorCreateForm = ({
-  criarFornecedor
-}: useFornecedorCreateFormProps) => {
+export const useTipoCreateForm = ({ criarTipo }: useTipoCreateFormProps) => {
   const router = useRouter();
-  const form = useForm<CreateFornecedorType>({
+  const form = useForm<CreateTipoType>({
     mode: 'all',
     defaultValues: {
       S_NOME: ''
     },
-    resolver: zodResolver(CreateFornecedorSchema)
+    resolver: zodResolver(CreateTipoSchema)
   });
-  const createFornecedor = async (
-    data: CreateFornecedorType
-  ): Promise<void> => {
+  const createTipo = async (data: CreateTipoType): Promise<void> => {
     const response = (): Promise<{ message: string }> => {
       return new Promise((resolve, reject) => {
-        criarFornecedor(data)
+        criarTipo(data)
           .then((res) => {
             router.refresh();
             resolve(res);
@@ -36,7 +32,7 @@ export const useFornecedorCreateForm = ({
       });
     };
     toast.promise(response, {
-      loading: 'Criando Fornecedor...',
+      loading: 'Criando Tipo...',
       success: (data) => {
         return data.message;
       },
@@ -48,6 +44,6 @@ export const useFornecedorCreateForm = ({
   return {
     form,
     isSubmitting: form.formState.isSubmitting,
-    createFornecedor: form.handleSubmit(createFornecedor)
+    createTipo: form.handleSubmit(createTipo)
   };
 };

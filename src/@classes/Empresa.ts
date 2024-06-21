@@ -3,10 +3,6 @@ import { EmpresaType } from '@/@types/api';
 import { EmpresaPageProps } from '@/app/(private)/(cadastros)/empresas/page';
 
 import { AdapterRequest } from './RequestAdapter';
-type attEmpresaParams = {
-  ID_EMPRESA: number,
-  data: EditEmpresaType
-};
 export class Empresa extends AdapterRequest {
   constructor() {
     super();
@@ -31,7 +27,13 @@ export class Empresa extends AdapterRequest {
       });
     }
   }
-  async attEmpresa({ ID_EMPRESA, data }: attEmpresaParams) {
+  async attEmpresa({
+    ID_EMPRESA,
+    data
+  }: {
+    ID_EMPRESA: number,
+    data: EditEmpresaType
+  }) {
     try {
       return await this.request<{ message: string }>({
         method: 'patch',
