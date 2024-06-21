@@ -1,11 +1,11 @@
 'use server';
-import { Empresa } from '@/@classes/Empresa';
+import { Tipos } from '@/@classes';
 import { CreateTipoType } from '@/@schemas';
 export const criarTipo = async (
   data: CreateTipoType
 ): Promise<{ message: string }> => {
   try {
-    const response = await new Empresa().createEmp(data);
+    const response = await new Tipos().createTipo(data);
     if (response.statusCode !== 202)
       throw new Error('Algo deu errado, entre em contato com suporte', {
         cause: 'ServerError'

@@ -6,3 +6,5 @@ export * from './empresas/useEmpresaEditForm';
 export * from './empresas/useEmpresaCreateForm';
 export * from './fornecedores/useFornecedorCreateForm';
 export * from './fornecedores/useFornecedorEditForm';
+export * from './tipos/useTiposCreateForm';
+export * from './tipos/useTiposEditForm';

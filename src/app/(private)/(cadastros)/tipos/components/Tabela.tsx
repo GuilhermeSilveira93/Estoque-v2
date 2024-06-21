@@ -9,21 +9,19 @@ import {
   TableRow
 } from '@/components/ui';
 
-import { Tipos } from '@/@classes/Tipos';
-import { Produtos, ProdutosKeys } from '@/@types/api';
+import { TiposType, TiposTypeKeys } from '@/@types/api';
 import { PascalCase } from '@/@utils';
 
-import { ProdutosPageProps } from '../page';
-import EditProd from './editProd';
+import { TiposPageProps } from '../page';
+import EditTipo from './editTipo';
 
 type TabelaProps = {
-  data: Produtos[],
+  data: TiposType[],
   ocultar: string[],
-  searchParams: ProdutosPageProps['searchParams']
+  searchParams: TiposPageProps['searchParams']
 };
 export const Tabela = async ({ data, ocultar }: TabelaProps) => {
-  const tableHeader = Object.keys(data[0] as Produtos) as ProdutosKeys[];
-  const tipos = (await new Tipos().getAll()).body;
+  const tableHeader = Object.keys(data[0] as TiposType) as TiposTypeKeys[];
   return (
     <>
       <Table className="text-center text-card-foreground">
@@ -48,30 +46,24 @@ export const Tabela = async ({ data, ocultar }: TabelaProps) => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data.map((produto) => {
+          {data.map((tipo) => {
             return (
               <TableRow
-                key={produto.ID_PRODUTO}
+                key={`${tipo.ID_TIPO}TIPO`}
                 className="border-card-foreground"
               >
                 {tableHeader.map((header, index) => {
                   if (!ocultar.includes(header)) {
                     return (
-                      <TableCell
-                        key={`${produto.ID_PRODUTO}-${header + index}`}
-                      >
-                        <>{produto[header] !== undefined && produto[header]}</>
+                      <TableCell key={`${tipo.ID_TIPO}-${header + index}Tipo`}>
+                        {tipo[header] !== undefined && tipo[header]}
                       </TableCell>
                     );
                   }
                   return null;
                 })}
-                <TableCell key={`${produto.ID_PRODUTO}-actions`} align="center">
-                  <EditProd
-                    key={`${produto.ID_PRODUTO}-editProd`}
-                    produto={produto}
-                    tipos={tipos.data}
-                  />
+                <TableCell key={`${tipo.ID_TIPO}-actionsTipo`} align="center">
+                  <EditTipo key={`${tipo.ID_TIPO}-editTipo`} tipo={tipo} />
                 </TableCell>
               </TableRow>
             );
