@@ -18,7 +18,9 @@ export class Grupos extends AdapterRequest {
         url: '/grupo'
       });
     } catch (error) {
-      return { body: { data: [] }, statusCode: 204 };
+      throw new Error((error as Error).message as string, {
+        cause: (error as Error).cause
+      });
     }
   }
 }

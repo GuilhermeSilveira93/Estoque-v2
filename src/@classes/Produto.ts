@@ -35,7 +35,9 @@ export class Produto extends AdapterRequest {
         }
       });
     } catch (error) {
-      return { body: { data: [], total: 0 }, statusCode: 204 };
+      throw new Error((error as Error).message as string, {
+        cause: (error as Error).cause
+      });
     }
   }
   async getTabela({ searchParams }: ProdutosPageProps) {
@@ -53,19 +55,27 @@ export class Produto extends AdapterRequest {
         }
       });
     } catch (error) {
-      return { body: { data: [], total: 0 }, statusCode: 204 };
+      throw new Error((error as Error).message as string, {
+        cause: (error as Error).cause
+      });
     }
   }
   async attProd({ ID_PRODUTO, data }: attProdParams) {
-    return await this.request<{ message: string }>({
-      method: 'patch',
-      url: `produto/${ID_PRODUTO}`,
-      body: {
-        ...data,
-        ID_TIPO: Number(data.ID_TIPO),
-        S_NOME: data.S_NOME.toUpperCase()
-      }
-    });
+    try {
+      return await this.request<{ message: string }>({
+        method: 'patch',
+        url: `produto/${ID_PRODUTO}`,
+        body: {
+          ...data,
+          ID_TIPO: Number(data.ID_TIPO),
+          S_NOME: data.S_NOME.toUpperCase()
+        }
+      });
+    } catch (error) {
+      throw new Error((error as Error).message as string, {
+        cause: (error as Error).cause
+      });
+    }
   }
   async getMovimentacao() {
     return await this.request<GetMovimentacaoType>({
@@ -85,7 +95,9 @@ export class Produto extends AdapterRequest {
         }
       });
     } catch (error) {
-      throw new Error(error.message, { cause: error.cause });
+      throw new Error((error as Error).message as string, {
+        cause: (error as Error).cause
+      });
     }
   }
 }

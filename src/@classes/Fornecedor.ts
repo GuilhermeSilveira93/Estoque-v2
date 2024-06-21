@@ -24,7 +24,9 @@ export class Fornecedor extends AdapterRequest {
         }
       });
     } catch (error) {
-      return { body: { data: [], total: 0 }, statusCode: 204 };
+      throw new Error((error as Error).message as string, {
+        cause: (error as Error).cause
+      });
     }
   }
   async attFornecedor({ ID_FORNECEDOR, data }: atualizarFornecedorParam) {
@@ -38,16 +40,24 @@ export class Fornecedor extends AdapterRequest {
         }
       });
     } catch (error) {
-      return { statusCode: 404, body: { message: JSON.stringify(error) } };
+      throw new Error((error as Error).message as string, {
+        cause: (error as Error).cause
+      });
     }
   }
   async createFornecedor(data: CreateFornecedorType) {
-    return await this.request<{ message: string }>({
-      method: 'post',
-      url: '/fornecedor',
-      body: {
-        S_NOME: data.S_NOME.toUpperCase()
-      }
-    });
+    try {
+      return await this.request<{ message: string }>({
+        method: 'post',
+        url: '/fornecedor',
+        body: {
+          S_NOME: data.S_NOME.toUpperCase()
+        }
+      });
+    } catch (error) {
+      throw new Error((error as Error).message as string, {
+        cause: (error as Error).cause
+      });
+    }
   }
 }

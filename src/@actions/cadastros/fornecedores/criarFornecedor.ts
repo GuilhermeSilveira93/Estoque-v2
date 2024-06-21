@@ -13,6 +13,8 @@ export const criarFornecedor = async (
 
     return response.body;
   } catch (error) {
-    throw new Error(error as string);
+    throw new Error((error as Error).message as string, {
+      cause: (error as Error).cause
+    });
   }
 };

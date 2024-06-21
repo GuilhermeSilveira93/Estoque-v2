@@ -23,7 +23,9 @@ export class Usuario extends AdapterRequest {
         params: searchParams
       });
     } catch (error) {
-      return { body: { data: [], total: 0 }, statusCode: 204 };
+      throw new Error((error as Error).message as string, {
+        cause: (error as Error).cause
+      });
     }
   }
   async atualizarUsuario({
@@ -33,25 +35,37 @@ export class Usuario extends AdapterRequest {
     ID_USUARIO: number,
     data: EditUserType
   }): Promise<{ statusCode: number, body: { message: string } }> {
-    return await this.request({
-      method: 'patch',
-      url: `/usuario/${ID_USUARIO}`,
-      body: { ...data, ID_GRUPO: Number(data.ID_GRUPO) }
-    });
+    try {
+      return await this.request({
+        method: 'patch',
+        url: `/usuario/${ID_USUARIO}`,
+        body: { ...data, ID_GRUPO: Number(data.ID_GRUPO) }
+      });
+    } catch (error) {
+      throw new Error((error as Error).message as string, {
+        cause: (error as Error).cause
+      });
+    }
   }
   async createUser({
     data
   }: {
     data: CreateUserType
   }): Promise<{ statusCode: number, body: { message: string } }> {
-    return await this.request({
-      method: 'post',
-      url: `/usuario`,
-      body: {
-        ...data,
-        ID_GRUPO: Number(data.ID_GRUPO),
-        S_NOME: data.S_NOME.toUpperCase()
-      }
-    });
+    try {
+      return await this.request({
+        method: 'post',
+        url: `/usuario`,
+        body: {
+          ...data,
+          ID_GRUPO: Number(data.ID_GRUPO),
+          S_NOME: data.S_NOME.toUpperCase()
+        }
+      });
+    } catch (error) {
+      throw new Error((error as Error).message as string, {
+        cause: (error as Error).cause
+      });
+    }
   }
 }

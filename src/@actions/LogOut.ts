@@ -6,6 +6,8 @@ export const DeleteCookie = async (key: string) => {
     cookies().delete(key);
     return { message: 'Deslogado com sucesso!' };
   } catch (error) {
-    return { message: 'Erro ao deslogar.' };
+    throw new Error((error as Error).message as string, {
+      cause: (error as Error).cause
+    });
   }
 };

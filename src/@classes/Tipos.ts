@@ -12,7 +12,9 @@ export class Tipos extends AdapterRequest {
         url: '/tipos'
       });
     } catch (error) {
-      return { body: { data: [] }, statusCode: 204 };
+      throw new Error((error as Error).message as string, {
+        cause: (error as Error).cause
+      });
     }
   }
 }

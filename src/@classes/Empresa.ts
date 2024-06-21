@@ -26,7 +26,9 @@ export class Empresa extends AdapterRequest {
         }
       });
     } catch (error) {
-      return { body: { data: [], total: 0 }, statusCode: 204 };
+      throw new Error((error as Error).message as string, {
+        cause: (error as Error).cause
+      });
     }
   }
   async attEmpresa({ ID_EMPRESA, data }: attEmpresaParams) {
@@ -40,16 +42,24 @@ export class Empresa extends AdapterRequest {
         }
       });
     } catch (error) {
-      return { statusCode: 404, body: { message: JSON.stringify(error) } };
+      throw new Error((error as Error).message as string, {
+        cause: (error as Error).cause
+      });
     }
   }
   async createEmp(data: CreateEmpresaType) {
-    return await this.request<{ message: string }>({
-      method: 'post',
-      url: '/empresa',
-      body: {
-        S_NOME: data.S_NOME.toUpperCase()
-      }
-    });
+    try {
+      return await this.request<{ message: string }>({
+        method: 'post',
+        url: '/empresa',
+        body: {
+          S_NOME: data.S_NOME.toUpperCase()
+        }
+      });
+    } catch (error) {
+      throw new Error((error as Error).message as string, {
+        cause: (error as Error).cause
+      });
+    }
   }
 }

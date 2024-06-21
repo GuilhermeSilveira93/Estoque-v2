@@ -16,7 +16,9 @@ export const LoginAction = async (
       });
     SetCookie('token', token);
     return { message };
-  } catch (errors) {
-    throw new Error(errors, { cause: 'NOTFOUND' });
+  } catch (error) {
+    throw new Error((error as Error).message as string, {
+      cause: (error as Error).cause
+    });
   }
 };
