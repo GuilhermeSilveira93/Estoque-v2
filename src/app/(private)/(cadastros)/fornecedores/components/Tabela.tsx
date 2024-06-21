@@ -34,7 +34,7 @@ export const Tabela = async ({ data, ocultar }: TabelaProps) => {
                 return (
                   <TableHead
                     className="border-b-0 border-card-foreground text-center text-3xl font-black text-card-foreground"
-                    key={header + index}
+                    key={`${header} + ${index}Forn`}
                   >
                     {PascalCase(header)}
                   </TableHead>
@@ -58,7 +58,7 @@ export const Tabela = async ({ data, ocultar }: TabelaProps) => {
                   if (!ocultar.includes(header)) {
                     return (
                       <TableCell
-                        key={`${fornecedor.ID_FORNECEDOR}-${header + index}`}
+                        key={`${fornecedor.ID_FORNECEDOR}-${header + index}Forne`}
                       >
                         {fornecedor[header] !== undefined && fornecedor[header]}
                       </TableCell>
@@ -67,11 +67,11 @@ export const Tabela = async ({ data, ocultar }: TabelaProps) => {
                   return null;
                 })}
                 <TableCell
-                  key={`${fornecedor.ID_FORNECEDOR}-actions`}
+                  key={`${fornecedor.ID_FORNECEDOR}-actionsEditForn`}
                   align="center"
                 >
                   <EditFornecedor
-                    key={`${fornecedor.ID_FORNECEDOR}-editProd`}
+                    key={`${fornecedor.ID_FORNECEDOR}-editForn`}
                     fornecedor={fornecedor}
                   />
                 </TableCell>

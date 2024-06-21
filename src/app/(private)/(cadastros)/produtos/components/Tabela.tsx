@@ -34,7 +34,7 @@ export const Tabela = async ({ data, ocultar }: TabelaProps) => {
                 return (
                   <TableHead
                     className="border-b-0 border-card-foreground text-center text-3xl font-black text-card-foreground"
-                    key={header + index}
+                    key={`${header} + ${index}Prod`}
                   >
                     {PascalCase(header)}
                   </TableHead>

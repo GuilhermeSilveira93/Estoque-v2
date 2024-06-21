@@ -10,7 +10,7 @@ import { atualizarFornecedor } from '@/@actions';
 import { FornecedorType } from '@/@types/api';
 import { Settings } from 'lucide-react';
 
-import EditFornecedorForm from './EditProdForm';
+import EditFornecedorForm from './EditFornecedorForm';
 type EditFornecedorProps = {
   fornecedor: FornecedorType
 };
