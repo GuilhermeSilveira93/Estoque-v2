@@ -51,14 +51,14 @@ export const Tabela = async ({ data, ocultar }: TabelaProps) => {
           {data.map((produto) => {
             return (
               <TableRow
-                key={produto.ID_PRODUTO}
+                key={`${produto.ID_PRODUTO}Prod`}
                 className="border-card-foreground"
               >
                 {tableHeader.map((header, index) => {
                   if (!ocultar.includes(header)) {
                     return (
                       <TableCell
-                        key={`${produto.ID_PRODUTO}-${header + index}`}
+                        key={`${produto.ID_PRODUTO}-${header + index}Prod`}
                       >
                         <>{produto[header] !== undefined && produto[header]}</>
                       </TableCell>
@@ -66,7 +66,10 @@ export const Tabela = async ({ data, ocultar }: TabelaProps) => {
                   }
                   return null;
                 })}
-                <TableCell key={`${produto.ID_PRODUTO}-actions`} align="center">
+                <TableCell
+                  key={`${produto.ID_PRODUTO}-actionsProd`}
+                  align="center"
+                >
                   <EditProd
                     key={`${produto.ID_PRODUTO}-editProd`}
                     produto={produto}

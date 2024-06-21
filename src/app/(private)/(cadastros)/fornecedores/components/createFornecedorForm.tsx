@@ -16,7 +16,7 @@ import {
   useFornecedorCreateFormProps
 } from '@/hooks/cadastro';
 type CreateFornecedorFormProps = useFornecedorCreateFormProps;
-const CreateProdForm = memo(
+const CreateFornecedorForm = memo(
   ({ criarFornecedor }: CreateFornecedorFormProps) => {
     const { form, createFornecedor, isSubmitting } = useFornecedorCreateForm({
       criarFornecedor
@@ -53,5 +53,5 @@ const CreateProdForm = memo(
     );
   }
 );
-CreateProdForm.displayName = 'CreateProdForm';
-export default CreateProdForm;
+CreateFornecedorForm.displayName = 'CreateFornecedorForm';
+export default CreateFornecedorForm;

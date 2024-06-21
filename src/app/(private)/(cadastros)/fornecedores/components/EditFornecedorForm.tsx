@@ -16,10 +16,10 @@ import {
   useFornecedorEditForm,
   useFornecedorEditFormProps
 } from '@/hooks/cadastro';
-type EditProdFormProps = useFornecedorEditFormProps;
+type EditFornecedorFormProps = useFornecedorEditFormProps;
 
-const EditProdForm = memo(
-  ({ fornecedor, atualizarFornecedor }: EditProdFormProps) => {
+const EditFornecedorForm = memo(
+  ({ fornecedor, atualizarFornecedor }: EditFornecedorFormProps) => {
     const { form, updateFornecedor, isSubmitting } = useFornecedorEditForm({
       fornecedor,
       atualizarFornecedor
@@ -74,5 +74,5 @@ const EditProdForm = memo(
     );
   }
 );
-EditProdForm.displayName = 'EditProdForm';
-export default EditProdForm;
+EditFornecedorForm.displayName = 'EditFornecedorForm';
+export default EditFornecedorForm;

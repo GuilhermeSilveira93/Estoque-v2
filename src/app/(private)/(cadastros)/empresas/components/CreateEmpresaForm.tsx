@@ -16,7 +16,7 @@ import {
   useEmpresaCreateFormProps
 } from '@/hooks/cadastro';
 type CreateEmpresaFormProps = useEmpresaCreateFormProps;
-const CreateProdForm = memo(({ criarEmpresa }: CreateEmpresaFormProps) => {
+const CreateEmpForm = memo(({ criarEmpresa }: CreateEmpresaFormProps) => {
   const { form, createEmpresa, isSubmitting } = useEmpresaCreateForm({
     criarEmpresa
   });
@@ -51,5 +51,5 @@ const CreateProdForm = memo(({ criarEmpresa }: CreateEmpresaFormProps) => {
     </>
   );
 });
-CreateProdForm.displayName = 'CreateProdForm';
-export default CreateProdForm;
+CreateEmpForm.displayName = 'CreateEmpForm';
+export default CreateEmpForm;

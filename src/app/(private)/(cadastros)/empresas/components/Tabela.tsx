@@ -49,24 +49,27 @@ export const Tabela = async ({ data, ocultar }: TabelaProps) => {
           {data.map((empresa) => {
             return (
               <TableRow
-                key={empresa.ID_EMPRESA}
+                key={`${empresa.ID_EMPRESA}Emp`}
                 className="border-card-foreground"
               >
                 {tableHeader.map((header, index) => {
                   if (!ocultar.includes(header)) {
                     return (
                       <TableCell
-                        key={`${empresa.ID_EMPRESA}-${header + index}`}
+                        key={`${empresa.ID_EMPRESA}-${header + index}Emp`}
                       >
-                        {empresa[header] !== undefined && empresa[header]}
+                        <>{empresa[header] !== undefined && empresa[header]}</>
                       </TableCell>
                     );
                   }
                   return null;
                 })}
-                <TableCell key={`${empresa.ID_EMPRESA}-actions`} align="center">
+                <TableCell
+                  key={`${empresa.ID_EMPRESA}-actionsEmp`}
+                  align="center"
+                >
                   <EditEmpresa
-                    key={`${empresa.ID_EMPRESA}-editProd`}
+                    key={`${empresa.ID_EMPRESA}-editEmp`}
                     empresa={empresa}
                   />
                 </TableCell>
