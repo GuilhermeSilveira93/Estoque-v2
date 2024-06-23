@@ -1,10 +1,12 @@
 export const metadata = {
-  title: 'Usuários - Estoque'
+  title: 'Empresas - Estoque'
 };
-export default function ProdutosLayout({
-  children
+export default function FornecedoresLayout({
+  children,
+  modal
 }: {
-  children: React.ReactNode
+  children: React.ReactNode,
+  modal: React.ReactNode
 }) {
-  return children;
+  return <>{children}</>;
 }

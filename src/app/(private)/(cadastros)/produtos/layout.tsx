@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Usuários - Estoque'
+  title: 'Produtos - Estoque'
 };
 export default function ProdutosLayout({
   children
