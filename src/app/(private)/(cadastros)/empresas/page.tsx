@@ -42,7 +42,7 @@ const EmpresasPage = async ({ searchParams }: EmpresaPageProps) => {
         </footer>
       </section>
       <CreateEmpresa />
-      <Link href={'/empresas/editEmp/100'}>Modal</Link>
+      <Link href={'/empresas/editEmp/26262626'}>Modal</Link>
     </section>
   );
 };

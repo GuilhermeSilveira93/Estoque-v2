@@ -9,7 +9,9 @@ import { toast } from 'sonner';
 export type useEmpresaEditFormProps = {
   empresa: EmpresaType,
   atualizarEmpresa: ({ data, ID_EMPRESA }: atualizarEmpresaParam) => Promise<{
-    message: string;
+    statusCode: number,
+    success: boolean,
+    body: {message: string;}
 }>
 };
 export const useEmpresaEditForm = ({
@@ -30,11 +32,12 @@ const updateEmpresa = async (data: EditEmpresaType): Promise<void> => {
       return new Promise((resolve, reject) => {
         atualizarEmpresa({ ID_EMPRESA: empresa.ID_EMPRESA, data })
           .then((res) => {
-            router.refresh();
-            resolve(res);
-          })
-          .catch((err) => {
-            reject({ message: err });
+            if (res.success) {
+              router.refresh();
+              resolve(res.body);
+            } else {
+              reject(res.body);
+            }
           });
       }); 
     };
