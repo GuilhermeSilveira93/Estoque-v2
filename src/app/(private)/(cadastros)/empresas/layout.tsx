@@ -8,5 +8,10 @@ export default function FornecedoresLayout({
   children: React.ReactNode,
   modal: React.ReactNode
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      {modal}
+    </>
+  );
 }

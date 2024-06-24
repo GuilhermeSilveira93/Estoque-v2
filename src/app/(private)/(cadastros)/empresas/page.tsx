@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import CreateEmpresa from './components/CreateEmpresa';
 import { Tabela } from './components/Tabela';
 import Pagination from '@/components/pagination';
@@ -40,6 +42,7 @@ const EmpresasPage = async ({ searchParams }: EmpresaPageProps) => {
         </footer>
       </section>
       <CreateEmpresa />
+      <Link href={'/empresas/editEmp/100'}>Modal</Link>
     </section>
   );
 };
