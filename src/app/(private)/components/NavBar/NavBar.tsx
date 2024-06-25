@@ -24,7 +24,7 @@ const NavBar = async () => {
       <SheetTrigger className="fixed right-0 top-0 z-10">
         <Menu />
       </SheetTrigger>
-      <SheetContent className="flex flex-col flex-wrap bg-background">
+      <SheetContent className="flex w-1/5 flex-col flex-wrap">
         <SheetHeader>
           <SheetTitle className="text-center text-foreground">
             Olá, {PascalCase(user.S_NOME)}!

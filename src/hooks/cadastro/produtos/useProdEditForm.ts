@@ -9,7 +9,10 @@ import { toast } from 'sonner';
 export type useProdEditFormProps = {
   produto: Produtos,
   atualizarProduto: ({ data, ID_PRODUTO }: atualizarProdutoParam) => Promise<{
-    message: string;
+    statusCode: number,
+    success: boolean,
+    body?: {message: string},
+    message?: string
 }>
 };
 export const useProdEditForm = ({
@@ -28,25 +31,25 @@ export const useProdEditForm = ({
     resolver: zodResolver(EditProdSchema)
   });
 const updateProd = async (data: EditProdType): Promise<void> => {
-    const response = (): Promise<{ message: string }> => {
+    const response = (): Promise<string> => {
       return new Promise((resolve, reject) => {
         atualizarProduto({ ID_PRODUTO: produto.ID_PRODUTO, data })
-          .then((res) => {
-            router.refresh();
-            resolve(res);
-          })
-          .catch((err) => {
-            reject(JSON.stringify(err));
-          });
+        .then((res) => {
+          resolve(res);
+          router.refresh();
+        })
+        .catch((err) => {
+          reject({ message: err });
+        });
       }); 
     };
     toast.promise(response, {
       loading: 'Atualizando Produto...',
       success: (data) => {
-        return data.message;
+        return data;
       },
       error: (data) => {
-        return data.message;
+        return data;
       }
     });
   };

@@ -12,7 +12,10 @@ export type ProdutosPageProps = {
   }
 };
 const ProdutosPage = async ({ searchParams }: ProdutosPageProps) => {
-  const produtos = (await new Produto().getAll({ searchParams })).body;
+  const produtos = (await new Produto().getAll({ searchParams })).body ?? {
+    data: [],
+    total: 0
+  };
   return (
     <section>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">

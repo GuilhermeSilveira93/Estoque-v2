@@ -8,20 +8,10 @@ export type atualizarProdutoParam = {
 export const atualizarProduto = async ({
   data,
   ID_PRODUTO
-}: atualizarProdutoParam): Promise<{ message: string }> => {
-  try {
-    const response = await new Produto().attProd({
-      ID_PRODUTO,
-      data
-    });
-    if (response.statusCode !== 202)
-      throw new Error('Algo deu errado, entre em contato com suporte', {
-        cause: 'ServerError'
-      });
-    return response.body;
-  } catch (error) {
-    throw new Error((error as Error).message as string, {
-      cause: (error as Error).cause
-    });
-  }
+}: atualizarProdutoParam) => {
+  const date = await new Produto().attProd({
+    ID_PRODUTO,
+    data
+  });
+  return date;
 };
