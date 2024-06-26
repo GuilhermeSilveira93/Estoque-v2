@@ -6,6 +6,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 export type useTipoCreateFormProps = {
   criarTipo: (data: CreateTipoType) => Promise<{
+    statusCode: number,
+    success: boolean,
+    body: { message: string },
     message: string
   }>
 };
@@ -19,25 +22,28 @@ export const useTipoCreateForm = ({ criarTipo }: useTipoCreateFormProps) => {
     resolver: zodResolver(CreateTipoSchema)
   });
   const createTipo = async (data: CreateTipoType): Promise<void> => {
-    const response = (): Promise<{ message: string }> => {
+    const response = (): Promise<string> => {
       return new Promise((resolve, reject) => {
         criarTipo(data)
           .then((res) => {
+            if (!res.success) {
+              throw new Error(res.message);
+            }
+            resolve(res.body.message);
             router.refresh();
-            resolve(res);
           })
           .catch((err) => {
-            reject({ message: err });
+            reject(err.message);
           });
       });
     };
     toast.promise(response, {
       loading: 'Criando Tipo...',
       success: (data) => {
-        return data.message;
+        return data;
       },
       error: (data) => {
-        return data.message;
+        return data;
       }
     });
   };

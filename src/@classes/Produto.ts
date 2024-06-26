@@ -51,14 +51,7 @@ export class Produto extends AdapterRequest {
       }
     });
   }
-  async attProd({ ID_PRODUTO, data }: attProdParams): Promise<{
-    statusCode: number,
-    success: boolean,
-    body?: {
-      message: string
-    },
-    message?: string
-  }> {
+  async attProd({ ID_PRODUTO, data }: attProdParams) {
     return await this.request<{ message: string }>({
       method: 'patch',
       url: `produto/${ID_PRODUTO}`,

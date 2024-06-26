@@ -9,7 +9,10 @@ import { toast } from 'sonner';
 export type useFornecedorEditFormProps = {
   fornecedor: FornecedorType,
   atualizarFornecedor: ({ data, ID_FORNECEDOR }: atualizarFornecedorParam) => Promise<{
-    message: string;
+    statusCode: number,
+    success: boolean,
+    body: {message: string},
+    message: string
 }>
 };
 export const useFornecedorEditForm = ({
@@ -26,25 +29,28 @@ export const useFornecedorEditForm = ({
     resolver: zodResolver(EditEmpresaSchema)
   });
 const updateFornecedor = async (data: EditEmpresaType): Promise<void> => {
-    const response = (): Promise<{ message: string }> => {
+    const response = (): Promise<string> => {
       return new Promise((resolve, reject) => {
         atualizarFornecedor({ ID_FORNECEDOR: fornecedor.ID_FORNECEDOR, data })
-          .then((res) => {
-            router.refresh();
-            resolve(res);
-          })
-          .catch((err) => {
-            reject({ message: err });
-          });
+        .then((res) => {
+          if (!res.success) {
+            throw new Error(res.message);
+          }
+          resolve(res.body.message);
+          router.refresh();
+        })
+        .catch((err) => {
+          reject(err.message);
+        });
       }); 
     };
     toast.promise(response, {
       loading: 'Atualizando Fornecedor...',
       success: (data) => {
-        return data.message;
+        return data;
       },
       error: (data) => {
-        return data.message;
+        return data;
       }
     });
   };

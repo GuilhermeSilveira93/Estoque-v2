@@ -11,8 +11,8 @@ export type useProdEditFormProps = {
   atualizarProduto: ({ data, ID_PRODUTO }: atualizarProdutoParam) => Promise<{
     statusCode: number,
     success: boolean,
-    body?: {message: string},
-    message?: string
+    body: {message: string},
+    message: string
 }>
 };
 export const useProdEditForm = ({
@@ -31,15 +31,19 @@ export const useProdEditForm = ({
     resolver: zodResolver(EditProdSchema)
   });
 const updateProd = async (data: EditProdType): Promise<void> => {
-    const response = (): Promise<string> => {
+  
+     const response = (): Promise<string> => {
       return new Promise((resolve, reject) => {
         atualizarProduto({ ID_PRODUTO: produto.ID_PRODUTO, data })
         .then((res) => {
-          resolve(res);
+          if(!res.success){
+            throw new Error(res.message);
+          }
+          resolve(res.body.message);
           router.refresh();
         })
         .catch((err) => {
-          reject({ message: err });
+          reject(err.message);
         });
       }); 
     };
@@ -51,7 +55,7 @@ const updateProd = async (data: EditProdType): Promise<void> => {
       error: (data) => {
         return data;
       }
-    });
+    }); 
   };
   return {
     form,

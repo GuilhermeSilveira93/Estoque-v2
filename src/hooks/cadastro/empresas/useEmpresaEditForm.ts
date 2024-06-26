@@ -11,8 +11,9 @@ export type useEmpresaEditFormProps = {
   atualizarEmpresa: ({ data, ID_EMPRESA }: atualizarEmpresaParam) => Promise<{
     statusCode: number,
     success: boolean,
-    body: {message: string;}
-}>
+    body: { message: string },
+    message: string
+  }>
 };
 export const useEmpresaEditForm = ({
   empresa,
@@ -28,26 +29,28 @@ export const useEmpresaEditForm = ({
     resolver: zodResolver(EditEmpresaSchema)
   });
 const updateEmpresa = async (data: EditEmpresaType): Promise<void> => {
-    const response = (): Promise<{ message: string }> => {
+    const response = (): Promise<string> => {
       return new Promise((resolve, reject) => {
         atualizarEmpresa({ ID_EMPRESA: empresa.ID_EMPRESA, data })
-          .then((res) => {
-            if (res.success) {
-              router.refresh();
-              resolve(res.body);
-            } else {
-              reject(res.body);
-            }
-          });
+        .then((res) => {
+          if (!res.success) {
+            throw new Error(res.message);
+          }
+          resolve(res.body.message);
+          router.refresh();
+        })
+        .catch((err) => {
+          reject(err.message);
+        });
       }); 
     };
     toast.promise(response, {
       loading: 'Atualizando Usuário...',
       success: (data) => {
-        return data.message;
+        return data;
       },
       error: (data) => {
-        return data.message;
+        return data;
       }
     });
   };

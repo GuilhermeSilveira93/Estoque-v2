@@ -49,14 +49,15 @@ export class AdapterRequest implements HttpClient {
       return {
         statusCode: axiosResponse.status,
         success: true,
-        message: 'Sucesso!',
+        message: 'Requisição feita com sucesso!',
         body: axiosResponse.data
       };
     } catch (error) {
       const _error = error as AxiosError<{ message: string }>;
+
       return {
         statusCode: _error.response?.status ?? 200,
-        message: _error.response?.statusText ?? 'Error',
+        message: _error.response?.data.message ?? 'Error',
         success: false,
         body: [] as T
       };

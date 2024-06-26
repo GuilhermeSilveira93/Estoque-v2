@@ -7,7 +7,10 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 export type useUserCreateFormProps = {
   criarUsuario: ({ data }: criarUsuarioProps) => Promise<{
-    message: string;
+    statusCode: number,
+    success: boolean,
+    body: {message: string},
+    message: string
 }>
 };
 export const useUserCreateForm = ({
@@ -25,25 +28,28 @@ export const useUserCreateForm = ({
     resolver: zodResolver(CreateUserSchema)
   });
   const createUser = async (data: CreateUserType):Promise<void> => {
-    const response = (): Promise<{ message: string }> => {
+    const response = (): Promise<string> => {
       return new Promise((resolve, reject) => {
         criarUsuario({ data })
-          .then((res) => {
-            router.refresh();
-            resolve(res);
-          })
-          .catch((err) => {
-            reject(JSON.stringify(err));
-          });
+        .then((res) => {
+          if(!res.success){
+            throw new Error(res.message);
+          }
+          resolve(res.body.message);
+          router.refresh();
+        })
+        .catch((err) => {
+          reject(err.message);
+        });
       });
     };
     toast.promise(response, {
       loading: 'Criando Usuário...',
       success: (data) => {
-        return data.message;
+        return data;
       },
       error: (data) => {
-        return data.message;
+        return data;
       }
     });
   };

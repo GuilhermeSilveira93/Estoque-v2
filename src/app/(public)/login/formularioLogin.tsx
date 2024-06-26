@@ -29,11 +29,14 @@ export default function Form({ className }: { className?: string }) {
   const { theme } = useTheme();
   const login = async (dados: loginType) => {
     setLoading(true);
-    const response = (): Promise<{ message: string }> => {
+    const response = (): Promise<string> => {
       return new Promise((resolve, reject) => {
         LoginAction(dados)
           .then((res) => {
-            resolve(res);
+            if (!res.success) {
+              reject(res.message);
+            }
+            resolve(res.message);
             router.push('/');
           })
           .catch((err) => {
@@ -44,10 +47,10 @@ export default function Form({ className }: { className?: string }) {
     toast.promise(response, {
       loading: 'Consultando seu usuário.',
       success: (data) => {
-        return data.message;
+        return data;
       },
       error: (data) => {
-        return data.message;
+        return data;
       }
     });
     setLoading(false);

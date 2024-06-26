@@ -9,7 +9,10 @@ import { toast } from 'sonner';
 export type useTipoEditFormProps = {
   tipo: TiposType,
   atualizarTipo: ({ data, ID_TIPO }: atualizarTipoParam) => Promise<{
-    message: string;
+    statusCode: number,
+    success: boolean,
+    body: {message: string},
+    message: string
 }>
 };
 export const useTipoEditForm = ({
@@ -26,25 +29,28 @@ export const useTipoEditForm = ({
     resolver: zodResolver(EditTipoSchema)
   });
 const updateTipo = async (data: EditTipoType): Promise<void> => {
-    const response = (): Promise<{ message: string }> => {
+    const response = (): Promise<string> => {
       return new Promise((resolve, reject) => {
         atualizarTipo({ ID_TIPO: tipo.ID_TIPO, data })
-          .then((res) => {
-            router.refresh();
-            resolve(res);
-          })
-          .catch((err) => {
-            reject({ message: err });
-          });
+        .then((res) => {
+          if(!res.success){
+            throw new Error(res.message);
+          }
+          resolve(res.body.message);
+          router.refresh();
+        })
+        .catch((err) => {
+          reject(err.message);
+        });
       }); 
     };
     toast.promise(response, {
       loading: 'Atualizando Tipos...',
       success: (data) => {
-        return data.message;
+        return data;
       },
       error: (data) => {
-        return data.message;
+        return data;
       }
     });
   };

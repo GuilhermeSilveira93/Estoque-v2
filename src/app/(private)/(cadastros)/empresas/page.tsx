@@ -14,7 +14,7 @@ export type EmpresaPageProps = {
   }
 };
 const EmpresasPage = async ({ searchParams }: EmpresaPageProps) => {
-  const empresas = (await new Empresa().getAll({ searchParams })).body;
+  const empresas = await new Empresa().getAll({ searchParams });
   return (
     <section>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
@@ -25,9 +25,9 @@ const EmpresasPage = async ({ searchParams }: EmpresaPageProps) => {
           <SearchData Search={searchParams.Search} />
         </header>
         <div className="max-h-132 overflow-auto">
-          {empresas.total > 0 ? (
+          {empresas.body.total > 0 ? (
             <Tabela
-              data={empresas.data}
+              data={empresas.body.data}
               searchParams={searchParams}
               ocultar={['ID_EMPRESA', 'D_DATA']}
             />
@@ -38,7 +38,9 @@ const EmpresasPage = async ({ searchParams }: EmpresaPageProps) => {
           )}
         </div>
         <footer className="flex w-full">
-          {empresas.total > 0 && <Pagination total={empresas.total} />}
+          {empresas.body.total > 0 && (
+            <Pagination total={empresas.body.total} />
+          )}
         </footer>
       </section>
       <CreateEmpresa />

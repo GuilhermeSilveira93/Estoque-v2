@@ -8,59 +8,35 @@ export class Tipos extends AdapterRequest {
     super();
   }
   async getAll() {
-    try {
-      return await this.request<{ data: TiposType[], total: number }>({
-        method: 'get',
-        url: '/tipos'
-      });
-    } catch (error) {
-      throw new Error((error as Error).message as string, {
-        cause: (error as Error).cause
-      });
-    }
+    return await this.request<{ data: TiposType[], total: number }>({
+      method: 'get',
+      url: '/tipos'
+    });
   }
   async getFilter({ searchParams }: TiposPageProps) {
-    try {
-      return await this.request<{ data: TiposType[], total: number }>({
-        method: 'get',
-        url: '/tipos',
-        params: searchParams
-      });
-    } catch (error) {
-      throw new Error((error as Error).message as string, {
-        cause: (error as Error).cause
-      });
-    }
+    return await this.request<{ data: TiposType[], total: number }>({
+      method: 'get',
+      url: '/tipos',
+      params: searchParams
+    });
   }
   async attTipo({ ID_TIPO, data }: { ID_TIPO: number, data: EditTipoType }) {
-    try {
-      return await this.request<{ message: string }>({
-        method: 'patch',
-        url: `/tipos/${ID_TIPO}`,
-        body: {
-          ...data,
-          S_NOME: data.S_NOME.toUpperCase()
-        }
-      });
-    } catch (error) {
-      throw new Error((error as Error).message as string, {
-        cause: (error as Error).cause
-      });
-    }
+    return await this.request<{ message: string }>({
+      method: 'patch',
+      url: `/tipos/${ID_TIPO}`,
+      body: {
+        ...data,
+        S_NOME: data.S_NOME.toUpperCase()
+      }
+    });
   }
   async createTipo(data: CreateTipoType) {
-    try {
-      return await this.request<{ message: string }>({
-        method: 'post',
-        url: '/tipos',
-        body: {
-          S_NOME: data.S_NOME.toUpperCase()
-        }
-      });
-    } catch (error) {
-      throw new Error((error as Error).message as string, {
-        cause: (error as Error).cause
-      });
-    }
+    return await this.request<{ message: string }>({
+      method: 'post',
+      url: '/tipos',
+      body: {
+        S_NOME: data.S_NOME.toUpperCase()
+      }
+    });
   }
 }

@@ -9,6 +9,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 export type useProdCreateFormProps = {
   criarProduto: (data: CreateProdType) => Promise<{
+    statusCode: number,
+    success: boolean,
+    body: { message: string },
     message: string
   }>
 };
@@ -24,25 +27,28 @@ export const useProdCreateForm = ({ criarProduto }: useProdCreateFormProps) => {
     resolver: zodResolver(CreateProdSchema)
   });
   const createProd = async (data: CreateProdType): Promise<void> => {
-    const response = (): Promise<{ message: string }> => {
+    const response = (): Promise<string> => {
       return new Promise((resolve, reject) => {
         criarProduto(data)
           .then((res) => {
-            resolve(res);
+            if (!res.success) {
+              throw new Error(res.message);
+            }
+            resolve(res.body.message);
             router.refresh();
           })
           .catch((err) => {
-            reject({ message: err });
+            reject(err.message);
           });
       });
     };
     toast.promise(response, {
       loading: 'Criando Produto...',
       success: (data) => {
-        return data.message;
+        return data;
       },
       error: (data) => {
-        return data.message;
+        return data;
       }
     });
   };

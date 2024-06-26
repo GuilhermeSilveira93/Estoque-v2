@@ -9,9 +9,8 @@ export const atualizarProduto = async ({
   data,
   ID_PRODUTO
 }: atualizarProdutoParam) => {
-  const date = await new Produto().attProd({
+  return await new Produto().attProd({
     ID_PRODUTO,
     data
   });
-  return date;
 };
