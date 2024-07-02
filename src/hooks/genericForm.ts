@@ -41,7 +41,7 @@ export const useGenericForm = <T extends FieldValues, R>({
     };
 
     toast.promise(response, {
-      loading: 'Criando...', // Ajuste a mensagem de loading
+      loading: 'Criando...',
       success: (data) => {
         return data;
       },
