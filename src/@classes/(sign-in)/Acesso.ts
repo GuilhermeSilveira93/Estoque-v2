@@ -6,7 +6,7 @@ export class Acesso extends AdapterRequest {
     super();
   }
   async login({ S_EMAIL, S_SENHA }: loginType) {
-    return await this.request({
+    return await this.request<{ token: string, message: string }>({
       method: 'post',
       url: 'auth/login',
       body: {
