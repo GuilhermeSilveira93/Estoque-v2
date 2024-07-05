@@ -11,20 +11,23 @@ import {
   FormMessage
 } from '@/components/ui/form';
 
+import { CreateFornecedorSchema, CreateFornecedorType } from '@/@schemas';
+import { useFornecedorCreateFormProps } from '@/hooks/cadastro';
 import {
-  useFornecedorCreateForm,
-  useFornecedorCreateFormProps
-} from '@/hooks/cadastro';
+  ResponseReturn,
+  useGenericCreateForm
+} from '@/hooks/genericCreateForm';
 type CreateFornecedorFormProps = useFornecedorCreateFormProps;
 const CreateFornecedorForm = memo(
   ({ criarFornecedor }: CreateFornecedorFormProps) => {
-    const { form, createFornecedor, isSubmitting } = useFornecedorCreateForm({
-      criarFornecedor
-    });
+    const { form, isSubmitting, submit } = useGenericCreateForm<
+      CreateFornecedorType,
+      ResponseReturn
+    >({ requestHandler: criarFornecedor, schema: CreateFornecedorSchema });
     return (
       <>
         <FormRoot {...form}>
-          <form onSubmit={createFornecedor} className="space-y-3">
+          <form onSubmit={submit} className="space-y-3">
             <FormField
               control={form.control}
               name="S_NOME"

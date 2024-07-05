@@ -11,4 +11,5 @@ export const CreateUserSchema = zod.object({
     S_SENHA: zod.string().min(6, { message: 'Senha muito Fraca' }).max(40, { message: '40 caracteres no máximo'}),
     ID_GRUPO: zod.enum(['1','2','3'], {message: 'Você está muito longe de casa, aqui é o Brasil!'}),
 });
+// eslint-disable-next-line prettier/prettier
 export type CreateUserType = zod.infer<typeof CreateUserSchema>

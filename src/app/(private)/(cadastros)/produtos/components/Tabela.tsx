@@ -9,7 +9,7 @@ import {
   TableRow
 } from '@/components/ui';
 
-import { Tipos } from '@/@classes/Tipos';
+import { Tipos } from '@/@classes/Tipo';
 import { Produtos, ProdutosKeys } from '@/@types/api';
 import { PascalCase } from '@/@utils';
 

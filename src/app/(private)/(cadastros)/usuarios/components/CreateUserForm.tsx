@@ -20,10 +20,7 @@ import {
 
 import { CreateUserSchema, CreateUserType } from '@/@schemas';
 import { GrupoType } from '@/@types/api';
-import {
-  useUserCreateForm,
-  useUserCreateFormProps
-} from '@/hooks/cadastro/usuarios/useUserCreateForm';
+import { useUserCreateFormProps } from '@/hooks/cadastro/usuarios/useUserCreateForm';
 import {
   ResponseReturn,
   useGenericCreateForm
@@ -32,9 +29,6 @@ type CreateUserFormProps = useUserCreateFormProps & {
   grupos: GrupoType[]
 };
 const CreateUserForm = memo(({ criarUsuario, grupos }: CreateUserFormProps) => {
-  /*   const { form, createUser, isSubmitting } = useUserCreateForm({
-    criarUsuario
-  }); */
   const { form, isSubmitting, submit } = useGenericCreateForm<
     CreateUserType,
     ResponseReturn

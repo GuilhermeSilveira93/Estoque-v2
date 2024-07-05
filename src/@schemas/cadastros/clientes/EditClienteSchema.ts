@@ -1,6 +1,6 @@
 import * as zod from 'zod';
 
-export const EditEmpresaSchema = zod.object({
+export const EditClienteSchema = zod.object({
   S_NOME: zod
     .string()
     .min(1, { message: 'Edite o nome' })
@@ -9,4 +9,4 @@ export const EditEmpresaSchema = zod.object({
     .boolean(),
 });
 // eslint-disable-next-line prettier/prettier
-export type EditEmpresaType = zod.infer<typeof EditEmpresaSchema>
+export type EditClienteType = zod.infer<typeof EditClienteSchema>

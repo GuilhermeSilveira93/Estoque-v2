@@ -1,36 +1,37 @@
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
-import { criarUsuarioProps } from '@/@actions';
-import { CreateUserSchema, CreateUserType } from '@/@schemas/cadastros/usuarios/CreateUserSchema';
+import { atualizarClienteParam } from '@/@actions';
+import { EditClienteType, EditTipoSchema, EditTipoType } from '@/@schemas';
+import { ClienteType } from '@/@types/api';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
-export type useUserCreateFormProps = {
-    criarUsuario: ({ data }: criarUsuarioProps) => Promise<{
+export type useClientesEditFormProps = {
+  cliente: ClienteType,
+  atualizarCliente: ({ data, ID_CLIENTE }: atualizarClienteParam) => Promise<{
     statusCode: number,
     success: boolean,
     body: {message: string},
     message: string
 }>
 };
-export const useUserCreateForm = ({
-  criarUsuario
-}: useUserCreateFormProps) => {
+export const useClienteEditForm = ({
+  cliente,
+  atualizarCliente
+}: useClientesEditFormProps) => {
   const router = useRouter();
-  const form = useForm<CreateUserType>({
+  const form = useForm<EditClienteType>({
     mode: 'all',
     defaultValues: {
-      S_NOME: '',
-      ID_GRUPO: '3' as '1' | '2' | '3',
-      S_EMAIL: '',
-      S_SENHA: ''
+      S_NOME: cliente.data.S_NOME,
+      S_ATIVO: cliente.data.S_ATIVO === 'S'
     },
-    resolver: zodResolver(CreateUserSchema)
+    resolver: zodResolver(EditTipoSchema)
   });
-  const createUser = async (data: CreateUserType):Promise<void> => {
+const updateCliente = async (data: EditTipoType): Promise<void> => {
     const response = (): Promise<string> => {
       return new Promise((resolve, reject) => {
-        criarUsuario({ data })
+        atualizarCliente({ ID_CLIENTE: cliente.ID_CLIENTE, data })
         .then((res) => {
           if(!res.success){
             throw new Error(res.message);
@@ -41,10 +42,10 @@ export const useUserCreateForm = ({
         .catch((err) => {
           reject(err.message);
         });
-      });
+      }); 
     };
     toast.promise(response, {
-      loading: 'Criando Usuário...',
+      loading: 'Atualizando Tipos...',
       success: (data) => {
         return data;
       },
@@ -56,6 +57,6 @@ export const useUserCreateForm = ({
   return {
     form,
     isSubmitting: form.formState.isSubmitting,
-    createUser: form.handleSubmit(createUser)
+    updateCliente: form.handleSubmit(updateCliente)
   };
 };

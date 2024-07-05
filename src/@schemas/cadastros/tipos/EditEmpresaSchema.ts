@@ -8,4 +8,5 @@ export const EditTipoSchema = zod.object({
   S_ATIVO: zod
     .boolean(),
 });
+// eslint-disable-next-line prettier/prettier
 export type EditTipoType = zod.infer<typeof EditTipoSchema>

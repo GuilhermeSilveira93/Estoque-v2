@@ -3,7 +3,7 @@ import { Tabela } from './components/Tabela';
 import Pagination from '@/components/pagination';
 import { SearchData } from '@/components/search-data';
 
-import { Tipos } from '@/@classes';
+import { Tipo } from '@/@classes';
 import { FiltersPage } from '@/@types/FiltersType';
 
 export type TiposPageProps = {
@@ -12,7 +12,7 @@ export type TiposPageProps = {
   }
 };
 const TiposPage = async ({ searchParams }: TiposPageProps) => {
-  const tipos = (await new Tipos().getFilter({ searchParams })).body;
+  const tipos = (await new Tipo().getAll({ searchParams })).body;
   return (
     <section>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">

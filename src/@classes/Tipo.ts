@@ -3,17 +3,11 @@ import { TiposType } from '@/@types/api/ReqTipos';
 import { TiposPageProps } from '@/app/(private)/(cadastros)/tipos/page';
 
 import { AdapterRequest } from './RequestAdapter';
-export class Tipos extends AdapterRequest {
+export class Tipo extends AdapterRequest {
   constructor() {
     super();
   }
-  async getAll() {
-    return await this.request<{ data: TiposType[], total: number }>({
-      method: 'get',
-      url: '/tipos'
-    });
-  }
-  async getFilter({ searchParams }: TiposPageProps) {
+  async getAll({ searchParams }: TiposPageProps) {
     return await this.request<{ data: TiposType[], total: number }>({
       method: 'get',
       url: '/tipos',

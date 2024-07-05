@@ -10,4 +10,5 @@ export const EditProdSchema = zod.object({
     N_SERIAL: zod.string().max(150, { message: 'Tamanho máximo do e-mail é 150 caracteres.' }).optional(),
     ID_TIPO: zod.string().min(1, { message: 'Precisa ter um tipo!' }).max(1, { message: 'Tamanho máximo do e-mail é 150 caracteres.' }),
 });
+// eslint-disable-next-line prettier/prettier
 export type EditProdType = zod.infer<typeof EditProdSchema>

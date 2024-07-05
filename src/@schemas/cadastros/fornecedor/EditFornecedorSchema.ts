@@ -8,4 +8,5 @@ export const EditFornecedorSchema = zod.object({
   S_ATIVO: zod
     .boolean(),
 });
+// eslint-disable-next-line prettier/prettier
 export type EditFornecedorType = zod.infer<typeof EditFornecedorSchema>

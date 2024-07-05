@@ -1,36 +1,33 @@
 import Link from 'next/link';
 
-import CreateEmpresa from './components/CreateEmpresa';
+import CreateCliente from './components/CreateCliente';
 import { Tabela } from './components/Tabela';
 import Pagination from '@/components/pagination';
 import { SearchData } from '@/components/search-data';
 
-import { Empresa } from '@/@classes/Empresa';
+import { Cliente } from '@/@classes';
 import { FiltersPage } from '@/@types/FiltersType';
 
-export type EmpresaPageProps = {
+export type ClientesPageProps = {
   searchParams: FiltersPage & {
-    ID_EMPRESA: string
+    ID_CLIENTE: string
   }
 };
-const EmpresasPage = async ({ searchParams }: EmpresaPageProps) => {
-  const empresas = await new Empresa().getAll({ searchParams });
+const ClientesPage = async ({ searchParams }: ClientesPageProps) => {
+  const clientes = (await new Cliente().getAll({ searchParams })).body;
+
   return (
     <section>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
-        <Link href={'/empresas'}>Empresas</Link>
+        <Link href={'/clientes'}>Clientes</Link>
       </h1>
       <section className="rounded-b-xl bg-card">
         <header>
           <SearchData Search={searchParams.Search} />
         </header>
         <div className="max-h-132 overflow-auto">
-          {empresas.body.total > 0 ? (
-            <Tabela
-              data={empresas.body.data}
-              searchParams={searchParams}
-              ocultar={['ID_EMPRESA', 'D_DATA']}
-            />
+          {clientes.total > 0 ? (
+            <Tabela data={clientes.data} searchParams={searchParams} />
           ) : (
             <div className="flex h-32 items-center justify-center">
               <p>Não há dados</p>
@@ -38,14 +35,11 @@ const EmpresasPage = async ({ searchParams }: EmpresaPageProps) => {
           )}
         </div>
         <footer className="flex w-full">
-          {empresas.body.total > 0 && (
-            <Pagination total={empresas.body.total} />
-          )}
+          {clientes.total > 0 && <Pagination total={clientes.total} />}
         </footer>
       </section>
-      <CreateEmpresa />
-      <Link href={'/empresas/editEmp/26262626'}>Modal</Link>
+      <CreateCliente />
     </section>
   );
 };
-export default EmpresasPage;
+export default ClientesPage;

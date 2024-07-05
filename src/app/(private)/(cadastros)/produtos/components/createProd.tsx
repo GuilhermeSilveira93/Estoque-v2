@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/dialog';
 
 import { criarProduto } from '@/@actions';
-import { Tipos } from '@/@classes/Tipos';
+import { Tipos } from '@/@classes/Tipo';
 
 import CreateProdForm from './CreateProdForm';
 

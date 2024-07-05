@@ -13,4 +13,5 @@ export const EditUserSchema = zod.object({
     S_SENHA: zod.string().max(150, { message: 'Tamanho máximo do e-mail é 150 caracteres.' }).optional(),
     ID_GRUPO: zod.enum(['1','2','3'], {message: 'Você está muito longe de casa, aqui é o Brasil!'}),
 });
+// eslint-disable-next-line prettier/prettier
 export type EditUserType = zod.infer<typeof EditUserSchema>

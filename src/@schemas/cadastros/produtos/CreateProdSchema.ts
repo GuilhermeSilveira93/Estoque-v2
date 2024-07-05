@@ -10,4 +10,5 @@ export const CreateProdSchema = zod.object({
     .min(1, { message: 'Selecione um tipo' })
     .max(2, { message: 'Tipo incorreto!' }),
 });
+// eslint-disable-next-line prettier/prettier
 export type CreateProdType = zod.infer<typeof CreateProdSchema>

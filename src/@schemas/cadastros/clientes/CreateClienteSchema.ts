@@ -1,12 +1,10 @@
 import * as zod from 'zod';
 
-export const EditEmpresaSchema = zod.object({
+export const CreateClienteSchema = zod.object({
   S_NOME: zod
     .string()
-    .min(1, { message: 'Edite o nome' })
+    .min(1, { message: 'Nome do Cliente' })
     .max(150, { message: 'Tamanho máximo do e-mail é 150 caracteres.' }),
-  S_ATIVO: zod
-    .boolean(),
 });
 // eslint-disable-next-line prettier/prettier
-export type EditEmpresaType = zod.infer<typeof EditEmpresaSchema>
+export type CreateClienteType = zod.infer<typeof CreateClienteSchema>

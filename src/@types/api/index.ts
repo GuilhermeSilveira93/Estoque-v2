@@ -7,3 +7,4 @@ export * from './ReqGrupo';
 export * from './ReqFornecedores';
 export * from './ReqTipos';
 export * from './ReqEmpresas';
+export * from './ReqCliente';

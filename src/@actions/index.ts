@@ -5,3 +5,4 @@ export * from './cadastros/usuarios';
 export * from './cadastros/empresas';
 export * from './cadastros/fornecedores';
 export * from './cadastros/tipos';
+export * from './cadastros/clientes';

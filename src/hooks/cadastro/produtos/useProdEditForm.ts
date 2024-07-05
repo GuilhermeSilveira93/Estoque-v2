@@ -24,7 +24,7 @@ export const useProdEditForm = ({
     mode: 'all',
     defaultValues: {
       ID_TIPO: produto.ID_TIPO.toString(),
-      N_SERIAL: produto.N_SERIAL,
+      N_SERIAL: produto.N_SERIAL ?? undefined,
       S_NOME: produto.S_NOME,
       S_ATIVO: produto.S_ATIVO === 'S'
     },

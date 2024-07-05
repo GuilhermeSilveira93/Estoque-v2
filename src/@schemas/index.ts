@@ -8,3 +8,5 @@ export * from './cadastros/fornecedor/CreateFornecedorSchema';
 export * from './cadastros/fornecedor/EditFornecedorSchema';
 export * from './cadastros/tipos/CreateEmpresaSchema';
 export * from './cadastros/tipos/EditEmpresaSchema';
+export * from './cadastros/clientes/CreateClienteSchema';
+export * from './cadastros/clientes/EditClienteSchema';

@@ -11,20 +11,20 @@ import {
   FormMessage
 } from '@/components/ui/form';
 
-import { CreateEmpresaSchema, CreateEmpresaType } from '@/@schemas';
-import { useEmpresaCreateFormProps } from '@/hooks/cadastro';
+import { CreateTipoSchema, CreateTipoType } from '@/@schemas';
+import { useTipoCreateFormProps } from '@/hooks/cadastro';
 import {
   ResponseReturn,
   useGenericCreateForm
 } from '@/hooks/genericCreateForm';
-type CreateEmpresaFormProps = useEmpresaCreateFormProps;
-const CreateEmpForm = memo(({ criarEmpresa }: CreateEmpresaFormProps) => {
+type CreateTipoFormProps = useTipoCreateFormProps;
+const CreateTipoForm = memo(({ criarTipo }: CreateTipoFormProps) => {
   const { form, isSubmitting, submit } = useGenericCreateForm<
-    CreateEmpresaType,
+    CreateTipoType,
     ResponseReturn
   >({
-    requestHandler: criarEmpresa,
-    schema: CreateEmpresaSchema
+    requestHandler: criarTipo,
+    schema: CreateTipoSchema
   });
   return (
     <>
@@ -35,11 +35,11 @@ const CreateEmpForm = memo(({ criarEmpresa }: CreateEmpresaFormProps) => {
             name="S_NOME"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Empresa:</FormLabel>
+                <FormLabel>Tipo:</FormLabel>
                 <FormControl>
                   <Input
                     type="text"
-                    placeholder="Digite o nome da Empresa"
+                    placeholder="Digite o nome do Tipo do Produto"
                     {...field}
                   />
                 </FormControl>
@@ -57,5 +57,5 @@ const CreateEmpForm = memo(({ criarEmpresa }: CreateEmpresaFormProps) => {
     </>
   );
 });
-CreateEmpForm.displayName = 'CreateEmpForm';
-export default CreateEmpForm;
+CreateTipoForm.displayName = 'CreateTipoForm';
+export default CreateTipoForm;
