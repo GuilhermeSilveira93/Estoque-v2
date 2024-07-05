@@ -18,22 +18,34 @@ import {
   SelectValue
 } from '@/components/ui/select';
 
-import { Grupo } from '@/@types/api';
+import { CreateUserSchema, CreateUserType } from '@/@schemas';
+import { GrupoType } from '@/@types/api';
 import {
   useUserCreateForm,
   useUserCreateFormProps
 } from '@/hooks/cadastro/usuarios/useUserCreateForm';
+import {
+  ResponseReturn,
+  useGenericCreateForm
+} from '@/hooks/genericCreateForm';
 type CreateUserFormProps = useUserCreateFormProps & {
-  grupos: Grupo[]
+  grupos: GrupoType[]
 };
 const CreateUserForm = memo(({ criarUsuario, grupos }: CreateUserFormProps) => {
-  const { form, createUser, isSubmitting } = useUserCreateForm({
+  /*   const { form, createUser, isSubmitting } = useUserCreateForm({
     criarUsuario
+  }); */
+  const { form, isSubmitting, submit } = useGenericCreateForm<
+    CreateUserType,
+    ResponseReturn
+  >({
+    requestHandler: criarUsuario,
+    schema: CreateUserSchema
   });
   return (
     <>
       <FormRoot {...form}>
-        <form onSubmit={createUser} className="space-y-3">
+        <form onSubmit={submit} className="space-y-3">
           <FormField
             control={form.control}
             name="S_NOME"

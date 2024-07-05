@@ -6,7 +6,7 @@ import { CreateUserSchema, CreateUserType } from '@/@schemas/cadastros/usuarios/
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 export type useUserCreateFormProps = {
-  criarUsuario: ({ data }: criarUsuarioProps) => Promise<{
+    criarUsuario: ({ data }: criarUsuarioProps) => Promise<{
     statusCode: number,
     success: boolean,
     body: {message: string},

@@ -19,22 +19,28 @@ import {
   SelectValue
 } from '@/components/ui/select';
 
+import { CreateProdSchema, CreateProdType } from '@/@schemas';
 import { TiposType } from '@/@types/api/ReqTipos';
+import { useProdCreateFormProps } from '@/hooks/cadastro/produtos/useProdCreateForm';
 import {
-  useProdCreateForm,
-  useProdCreateFormProps
-} from '@/hooks/cadastro/produtos/useProdCreateForm';
+  ResponseReturn,
+  useGenericCreateForm
+} from '@/hooks/genericCreateForm';
 type CreateUserFormProps = useProdCreateFormProps & {
   tipos: TiposType[]
 };
 const CreateProdForm = memo(({ criarProduto, tipos }: CreateUserFormProps) => {
-  const { form, createProd, isSubmitting } = useProdCreateForm({
-    criarProduto
+  const { form, isSubmitting, submit } = useGenericCreateForm<
+    CreateProdType,
+    ResponseReturn
+  >({
+    requestHandler: criarProduto,
+    schema: CreateProdSchema
   });
   return (
     <>
       <FormRoot {...form}>
-        <form onSubmit={createProd} className="space-y-3">
+        <form onSubmit={submit} className="space-y-3">
           <FormField
             control={form.control}
             name="S_NOME"

@@ -5,6 +5,7 @@ import { CreateTipoSchema, CreateTipoType } from '@/@schemas';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 export type useTipoCreateFormProps = {
+  // eslint-disable-next-line no-unused-vars
   criarTipo: (data: CreateTipoType) => Promise<{
     statusCode: number,
     success: boolean,

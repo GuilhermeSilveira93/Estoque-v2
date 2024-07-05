@@ -5,22 +5,34 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 import * as z from 'zod';
 
-type RequestHandler<T, R> = (data: T) => Promise<R>;
-
-export type useGenericFormProps<T, R> = {
-  requestHandler: RequestHandler<T, R>,
+export type ResponseReturn = {
+  statusCode: number,
+  success: boolean,
+  body: {
+    message: string
+  },
+  message: string
+};
+type UseGenericCreateFormProps<
+  T extends FieldValues,
+  R extends ResponseReturn
+> = {
+  requestHandler: (data: T) => Promise<R>,
   schema: z.ZodSchema<T>
 };
 
-export const useGenericForm = <T extends FieldValues, R>({
+export const useGenericCreateForm = <
+  T extends FieldValues,
+  R extends ResponseReturn
+>({
   requestHandler,
   schema
-}: useGenericFormProps<T, R>) => {
+}: UseGenericCreateFormProps<T, R>) => {
   const router = useRouter();
   const form = useForm<T>({
     mode: 'all',
     defaultValues: {} as DefaultValues<T>,
-    resolver: zodResolver(schema) // Use o zodResolver com o esquema fornecido
+    resolver: zodResolver(schema)
   });
 
   const handleSubmit = async (data: T): Promise<void> => {

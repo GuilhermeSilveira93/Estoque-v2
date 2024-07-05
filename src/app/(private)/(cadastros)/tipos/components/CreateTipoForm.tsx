@@ -11,16 +11,25 @@ import {
   FormMessage
 } from '@/components/ui/form';
 
-import { useTipoCreateForm, useTipoCreateFormProps } from '@/hooks/cadastro';
+import { CreateTipoSchema, CreateTipoType } from '@/@schemas';
+import { useTipoCreateFormProps } from '@/hooks/cadastro';
+import {
+  ResponseReturn,
+  useGenericCreateForm
+} from '@/hooks/genericCreateForm';
 type CreateTipoFormProps = useTipoCreateFormProps;
 const CreateTipoForm = memo(({ criarTipo }: CreateTipoFormProps) => {
-  const { form, createTipo, isSubmitting } = useTipoCreateForm({
-    criarTipo
+  const { form, isSubmitting, submit } = useGenericCreateForm<
+    CreateTipoType,
+    ResponseReturn
+  >({
+    requestHandler: criarTipo,
+    schema: CreateTipoSchema
   });
   return (
     <>
       <FormRoot {...form}>
-        <form onSubmit={createTipo} className="space-y-3">
+        <form onSubmit={submit} className="space-y-3">
           <FormField
             control={form.control}
             name="S_NOME"
