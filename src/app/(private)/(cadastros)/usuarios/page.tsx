@@ -4,13 +4,22 @@ import Pagination from '@/components/pagination';
 import { SearchData } from '@/components/search-data';
 
 import { Usuario } from '@/@classes/Usuario';
+import { RolesRequired } from '@/@types';
 import { FiltersPage } from '@/@types/FiltersType';
+import { userCanSeePage } from '@/@utils';
 export type UserPageProps = {
   searchParams: FiltersPage & {
     ID_USUARIO: string
   }
 };
 const UsuariosPage = async ({ searchParams }: UserPageProps) => {
+  await userCanSeePage({
+    rolesRequired: [
+      RolesRequired.ADM,
+      RolesRequired.DESENV,
+      RolesRequired.SUPERVISOR
+    ]
+  });
   const users = (await new Usuario().getAll({ searchParams })).body;
   return (
     <section>

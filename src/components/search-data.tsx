@@ -20,12 +20,13 @@ type SearchProps = {
 export const SearchData = ({ Search }: SearchProps) => {
   const router = useRouter();
   const {createParam, deleteParam} = useCustomParam();
-  const {handleSubmit, register, reset, setValue} = useForm<SearchSchemaType>({
+  const {handleSubmit, register, reset} = useForm<SearchSchemaType>({
     defaultValues: {Search},
     resolver: zodResolver(SearchSchema)
   });
   const handleSearch = useCallback((data: SearchSchemaType) => {
-    let sendTo = '';
+    
+    let sendTo = deleteParam(['Page']);
     if (data.Search !== undefined && data.Search !== '') {
       sendTo = createParam('Search',data.Search.toUpperCase());  
     }else{

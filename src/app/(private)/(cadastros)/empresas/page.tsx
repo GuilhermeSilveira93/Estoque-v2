@@ -6,7 +6,9 @@ import Pagination from '@/components/pagination';
 import { SearchData } from '@/components/search-data';
 
 import { Empresa } from '@/@classes/Empresa';
+import { RolesRequired } from '@/@types';
 import { FiltersPage } from '@/@types/FiltersType';
+import { userCanSeePage } from '@/@utils';
 
 export type EmpresaPageProps = {
   searchParams: FiltersPage & {
@@ -14,7 +16,14 @@ export type EmpresaPageProps = {
   }
 };
 const EmpresasPage = async ({ searchParams }: EmpresaPageProps) => {
-  const empresas = await new Empresa().getAll({ searchParams });
+  await userCanSeePage({
+    rolesRequired: [
+      RolesRequired.ADM,
+      RolesRequired.DESENV,
+      RolesRequired.SUPERVISOR
+    ]
+  });
+  const empresas = await new Empresa().getWithParams({ searchParams });
   return (
     <section>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
@@ -44,7 +53,7 @@ const EmpresasPage = async ({ searchParams }: EmpresaPageProps) => {
         </footer>
       </section>
       <CreateEmpresa />
-      <Link href={'/empresas/editEmp/26262626'}>Modal</Link>
+      {/* <Link href={'/empresas/editEmp/26262626'}>Modal</Link> */}
     </section>
   );
 };

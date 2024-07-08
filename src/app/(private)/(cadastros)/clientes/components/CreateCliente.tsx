@@ -9,21 +9,23 @@ import {
   DialogTrigger
 } from '@/components/ui/dialog';
 
-import { criarTipo } from '@/@actions';
+import { criarCliente } from '@/@actions';
+import { Empresa } from '@/@classes';
 
 import CreateTipoForm from './CreateClienteForm';
 
 const CreateCliente = memo(async () => {
+  const empresas = (await new Empresa().getAll()).body;
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="default">Criar Tipo +</Button>
+        <Button variant="default">Criar Cliente +</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Cadastro de Tipos</DialogTitle>
         </DialogHeader>
-        <CreateTipoForm criarTipo={criarTipo} />
+        <CreateTipoForm criarCliente={criarCliente} empresas={empresas.data} />
       </DialogContent>
     </Dialog>
   );

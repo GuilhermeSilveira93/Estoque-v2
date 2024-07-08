@@ -1,5 +1,6 @@
-export enum RolesRequiredProps {
+export enum RolesRequired {
   DESENV = 0,
-  ADM = 9,
-  CONSULTA = 10
+  SUPERVISOR = 1,
+  ADM = 2,
+  CONSULTA = 3
 }

@@ -4,7 +4,9 @@ import Pagination from '@/components/pagination';
 import { SearchData } from '@/components/search-data';
 
 import { Tipo } from '@/@classes';
+import { RolesRequired } from '@/@types';
 import { FiltersPage } from '@/@types/FiltersType';
+import { userCanSeePage } from '@/@utils';
 
 export type TiposPageProps = {
   searchParams: FiltersPage & {
@@ -12,7 +14,14 @@ export type TiposPageProps = {
   }
 };
 const TiposPage = async ({ searchParams }: TiposPageProps) => {
-  const tipos = (await new Tipo().getAll({ searchParams })).body;
+  await userCanSeePage({
+    rolesRequired: [
+      RolesRequired.ADM,
+      RolesRequired.DESENV,
+      RolesRequired.SUPERVISOR
+    ]
+  });
+  const tipos = (await new Tipo().getWithParams({ searchParams })).body;
   return (
     <section>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">

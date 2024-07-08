@@ -7,7 +7,13 @@ export class Tipo extends AdapterRequest {
   constructor() {
     super();
   }
-  async getAll({ searchParams }: TiposPageProps) {
+  async getAll() {
+    return await this.request<{ data: TiposType[], total: number }>({
+      method: 'get',
+      url: '/tipos/all'
+    });
+  }
+  async getWithParams({ searchParams }: TiposPageProps) {
     return await this.request<{ data: TiposType[], total: number }>({
       method: 'get',
       url: '/tipos',

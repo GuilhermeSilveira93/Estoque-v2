@@ -7,7 +7,7 @@ export class Empresa extends AdapterRequest {
   constructor() {
     super();
   }
-  async getAll({ searchParams }: EmpresaPageProps) {
+  async getWithParams({ searchParams }: EmpresaPageProps) {
     const { ID_EMPRESA, S_ATIVO, Search, Page, LimitPerPage } = searchParams;
     return await this.request<{ data: EmpresaType[], total: number }>({
       method: 'get',
@@ -19,6 +19,12 @@ export class Empresa extends AdapterRequest {
         Page,
         LimitPerPage
       }
+    });
+  }
+  async getAll() {
+    return await this.request<{ data: EmpresaType[], total: number }>({
+      method: 'get',
+      url: '/empresa/all'
     });
   }
   async attEmpresa({

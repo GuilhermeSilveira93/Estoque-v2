@@ -9,7 +9,7 @@ import {
   TableRow
 } from '@/components/ui';
 
-import { Tipos } from '@/@classes/Tipo';
+import { Tipo } from '@/@classes/Tipo';
 import { Produtos, ProdutosKeys } from '@/@types/api';
 import { PascalCase } from '@/@utils';
 
@@ -23,7 +23,7 @@ type TabelaProps = {
 };
 export const Tabela = async ({ data, ocultar }: TabelaProps) => {
   const tableHeader = Object.keys(data[0] as Produtos) as ProdutosKeys[];
-  const tipos = (await new Tipos().getAll()).body;
+  const tipos = (await new Tipo().getAll()).body;
   return (
     <>
       <Table className="text-center text-card-foreground">

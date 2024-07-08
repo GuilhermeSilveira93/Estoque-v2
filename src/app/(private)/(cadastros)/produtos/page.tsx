@@ -1,10 +1,14 @@
+import Link from 'next/link';
+
 import { Tabela } from '../produtos/components/Tabela';
 import CreateProd from './components/createProd';
 import Pagination from '@/components/pagination';
 import { SearchData } from '@/components/search-data';
 
 import { Produto } from '@/@classes';
+import { RolesRequired } from '@/@types';
 import { FiltersPage } from '@/@types/FiltersType';
+import { userCanSeePage } from '@/@utils';
 
 export type ProdutosPageProps = {
   searchParams: FiltersPage & {
@@ -12,6 +16,13 @@ export type ProdutosPageProps = {
   }
 };
 const ProdutosPage = async ({ searchParams }: ProdutosPageProps) => {
+  await userCanSeePage({
+    rolesRequired: [
+      RolesRequired.ADM,
+      RolesRequired.DESENV,
+      RolesRequired.SUPERVISOR
+    ]
+  });
   const produtos = (await new Produto().getAll({ searchParams })).body ?? {
     data: [],
     total: 0
@@ -19,7 +30,7 @@ const ProdutosPage = async ({ searchParams }: ProdutosPageProps) => {
   return (
     <section>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
-        Produtos
+        <Link href={{ pathname: '/produtos' }}>Produtos</Link>
       </h1>
       <section className="rounded-b-xl bg-card">
         <header>

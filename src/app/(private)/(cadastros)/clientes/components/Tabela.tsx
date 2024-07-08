@@ -20,7 +20,7 @@ type TabelaProps = {
   searchParams: ClientesPageProps['searchParams']
 };
 export const Tabela = async ({ data }: TabelaProps) => {
-  const tableHeader = Object.keys(
+  const tableHeader = Object?.keys(
     data[0]?.data as ClienteType['data']
   ) as ClienteTypeKeys[];
   return (

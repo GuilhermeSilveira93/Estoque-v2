@@ -1,32 +1,23 @@
-import { RolesRequiredProps } from '@/@types';
+import { RolesRequired } from '@/@types';
 
 import { getUserCurrent } from './get-user-current';
 
 export type ValidateUserPermissionsProps = {
-  rolesRequired: RolesRequiredProps[],
-  requireAll?: boolean
+  rolesRequired: RolesRequired[]
 };
 
 export const ValidateUserPermissions = async ({
-  requireAll = false,
   rolesRequired
 }: ValidateUserPermissionsProps) => {
-  const { ID_GRUPO } = await getUserCurrent();
+  const { ST_GRUPO } = await getUserCurrent();
   if (rolesRequired) {
-    if (!ID_GRUPO) {
+    if (!ST_GRUPO.N_NIVEL) {
       return null;
     }
-    let hasAllPermissions;
 
-    if (requireAll) {
-      hasAllPermissions = rolesRequired.every(
-        (role) => String(role) === String(ID_GRUPO)
-      );
-    } else {
-      hasAllPermissions = rolesRequired.some(
-        (role) => String(role) === String(ID_GRUPO)
-      );
-    }
+    const hasAllPermissions = rolesRequired.some(
+      (role) => String(role) === String(ST_GRUPO.N_NIVEL)
+    );
 
     if (!hasAllPermissions) {
       return null;

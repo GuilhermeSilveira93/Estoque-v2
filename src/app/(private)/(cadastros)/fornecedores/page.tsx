@@ -4,7 +4,9 @@ import Pagination from '@/components/pagination';
 import { SearchData } from '@/components/search-data';
 
 import { Fornecedor } from '@/@classes/Fornecedor';
+import { RolesRequired } from '@/@types';
 import { FiltersPage } from '@/@types/FiltersType';
+import { userCanSeePage } from '@/@utils';
 
 export type FornecedorPageProps = {
   searchParams: FiltersPage & {
@@ -12,6 +14,13 @@ export type FornecedorPageProps = {
   }
 };
 const FornecedoresPage = async ({ searchParams }: FornecedorPageProps) => {
+  await userCanSeePage({
+    rolesRequired: [
+      RolesRequired.ADM,
+      RolesRequired.DESENV,
+      RolesRequired.SUPERVISOR
+    ]
+  });
   const fornecedores = (await new Fornecedor().getAll({ searchParams })).body;
   return (
     <section>

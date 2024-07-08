@@ -6,7 +6,9 @@ import Pagination from '@/components/pagination';
 import { SearchData } from '@/components/search-data';
 
 import { Cliente } from '@/@classes';
+import { RolesRequired } from '@/@types';
 import { FiltersPage } from '@/@types/FiltersType';
+import { userCanSeePage } from '@/@utils';
 
 export type ClientesPageProps = {
   searchParams: FiltersPage & {
@@ -14,8 +16,14 @@ export type ClientesPageProps = {
   }
 };
 const ClientesPage = async ({ searchParams }: ClientesPageProps) => {
+  await userCanSeePage({
+    rolesRequired: [
+      RolesRequired.ADM,
+      RolesRequired.DESENV,
+      RolesRequired.SUPERVISOR
+    ]
+  });
   const clientes = (await new Cliente().getAll({ searchParams })).body;
-
   return (
     <section>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">

@@ -12,12 +12,13 @@ import {
 } from '@/components/ui/form';
 
 import { CreateEmpresaSchema, CreateEmpresaType } from '@/@schemas';
-import { useEmpresaCreateFormProps } from '@/hooks/cadastro';
 import {
   ResponseReturn,
   useGenericCreateForm
 } from '@/hooks/genericCreateForm';
-type CreateEmpresaFormProps = useEmpresaCreateFormProps;
+type CreateEmpresaFormProps = {
+  criarEmpresa: (payload: CreateEmpresaType) => Promise<ResponseReturn>
+};
 const CreateEmpForm = memo(({ criarEmpresa }: CreateEmpresaFormProps) => {
   const { form, isSubmitting, submit } = useGenericCreateForm<
     CreateEmpresaType,

@@ -42,10 +42,10 @@ export const NavigationMenu = () => {
             </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-4">
-                <ListItem href="/docs" title="Entrada">
+                <ListItem href="/entrada" title="Entrada">
                   Realize entrada de materiais.
                 </ListItem>
-                <ListItem href="/docs" title="Saida">
+                <ListItem href="/saida" title="Saida">
                   Realize entrada de materiais.
                 </ListItem>
               </ul>

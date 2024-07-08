@@ -1,9 +1,4 @@
-import {
-  CreateClienteType,
-  CreateTipoType,
-  EditClienteType,
-  EditTipoType
-} from '@/@schemas';
+import { CreateClienteType, EditClienteType } from '@/@schemas';
 import { ClienteType } from '@/@types/api/ReqCliente';
 import { ClientesPageProps } from '@/app/(private)/(cadastros)/clientes/page';
 
@@ -40,7 +35,8 @@ export class Cliente extends AdapterRequest {
       method: 'post',
       url: '/cliente',
       body: {
-        S_NOME: data.S_NOME.toUpperCase()
+        S_NOME: data.S_NOME.toUpperCase(),
+        ID_EMPRESA: Number(data.ID_EMPRESA)
       }
     });
   }

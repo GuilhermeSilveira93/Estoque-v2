@@ -10,12 +10,12 @@ import {
 } from '@/components/ui/dialog';
 
 import { criarProduto } from '@/@actions';
-import { Tipos } from '@/@classes/Tipo';
+import { Tipo } from '@/@classes/Tipo';
 
 import CreateProdForm from './CreateProdForm';
 
 const CreateProd = memo(async () => {
-  const tipos = (await new Tipos().getAll()).body;
+  const tipos = (await new Tipo().getAll()).body;
   return (
     <Dialog>
       <DialogTrigger asChild>

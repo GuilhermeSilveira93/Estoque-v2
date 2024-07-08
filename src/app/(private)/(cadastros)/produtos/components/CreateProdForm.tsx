@@ -21,12 +21,13 @@ import {
 
 import { CreateProdSchema, CreateProdType } from '@/@schemas';
 import { TiposType } from '@/@types/api/ReqTipos';
-import { useProdCreateFormProps } from '@/hooks/cadastro/produtos/useProdCreateForm';
 import {
   ResponseReturn,
   useGenericCreateForm
 } from '@/hooks/genericCreateForm';
-type CreateUserFormProps = useProdCreateFormProps & {
+type CreateUserFormProps = {
+  // eslint-disable-next-line no-unused-vars
+  criarProduto: (data: CreateProdType) => Promise<ResponseReturn>,
   tipos: TiposType[]
 };
 const CreateProdForm = memo(({ criarProduto, tipos }: CreateUserFormProps) => {

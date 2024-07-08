@@ -1,7 +1,7 @@
 export const metadata = {
   title: 'Empresas - Estoque'
 };
-export default function FornecedoresLayout({
+export default function EmpresasLayout({
   children,
   modal
 }: {
