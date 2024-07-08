@@ -19,7 +19,9 @@ const CreateProd = memo(async () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="default">Criar Produto +</Button>
+        <Button variant="default" className="shadow-md shadow-primary">
+          Criar Produto +
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>

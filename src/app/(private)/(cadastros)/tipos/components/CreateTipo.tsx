@@ -17,7 +17,9 @@ const CreateTipo = memo(async () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="default">Criar Tipo +</Button>
+        <Button variant="default" className="shadow-md shadow-primary">
+          Criar Tipo +
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>

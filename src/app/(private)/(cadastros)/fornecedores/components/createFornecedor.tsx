@@ -17,7 +17,9 @@ const CreateFornecedor = memo(async () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="default">Criar Fornecedor +</Button>
+        <Button variant="default" className="shadow-md shadow-primary">
+          Criar Fornecedor +
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>

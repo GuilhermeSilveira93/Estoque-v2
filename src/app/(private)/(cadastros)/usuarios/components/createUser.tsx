@@ -19,7 +19,9 @@ const CreateUser = memo(async () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="default">Criar Usuário +</Button>
+        <Button variant="default" className="shadow-md shadow-primary">
+          Criar Usuário +
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>

@@ -13,7 +13,7 @@ export default function RootLayout({
         <NavBar />
       </aside>
       <div className="min-h-screen w-full bg-gradient-to-t from-background from-80% to-primary to-80%">
-        <main className="m-auto h-full w-full max-w-screen-3xl p-6">
+        <main className="flex h-full w-full max-w-screen-3xl flex-col items-center p-6">
           {children}
         </main>
       </div>

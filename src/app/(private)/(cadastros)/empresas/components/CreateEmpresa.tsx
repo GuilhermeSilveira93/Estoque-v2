@@ -17,7 +17,9 @@ const CreateEmpresa = memo(async () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="default">Criar Empresa +</Button>
+        <Button variant="default" className="shadow-md shadow-primary">
+          Criar Empresa +
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>

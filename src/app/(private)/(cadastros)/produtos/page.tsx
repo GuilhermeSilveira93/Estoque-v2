@@ -28,7 +28,7 @@ const ProdutosPage = async ({ searchParams }: ProdutosPageProps) => {
     total: 0
   };
   return (
-    <section>
+    <section className="w-full">
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
         <Link href={{ pathname: '/produtos' }}>Produtos</Link>
       </h1>
