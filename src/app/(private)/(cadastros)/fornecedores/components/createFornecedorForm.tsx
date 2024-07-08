@@ -12,7 +12,6 @@ import {
 } from '@/components/ui/form';
 
 import { CreateFornecedorSchema, CreateFornecedorType } from '@/@schemas';
-import { useFornecedorCreateFormProps } from '@/hooks/cadastro';
 import {
   ResponseReturn,
   useGenericCreateForm

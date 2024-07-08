@@ -12,18 +12,17 @@ import {
 } from '@/components/ui/form';
 
 import { CreateTipoSchema, CreateTipoType } from '@/@schemas';
-import { useTipoCreateFormProps } from '@/hooks/cadastro';
 import {
   ResponseReturn,
   useGenericCreateForm
 } from '@/hooks/genericCreateForm';
 type CreateTipoFormProps = useTipoCreateFormProps;
-const CreateTipoForm = memo(({ criarTipo }: CreateTipoFormProps) => {
+const CreateClienteForm = memo(({ criarCliente }: CreateTipoFormProps) => {
   const { form, isSubmitting, submit } = useGenericCreateForm<
     CreateTipoType,
     ResponseReturn
   >({
-    requestHandler: criarTipo,
+    requestHandler: criarCliente,
     schema: CreateTipoSchema
   });
   return (
@@ -57,5 +56,5 @@ const CreateTipoForm = memo(({ criarTipo }: CreateTipoFormProps) => {
     </>
   );
 });
-CreateTipoForm.displayName = 'CreateTipoForm';
-export default CreateTipoForm;
+CreateClienteForm.displayName = 'CreateClienteForm';
+export default CreateClienteForm;
