@@ -4,7 +4,7 @@ import { ProdutosPageProps } from '@/app/(private)/(cadastros)/produtos/page';
 
 import { AdapterRequest } from './RequestAdapter';
 type attProdParams = {
-  ID_PRODUTO: number,
+  ID_PRODUTO: string,
   data: EditProdType
 };
 type GetMovimentacaoType = {
@@ -74,8 +74,7 @@ export class Produto extends AdapterRequest {
       url: '/produto',
       body: {
         ...data,
-        S_NOME: data.S_NOME.toUpperCase(),
-        ID_TIPO: Number(data.ID_TIPO)
+        S_NOME: data.S_NOME.toUpperCase()
       }
     });
   }

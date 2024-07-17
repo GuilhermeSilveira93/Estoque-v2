@@ -1,9 +1,9 @@
 export type userTokenPayLoad = {
-  sub: number,
-  ID_USUARIO: number,
+  sub: string,
+  ID_USUARIO: string,
   S_NOME: string,
-  ID_GRUPO: number,
-  ST_GRUPO: { N_NIVEL: number },
+  ID_GRUPO: string,
+  st_grupo: { N_NIVEL: number },
   iat: number,
   exp: number
 };

@@ -4,7 +4,6 @@ import { DefaultValues, FieldValues, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 import * as z from 'zod';
-
 export type ResponseReturn = {
   statusCode: number,
   success: boolean,

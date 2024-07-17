@@ -1,8 +1,8 @@
 export type UsuarioType = {
-  ID_USUARIO: number,
+  ID_USUARIO: string,
   S_NOME: string,
   S_EMAIL: string,
-  ID_GRUPO: number,
+  ID_GRUPO: string,
   D_EXPIRACAO_SENHA: string,
   S_ATIVO: 'S' | 'N',
   N_TENTATIVAS_LOGIN?: number,

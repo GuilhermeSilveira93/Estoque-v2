@@ -23,13 +23,13 @@ export class Usuario extends AdapterRequest {
     ID_USUARIO,
     data
   }: {
-    ID_USUARIO: number,
+    ID_USUARIO: string,
     data: EditUserType
   }) {
     return await this.request({
       method: 'patch',
       url: `/usuario/${ID_USUARIO}`,
-      body: { ...data, ID_GRUPO: Number(data.ID_GRUPO) }
+      body: data
     });
   }
   async createUser({ data }: { data: CreateUserType }) {
@@ -38,7 +38,6 @@ export class Usuario extends AdapterRequest {
       url: `/usuario`,
       body: {
         ...data,
-        ID_GRUPO: Number(data.ID_GRUPO),
         S_NOME: data.S_NOME.toUpperCase()
       }
     });

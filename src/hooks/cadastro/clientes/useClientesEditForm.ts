@@ -45,7 +45,7 @@ const updateCliente = async (data: EditTipoType): Promise<void> => {
       }); 
     };
     toast.promise(response, {
-      loading: 'Atualizando Tipos...',
+      loading: 'Atualizando Cliente...',
       success: (data) => {
         return data;
       },

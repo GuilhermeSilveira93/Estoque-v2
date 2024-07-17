@@ -25,7 +25,7 @@ export const useUserEditForm = ({
     defaultValues: {
       S_NOME: usuario.S_NOME,
       S_ATIVO: usuario.S_ATIVO === 'S',
-      ID_GRUPO: usuario.ID_GRUPO.toString() as '1' | '2' | '3',
+      ID_GRUPO: usuario.ID_GRUPO,
       S_EMAIL: usuario.S_EMAIL,
       S_SENHA: undefined
     },

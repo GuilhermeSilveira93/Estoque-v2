@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { memo } from 'react';
 
 import { Button } from '@/components/ui';
@@ -24,10 +25,16 @@ const CreateProd = memo(async () => {
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle>Cadastro de Produto</DialogTitle>
-        </DialogHeader>
-        <CreateProdForm criarProduto={criarProduto} tipos={tipos.data} />
+        {tipos.total > 0 ? (
+          <>
+            <DialogHeader>
+              <DialogTitle>Cadastro de Produto</DialogTitle>
+            </DialogHeader>
+            <CreateProdForm criarProduto={criarProduto} tipos={tipos.data} />
+          </>
+        ) : (
+          <Link href={'/tipos'}>Crie um tipo antes de criar um produto</Link>
+        )}
       </DialogContent>
     </Dialog>
   );

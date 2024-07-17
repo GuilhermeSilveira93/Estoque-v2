@@ -9,20 +9,14 @@ export type ValidateUserPermissionsProps = {
 export const ValidateUserPermissions = async ({
   rolesRequired
 }: ValidateUserPermissionsProps) => {
-  const { ST_GRUPO } = await getUserCurrent();
-  if (rolesRequired) {
-    if (!ST_GRUPO.N_NIVEL) {
-      return null;
-    }
-
-    const hasAllPermissions = rolesRequired.some(
-      (role) => String(role) === String(ST_GRUPO.N_NIVEL)
-    );
-
-    if (!hasAllPermissions) {
-      return null;
-    }
+  const { st_grupo } = await getUserCurrent();
+  const nivel = st_grupo.N_NIVEL;
+  const hasAllPermissions = rolesRequired.some((role) => {
+    return role === nivel;
+  });
+  if (!hasAllPermissions) {
+    return null;
   }
-
+  console.log('saida true');
   return true;
 };

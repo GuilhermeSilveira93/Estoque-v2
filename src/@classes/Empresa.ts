@@ -31,7 +31,7 @@ export class Empresa extends AdapterRequest {
     ID_EMPRESA,
     data
   }: {
-    ID_EMPRESA: number,
+    ID_EMPRESA: string,
     data: EditEmpresaType
   }) {
     return await this.request<{ message: string }>({

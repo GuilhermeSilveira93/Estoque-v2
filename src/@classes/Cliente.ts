@@ -36,7 +36,7 @@ export class Cliente extends AdapterRequest {
       url: '/cliente',
       body: {
         S_NOME: data.S_NOME.toUpperCase(),
-        ID_EMPRESA: Number(data.ID_EMPRESA)
+        ID_EMPRESA: data.ID_EMPRESA
       }
     });
   }

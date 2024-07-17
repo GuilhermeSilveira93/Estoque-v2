@@ -3,7 +3,7 @@ import { Empresa } from '@/@classes/Empresa';
 import { EditEmpresaType } from '@/@schemas';
 export type atualizarEmpresaParam = {
   data: EditEmpresaType,
-  ID_EMPRESA: number
+  ID_EMPRESA: string
 };
 export const atualizarEmpresa = async ({
   data,

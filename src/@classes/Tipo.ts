@@ -20,7 +20,7 @@ export class Tipo extends AdapterRequest {
       params: searchParams
     });
   }
-  async attTipo({ ID_TIPO, data }: { ID_TIPO: number, data: EditTipoType }) {
+  async attTipo({ ID_TIPO, data }: { ID_TIPO: string, data: EditTipoType }) {
     return await this.request<{ message: string }>({
       method: 'patch',
       url: `/tipos/${ID_TIPO}`,

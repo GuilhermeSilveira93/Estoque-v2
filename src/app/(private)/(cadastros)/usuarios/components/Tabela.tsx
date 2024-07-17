@@ -11,25 +11,25 @@ import {
 
 import { Grupos } from '@/@classes/Grupos';
 import { UserProps } from '@/@types';
-import { Usuario, UsuarioKeys } from '@/@types/api';
+import { UsuarioType, UsuarioKeys } from '@/@types/api';
 import { PascalCase, getUserCurrent } from '@/@utils';
 
 import EditUser from './editUser';
 
 type TabelaProps = {
-  data: Usuario[],
+  data: UsuarioType[],
   ocultar: string[],
   searchParams: UserProps['searchParams']
 };
 export const Tabela = async ({ data, ocultar }: TabelaProps) => {
-  const userNivel = (await getUserCurrent()).ST_GRUPO.N_NIVEL;
-  const tableHeader = Object.keys(data[0] as Usuario) as UsuarioKeys[];
+  const userNivel = (await getUserCurrent()).st_grupo.N_NIVEL;
+  const tableHeader = Object.keys(data[0] as UsuarioType) as UsuarioKeys[];
   const grupos = (await new Grupos().getAll()).body;
   return (
     <>
       <Table className="text-center text-card-foreground">
         <TableHeader className="sticky top-0 border-b-2 bg-card">
-          <TableRow className="hover:bg-card ">
+          <TableRow className="hover:bg-card">
             {tableHeader.map((header, index) => {
               if (!ocultar.includes(header)) {
                 return (
@@ -50,7 +50,7 @@ export const Tabela = async ({ data, ocultar }: TabelaProps) => {
         </TableHeader>
         <TableBody>
           {data.map((usuario) => {
-            if (usuario.ST_GRUPO.N_NIVEL < userNivel) {
+            if (usuario.st_grupo.N_NIVEL < userNivel) {
               return null;
             }
             return (
@@ -59,12 +59,18 @@ export const Tabela = async ({ data, ocultar }: TabelaProps) => {
                 className="border-card-foreground"
               >
                 {tableHeader.map((header, index) => {
-                  if (!ocultar.includes(header) || !usuario.ST_GRUPO.N_NIVEL) {
+                  if (
+                    !ocultar.includes(header) ||
+                    typeof usuario.st_grupo.N_NIVEL !== 'number'
+                  ) {
                     return (
                       <TableCell
                         key={`${usuario.ID_USUARIO}-${header + index}`}
                       >
-                        {usuario[header] !== undefined && usuario[header]}
+                        {typeof usuario[header] === 'object' &&
+                        'N_NIVEL' in usuario[header]
+                          ? usuario[header].N_NIVEL
+                          : usuario[header]}
                       </TableCell>
                     );
                   }

@@ -1,12 +1,12 @@
-import { usePathname, useSearchParams } from "next/navigation";
-import { useCallback, useMemo } from "react";
+import { usePathname, useSearchParams } from 'next/navigation';
+import { useCallback, useMemo } from 'react';
 
 export const useCustomParam = () => {
   const pathName = usePathname();
   const searchParams = useSearchParams();
   const param = useMemo(
     () => new URLSearchParams(searchParams),
-    [searchParams],
+    [searchParams]
   );
 
   const createParam = useCallback(
@@ -14,7 +14,7 @@ export const useCustomParam = () => {
       param.set(name, value);
       return `${pathName}?${param.toString()}`;
     },
-    [pathName, param],
+    [pathName, param]
   );
   const deleteParam = useCallback(
     (params: Array<string>) => {
@@ -24,7 +24,7 @@ export const useCustomParam = () => {
       }
       return `${pathName}?${param.toString()}`;
     },
-    [param, pathName],
+    [param, pathName]
   );
   return { createParam, deleteParam };
 };

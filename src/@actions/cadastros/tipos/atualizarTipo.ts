@@ -3,7 +3,7 @@ import { Tipo } from '@/@classes';
 import { EditTipoType } from '@/@schemas';
 export type atualizarTipoParam = {
   data: EditTipoType,
-  ID_TIPO: number
+  ID_TIPO: string
 };
 export const atualizarTipo = async ({ data, ID_TIPO }: atualizarTipoParam) => {
   return await new Tipo().attTipo({

@@ -21,6 +21,7 @@ const UsuariosPage = async ({ searchParams }: UserPageProps) => {
     ]
   });
   const users = (await new Usuario().getAll({ searchParams })).body;
+  console.log(users);
   return (
     <section>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
@@ -38,12 +39,10 @@ const UsuariosPage = async ({ searchParams }: UserPageProps) => {
               ocultar={[
                 'ID_USUARIO',
                 'S_ATIVO',
-                'S_SENHA',
                 'ID_GRUPO',
                 'D_EXPIRACAO_SENHA',
                 'N_TENTATIVAS_LOGIN',
-                'S_CHAVE',
-                'ST_GRUPO'
+                'st_grupo'
               ]}
             />
           ) : (

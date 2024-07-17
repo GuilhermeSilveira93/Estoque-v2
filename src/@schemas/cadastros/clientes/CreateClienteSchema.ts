@@ -5,9 +5,9 @@ export const CreateClienteSchema = zod.object({
     .string()
     .min(1, { message: 'Nome do Cliente' })
     .max(150, { message: 'Tamanho máximo do e-mail é 150 caracteres.' }),
-    ID_EMPRESA: zod.string()
-    .min(1, { message: 'Selecione uma empresa' })
-    .max(4, { message: 'empresa incorreta!' })
+  ID_EMPRESA: zod.string()
+    .min(36, { message: 'Selecione uma empresa válida' })
+    .max(36, { message: 'Empresa incorreta!' })
 });
 
 // eslint-disable-next-line prettier/prettier

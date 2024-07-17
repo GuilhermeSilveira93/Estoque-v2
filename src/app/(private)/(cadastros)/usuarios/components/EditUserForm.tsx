@@ -19,10 +19,10 @@ import {
   SelectValue
 } from '@/components/ui/select';
 
-import { Grupo } from '@/@types/api';
+import { GrupoType } from '@/@types/api';
 import { useUserEditForm, useUserEditFormProps } from '@/hooks/cadastro';
 type EditProdFormProps = useUserEditFormProps & {
-  grupos: Grupo[]
+  grupos: GrupoType[]
 };
 const EditProdForm = memo(
   ({ usuario, atualizarUsuario, grupos }: EditProdFormProps) => {

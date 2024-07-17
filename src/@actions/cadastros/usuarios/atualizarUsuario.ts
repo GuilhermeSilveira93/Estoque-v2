@@ -3,7 +3,7 @@ import { Usuario } from '@/@classes/Usuario';
 import { EditUserType } from '@/@schemas/cadastros/usuarios/EditUserSchema';
 export type atualizarUsuarioParam = {
   data: EditUserType,
-  ID_USUARIO: number
+  ID_USUARIO: string
 };
 export const atualizarUsuario = async ({
   data,
