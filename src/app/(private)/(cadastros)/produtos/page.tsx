@@ -23,7 +23,8 @@ const ProdutosPage = async ({ searchParams }: ProdutosPageProps) => {
       RolesRequired.SUPERVISOR
     ]
   });
-  const produtos = (await new Produto().getAll({ searchParams })).body ?? {
+  const produtos = (await new Produto().getAllWithParams({ searchParams }))
+    .body ?? {
     data: [],
     total: 0
   };

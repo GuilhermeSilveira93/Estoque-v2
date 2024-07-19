@@ -15,7 +15,7 @@ export const ThemeChanger = () => {
   const mounted = useMount();
 
   return (
-    <div className="absolute bottom-0 right-0">
+    <div className="fixed bottom-0 right-0">
       <button
         onClick={() => setTheme(currentTheme === 'light' ? 'dark' : 'light')}
       >

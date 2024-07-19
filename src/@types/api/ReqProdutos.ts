@@ -1,5 +1,5 @@
 export type TabelaType = {
-  ID_PRODUTO: number,
+  ID_PRODUTO: string,
   produto: string,
   quantidade: number,
   S_ATIVO: string
@@ -7,7 +7,7 @@ export type TabelaType = {
 export type TabelaTypeKeys = keyof TabelaType;
 
 export type Produtos = {
-  ID_PRODUTO: number,
+  ID_PRODUTO: string,
   S_NOME: string,
   ID_TIPO: number,
   N_SERIAL?: string,

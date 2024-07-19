@@ -1,5 +1,4 @@
 'use client';
-import { useForm } from 'react-hook-form';
 
 import { Button, Input } from '@/components/ui';
 import {
@@ -18,66 +17,112 @@ import {
   SelectValue
 } from '@/components/ui/select';
 
-import {
-  FormEntradaProdutoSchema,
-  FormEntradaProdutoSchemaType
-} from '@/@schemas/movimentacao/entrada/FormEntradaProdutoSchema';
-import { zodResolver } from '@hookform/resolvers/zod';
-export const FormEntradaProduto = () => {
-  const form = useForm<FormEntradaProdutoSchemaType>({
-    mode: 'all',
-    defaultValues: {
-      S_NOME: ''
-    },
-    resolver: zodResolver(FormEntradaProdutoSchema)
-  });
+import { Produtos } from '@/@types/api';
+import { useFormEntrada } from '@/hooks/movimentacao/useFormEntrada';
+export const FormEntradaProduto = ({
+  produtos
+}: {
+  produtos: { data: Produtos[] }
+}) => {
+  const { form, onSubmit } = useFormEntrada();
   return (
-    <fieldset className="flex flex-1 rounded-md border border-inherit p-2">
-      <legend className="px-4">Entrada de Mercadoria</legend>
-      <FormRoot {...form}>
-        <form className="w-full space-y-3">
-          <FormField
-            name="S_NOME"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Cliente:</FormLabel>
+    <FormRoot {...form}>
+      <form className="w-full space-y-3" onSubmit={onSubmit}>
+        <FormField
+          name="ID_PRODUTO"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Produto</FormLabel>
+              <Select
+                {...field}
+                onValueChange={field.onChange}
+                defaultValue={field.value}
+              >
                 <FormControl>
-                  <Input
-                    type="text"
-                    placeholder="Digite o nome do Cliente"
-                    {...field}
-                  />
+                  <SelectTrigger>
+                    <SelectValue datatype="number" />
+                  </SelectTrigger>
                 </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            name="ID_EMPRESA"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Empresa</FormLabel>
-                <Select
+                <SelectContent>
+                  {produtos.data.map((produto) => (
+                    <SelectItem
+                      key={produto.ID_PRODUTO}
+                      value={produto.ID_PRODUTO}
+                    >
+                      {produto.S_NOME}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          name="S_DIMENSAO"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Dimensões:</FormLabel>
+              <FormControl>
+                <Input
+                  type="text"
+                  placeholder="Dimensão do produto"
                   {...field}
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue datatype="number" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent></SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <div className="grid">
-            <Button type="submit">{'Salvar'}</Button>
-          </div>
-        </form>
-      </FormRoot>
-    </fieldset>
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          name="S_DETALHES"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Detalhes:</FormLabel>
+              <FormControl>
+                <Input
+                  type="text"
+                  placeholder="Detalhes do produto"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          name="N_VALOR"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Valor:</FormLabel>
+              <FormControl>
+                <Input type="text" placeholder="Valor do produto" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          name="N_QUANTIDADE"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Quantidade:</FormLabel>
+              <FormControl>
+                <Input
+                  type="number"
+                  inputMode="numeric"
+                  placeholder="Quantidade do produto"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <div className="grid">
+          <Button type="submit">{'Inserir'}</Button>
+        </div>
+      </form>
+    </FormRoot>
   );
 };

@@ -57,6 +57,9 @@ const config: Config = {
         }
       },
       spacing: {
+        '120': '30rem',
+        '124': '31rem',
+        '128': '32rem',
         '132': '33rem'
       },
       borderRadius: {
