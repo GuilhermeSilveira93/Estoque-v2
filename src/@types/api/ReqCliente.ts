@@ -1,5 +1,5 @@
 export type ClienteType = {
-  ID_CLIENTE: number,
+  ID_CLIENTE: string,
   data: {
     S_NOME: string,
     S_ATIVO: 'S' | 'N',

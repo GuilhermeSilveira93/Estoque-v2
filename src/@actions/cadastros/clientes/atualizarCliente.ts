@@ -3,7 +3,7 @@ import { Cliente } from '@/@classes';
 import { EditClienteType } from '@/@schemas';
 export type atualizarClienteParam = {
   data: EditClienteType,
-  ID_CLIENTE: number
+  ID_CLIENTE: string
 };
 export const atualizarCliente = async ({
   data,

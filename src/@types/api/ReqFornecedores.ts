@@ -1,5 +1,5 @@
 export type FornecedorType = {
-  ID_FORNECEDOR: number,
+  ID_FORNECEDOR: string,
   S_NOME: string,
   S_ATIVO: 'S' | 'N'
 };

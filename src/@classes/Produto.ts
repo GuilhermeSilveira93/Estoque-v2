@@ -1,5 +1,5 @@
 import { CreateProdType, EditProdType } from '@/@schemas';
-import { Produtos as ProdutosType, TabelaType } from '@/@types/api';
+import { ProdutosType, TabelaType } from '@/@types/api';
 import { ProdutosPageProps } from '@/app/(private)/(cadastros)/produtos/page';
 
 import { AdapterRequest } from './RequestAdapter';

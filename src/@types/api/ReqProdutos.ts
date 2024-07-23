@@ -6,7 +6,7 @@ export type TabelaType = {
 };
 export type TabelaTypeKeys = keyof TabelaType;
 
-export type Produtos = {
+export type ProdutosType = {
   ID_PRODUTO: string,
   S_NOME: string,
   ID_TIPO: number,
@@ -16,4 +16,4 @@ export type Produtos = {
     S_NOME: string
   }
 };
-export type ProdutosKeys = keyof Produtos;
+export type ProdutosKeys = keyof ProdutosType;

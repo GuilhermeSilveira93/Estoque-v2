@@ -17,12 +17,12 @@ import {
   SelectValue
 } from '@/components/ui/select';
 
-import { Produtos } from '@/@types/api';
-import { useFormEntrada } from '@/hooks/movimentacao/useFormEntrada';
+import { ProdutosType } from '@/@types/api';
+import { useFormEntrada } from '@/hooks/movimentacao/entrada/useFormEntrada';
 export const FormEntradaProduto = ({
   produtos
 }: {
-  produtos: { data: Produtos[] }
+  produtos: { data: ProdutosType[] }
 }) => {
   const { form, onSubmit } = useFormEntrada();
   return (
@@ -39,8 +39,8 @@ export const FormEntradaProduto = ({
                 defaultValue={field.value}
               >
                 <FormControl>
-                  <SelectTrigger>
-                    <SelectValue datatype="number" />
+                  <SelectTrigger className="placeholder:text-red-500">
+                    <SelectValue datatype="string" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>

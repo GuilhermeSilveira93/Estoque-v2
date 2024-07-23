@@ -9,7 +9,13 @@ export class Fornecedor extends AdapterRequest {
   constructor() {
     super();
   }
-  async getAll({ searchParams }: FornecedorPageProps) {
+  async getAll() {
+    return await this.request<{ data: FornecedorType[], total: number }>({
+      method: 'get',
+      url: '/fornecedor'
+    });
+  }
+  async getAllWithParams({ searchParams }: FornecedorPageProps) {
     const { ID_FORNECEDOR, S_ATIVO, Search, Page, LimitPerPage } = searchParams;
     return await this.request<{ data: FornecedorType[], total: number }>({
       method: 'get',

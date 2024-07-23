@@ -18,7 +18,7 @@ export class Cliente extends AdapterRequest {
     ID_CLIENTE,
     data
   }: {
-    ID_CLIENTE: number,
+    ID_CLIENTE: string,
     data: EditClienteType
   }) {
     return await this.request<{ message: string }>({
