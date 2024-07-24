@@ -17,14 +17,17 @@ import {
   SelectValue
 } from '@/components/ui/select';
 
+import { CancelarEntrada } from '@/@Reducers/entrada/ActionSetEntrada';
 import { ProdutosType } from '@/@types/api';
 import { useFormEntrada } from '@/hooks/movimentacao/entrada/useFormEntrada';
+import { useProdutosEntrada } from '@/hooks/movimentacao/entrada/useProdutosEntrada';
 export const FormEntradaProduto = ({
   produtos
 }: {
   produtos: { data: ProdutosType[] }
 }) => {
   const { form, onSubmit } = useFormEntrada();
+  const { setEntrada } = useProdutosEntrada();
   return (
     <FormRoot {...form}>
       <form className="w-full space-y-3" onSubmit={onSubmit}>
@@ -119,8 +122,18 @@ export const FormEntradaProduto = ({
             </FormItem>
           )}
         />
-        <div className="grid">
-          <Button type="submit">{'Inserir'}</Button>
+        <div>
+          <Button type="submit" className="w-1/2">
+            Inserir
+          </Button>
+          <Button
+            variant={'destructive'}
+            type="button"
+            className="w-1/2"
+            onClick={() => setEntrada(CancelarEntrada(null))}
+          >
+            Cancelar
+          </Button>
         </div>
       </form>
     </FormRoot>

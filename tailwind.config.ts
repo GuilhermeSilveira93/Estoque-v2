@@ -75,11 +75,17 @@ const config: Config = {
         'accordion-up': {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' }
+        },
+        'fade-in': {
+          '0%': { height: '-10' },
+          '50%': { height: '10' },
+          '100%': { height: '0' }
         }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out'
+        'accordion-up': 'accordion-up 0.2s ease-out',
+        'fade-in': 'fade-in 1s ease-in-out infinite'
       },
       backgroundImage: {
         'softrack-pattern': "url('../../assets/images/Snake.png')",

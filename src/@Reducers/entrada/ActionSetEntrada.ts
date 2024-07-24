@@ -19,3 +19,9 @@ export const InserirItem = (
     payload
   };
 };
+export const CancelarEntrada = (payload: null): ReturnFunctionsTypes => {
+  return {
+    type: EnumActionSetEntrada.CancelarEntrada,
+    payload
+  };
+};

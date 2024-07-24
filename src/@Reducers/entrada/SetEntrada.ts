@@ -24,6 +24,8 @@ export const SetEntrada = (
       return produce(state, (rascunho) => {
         rascunho.unshift(action.payload);
       });
+    case EnumActionSetEntrada.CancelarEntrada:
+      return [];
     default:
       break;
   }

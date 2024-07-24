@@ -45,7 +45,7 @@ export const Tabela = () => {
           {infoTabela.map((produto, i) => (
             <TableRow
               key={`Produto${produto.ID_PRODUTO}${i}`}
-              className="border-card-foreground"
+              className="animate-fade-in border-card-foreground transition-all duration-500 slide-in-from-top-0 repeat-infinite"
             >
               <TableCell>{produto.S_NOME}</TableCell>
               <TableCell>{produto.N_QUANTIDADE}</TableCell>

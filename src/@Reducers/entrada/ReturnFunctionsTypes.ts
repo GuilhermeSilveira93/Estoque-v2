@@ -9,11 +9,16 @@ import { FormEntradaProdutoSchemaType } from '@/@schemas/movimentacao/entrada/Fo
 
 export enum EnumActionSetEntrada {
   // eslint-disable-next-line no-unused-vars
-  InserirItem = 'InserirItem'
+  InserirItem = 'InserirItem',
+  // eslint-disable-next-line no-unused-vars
+  CancelarEntrada = 'CancelarEntrada'
 }
 export type ReturnInsertItem = {
   type: EnumActionSetEntrada.InserirItem,
   payload: FormEntradaProdutoSchemaType
 };
-
-export type ReturnFunctionsTypes = ReturnInsertItem;
+export type ReturnCancelarEntrada = {
+  type: EnumActionSetEntrada.CancelarEntrada,
+  payload: null
+};
+export type ReturnFunctionsTypes = ReturnInsertItem | ReturnCancelarEntrada;

@@ -15,10 +15,10 @@ export const useFormEntrada = () => {
     mode: 'all',
     defaultValues: {
       ID_PRODUTO: '',
-      N_QUANTIDADE: undefined,
-      S_DIMENSAO: undefined,
-      S_DETALHES: undefined,
-      N_VALOR: undefined
+      S_DIMENSAO: '',
+      S_DETALHES: '',
+      N_VALOR: undefined,
+      N_QUANTIDADE: 0
     },
     resolver: zodResolver(FormEntradaProdutoSchema)
   });
