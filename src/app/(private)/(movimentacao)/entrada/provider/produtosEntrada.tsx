@@ -21,7 +21,14 @@ interface ProdutosEntradaContextValues {
 export const ProdutosEntradaContext = createContext(
   {} as ProdutosEntradaContextValues
 );
-
+export type InfoTabela = {
+  N_QUANTIDADE: number,
+  ID_PRODUTO: string,
+  N_VALOR?: number | undefined,
+  S_DETALHES?: string | undefined,
+  S_DIMENSAO?: string | undefined,
+  S_NOME: string
+};
 export const ProdutosEntradaProvider = ({
   produtos,
   children
@@ -38,7 +45,7 @@ export const ProdutosEntradaProvider = ({
     SetEntrada,
     [] as FormEntradaProdutoSchemaType[]
   );
-  const infoTabela = entrada.map((produtoEntrada) => {
+  const infoTabela: InfoTabela[] = entrada.map((produtoEntrada) => {
     let S_NOME = '';
     produtos.data.forEach((produto) => {
       if (produto.ID_PRODUTO === produtoEntrada.ID_PRODUTO) {

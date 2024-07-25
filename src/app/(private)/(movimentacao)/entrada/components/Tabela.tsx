@@ -6,13 +6,14 @@ import {
   ScrollBar,
   Table,
   TableBody,
-  TableCell,
   TableHead,
   TableHeader,
   TableRow
 } from '@/components/ui';
 
 import { useProdutosEntrada } from '@/hooks/movimentacao/entrada/useProdutosEntrada';
+
+import { LinhaTableBody } from './LinhaTableBody';
 
 export const Tabela = () => {
   const { infoTabela } = useProdutosEntrada();
@@ -23,6 +24,9 @@ export const Tabela = () => {
         <TableHeader className="sticky top-0 border-b-2 bg-card">
           <TableRow className="hover:bg-card ">
             <>
+              <TableHead className="border-b-0 border-card-foreground text-center text-3xl font-black text-card-foreground">
+                Editar
+              </TableHead>
               <TableHead className="border-b-0 border-card-foreground text-center text-3xl font-black text-card-foreground">
                 Produto
               </TableHead>
@@ -43,16 +47,10 @@ export const Tabela = () => {
         </TableHeader>
         <TableBody>
           {infoTabela.map((produto, i) => (
-            <TableRow
+            <LinhaTableBody
               key={`Produto${produto.ID_PRODUTO}${i}`}
-              className="animate-fade-in border-card-foreground transition-all duration-500 slide-in-from-top-0 repeat-infinite"
-            >
-              <TableCell>{produto.S_NOME}</TableCell>
-              <TableCell>{produto.N_QUANTIDADE}</TableCell>
-              <TableCell>{produto.N_VALOR}</TableCell>
-              <TableCell>{produto.S_DETALHES}</TableCell>
-              <TableCell>{produto.S_DIMENSAO}</TableCell>
-            </TableRow>
+              produto={produto}
+            />
           ))}
         </TableBody>
       </Table>
