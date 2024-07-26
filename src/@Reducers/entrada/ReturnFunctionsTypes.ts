@@ -1,3 +1,4 @@
+import { FormEntradaEditProdutoSchemaType } from '@/@schemas/movimentacao/entrada/FormEntradaEditProdutoSchema';
 import { FormEntradaProdutoSchemaType } from '@/@schemas/movimentacao/entrada/FormEntradaProdutoSchema';
 
 /*
@@ -11,7 +12,11 @@ export enum EnumActionSetEntrada {
   // eslint-disable-next-line no-unused-vars
   InserirItem = 'InserirItem',
   // eslint-disable-next-line no-unused-vars
-  CancelarEntrada = 'CancelarEntrada'
+  CancelarEntrada = 'CancelarEntrada',
+  // eslint-disable-next-line no-unused-vars
+  EditItemEntrada = 'EditItemEntrada',
+  // eslint-disable-next-line no-unused-vars
+  DeleteItemEntrada = 'DeleteItemEntrada'
 }
 export type ReturnInsertItem = {
   type: EnumActionSetEntrada.InserirItem,
@@ -21,4 +26,16 @@ export type ReturnCancelarEntrada = {
   type: EnumActionSetEntrada.CancelarEntrada,
   payload: null
 };
-export type ReturnFunctionsTypes = ReturnInsertItem | ReturnCancelarEntrada;
+export type ReturnEditItemEntrada = {
+  type: EnumActionSetEntrada.EditItemEntrada,
+  payload: { ID_PRODUTO: string, payload: FormEntradaEditProdutoSchemaType }
+};
+export type ReturnDeleteItemEntrada = {
+  type: EnumActionSetEntrada.DeleteItemEntrada,
+  payload: { ID_PRODUTO: string }
+};
+export type ReturnFunctionsTypes =
+  | ReturnInsertItem
+  | ReturnCancelarEntrada
+  | ReturnEditItemEntrada
+  | ReturnDeleteItemEntrada;

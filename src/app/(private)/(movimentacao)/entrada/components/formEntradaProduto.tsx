@@ -106,7 +106,6 @@ export const FormEntradaProduto = ({
           )}
         />
         <FormField
-          name="N_QUANTIDADE"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Quantidade:</FormLabel>
@@ -121,6 +120,7 @@ export const FormEntradaProduto = ({
               <FormMessage />
             </FormItem>
           )}
+          name="N_QUANTIDADE"
         />
         <div>
           <Button type="submit" className="w-1/2">

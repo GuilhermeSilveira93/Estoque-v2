@@ -26,6 +26,25 @@ export const SetEntrada = (
       });
     case EnumActionSetEntrada.CancelarEntrada:
       return [];
+    case EnumActionSetEntrada.EditItemEntrada: {
+      return produce(state, (rascunho) => {
+        rascunho.forEach((produto) => {
+          if (produto.ID_PRODUTO === action.payload.ID_PRODUTO) {
+            produto.N_QUANTIDADE = action.payload.payload.N_QUANTIDADE;
+            produto.N_VALOR = action.payload.payload.N_VALOR;
+            produto.S_DETALHES = action.payload.payload.S_DETALHES;
+            produto.S_DIMENSAO = action.payload.payload.S_DIMENSAO;
+          }
+        });
+      });
+    }
+    case EnumActionSetEntrada.DeleteItemEntrada: {
+      return produce(state, (rascunho) => {
+        return rascunho.filter(
+          (produto) => produto.ID_PRODUTO !== action.payload.ID_PRODUTO
+        );
+      });
+    }
     default:
       break;
   }

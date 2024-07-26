@@ -9,58 +9,23 @@ import {
   FormLabel,
   FormMessage
 } from '@/components/ui/form';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue
-} from '@/components/ui/select';
 
-import { CancelarEntrada } from '@/@Reducers/entrada/ActionSetEntrada';
-import { ProdutosType } from '@/@types/api';
-import { useFormEntrada } from '@/hooks/movimentacao/entrada/useFormEntrada';
+import { RemoverItem } from '@/@Reducers/entrada/ActionSetEntrada';
+import { useFormEditEntrada } from '@/hooks/movimentacao/entrada/useFormEditEntrada';
 import { useProdutosEntrada } from '@/hooks/movimentacao/entrada/useProdutosEntrada';
-export const FormEntradaProduto = ({
-  produtos
+
+import { InfoTabela } from '../provider/produtosEntrada';
+
+export const FormEntradaEditProduto = ({
+  produto
 }: {
-  produtos: { data: ProdutosType[] }
+  produto: InfoTabela
 }) => {
-  const { form, onSubmit } = useFormEntrada();
   const { setEntrada } = useProdutosEntrada();
+  const { form, onSubmit } = useFormEditEntrada({ produto });
   return (
     <FormRoot {...form}>
       <form className="w-full space-y-3" onSubmit={onSubmit}>
-        <FormField
-          name="ID_PRODUTO"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Produto</FormLabel>
-              <Select
-                {...field}
-                onValueChange={field.onChange}
-                defaultValue={field.value}
-              >
-                <FormControl>
-                  <SelectTrigger className="placeholder:text-red-500">
-                    <SelectValue datatype="string" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {produtos.data.map((produto) => (
-                    <SelectItem
-                      key={produto.ID_PRODUTO}
-                      value={produto.ID_PRODUTO}
-                    >
-                      {produto.S_NOME}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
         <FormField
           name="S_DIMENSAO"
           render={({ field }) => (
@@ -99,22 +64,10 @@ export const FormEntradaProduto = ({
             <FormItem>
               <FormLabel>Valor:</FormLabel>
               <FormControl>
-                <Input type="text" placeholder="Valor do produto" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          name="N_QUANTIDADE"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Quantidade:</FormLabel>
-              <FormControl>
                 <Input
                   type="number"
-                  inputMode="numeric"
-                  placeholder="Quantidade do produto"
+                  step="0.01"
+                  placeholder="Valor do produto"
                   {...field}
                 />
               </FormControl>
@@ -122,17 +75,37 @@ export const FormEntradaProduto = ({
             </FormItem>
           )}
         />
+        <FormField
+          name="N_QUANTIDADE"
+          render={({ field: { onChange, ...formulario } }) => (
+            <FormItem>
+              <FormLabel>Quantidade:</FormLabel>
+              <FormControl>
+                <Input
+                  onChange={(e) => onChange(Number(e.target.value))}
+                  type="number"
+                  inputMode="numeric"
+                  placeholder="Quantidade do produto"
+                  {...formulario}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <div>
-          <Button type="submit" className="w-1/2">
-            Inserir
+          <Button type="submit" className="w-full">
+            Salvar
           </Button>
           <Button
             variant={'destructive'}
             type="button"
-            className="w-1/2"
-            onClick={() => setEntrada(CancelarEntrada(null))}
+            className="w-full"
+            onClick={() =>
+              setEntrada(RemoverItem({ ID_PRODUTO: produto.ID_PRODUTO }))
+            }
           >
-            Cancelar
+            excluir
           </Button>
         </div>
       </form>

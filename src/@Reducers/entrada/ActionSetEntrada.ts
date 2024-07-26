@@ -1,3 +1,4 @@
+import { FormEntradaEditProdutoSchemaType } from '@/@schemas/movimentacao/entrada/FormEntradaEditProdutoSchema';
 import { FormEntradaProdutoSchemaType } from '@/@schemas/movimentacao/entrada/FormEntradaProdutoSchema';
 
 import {
@@ -23,5 +24,27 @@ export const CancelarEntrada = (payload: null): ReturnFunctionsTypes => {
   return {
     type: EnumActionSetEntrada.CancelarEntrada,
     payload
+  };
+};
+export const AlterarItem = ({
+  ID_PRODUTO,
+  payload
+}: {
+  ID_PRODUTO: string,
+  payload: FormEntradaEditProdutoSchemaType
+}): ReturnFunctionsTypes => {
+  return {
+    type: EnumActionSetEntrada.EditItemEntrada,
+    payload: { ID_PRODUTO, payload }
+  };
+};
+export const RemoverItem = ({
+  ID_PRODUTO
+}: {
+  ID_PRODUTO: string
+}): ReturnFunctionsTypes => {
+  return {
+    type: EnumActionSetEntrada.DeleteItemEntrada,
+    payload: { ID_PRODUTO }
   };
 };

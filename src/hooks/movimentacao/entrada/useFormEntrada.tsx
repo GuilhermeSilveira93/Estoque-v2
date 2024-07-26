@@ -10,7 +10,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useProdutosEntrada } from './useProdutosEntrada';
 
 export const useFormEntrada = () => {
-  const { setEntrada } = useProdutosEntrada();
+  const { setEntrada, entrada } = useProdutosEntrada();
   const form = useForm<FormEntradaProdutoSchemaType>({
     mode: 'all',
     defaultValues: {
@@ -18,11 +18,15 @@ export const useFormEntrada = () => {
       S_DIMENSAO: '',
       S_DETALHES: '',
       N_VALOR: undefined,
-      N_QUANTIDADE: 0
+      N_QUANTIDADE: undefined
     },
     resolver: zodResolver(FormEntradaProdutoSchema)
   });
   const onSubmit = (data: FormEntradaProdutoSchemaType) => {
+    if (entrada.some((produto) => produto.ID_PRODUTO === data.ID_PRODUTO)) {
+      alert('Produto já inserido na tabela!');
+      return;
+    }
     setEntrada(InserirItem(data));
     form.reset();
   };

@@ -8,6 +8,7 @@ import {
 import { Settings } from 'lucide-react';
 
 import { InfoTabela } from '../provider/produtosEntrada';
+import { FormEntradaEditProduto } from './formEditEntradaProduto';
 export const LinhaTableBody = ({ produto }: { produto: InfoTabela }) => {
   return (
     <TableRow className="animate-fade-in border-card-foreground transition-all duration-500 slide-in-from-top-0 repeat-infinite">
@@ -17,7 +18,7 @@ export const LinhaTableBody = ({ produto }: { produto: InfoTabela }) => {
             <Settings className="cursor-pointer text-secondary" />
           </PopoverTrigger>
           <PopoverContent side="left" align="center">
-            Formulario
+            <FormEntradaEditProduto produto={produto} />
           </PopoverContent>
         </Popover>
       </TableCell>
