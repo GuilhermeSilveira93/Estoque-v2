@@ -4,14 +4,13 @@ import {
   PopoverContent,
   PopoverTrigger
 } from '@/components/ui/popover';
-
 import { Settings } from 'lucide-react';
 
 import { InfoTabela } from '../provider/produtosEntrada';
 import { FormEntradaEditProduto } from './formEditEntradaProduto';
 export const LinhaTableBody = ({ produto }: { produto: InfoTabela }) => {
   return (
-    <TableRow className="animate-fade-in border-card-foreground transition-all duration-500 slide-in-from-top-0 repeat-infinite">
+    <TableRow className="animate-fadeinleft transition-all border-card-foreground duration-500 slide-in-from-top-0">
       <TableCell>
         <Popover>
           <PopoverTrigger asChild>
@@ -29,4 +28,4 @@ export const LinhaTableBody = ({ produto }: { produto: InfoTabela }) => {
       <TableCell>{produto.S_DIMENSAO}</TableCell>
     </TableRow>
   );
-};
+}
