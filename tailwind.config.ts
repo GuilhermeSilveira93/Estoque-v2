@@ -68,38 +68,9 @@ const config: Config = {
         sm: 'calc(var(--radius) - 4px)'
       },
       keyframes: {
-        'accordion-down': {
-          from: { height: '0' },
-          to: { height: 'var(--radix-accordion-content-height)' }
-        },
-        'accordion-up': {
-          from: { height: 'var(--radix-accordion-content-height)' },
-          to: { height: '0' }
-        },
-        'fade-in-left': {
-          '0%': {
-            opacity: '0',
-            transform: 'translate3d(-100%, 0, 0)'
-          },
-          '100%': {
-            opacity: '1',
-            transform: 'translate3d(0, 0, 0)'
-          }
-        },
-        'fade-in': {
-          '0%': {
-            opacity: '0'
-          },
-          '100%': {
-            opacity: '1'
-          }
-        }
       },
       animation: {
-        'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
-        fadein: 'fade-in 1s ease-in-out 0.25s 1',
-        fadeinleft: 'fade-in-left 1s ease-in-out 0.25s 1',
+        '': '',
       },
       backgroundImage: {
         'softrack-pattern': "url('../../assets/images/Snake.png')",

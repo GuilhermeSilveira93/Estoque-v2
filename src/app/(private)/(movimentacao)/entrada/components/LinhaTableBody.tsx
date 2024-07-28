@@ -10,7 +10,7 @@ import { InfoTabela } from '../provider/produtosEntrada';
 import { FormEntradaEditProduto } from './formEditEntradaProduto';
 export const LinhaTableBody = ({ produto }: { produto: InfoTabela }) => {
   return (
-    <TableRow className="animate-fadeinleft transition-all border-card-foreground duration-500 slide-in-from-top-0">
+    <TableRow className="border-card-foreground">
       <TableCell>
         <Popover>
           <PopoverTrigger asChild>
