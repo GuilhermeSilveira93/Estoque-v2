@@ -19,7 +19,7 @@ import {
 
 import { FornecedorType } from '@/@types/api';
 import { useEnviarProdutosEntradaForm } from '@/hooks/movimentacao/entrada/useEnviarProdutosEntradaForm';
-export const FormEnviar = ({
+export const FormEnviarEntrada = ({
   fornecedores
 }: {
   fornecedores: FornecedorType[]
