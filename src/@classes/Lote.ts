@@ -18,4 +18,17 @@ export class Lote extends AdapterRequest {
       body: { DADOS: data }
     });
   }
+  async removeProdutos({
+    data,
+    ID_CLIENTE
+  }: {
+    data: FormEntradaProdutoSchemaType[],
+    ID_CLIENTE: string
+  }) {
+    return await this.request<{ message: string }>({
+      method: 'post',
+      url: `lote/saida/${ID_CLIENTE}`,
+      body: {DADOS: data}
+    });
+  }
 }

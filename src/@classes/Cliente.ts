@@ -7,11 +7,23 @@ export class Cliente extends AdapterRequest {
   constructor() {
     super();
   }
-  async getAll({ searchParams }: ClientesPageProps) {
+  async getAllWithParams({ searchParams }: ClientesPageProps) {
     return await this.request<{ data: ClienteType[], total: number }>({
       method: 'get',
       url: '/cliente',
       params: searchParams
+    });
+  }
+  async getForCompany({ ID_EMPRESA }:{ID_EMPRESA:string} ) {
+    return await this.request<{ data: {ID_CLIENTE: string, S_NOME:string}[], total: number }>({
+      method: 'get',
+      url: `/cliente/${ID_EMPRESA}`,
+    });
+  }
+  async getAll() {
+    return await this.request<{ data: ClienteType[], total: number }>({
+      method: 'get',
+      url: '/cliente',
     });
   }
   async attCliente({

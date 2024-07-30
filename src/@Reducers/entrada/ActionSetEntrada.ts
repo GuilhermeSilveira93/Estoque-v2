@@ -20,9 +20,9 @@ export const InserirItem = (
     payload
   };
 };
-export const CancelarEntrada = (payload: null): ReturnFunctionsTypes => {
+export const LimparEntrada = (payload: null): ReturnFunctionsTypes => {
   return {
-    type: EnumActionSetEntrada.CancelarEntrada,
+    type: EnumActionSetEntrada.LimparEntrada,
     payload
   };
 };

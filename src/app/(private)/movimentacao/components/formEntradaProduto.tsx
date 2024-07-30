@@ -17,7 +17,7 @@ import {
   SelectValue
 } from '@/components/ui/select';
 
-import { CancelarEntrada } from '@/@Reducers/entrada/ActionSetEntrada';
+import { LimparEntrada } from '@/@Reducers/entrada/ActionSetEntrada';
 import { ProdutosType } from '@/@types/api';
 import { useFormEntrada } from '@/hooks/movimentacao/entrada/useFormEntrada';
 import { useProdutosEntrada } from '@/hooks/movimentacao/entrada/useProdutosEntrada';
@@ -130,7 +130,7 @@ export const FormEntradaProduto = ({
             variant={'destructive'}
             type="button"
             className="w-1/2"
-            onClick={() => setEntrada(CancelarEntrada(null))}
+            onClick={() => setEntrada(LimparEntrada(null))}
           >
             Cancelar
           </Button>

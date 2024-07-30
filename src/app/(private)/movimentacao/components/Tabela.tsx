@@ -17,7 +17,7 @@ import { LinhaTableBody } from './LinhaTableBody';
 
 export const Tabela = () => {
   const { infoTabela } = useProdutosEntrada();
-  if (!infoTabela.length) return null;
+  if (!infoTabela?.length) return null;
   return (
     <ScrollArea className="max-h-120 whitespace-nowrap">
       <Table className="text-center text-card-foreground">
@@ -46,7 +46,7 @@ export const Tabela = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {infoTabela.map((produto, i) => (
+          {infoTabela?.map((produto, i) => (
             <LinhaTableBody
               key={`Produto${produto.ID_PRODUTO}${i}`}
               produto={produto}

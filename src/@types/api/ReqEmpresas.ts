@@ -1,5 +1,5 @@
 export type EmpresaType = {
-  ID_EMPRESA: number,
+  ID_EMPRESA: string,
   S_NOME: string,
   D_DATA: Date,
   S_ATIVO: 'S' | 'N'

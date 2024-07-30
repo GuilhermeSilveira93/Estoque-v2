@@ -6,11 +6,14 @@ import {
   NavigationMenu as Navigation,
   NavigationMenuContent,
   NavigationMenuItem,
+  NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle
 } from '@/components/ui/navigation-menu';
 
 import { ListItem } from './ListItem';
+import Link from 'next/link';
 
 export const NavigationMenu = () => {
   return (
@@ -37,6 +40,13 @@ export const NavigationMenu = () => {
       <Navigation className="min-w-full" orientation="horizontal">
         <NavigationMenuList>
           <NavigationMenuItem className="relative">
+          <NavigationMenuItem>
+          <Link href="/movimentacao" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Documentation
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
             <NavigationMenuTrigger className="w-full">
               Movimentação
             </NavigationMenuTrigger>

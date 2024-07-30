@@ -1,6 +1,6 @@
+import { ProdutosEntradaContext } from '@/app/(private)/movimentacao/provider/produtosEntrada';
 import { useContextSelector } from 'use-context-selector';
 
-import { ProdutosEntradaContext } from '../../../app/(private)/(movimentacao)/entrada/provider/produtosEntrada';
 
 export const useProdutosEntrada = () => {
   const entrada = useContextSelector(

@@ -8,12 +8,12 @@ import {
   DialogTrigger
 } from '@/components/ui/dialog';
 
-import { FornecedorType } from '@/@types/api';
+import { EmpresaType, FornecedorType } from '@/@types/api';
 import { useProdutosEntrada } from '@/hooks/movimentacao/entrada/useProdutosEntrada';
 
 import { FormEnviarEntrada } from './formEnviarEntrada';
 import { FormEnviarSaida } from './formEnviarSaida';
-const Enviar = ({ fornecedores }: { fornecedores: FornecedorType[] }) => {
+const Enviar = ({ fornecedores, empresas }: { fornecedores: FornecedorType[], empresas: EmpresaType[] }) => {
   const { entrada } = useProdutosEntrada();
   if (!entrada.length) return null;
   return (
@@ -24,7 +24,7 @@ const Enviar = ({ fornecedores }: { fornecedores: FornecedorType[] }) => {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Escolha seu fornecedor.</DialogTitle>
+          <DialogTitle>Fornecedor dos Produtos.</DialogTitle>
           <FormEnviarEntrada fornecedores={fornecedores} />
         </DialogHeader>
       </DialogContent>
@@ -35,8 +35,8 @@ const Enviar = ({ fornecedores }: { fornecedores: FornecedorType[] }) => {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Escolha seu fornecedor.</DialogTitle>
-          <FormEnviarSaida fornecedores={fornecedores} />
+          <DialogTitle>Saida para qual empresa?</DialogTitle>
+          <FormEnviarSaida empresas={empresas} />
         </DialogHeader>
       </DialogContent>
     </Dialog>

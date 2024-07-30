@@ -12,7 +12,7 @@ export enum EnumActionSetEntrada {
   // eslint-disable-next-line no-unused-vars
   InserirItem = 'InserirItem',
   // eslint-disable-next-line no-unused-vars
-  CancelarEntrada = 'CancelarEntrada',
+  LimparEntrada = 'LimparEntrada',
   // eslint-disable-next-line no-unused-vars
   EditItemEntrada = 'EditItemEntrada',
   // eslint-disable-next-line no-unused-vars
@@ -22,8 +22,8 @@ export type ReturnInsertItem = {
   type: EnumActionSetEntrada.InserirItem,
   payload: FormEntradaProdutoSchemaType
 };
-export type ReturnCancelarEntrada = {
-  type: EnumActionSetEntrada.CancelarEntrada,
+export type ReturnLimparEntrada = {
+  type: EnumActionSetEntrada.LimparEntrada,
   payload: null
 };
 export type ReturnEditItemEntrada = {
@@ -36,6 +36,6 @@ export type ReturnDeleteItemEntrada = {
 };
 export type ReturnFunctionsTypes =
   | ReturnInsertItem
-  | ReturnCancelarEntrada
+  | ReturnLimparEntrada
   | ReturnEditItemEntrada
   | ReturnDeleteItemEntrada;

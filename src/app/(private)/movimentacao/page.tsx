@@ -2,7 +2,7 @@ import Enviar from './components/enviar';
 import { FormEntradaProduto } from './components/formEntradaProduto';
 import { Tabela } from './components/Tabela';
 
-import { Produto } from '@/@classes';
+import { Empresa, Produto } from '@/@classes';
 import { Fornecedor } from '@/@classes/Fornecedor';
 import { RolesRequired } from '@/@types';
 import { userCanSeePage } from '@/@utils';
@@ -18,6 +18,7 @@ const EntradaPage = async () => {
   });
   const produtos = (await new Produto().getAll()).body;
   const fornecedores = (await new Fornecedor().getAll()).body;
+  const empresas = (await new Empresa().getAll()).body;
   return (
     <>
       <section className="rounded-md bg-card p-4  shadow-primary">
@@ -28,7 +29,7 @@ const EntradaPage = async () => {
             <div className="flex flex-1 flex-col">
               <Tabela />
               <div>
-                <Enviar fornecedores={fornecedores.data} />
+                <Enviar fornecedores={fornecedores.data} empresas={empresas.data} />
               </div>
             </div>
           </ProdutosEntradaProvider>

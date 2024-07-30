@@ -24,7 +24,7 @@ export const SetEntrada = (
       return produce(state, (rascunho) => {
         rascunho.unshift(action.payload);
       });
-    case EnumActionSetEntrada.CancelarEntrada:
+    case EnumActionSetEntrada.LimparEntrada:
       return [];
     case EnumActionSetEntrada.EditItemEntrada: {
       return produce(state, (rascunho) => {
