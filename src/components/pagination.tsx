@@ -1,5 +1,5 @@
-'use client';
-import { useSearchParams } from 'next/navigation';
+'use client'
+import { useSearchParams } from 'next/navigation'
 
 import {
   Pagination as Page,
@@ -7,41 +7,41 @@ import {
   PaginationItem,
   PaginationLink,
   PaginationNext,
-  PaginationPrevious
-} from '@/components/ui/pagination';
+  PaginationPrevious,
+} from '@/components/ui/pagination'
 
-import { getElementsAroundIndex } from '@/@utils/getArrayPages';
-import { useCustomParam } from '@/hooks';
+import { getElementsAroundIndex } from '@/@utils/getArrayPages'
+import { useCustomParam } from '@/hooks'
 
-import { LimitOfTable } from './limitOfTable';
+import { LimitOfTable } from './limitOfTable'
 type PaginationProps = {
   total: number
-};
+}
 const Pagination = ({ total }: PaginationProps) => {
-  const { createParam, deleteParam } = useCustomParam();
-  const searchParams = useSearchParams();
-  const currentPage = Number(searchParams.get('Page')) ?? 0;
+  const { createParam, deleteParam } = useCustomParam()
+  const searchParams = useSearchParams()
+  const currentPage = Number(searchParams.get('Page')) ?? 0
 
-  const LimitPerPage = searchParams.get('LimitPerPage') ?? '10';
-  const pages = Math.ceil(total / Number(LimitPerPage));
+  const LimitPerPage = searchParams.get('LimitPerPage') ?? '10'
+  const pages = Math.ceil(total / Number(LimitPerPage))
 
   const goPage = (page: number): string => {
     switch (page) {
       case 0:
-        return deleteParam(['Page']);
+        return deleteParam(['Page'])
       case 1:
-        return deleteParam(['Page']);
+        return deleteParam(['Page'])
       default:
-        return createParam('Page', page.toString());
+        return createParam('Page', page.toString())
     }
-  };
+  }
 
-  const numberPage = Array.from({ length: pages }).map((_, i) => i + 1);
+  const numberPage = Array.from({ length: pages }).map((_, i) => i + 1)
   const pagesAtt = getElementsAroundIndex({
     array: numberPage,
     pages,
-    selectedIndex: currentPage === 1 ? 0 : currentPage - 1
-  });
+    selectedIndex: currentPage === 1 ? 0 : currentPage - 1,
+  })
   return (
     <>
       <Page>
@@ -60,7 +60,7 @@ const Pagination = ({ total }: PaginationProps) => {
               >
                 {page}
               </PaginationLink>
-            );
+            )
           })}
           {currentPage !== numberPage.length && (
             <PaginationItem>
@@ -71,6 +71,6 @@ const Pagination = ({ total }: PaginationProps) => {
       </Page>
       <LimitOfTable LimitPerPage={LimitPerPage} />
     </>
-  );
-};
-export default Pagination;
+  )
+}
+export default Pagination

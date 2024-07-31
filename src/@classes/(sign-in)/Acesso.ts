@@ -1,18 +1,18 @@
-import { loginType } from '@/@types';
+import { loginType } from '@/@types'
 
-import { AdapterRequest } from '../RequestAdapter';
+import { AdapterRequest } from '../RequestAdapter'
 export class Acesso extends AdapterRequest {
   constructor() {
-    super();
+    super()
   }
   async login({ S_EMAIL, S_SENHA }: loginType) {
-    return await this.request<{ token: string, message: string }>({
+    return await this.request<{ token: string; message: string }>({
       method: 'post',
       url: 'auth/login',
       body: {
         S_EMAIL,
-        S_SENHA
-      }
-    });
+        S_SENHA,
+      },
+    })
   }
 }

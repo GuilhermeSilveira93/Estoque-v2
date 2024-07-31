@@ -1,30 +1,30 @@
-'use client';
+'use client'
 
-import { Button } from '@/components/ui';
+import { Button } from '@/components/ui'
 import {
   Form as FormRoot,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage
-} from '@/components/ui/form';
+  FormMessage,
+} from '@/components/ui/form'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue
-} from '@/components/ui/select';
+  SelectValue,
+} from '@/components/ui/select'
 
-import { FornecedorType } from '@/@types/api';
-import { useEnviarProdutosEntradaForm } from '@/hooks/movimentacao/entrada/useEnviarProdutosEntradaForm';
+import { FornecedorType } from '@/@types/api'
+import { useEnviarProdutosEntradaForm } from '@/hooks/movimentacao/entrada/useEnviarProdutosEntradaForm'
 export const FormEnviarEntrada = ({
-  fornecedores
+  fornecedores,
 }: {
   fornecedores: FornecedorType[]
 }) => {
-  const { form, onSubmit } = useEnviarProdutosEntradaForm();
+  const { form, onSubmit } = useEnviarProdutosEntradaForm()
   return (
     <FormRoot {...form}>
       <form className="w-full space-y-3" onSubmit={onSubmit}>
@@ -64,5 +64,5 @@ export const FormEnviarEntrada = ({
         </div>
       </form>
     </FormRoot>
-  );
-};
+  )
+}

@@ -1,5 +1,5 @@
-import { useRouter } from 'next/navigation';
-import * as React from 'react';
+import { useRouter } from 'next/navigation'
+import * as React from 'react'
 
 import {
   Select,
@@ -7,21 +7,21 @@ import {
   SelectGroup,
   SelectItem,
   SelectTrigger,
-  SelectValue
-} from '@/components/ui/select';
+  SelectValue,
+} from '@/components/ui/select'
 
-import { useCustomParam } from '@/hooks';
+import { useCustomParam } from '@/hooks'
 
 type LimitOfTableProps = {
   LimitPerPage: string
-};
+}
 export const LimitOfTable = ({ LimitPerPage }: LimitOfTableProps) => {
-  const { createParam } = useCustomParam();
-  const router = useRouter();
+  const { createParam } = useCustomParam()
+  const router = useRouter()
   const changeLimitPerPage = (value: string) => {
-    const url = createParam('LimitPerPage', value);
-    router.push(url);
-  };
+    const url = createParam('LimitPerPage', value)
+    router.push(url)
+  }
   return (
     <Select onValueChange={changeLimitPerPage}>
       <SelectTrigger className="h-9 w-44" defaultValue={LimitPerPage}>
@@ -41,5 +41,5 @@ export const LimitOfTable = ({ LimitPerPage }: LimitOfTableProps) => {
         </SelectGroup>
       </SelectContent>
     </Select>
-  );
-};
+  )
+}

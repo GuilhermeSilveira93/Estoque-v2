@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 import {
   Table,
@@ -6,25 +6,25 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow
-} from '@/components/ui';
+  TableRow,
+} from '@/components/ui'
 
-import { Grupos } from '@/@classes/Grupos';
-import { UserProps } from '@/@types';
-import { UsuarioType, UsuarioKeys } from '@/@types/api';
-import { PascalCase, getUserCurrent } from '@/@utils';
+import { Grupos } from '@/@classes/Grupos'
+import { UserProps } from '@/@types'
+import { UsuarioType, UsuarioKeys } from '@/@types/api'
+import { PascalCase, getUserCurrent } from '@/@utils'
 
-import EditUser from './editUser';
+import EditUser from './editUser'
 
 type TabelaProps = {
-  data: UsuarioType[],
-  ocultar: string[],
+  data: UsuarioType[]
+  ocultar: string[]
   searchParams: UserProps['searchParams']
-};
+}
 export const Tabela = async ({ data, ocultar }: TabelaProps) => {
-  const userNivel = (await getUserCurrent()).st_grupo.N_NIVEL;
-  const tableHeader = Object.keys(data[0] as UsuarioType) as UsuarioKeys[];
-  const grupos = (await new Grupos().getAll()).body;
+  const userNivel = (await getUserCurrent()).st_grupo.N_NIVEL
+  const tableHeader = Object.keys(data[0] as UsuarioType) as UsuarioKeys[]
+  const grupos = (await new Grupos().getAll()).body
   return (
     <>
       <Table className="text-center text-card-foreground">
@@ -39,9 +39,9 @@ export const Tabela = async ({ data, ocultar }: TabelaProps) => {
                   >
                     {PascalCase(header)}
                   </TableHead>
-                );
+                )
               }
-              return null;
+              return null
             })}
             <TableHead className="border-b-0 border-card-foreground text-center text-3xl font-black text-card-foreground">
               Ações
@@ -51,7 +51,7 @@ export const Tabela = async ({ data, ocultar }: TabelaProps) => {
         <TableBody>
           {data.map((usuario) => {
             if (usuario.st_grupo.N_NIVEL < userNivel) {
-              return null;
+              return null
             }
             return (
               <TableRow
@@ -72,9 +72,9 @@ export const Tabela = async ({ data, ocultar }: TabelaProps) => {
                           ? usuario[header].N_NIVEL
                           : usuario[header]}
                       </TableCell>
-                    );
+                    )
                   }
-                  return null;
+                  return null
                 })}
                 <TableCell key={`${usuario.ID_USUARIO}-actions`} align="center">
                   <EditUser
@@ -84,10 +84,10 @@ export const Tabela = async ({ data, ocultar }: TabelaProps) => {
                   />
                 </TableCell>
               </TableRow>
-            );
+            )
           })}
         </TableBody>
       </Table>
     </>
-  );
-};
+  )
+}

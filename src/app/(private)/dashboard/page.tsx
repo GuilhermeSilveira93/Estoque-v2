@@ -2,15 +2,15 @@ import {
   Card,
   CardTitle,
   CardHeader,
-  CardDescription
-} from '@/components/ui/card';
+  CardDescription,
+} from '@/components/ui/card'
 
-import { Produto } from '@/@classes';
-import { ArrowUpRight } from 'lucide-react';
+import { Produto } from '@/@classes'
+import { ArrowUpRight } from 'lucide-react'
 
 const DashBoard = async ({ searchParams }: any) => {
-  const produtos = (await new Produto().getMovimentacao()).body;
-  const anoAtual = produtos.anos.length - 1;
+  const produtos = (await new Produto().getMovimentacao()).body
+  const anoAtual = produtos.anos.length - 1
   return (
     <header>
       <div className="mt-10 grid h-40 grid-flow-row grid-cols-4 space-x-1">
@@ -46,6 +46,6 @@ const DashBoard = async ({ searchParams }: any) => {
         </Card>
       </div>
     </header>
-  );
-};
-export default DashBoard;
+  )
+}
+export default DashBoard

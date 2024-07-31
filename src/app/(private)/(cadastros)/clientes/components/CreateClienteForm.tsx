@@ -1,34 +1,31 @@
-'use client';
-import React, { memo } from 'react';
+'use client'
+import React, { memo } from 'react'
 
-import { Button, Input } from '@/components/ui';
+import { Button, Input } from '@/components/ui'
 import {
   Form as FormRoot,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage
-} from '@/components/ui/form';
+  FormMessage,
+} from '@/components/ui/form'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue
-} from '@/components/ui/select';
+  SelectValue,
+} from '@/components/ui/select'
 
-import { CreateClienteType, CreateClienteSchema } from '@/@schemas';
-import { EmpresaType } from '@/@types/api';
-import {
-  ResponseReturn,
-  useGenericCreateForm
-} from '@/hooks/genericCreateForm';
+import { CreateClienteType, CreateClienteSchema } from '@/@schemas'
+import { EmpresaType } from '@/@types/api'
+import { ResponseReturn, useGenericCreateForm } from '@/hooks/genericCreateForm'
 type CreateClienteFormProps = {
   // eslint-disable-next-line no-unused-vars
-  criarCliente: (data: CreateClienteType) => Promise<ResponseReturn>,
+  criarCliente: (data: CreateClienteType) => Promise<ResponseReturn>
   empresas: EmpresaType[]
-};
+}
 const CreateClienteForm = memo(
   ({ criarCliente, empresas }: CreateClienteFormProps) => {
     const { form, isSubmitting, submit } = useGenericCreateForm<
@@ -36,8 +33,8 @@ const CreateClienteForm = memo(
       ResponseReturn
     >({
       requestHandler: criarCliente,
-      schema: CreateClienteSchema
-    });
+      schema: CreateClienteSchema,
+    })
     return (
       <>
         <FormRoot {...form}>
@@ -98,8 +95,8 @@ const CreateClienteForm = memo(
           </form>
         </FormRoot>
       </>
-    );
+    )
   }
-);
-CreateClienteForm.displayName = 'CreateClienteForm';
-export default CreateClienteForm;
+)
+CreateClienteForm.displayName = 'CreateClienteForm'
+export default CreateClienteForm

@@ -1,15 +1,15 @@
-import { CreateEmpresaType, EditEmpresaType } from '@/@schemas';
-import { EmpresaType } from '@/@types/api';
-import { EmpresaPageProps } from '@/app/(private)/(cadastros)/empresas/page';
+import { CreateEmpresaType, EditEmpresaType } from '@/@schemas'
+import { EmpresaType } from '@/@types/api'
+import { EmpresaPageProps } from '@/app/(private)/(cadastros)/empresas/page'
 
-import { AdapterRequest } from './RequestAdapter';
+import { AdapterRequest } from './RequestAdapter'
 export class Empresa extends AdapterRequest {
   constructor() {
-    super();
+    super()
   }
   async getWithParams({ searchParams }: EmpresaPageProps) {
-    const { ID_EMPRESA, S_ATIVO, Search, Page, LimitPerPage } = searchParams;
-    return await this.request<{ data: EmpresaType[], total: number }>({
+    const { ID_EMPRESA, S_ATIVO, Search, Page, LimitPerPage } = searchParams
+    return await this.request<{ data: EmpresaType[]; total: number }>({
       method: 'get',
       url: '/empresa',
       params: {
@@ -17,21 +17,21 @@ export class Empresa extends AdapterRequest {
         ID_EMPRESA,
         Search,
         Page,
-        LimitPerPage
-      }
-    });
+        LimitPerPage,
+      },
+    })
   }
   async getAll() {
-    return await this.request<{ data: EmpresaType[], total: number }>({
+    return await this.request<{ data: EmpresaType[]; total: number }>({
       method: 'get',
-      url: '/empresa/all'
-    });
+      url: '/empresa/all',
+    })
   }
   async attEmpresa({
     ID_EMPRESA,
-    data
+    data,
   }: {
-    ID_EMPRESA: string,
+    ID_EMPRESA: string
     data: EditEmpresaType
   }) {
     return await this.request<{ message: string }>({
@@ -39,17 +39,17 @@ export class Empresa extends AdapterRequest {
       url: `/empresa/${ID_EMPRESA}`,
       body: {
         ...data,
-        S_NOME: data.S_NOME.toUpperCase()
-      }
-    });
+        S_NOME: data.S_NOME.toUpperCase(),
+      },
+    })
   }
   async createEmp(data: CreateEmpresaType) {
     return await this.request<{ message: string }>({
       method: 'post',
       url: '/empresa',
       body: {
-        S_NOME: data.S_NOME.toUpperCase()
-      }
-    });
+        S_NOME: data.S_NOME.toUpperCase(),
+      },
+    })
   }
 }

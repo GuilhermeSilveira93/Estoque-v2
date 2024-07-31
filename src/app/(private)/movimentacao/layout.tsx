@@ -1,10 +1,10 @@
 export const metadata = {
-  title: 'Entrada - Estoque'
-};
+  title: 'Entrada - Estoque',
+}
 export default function EntradaLayout({
-  children
+  children,
 }: {
   children: React.ReactNode
 }) {
-  return children;
+  return children
 }

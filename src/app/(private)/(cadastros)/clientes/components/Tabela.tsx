@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 import {
   Table,
@@ -6,23 +6,23 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow
-} from '@/components/ui';
+  TableRow,
+} from '@/components/ui'
 
-import { ClienteType, ClienteTypeKeys } from '@/@types/api/ReqCliente';
-import { PascalCase } from '@/@utils';
+import { ClienteType, ClienteTypeKeys } from '@/@types/api/ReqCliente'
+import { PascalCase } from '@/@utils'
 
-import { ClientesPageProps } from '../page';
-import EditCliente from './editCliente';
+import { ClientesPageProps } from '../page'
+import EditCliente from './editCliente'
 
 type TabelaProps = {
-  data: ClienteType[],
+  data: ClienteType[]
   searchParams: ClientesPageProps['searchParams']
-};
+}
 export const Tabela = async ({ data }: TabelaProps) => {
   const tableHeader = Object?.keys(
     data[0]?.data as ClienteType['data']
-  ) as ClienteTypeKeys[];
+  ) as ClienteTypeKeys[]
   return (
     <>
       <Table className="text-center text-card-foreground">
@@ -36,7 +36,7 @@ export const Tabela = async ({ data }: TabelaProps) => {
                 >
                   {PascalCase(header)}
                 </TableHead>
-              );
+              )
             })}
             <TableHead className="border-b-0 border-card-foreground text-center text-3xl font-black text-card-foreground">
               Ações
@@ -57,7 +57,7 @@ export const Tabela = async ({ data }: TabelaProps) => {
                     >
                       {cliente.data[header]}
                     </TableCell>
-                  );
+                  )
                 })}
                 <TableCell
                   key={`${cliente.ID_CLIENTE}-actionsCliente`}
@@ -69,10 +69,10 @@ export const Tabela = async ({ data }: TabelaProps) => {
                   />
                 </TableCell>
               </TableRow>
-            );
+            )
           })}
         </TableBody>
       </Table>
     </>
-  );
-};
+  )
+}

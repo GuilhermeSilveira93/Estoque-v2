@@ -1,29 +1,29 @@
-import { useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form'
 
-import { AlterarItem, InserirItem } from '@/@Reducers/entrada/ActionSetEntrada';
+import { AlterarItem, InserirItem } from '@/@Reducers/entrada/ActionSetEntrada'
 import {
   FormEntradaEditProdutoSchema,
-  FormEntradaEditProdutoSchemaType
-} from '@/@schemas/movimentacao/entrada/FormEntradaEditProdutoSchema';
-import { InfoTabela } from '@/app/(private)/(movimentacao)/entrada/provider/produtosEntrada';
-import { zodResolver } from '@hookform/resolvers/zod';
+  FormEntradaEditProdutoSchemaType,
+} from '@/@schemas/movimentacao/entrada/FormEntradaEditProdutoSchema'
+import { InfoTabela } from '@/app/(private)/(movimentacao)/entrada/provider/produtosEntrada'
+import { zodResolver } from '@hookform/resolvers/zod'
 
-import { useProdutosEntrada } from './useProdutosEntrada';
+import { useProdutosEntrada } from './useProdutosEntrada'
 
 export const useFormEditEntrada = ({ produto }: { produto: InfoTabela }) => {
-  const { setEntrada } = useProdutosEntrada();
+  const { setEntrada } = useProdutosEntrada()
   const form = useForm<FormEntradaEditProdutoSchemaType>({
     mode: 'all',
     defaultValues: {
       N_QUANTIDADE: produto.N_QUANTIDADE,
       N_VALOR: produto.N_VALOR,
       S_DETALHES: produto.S_DETALHES,
-      S_DIMENSAO: produto.S_DIMENSAO
+      S_DIMENSAO: produto.S_DIMENSAO,
     },
-    resolver: zodResolver(FormEntradaEditProdutoSchema)
-  });
+    resolver: zodResolver(FormEntradaEditProdutoSchema),
+  })
   const onSubmit = (data: FormEntradaEditProdutoSchemaType) => {
-    setEntrada(AlterarItem({ ID_PRODUTO: produto.ID_PRODUTO, payload: data }));
-  };
-  return { form, onSubmit: form.handleSubmit(onSubmit) };
-};
+    setEntrada(AlterarItem({ ID_PRODUTO: produto.ID_PRODUTO, payload: data }))
+  }
+  return { form, onSubmit: form.handleSubmit(onSubmit) }
+}

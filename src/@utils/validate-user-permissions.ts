@@ -1,22 +1,22 @@
-import { RolesRequired } from '@/@types';
+import { RolesRequired } from '@/@types'
 
-import { getUserCurrent } from './get-user-current';
+import { getUserCurrent } from './get-user-current'
 
 export type ValidateUserPermissionsProps = {
   rolesRequired: RolesRequired[]
-};
+}
 
 export const ValidateUserPermissions = async ({
-  rolesRequired
+  rolesRequired,
 }: ValidateUserPermissionsProps) => {
-  const { st_grupo } = await getUserCurrent();
-  const nivel = st_grupo.N_NIVEL;
+  const { st_grupo } = await getUserCurrent()
+  const nivel = st_grupo.N_NIVEL
   const hasAllPermissions = rolesRequired.some((role) => {
-    return role === nivel;
-  });
+    return role === nivel
+  })
   if (!hasAllPermissions) {
-    return null;
+    return null
   }
-  console.log('saida true');
-  return true;
-};
+  console.log('saida true')
+  return true
+}

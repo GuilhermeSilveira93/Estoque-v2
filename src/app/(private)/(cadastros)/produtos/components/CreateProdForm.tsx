@@ -1,43 +1,40 @@
-'use client';
+'use client'
 
-import React, { memo } from 'react';
+import React, { memo } from 'react'
 
-import { Button, Input } from '@/components/ui';
+import { Button, Input } from '@/components/ui'
 import {
   Form as FormRoot,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage
-} from '@/components/ui/form';
+  FormMessage,
+} from '@/components/ui/form'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue
-} from '@/components/ui/select';
+  SelectValue,
+} from '@/components/ui/select'
 
-import { CreateProdSchema, CreateProdType } from '@/@schemas';
-import { TiposType } from '@/@types/api/ReqTipos';
-import {
-  ResponseReturn,
-  useGenericCreateForm
-} from '@/hooks/genericCreateForm';
+import { CreateProdSchema, CreateProdType } from '@/@schemas'
+import { TiposType } from '@/@types/api/ReqTipos'
+import { ResponseReturn, useGenericCreateForm } from '@/hooks/genericCreateForm'
 type CreateUserFormProps = {
   // eslint-disable-next-line no-unused-vars
-  criarProduto: (data: CreateProdType) => Promise<ResponseReturn>,
+  criarProduto: (data: CreateProdType) => Promise<ResponseReturn>
   tipos: TiposType[]
-};
+}
 const CreateProdForm = memo(({ criarProduto, tipos }: CreateUserFormProps) => {
   const { form, isSubmitting, submit } = useGenericCreateForm<
     CreateProdType,
     ResponseReturn
   >({
     requestHandler: criarProduto,
-    schema: CreateProdSchema
-  });
+    schema: CreateProdSchema,
+  })
   return (
     <>
       <FormRoot {...form}>
@@ -112,7 +109,7 @@ const CreateProdForm = memo(({ criarProduto, tipos }: CreateUserFormProps) => {
         </form>
       </FormRoot>
     </>
-  );
-});
-CreateProdForm.displayName = 'CreateProdForm';
-export default CreateProdForm;
+  )
+})
+CreateProdForm.displayName = 'CreateProdForm'
+export default CreateProdForm

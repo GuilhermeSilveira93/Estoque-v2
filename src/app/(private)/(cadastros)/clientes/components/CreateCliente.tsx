@@ -1,21 +1,21 @@
-import { memo } from 'react';
+import { memo } from 'react'
 
-import { Button } from '@/components/ui';
+import { Button } from '@/components/ui'
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger
-} from '@/components/ui/dialog';
+  DialogTrigger,
+} from '@/components/ui/dialog'
 
-import { criarCliente } from '@/@actions';
-import { Empresa } from '@/@classes';
+import { criarCliente } from '@/@actions'
+import { Empresa } from '@/@classes'
 
-import CreateTipoForm from './CreateClienteForm';
+import CreateTipoForm from './CreateClienteForm'
 
 const CreateCliente = memo(async () => {
-  const empresas = (await new Empresa().getAll()).body;
+  const empresas = (await new Empresa().getAll()).body
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -30,7 +30,7 @@ const CreateCliente = memo(async () => {
         <CreateTipoForm criarCliente={criarCliente} empresas={empresas.data} />
       </DialogContent>
     </Dialog>
-  );
-});
-CreateCliente.displayName = 'CreateCliente';
-export default CreateCliente;
+  )
+})
+CreateCliente.displayName = 'CreateCliente'
+export default CreateCliente

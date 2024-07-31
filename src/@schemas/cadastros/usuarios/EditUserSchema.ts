@@ -1,4 +1,4 @@
-import * as zod from 'zod';
+import * as zod from 'zod'
 
 export const EditUserSchema = zod.object({
   S_NOME: zod
@@ -17,7 +17,7 @@ export const EditUserSchema = zod.object({
   ID_GRUPO: zod
     .string()
     .min(36, { message: 'Selecione um usuário válido' })
-    .max(36, { message: 'Usuário incorreto!' })
-});
+    .max(36, { message: 'Usuário incorreto!' }),
+})
 // eslint-disable-next-line prettier/prettier
 export type EditUserType = zod.infer<typeof EditUserSchema>;

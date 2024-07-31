@@ -1,27 +1,27 @@
-import CreateTipo from './components/CreateTipo';
-import { Tabela } from './components/Tabela';
-import Pagination from '@/components/pagination';
-import { SearchData } from '@/components/search-data';
+import CreateTipo from './components/CreateTipo'
+import { Tabela } from './components/Tabela'
+import Pagination from '@/components/pagination'
+import { SearchData } from '@/components/search-data'
 
-import { Tipo } from '@/@classes';
-import { RolesRequired } from '@/@types';
-import { FiltersPage } from '@/@types/FiltersType';
-import { userCanSeePage } from '@/@utils';
+import { Tipo } from '@/@classes'
+import { RolesRequired } from '@/@types'
+import { FiltersPage } from '@/@types/FiltersType'
+import { userCanSeePage } from '@/@utils'
 
 export type TiposPageProps = {
   searchParams: FiltersPage & {
     ID_EMPRESA: string
   }
-};
+}
 const TiposPage = async ({ searchParams }: TiposPageProps) => {
   await userCanSeePage({
     rolesRequired: [
       RolesRequired.ADM,
       RolesRequired.DESENV,
-      RolesRequired.SUPERVISOR
-    ]
-  });
-  const tipos = (await new Tipo().getWithParams({ searchParams })).body;
+      RolesRequired.SUPERVISOR,
+    ],
+  })
+  const tipos = (await new Tipo().getWithParams({ searchParams })).body
   return (
     <section>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
@@ -50,6 +50,6 @@ const TiposPage = async ({ searchParams }: TiposPageProps) => {
       </section>
       <CreateTipo />
     </section>
-  );
-};
-export default TiposPage;
+  )
+}
+export default TiposPage

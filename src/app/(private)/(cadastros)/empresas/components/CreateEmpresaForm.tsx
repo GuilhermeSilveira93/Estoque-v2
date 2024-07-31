@@ -1,32 +1,29 @@
-'use client';
-import React, { memo } from 'react';
+'use client'
+import React, { memo } from 'react'
 
-import { Button, Input } from '@/components/ui';
+import { Button, Input } from '@/components/ui'
 import {
   Form as FormRoot,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage
-} from '@/components/ui/form';
+  FormMessage,
+} from '@/components/ui/form'
 
-import { CreateEmpresaSchema, CreateEmpresaType } from '@/@schemas';
-import {
-  ResponseReturn,
-  useGenericCreateForm
-} from '@/hooks/genericCreateForm';
+import { CreateEmpresaSchema, CreateEmpresaType } from '@/@schemas'
+import { ResponseReturn, useGenericCreateForm } from '@/hooks/genericCreateForm'
 type CreateEmpresaFormProps = {
   criarEmpresa: (payload: CreateEmpresaType) => Promise<ResponseReturn>
-};
+}
 const CreateEmpForm = memo(({ criarEmpresa }: CreateEmpresaFormProps) => {
   const { form, isSubmitting, submit } = useGenericCreateForm<
     CreateEmpresaType,
     ResponseReturn
   >({
     requestHandler: criarEmpresa,
-    schema: CreateEmpresaSchema
-  });
+    schema: CreateEmpresaSchema,
+  })
   return (
     <>
       <FormRoot {...form}>
@@ -56,7 +53,7 @@ const CreateEmpForm = memo(({ criarEmpresa }: CreateEmpresaFormProps) => {
         </form>
       </FormRoot>
     </>
-  );
-});
-CreateEmpForm.displayName = 'CreateEmpForm';
-export default CreateEmpForm;
+  )
+})
+CreateEmpForm.displayName = 'CreateEmpForm'
+export default CreateEmpForm

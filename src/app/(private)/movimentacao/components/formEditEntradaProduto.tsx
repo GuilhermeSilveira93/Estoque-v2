@@ -1,28 +1,28 @@
-'use client';
+'use client'
 
-import { Button, Input } from '@/components/ui';
+import { Button, Input } from '@/components/ui'
 import {
   Form as FormRoot,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage
-} from '@/components/ui/form';
+  FormMessage,
+} from '@/components/ui/form'
 
-import { RemoverItem } from '@/@Reducers/entrada/ActionSetEntrada';
-import { useFormEditEntrada } from '@/hooks/movimentacao/entrada/useFormEditEntrada';
-import { useProdutosEntrada } from '@/hooks/movimentacao/entrada/useProdutosEntrada';
+import { RemoverItem } from '@/@Reducers/entrada/ActionSetEntrada'
+import { useFormEditEntrada } from '@/hooks/movimentacao/entrada/useFormEditEntrada'
+import { useProdutosEntrada } from '@/hooks/movimentacao/entrada/useProdutosEntrada'
 
-import { InfoTabela } from '../provider/produtosEntrada';
+import { InfoTabela } from '../provider/produtosEntrada'
 
 export const FormEntradaEditProduto = ({
-  produto
+  produto,
 }: {
   produto: InfoTabela
 }) => {
-  const { setEntrada } = useProdutosEntrada();
-  const { form, onSubmit } = useFormEditEntrada({ produto });
+  const { setEntrada } = useProdutosEntrada()
+  const { form, onSubmit } = useFormEditEntrada({ produto })
   return (
     <FormRoot {...form}>
       <form className="w-full space-y-3" onSubmit={onSubmit}>
@@ -110,5 +110,5 @@ export const FormEntradaEditProduto = ({
         </div>
       </form>
     </FormRoot>
-  );
-};
+  )
+}

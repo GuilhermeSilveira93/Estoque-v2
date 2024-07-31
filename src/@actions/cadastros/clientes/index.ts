@@ -1,2 +1,2 @@
-export * from './atualizarCliente';
-export * from './criarCliente';
+export * from './atualizarCliente'
+export * from './criarCliente'

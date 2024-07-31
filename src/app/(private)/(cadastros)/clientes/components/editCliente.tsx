@@ -1,19 +1,19 @@
-import { memo } from 'react';
+import { memo } from 'react'
 
 import {
   Popover,
   PopoverContent,
-  PopoverTrigger
-} from '@/components/ui/popover';
+  PopoverTrigger,
+} from '@/components/ui/popover'
 
-import { atualizarCliente } from '@/@actions';
-import { ClienteType } from '@/@types/api/ReqCliente';
-import { Settings } from 'lucide-react';
+import { atualizarCliente } from '@/@actions'
+import { ClienteType } from '@/@types/api/ReqCliente'
+import { Settings } from 'lucide-react'
 
-import EditClienteForm from './EditClienteForm';
+import EditClienteForm from './EditClienteForm'
 type EditClienteProps = {
   cliente: ClienteType
-};
+}
 const EditCliente = memo(async ({ cliente }: EditClienteProps) => {
   return (
     <Popover>
@@ -27,7 +27,7 @@ const EditCliente = memo(async ({ cliente }: EditClienteProps) => {
         />
       </PopoverContent>
     </Popover>
-  );
-});
-EditCliente.displayName = 'EditCliente';
-export default EditCliente;
+  )
+})
+EditCliente.displayName = 'EditCliente'
+export default EditCliente

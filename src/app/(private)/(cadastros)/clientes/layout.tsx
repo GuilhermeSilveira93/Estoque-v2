@@ -1,10 +1,10 @@
 export const metadata = {
-  title: 'Clientes - Estoque'
-};
+  title: 'Clientes - Estoque',
+}
 export default function ClientesLayout({
-  children
+  children,
 }: {
   children: React.ReactNode
 }) {
-  return children;
+  return children
 }

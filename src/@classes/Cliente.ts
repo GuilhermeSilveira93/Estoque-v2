@@ -1,36 +1,39 @@
-import { CreateClienteType, EditClienteType } from '@/@schemas';
-import { ClienteType } from '@/@types/api/ReqCliente';
-import { ClientesPageProps } from '@/app/(private)/(cadastros)/clientes/page';
+import { CreateClienteType, EditClienteType } from '@/@schemas'
+import { ClienteType } from '@/@types/api/ReqCliente'
+import { ClientesPageProps } from '@/app/(private)/(cadastros)/clientes/page'
 
-import { AdapterRequest } from './RequestAdapter';
+import { AdapterRequest } from './RequestAdapter'
 export class Cliente extends AdapterRequest {
   constructor() {
-    super();
+    super()
   }
   async getAllWithParams({ searchParams }: ClientesPageProps) {
-    return await this.request<{ data: ClienteType[], total: number }>({
+    return await this.request<{ data: ClienteType[]; total: number }>({
       method: 'get',
       url: '/cliente',
-      params: searchParams
-    });
+      params: searchParams,
+    })
   }
-  async getForCompany({ ID_EMPRESA }:{ID_EMPRESA:string} ) {
-    return await this.request<{ data: {ID_CLIENTE: string, S_NOME:string}[], total: number }>({
+  async getForCompany({ ID_EMPRESA }: { ID_EMPRESA: string }) {
+    return await this.request<{
+      data: { ID_CLIENTE: string; S_NOME: string }[]
+      total: number
+    }>({
       method: 'get',
       url: `/cliente/${ID_EMPRESA}`,
-    });
+    })
   }
   async getAll() {
-    return await this.request<{ data: ClienteType[], total: number }>({
+    return await this.request<{ data: ClienteType[]; total: number }>({
       method: 'get',
       url: '/cliente',
-    });
+    })
   }
   async attCliente({
     ID_CLIENTE,
-    data
+    data,
   }: {
-    ID_CLIENTE: string,
+    ID_CLIENTE: string
     data: EditClienteType
   }) {
     return await this.request<{ message: string }>({
@@ -38,9 +41,9 @@ export class Cliente extends AdapterRequest {
       url: `/cliente/${ID_CLIENTE}`,
       body: {
         ...data,
-        S_NOME: data.S_NOME.toUpperCase()
-      }
-    });
+        S_NOME: data.S_NOME.toUpperCase(),
+      },
+    })
   }
   async createCliente(data: CreateClienteType) {
     return await this.request<{ message: string }>({
@@ -48,8 +51,8 @@ export class Cliente extends AdapterRequest {
       url: '/cliente',
       body: {
         S_NOME: data.S_NOME.toUpperCase(),
-        ID_EMPRESA: data.ID_EMPRESA
-      }
-    });
+        ID_EMPRESA: data.ID_EMPRESA,
+      },
+    })
   }
 }

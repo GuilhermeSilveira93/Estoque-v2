@@ -1,60 +1,60 @@
-'use client';
-import { useTheme } from 'next-themes';
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
+'use client'
+import { useTheme } from 'next-themes'
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
+import React, { useState } from 'react'
+import { useForm } from 'react-hook-form'
 
-import { Button, Input } from '@/components/ui';
+import { Button, Input } from '@/components/ui'
 
-import { loginSchema, loginType } from '@/@types/LoginZod';
-import logoProd from '@/images/LogoProd.png';
-import logoProdDark from '@/images/LogoProdDark.png';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { toast } from 'sonner';
+import { loginSchema, loginType } from '@/@types/LoginZod'
+import logoProd from '@/images/LogoProd.png'
+import logoProdDark from '@/images/LogoProdDark.png'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { toast } from 'sonner'
 
-import { LoginAction } from '../../../@actions/loginAction';
+import { LoginAction } from '../../../@actions/loginAction'
 
 export default function Form({ className }: { className?: string }) {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
   } = useForm<loginType>({
     defaultValues: { S_EMAIL: '', S_SENHA: '' },
-    resolver: zodResolver(loginSchema)
-  });
-  const router = useRouter();
-  const { theme } = useTheme();
+    resolver: zodResolver(loginSchema),
+  })
+  const router = useRouter()
+  const { theme } = useTheme()
   const login = async (dados: loginType) => {
-    setLoading(true);
+    setLoading(true)
     const response = (): Promise<string> => {
       return new Promise((resolve, reject) => {
         LoginAction(dados)
           .then((res) => {
             if (!res.success) {
-              reject(res.message);
+              reject(res.message)
             }
-            resolve(res.message);
-            router.push('/');
+            resolve(res.message)
+            router.push('/')
           })
           .catch((err) => {
-            reject(err);
-          });
-      });
-    };
+            reject(err)
+          })
+      })
+    }
     toast.promise(response, {
       loading: 'Consultando seu usuário.',
       success: (data) => {
-        return data;
+        return data
       },
       error: (data) => {
-        return data;
-      }
-    });
-    setLoading(false);
-  };
+        return data
+      },
+    })
+    setLoading(false)
+  }
   return (
     <div>
       <form
@@ -111,5 +111,5 @@ export default function Form({ className }: { className?: string }) {
         </Button>
       </form>
     </div>
-  );
+  )
 }

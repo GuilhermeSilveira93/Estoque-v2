@@ -1,9 +1,9 @@
-import NavBar from './components/NavBar/NavBar';
+import NavBar from './components/NavBar/NavBar'
 export const metadata = {
-  title: 'Estoque Softrack'
-};
+  title: 'Estoque Softrack',
+}
 export default function RootLayout({
-  children
+  children,
 }: {
   children: React.ReactNode
 }) {
@@ -18,5 +18,5 @@ export default function RootLayout({
         </main>
       </div>
     </>
-  );
+  )
 }

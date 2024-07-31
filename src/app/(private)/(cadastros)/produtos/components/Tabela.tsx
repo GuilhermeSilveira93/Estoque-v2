@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 import {
   Table,
@@ -6,24 +6,24 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow
-} from '@/components/ui';
+  TableRow,
+} from '@/components/ui'
 
-import { Tipo } from '@/@classes/Tipo';
-import { Produtos, ProdutosKeys } from '@/@types/api';
-import { PascalCase } from '@/@utils';
+import { Tipo } from '@/@classes/Tipo'
+import { Produtos, ProdutosKeys } from '@/@types/api'
+import { PascalCase } from '@/@utils'
 
-import { ProdutosPageProps } from '../page';
-import EditProd from './editProd';
+import { ProdutosPageProps } from '../page'
+import EditProd from './editProd'
 
 type TabelaProps = {
-  data: Produtos[],
-  ocultar: string[],
+  data: Produtos[]
+  ocultar: string[]
   searchParams: ProdutosPageProps['searchParams']
-};
+}
 export const Tabela = async ({ data, ocultar }: TabelaProps) => {
-  const tableHeader = Object.keys(data[0] as Produtos) as ProdutosKeys[];
-  const tipos = (await new Tipo().getAll()).body;
+  const tableHeader = Object.keys(data[0] as Produtos) as ProdutosKeys[]
+  const tipos = (await new Tipo().getAll()).body
   return (
     <>
       <Table className="text-center text-card-foreground">
@@ -38,9 +38,9 @@ export const Tabela = async ({ data, ocultar }: TabelaProps) => {
                   >
                     {PascalCase(header)}
                   </TableHead>
-                );
+                )
               }
-              return null;
+              return null
             })}
             <TableHead className="border-b-0 border-card-foreground text-center text-3xl font-black text-card-foreground">
               Ações
@@ -62,9 +62,9 @@ export const Tabela = async ({ data, ocultar }: TabelaProps) => {
                       >
                         <>{produto[header] !== undefined && produto[header]}</>
                       </TableCell>
-                    );
+                    )
                   }
-                  return null;
+                  return null
                 })}
                 <TableCell
                   key={`${produto.ID_PRODUTO}-actionsProd`}
@@ -77,10 +77,10 @@ export const Tabela = async ({ data, ocultar }: TabelaProps) => {
                   />
                 </TableCell>
               </TableRow>
-            );
+            )
           })}
         </TableBody>
       </Table>
     </>
-  );
-};
+  )
+}

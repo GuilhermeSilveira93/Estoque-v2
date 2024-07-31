@@ -1,2 +1,2 @@
-export * from './atualizarUsuario';
-export * from './criarUsuario';
+export * from './atualizarUsuario'
+export * from './criarUsuario'

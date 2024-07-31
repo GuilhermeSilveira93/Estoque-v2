@@ -1,6 +1,6 @@
 export type FornecedorType = {
-  ID_FORNECEDOR: string,
-  S_NOME: string,
+  ID_FORNECEDOR: string
+  S_NOME: string
   S_ATIVO: 'S' | 'N'
-};
-export type FornecedorKeys = keyof FornecedorType;
+}
+export type FornecedorKeys = keyof FornecedorType

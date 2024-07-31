@@ -1,31 +1,28 @@
-'use client';
-import React, { memo } from 'react';
+'use client'
+import React, { memo } from 'react'
 
-import { Button, Input } from '@/components/ui';
+import { Button, Input } from '@/components/ui'
 import {
   Form as FormRoot,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage
-} from '@/components/ui/form';
+  FormMessage,
+} from '@/components/ui/form'
 
-import { CreateTipoSchema, CreateTipoType } from '@/@schemas';
-import { useTipoCreateFormProps } from '@/hooks/cadastro';
-import {
-  ResponseReturn,
-  useGenericCreateForm
-} from '@/hooks/genericCreateForm';
-type CreateTipoFormProps = useTipoCreateFormProps;
+import { CreateTipoSchema, CreateTipoType } from '@/@schemas'
+import { useTipoCreateFormProps } from '@/hooks/cadastro'
+import { ResponseReturn, useGenericCreateForm } from '@/hooks/genericCreateForm'
+type CreateTipoFormProps = useTipoCreateFormProps
 const CreateTipoForm = memo(({ criarTipo }: CreateTipoFormProps) => {
   const { form, isSubmitting, submit } = useGenericCreateForm<
     CreateTipoType,
     ResponseReturn
   >({
     requestHandler: criarTipo,
-    schema: CreateTipoSchema
-  });
+    schema: CreateTipoSchema,
+  })
   return (
     <>
       <FormRoot {...form}>
@@ -55,7 +52,7 @@ const CreateTipoForm = memo(({ criarTipo }: CreateTipoFormProps) => {
         </form>
       </FormRoot>
     </>
-  );
-});
-CreateTipoForm.displayName = 'CreateTipoForm';
-export default CreateTipoForm;
+  )
+})
+CreateTipoForm.displayName = 'CreateTipoForm'
+export default CreateTipoForm

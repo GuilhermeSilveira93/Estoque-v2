@@ -1,2 +1,2 @@
-export * from './atualizarFornecedor';
-export * from './criarFornecedor';
+export * from './atualizarFornecedor'
+export * from './criarFornecedor'

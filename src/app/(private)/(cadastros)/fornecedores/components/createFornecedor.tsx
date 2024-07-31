@@ -1,17 +1,17 @@
-import { memo } from 'react';
+import { memo } from 'react'
 
-import { Button } from '@/components/ui';
+import { Button } from '@/components/ui'
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger
-} from '@/components/ui/dialog';
+  DialogTrigger,
+} from '@/components/ui/dialog'
 
-import { criarFornecedor } from '@/@actions';
+import { criarFornecedor } from '@/@actions'
 
-import CreateFornecedorForm from './createFornecedorForm';
+import CreateFornecedorForm from './createFornecedorForm'
 
 const CreateFornecedor = memo(async () => {
   return (
@@ -28,7 +28,7 @@ const CreateFornecedor = memo(async () => {
         <CreateFornecedorForm criarFornecedor={criarFornecedor} />
       </DialogContent>
     </Dialog>
-  );
-});
-CreateFornecedor.displayName = 'CreateFornecedor';
-export default CreateFornecedor;
+  )
+})
+CreateFornecedor.displayName = 'CreateFornecedor'
+export default CreateFornecedor

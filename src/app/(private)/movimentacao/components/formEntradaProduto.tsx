@@ -1,33 +1,33 @@
-'use client';
+'use client'
 
-import { Button, Input } from '@/components/ui';
+import { Button, Input } from '@/components/ui'
 import {
   Form as FormRoot,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage
-} from '@/components/ui/form';
+  FormMessage,
+} from '@/components/ui/form'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue
-} from '@/components/ui/select';
+  SelectValue,
+} from '@/components/ui/select'
 
-import { LimparEntrada } from '@/@Reducers/entrada/ActionSetEntrada';
-import { ProdutosType } from '@/@types/api';
-import { useFormEntrada } from '@/hooks/movimentacao/entrada/useFormEntrada';
-import { useProdutosEntrada } from '@/hooks/movimentacao/entrada/useProdutosEntrada';
+import { LimparEntrada } from '@/@Reducers/entrada/ActionSetEntrada'
+import { ProdutosType } from '@/@types/api'
+import { useFormEntrada } from '@/hooks/movimentacao/entrada/useFormEntrada'
+import { useProdutosEntrada } from '@/hooks/movimentacao/entrada/useProdutosEntrada'
 export const FormEntradaProduto = ({
-  produtos
+  produtos,
 }: {
   produtos: { data: ProdutosType[] }
 }) => {
-  const { form, onSubmit } = useFormEntrada();
-  const { setEntrada } = useProdutosEntrada();
+  const { form, onSubmit } = useFormEntrada()
+  const { setEntrada } = useProdutosEntrada()
   return (
     <FormRoot {...form}>
       <form className="w-full space-y-3" onSubmit={onSubmit}>
@@ -137,5 +137,5 @@ export const FormEntradaProduto = ({
         </div>
       </form>
     </FormRoot>
-  );
-};
+  )
+}

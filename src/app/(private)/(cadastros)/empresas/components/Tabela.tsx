@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 import {
   Table,
@@ -6,22 +6,22 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow
-} from '@/components/ui';
+  TableRow,
+} from '@/components/ui'
 
-import { EmpresaType, EmpresasKeys } from '@/@types/api';
-import { PascalCase } from '@/@utils';
+import { EmpresaType, EmpresasKeys } from '@/@types/api'
+import { PascalCase } from '@/@utils'
 
-import { EmpresaPageProps } from '../page';
-import EditEmpresa from './editEmpresa';
+import { EmpresaPageProps } from '../page'
+import EditEmpresa from './editEmpresa'
 
 type TabelaProps = {
-  data: EmpresaType[],
-  ocultar: string[],
+  data: EmpresaType[]
+  ocultar: string[]
   searchParams: EmpresaPageProps['searchParams']
-};
+}
 export const Tabela = async ({ data, ocultar }: TabelaProps) => {
-  const tableHeader = Object.keys(data[0] as EmpresaType) as EmpresasKeys[];
+  const tableHeader = Object.keys(data[0] as EmpresaType) as EmpresasKeys[]
   return (
     <>
       <Table className="text-center text-card-foreground">
@@ -36,9 +36,9 @@ export const Tabela = async ({ data, ocultar }: TabelaProps) => {
                   >
                     {PascalCase(header)}
                   </TableHead>
-                );
+                )
               }
-              return null;
+              return null
             })}
             <TableHead className="border-b-0 border-card-foreground text-center text-3xl font-black text-card-foreground">
               Ações
@@ -60,9 +60,9 @@ export const Tabela = async ({ data, ocultar }: TabelaProps) => {
                       >
                         <>{empresa[header] !== undefined && empresa[header]}</>
                       </TableCell>
-                    );
+                    )
                   }
-                  return null;
+                  return null
                 })}
                 <TableCell
                   key={`${empresa.ID_EMPRESA}-actionsEmp`}
@@ -74,10 +74,10 @@ export const Tabela = async ({ data, ocultar }: TabelaProps) => {
                   />
                 </TableCell>
               </TableRow>
-            );
+            )
           })}
         </TableBody>
       </Table>
     </>
-  );
-};
+  )
+}

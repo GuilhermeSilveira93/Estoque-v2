@@ -1,39 +1,42 @@
-'use client';
+'use client'
 
-import { Button } from '@/components/ui';
+import { useEffect, useState } from 'react'
+
+import { Button } from '@/components/ui'
 import {
   Form as FormRoot,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage
-} from '@/components/ui/form';
+  FormMessage,
+} from '@/components/ui/form'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue
-} from '@/components/ui/select';
+  SelectValue,
+} from '@/components/ui/select'
 
-import { ClienteType, EmpresaType } from '@/@types/api';
-import { useEnviarProdutosSaidaForm } from '@/hooks/movimentacao/entrada/useEnviarProdutoSaidaForm';
-import { Cliente } from '@/@classes';
-import { useEffect, useState } from 'react';
+import { Cliente } from '@/@classes'
+import { ClienteType, EmpresaType } from '@/@types/api'
+import { useEnviarProdutosSaidaForm } from '@/hooks/movimentacao/entrada/useEnviarProdutoSaidaForm'
 export const FormEnviarSaida = ({ empresas }: { empresas: EmpresaType[] }) => {
-  const { form, onSubmit } = useEnviarProdutosSaidaForm();
-  const [clientes, setClientes] = useState([] as {ID_CLIENTE: string, S_NOME: string}[]);
-  const empresaSelecionada = form.watch('ID_EMPRESA');
+  const { form, onSubmit } = useEnviarProdutosSaidaForm()
+  const [clientes, setClientes] = useState(
+    [] as { ID_CLIENTE: string; S_NOME: string }[]
+  )
+  const empresaSelecionada = form.watch('ID_EMPRESA')
   useEffect(() => {
     if (empresaSelecionada) {
       new Cliente()
         .getForCompany({ ID_EMPRESA: empresaSelecionada })
         .then((res) => {
-          setClientes(res.body.data);
-        });
+          setClientes(res.body.data)
+        })
     }
-  }, [empresaSelecionada]);
+  }, [empresaSelecionada])
   return (
     <FormRoot {...form}>
       <form className="w-full space-y-3" onSubmit={onSubmit}>
@@ -101,10 +104,12 @@ export const FormEnviarSaida = ({ empresas }: { empresas: EmpresaType[] }) => {
         )}
         {form.watch('ID_CLIENTE') && (
           <div className="grid">
-            <Button variant={'secondary'} type="submit">Realizar Saida de Produtos</Button>
+            <Button variant={'secondary'} type="submit">
+              Realizar Saida de Produtos
+            </Button>
           </div>
         )}
       </form>
     </FormRoot>
-  );
-};
+  )
+}

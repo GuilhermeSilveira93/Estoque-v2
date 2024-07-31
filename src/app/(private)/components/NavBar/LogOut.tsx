@@ -1,38 +1,38 @@
-'use client';
-import { useRouter } from 'next/navigation';
-import React from 'react';
+'use client'
+import { useRouter } from 'next/navigation'
+import React from 'react'
 
-import { Button } from '@/components/ui';
+import { Button } from '@/components/ui'
 
-import { DeleteCookie } from '@/@actions/LogOut';
-import { toast } from 'sonner';
+import { DeleteCookie } from '@/@actions/LogOut'
+import { toast } from 'sonner'
 export const LogoutButton = () => {
-  const router = useRouter();
+  const router = useRouter()
   const LogOut = async () => {
     const deleteCookie = (): Promise<{ message: string }> => {
       return new Promise((resolve, reject) => {
         DeleteCookie('token')
           .then((res) => {
-            resolve(res);
+            resolve(res)
           })
           .catch((err) => {
-            reject(err);
+            reject(err)
           })
           .finally(() => {
-            router.push('/login');
-          });
-      });
-    };
+            router.push('/login')
+          })
+      })
+    }
     toast.promise(deleteCookie, {
       loading: 'saindo...',
       success: (data) => {
-        return data.message;
+        return data.message
       },
       error: (data) => {
-        return data.message;
-      }
-    });
-  };
+        return data.message
+      },
+    })
+  }
 
   return (
     <Button
@@ -42,5 +42,5 @@ export const LogoutButton = () => {
     >
       Sair
     </Button>
-  );
-};
+  )
+}

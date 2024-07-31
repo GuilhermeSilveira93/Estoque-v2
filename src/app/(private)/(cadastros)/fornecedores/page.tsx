@@ -1,27 +1,27 @@
-import CreateFornecedor from './components/createFornecedor';
-import { Tabela } from './components/Tabela';
-import Pagination from '@/components/pagination';
-import { SearchData } from '@/components/search-data';
+import CreateFornecedor from './components/createFornecedor'
+import { Tabela } from './components/Tabela'
+import Pagination from '@/components/pagination'
+import { SearchData } from '@/components/search-data'
 
-import { Fornecedor } from '@/@classes/Fornecedor';
-import { RolesRequired } from '@/@types';
-import { FiltersPage } from '@/@types/FiltersType';
-import { userCanSeePage } from '@/@utils';
+import { Fornecedor } from '@/@classes/Fornecedor'
+import { RolesRequired } from '@/@types'
+import { FiltersPage } from '@/@types/FiltersType'
+import { userCanSeePage } from '@/@utils'
 
 export type FornecedorPageProps = {
   searchParams: FiltersPage & {
     ID_FORNECEDOR: string
   }
-};
+}
 const FornecedoresPage = async ({ searchParams }: FornecedorPageProps) => {
   await userCanSeePage({
     rolesRequired: [
       RolesRequired.ADM,
       RolesRequired.DESENV,
-      RolesRequired.SUPERVISOR
-    ]
-  });
-  const fornecedores = (await new Fornecedor().getAll({ searchParams })).body;
+      RolesRequired.SUPERVISOR,
+    ],
+  })
+  const fornecedores = (await new Fornecedor().getAll({ searchParams })).body
   return (
     <section>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
@@ -50,6 +50,6 @@ const FornecedoresPage = async ({ searchParams }: FornecedorPageProps) => {
       </section>
       <CreateFornecedor />
     </section>
-  );
-};
-export default FornecedoresPage;
+  )
+}
+export default FornecedoresPage

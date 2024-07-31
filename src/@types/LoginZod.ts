@@ -1,4 +1,4 @@
-import * as zod from 'zod';
+import * as zod from 'zod'
 
 export const loginSchema = zod.object({
   S_EMAIL: zod
@@ -8,6 +8,6 @@ export const loginSchema = zod.object({
   S_SENHA: zod
     .string()
     .min(1, { message: 'Digite sua senha' })
-    .max(150, { message: 'Tamanho máximo da senha é 150 caracteres.' })
-});
+    .max(150, { message: 'Tamanho máximo da senha é 150 caracteres.' }),
+})
 export type loginType = zod.infer<typeof loginSchema>

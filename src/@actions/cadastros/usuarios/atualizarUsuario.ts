@@ -1,16 +1,16 @@
-'use server';
-import { Usuario } from '@/@classes/Usuario';
-import { EditUserType } from '@/@schemas/cadastros/usuarios/EditUserSchema';
+'use server'
+import { Usuario } from '@/@classes/Usuario'
+import { EditUserType } from '@/@schemas/cadastros/usuarios/EditUserSchema'
 export type atualizarUsuarioParam = {
-  data: EditUserType,
+  data: EditUserType
   ID_USUARIO: string
-};
+}
 export const atualizarUsuario = async ({
   data,
-  ID_USUARIO
+  ID_USUARIO,
 }: atualizarUsuarioParam) => {
   return await new Usuario().atualizarUsuario({
     ID_USUARIO,
-    data
-  });
-};
+    data,
+  })
+}

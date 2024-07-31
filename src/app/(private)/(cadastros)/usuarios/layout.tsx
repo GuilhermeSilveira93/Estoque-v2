@@ -1,10 +1,10 @@
 export const metadata = {
-  title: 'Usuários - Estoque'
-};
+  title: 'Usuários - Estoque',
+}
 export default function UsuariosLayout({
-  children
+  children,
 }: {
   children: React.ReactNode
 }) {
-  return children;
+  return children
 }

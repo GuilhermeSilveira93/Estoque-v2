@@ -1,4 +1,4 @@
-import * as zod from 'zod';
+import * as zod from 'zod'
 
 export const CreateProdSchema = zod.object({
   S_NOME: zod
@@ -9,7 +9,7 @@ export const CreateProdSchema = zod.object({
   ID_TIPO: zod
     .string()
     .min(36, { message: 'Selecione um tipo válido' })
-    .max(36, { message: 'Tipo incorreto!' })
-});
+    .max(36, { message: 'Tipo incorreto!' }),
+})
 // eslint-disable-next-line prettier/prettier
 export type CreateProdType = zod.infer<typeof CreateProdSchema>;

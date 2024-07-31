@@ -1,10 +1,10 @@
 export const metadata = {
-  title: 'Fornecedores - Estoque'
-};
+  title: 'Fornecedores - Estoque',
+}
 export default function FornecedoresLayout({
-  children
+  children,
 }: {
   children: React.ReactNode
 }) {
-  return children;
+  return children
 }

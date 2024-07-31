@@ -1,20 +1,20 @@
-import { memo } from 'react';
+import { memo } from 'react'
 
 import {
   Popover,
   PopoverContent,
-  PopoverTrigger
-} from '@/components/ui/popover';
+  PopoverTrigger,
+} from '@/components/ui/popover'
 
-import { atualizarUsuario } from '@/@actions';
-import { Grupo, Usuario } from '@/@types/api';
-import { Settings } from 'lucide-react';
+import { atualizarUsuario } from '@/@actions'
+import { Grupo, Usuario } from '@/@types/api'
+import { Settings } from 'lucide-react'
 
-import EditProdForm from './EditUserForm';
+import EditProdForm from './EditUserForm'
 type EditUserProps = {
-  usuario: Usuario,
+  usuario: Usuario
   grupos: Grupo[]
-};
+}
 const EditUser = memo(({ usuario, grupos }: EditUserProps) => {
   return (
     <Popover>
@@ -29,7 +29,7 @@ const EditUser = memo(({ usuario, grupos }: EditUserProps) => {
         />
       </PopoverContent>
     </Popover>
-  );
-});
-EditUser.displayName = 'EditUser';
-export default EditUser;
+  )
+})
+EditUser.displayName = 'EditUser'
+export default EditUser

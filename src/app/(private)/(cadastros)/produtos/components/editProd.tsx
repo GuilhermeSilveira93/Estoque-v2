@@ -1,21 +1,21 @@
-import { memo } from 'react';
+import { memo } from 'react'
 
 import {
   Popover,
   PopoverContent,
-  PopoverTrigger
-} from '@/components/ui/popover';
+  PopoverTrigger,
+} from '@/components/ui/popover'
 
-import { atualizarProduto } from '@/@actions';
-import { Produtos } from '@/@types/api';
-import { TiposType } from '@/@types/api/ReqTipos';
-import { Settings } from 'lucide-react';
+import { atualizarProduto } from '@/@actions'
+import { Produtos } from '@/@types/api'
+import { TiposType } from '@/@types/api/ReqTipos'
+import { Settings } from 'lucide-react'
 
-import EditProdForm from './EditProdForm';
+import EditProdForm from './EditProdForm'
 type EditProdProps = {
-  produto: Produtos,
+  produto: Produtos
   tipos: TiposType[]
-};
+}
 const EditProd = memo(async ({ produto, tipos }: EditProdProps) => {
   return (
     <Popover>
@@ -30,7 +30,7 @@ const EditProd = memo(async ({ produto, tipos }: EditProdProps) => {
         />
       </PopoverContent>
     </Popover>
-  );
-});
-EditProd.displayName = 'EditProd';
-export default EditProd;
+  )
+})
+EditProd.displayName = 'EditProd'
+export default EditProd

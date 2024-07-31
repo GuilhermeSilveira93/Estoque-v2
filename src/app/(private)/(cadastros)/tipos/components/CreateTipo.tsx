@@ -1,17 +1,17 @@
-import { memo } from 'react';
+import { memo } from 'react'
 
-import { Button } from '@/components/ui';
+import { Button } from '@/components/ui'
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger
-} from '@/components/ui/dialog';
+  DialogTrigger,
+} from '@/components/ui/dialog'
 
-import { criarTipo } from '@/@actions';
+import { criarTipo } from '@/@actions'
 
-import CreateTipoForm from './CreateTipoForm';
+import CreateTipoForm from './CreateTipoForm'
 
 const CreateTipo = memo(async () => {
   return (
@@ -28,7 +28,7 @@ const CreateTipo = memo(async () => {
         <CreateTipoForm criarTipo={criarTipo} />
       </DialogContent>
     </Dialog>
-  );
-});
-CreateTipo.displayName = 'CreateTipo';
-export default CreateTipo;
+  )
+})
+CreateTipo.displayName = 'CreateTipo'
+export default CreateTipo

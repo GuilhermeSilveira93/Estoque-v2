@@ -1,5 +1,5 @@
-import { FormEntradaEditProdutoSchemaType } from '@/@schemas/movimentacao/entrada/FormEntradaEditProdutoSchema';
-import { FormEntradaProdutoSchemaType } from '@/@schemas/movimentacao/entrada/FormEntradaProdutoSchema';
+import { FormEntradaEditProdutoSchemaType } from '@/@schemas/movimentacao/entrada/FormEntradaEditProdutoSchema'
+import { FormEntradaProdutoSchemaType } from '@/@schemas/movimentacao/entrada/FormEntradaProdutoSchema'
 
 /*
   1º Criamos aqui um Enum, para sabermos certinho quais são as funções que teremos
@@ -16,26 +16,26 @@ export enum EnumActionSetEntrada {
   // eslint-disable-next-line no-unused-vars
   EditItemEntrada = 'EditItemEntrada',
   // eslint-disable-next-line no-unused-vars
-  DeleteItemEntrada = 'DeleteItemEntrada'
+  DeleteItemEntrada = 'DeleteItemEntrada',
 }
 export type ReturnInsertItem = {
-  type: EnumActionSetEntrada.InserirItem,
+  type: EnumActionSetEntrada.InserirItem
   payload: FormEntradaProdutoSchemaType
-};
+}
 export type ReturnLimparEntrada = {
-  type: EnumActionSetEntrada.LimparEntrada,
+  type: EnumActionSetEntrada.LimparEntrada
   payload: null
-};
+}
 export type ReturnEditItemEntrada = {
-  type: EnumActionSetEntrada.EditItemEntrada,
-  payload: { ID_PRODUTO: string, payload: FormEntradaEditProdutoSchemaType }
-};
+  type: EnumActionSetEntrada.EditItemEntrada
+  payload: { ID_PRODUTO: string; payload: FormEntradaEditProdutoSchemaType }
+}
 export type ReturnDeleteItemEntrada = {
-  type: EnumActionSetEntrada.DeleteItemEntrada,
+  type: EnumActionSetEntrada.DeleteItemEntrada
   payload: { ID_PRODUTO: string }
-};
+}
 export type ReturnFunctionsTypes =
   | ReturnInsertItem
   | ReturnLimparEntrada
   | ReturnEditItemEntrada
-  | ReturnDeleteItemEntrada;
+  | ReturnDeleteItemEntrada

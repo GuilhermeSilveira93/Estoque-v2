@@ -1,10 +1,10 @@
 export const metadata = {
-  title: 'DashBoard - Estoque'
-};
+  title: 'DashBoard - Estoque',
+}
 export default function DashBoardLayout({
-  children
+  children,
 }: {
   children: React.ReactNode
 }) {
-  return children;
+  return children
 }

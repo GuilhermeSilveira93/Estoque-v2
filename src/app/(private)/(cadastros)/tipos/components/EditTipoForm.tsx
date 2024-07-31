@@ -1,25 +1,25 @@
-'use client';
-import React, { memo } from 'react';
+'use client'
+import React, { memo } from 'react'
 
-import { Button, Input } from '@/components/ui';
-import { Checkbox } from '@/components/ui/checkbox';
+import { Button, Input } from '@/components/ui'
+import { Checkbox } from '@/components/ui/checkbox'
 import {
   Form as FormRoot,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage
-} from '@/components/ui/form';
+  FormMessage,
+} from '@/components/ui/form'
 
-import { useTipoEditForm, useTipoEditFormProps } from '@/hooks/cadastro';
-type EditTipoFormProps = useTipoEditFormProps;
+import { useTipoEditForm, useTipoEditFormProps } from '@/hooks/cadastro'
+type EditTipoFormProps = useTipoEditFormProps
 
 const EditTipoForm = memo(({ tipo, atualizarTipo }: EditTipoFormProps) => {
   const { form, updateTipo, isSubmitting } = useTipoEditForm({
     tipo,
-    atualizarTipo
-  });
+    atualizarTipo,
+  })
   return (
     <>
       <FormRoot {...form}>
@@ -66,7 +66,7 @@ const EditTipoForm = memo(({ tipo, atualizarTipo }: EditTipoFormProps) => {
         </form>
       </FormRoot>
     </>
-  );
-});
-EditTipoForm.displayName = 'EditTipoForm';
-export default EditTipoForm;
+  )
+})
+EditTipoForm.displayName = 'EditTipoForm'
+export default EditTipoForm

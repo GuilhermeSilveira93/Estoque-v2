@@ -1,12 +1,12 @@
-import Link, { LinkProps } from 'next/link';
-import React from 'react';
+import Link, { LinkProps } from 'next/link'
+import React from 'react'
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/utils'
 type ListItemProps = LinkProps & {
-  children: React.ReactNode,
-  className?: string,
+  children: React.ReactNode
+  className?: string
   title: string
-};
+}
 export const ListItem = ({
   className,
   title,
@@ -22,5 +22,5 @@ export const ListItem = ({
         </p>
       </Link>
     </li>
-  );
-};
+  )
+}

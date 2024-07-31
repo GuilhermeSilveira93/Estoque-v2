@@ -1,5 +1,5 @@
-'use client';
-import React from 'react';
+'use client'
+import React from 'react'
 
 import {
   ScrollArea,
@@ -8,21 +8,21 @@ import {
   TableBody,
   TableHead,
   TableHeader,
-  TableRow
-} from '@/components/ui';
+  TableRow,
+} from '@/components/ui'
 
-import { useProdutosEntrada } from '@/hooks/movimentacao/entrada/useProdutosEntrada';
+import { useProdutosEntrada } from '@/hooks/movimentacao/entrada/useProdutosEntrada'
 
-import { LinhaTableBody } from './LinhaTableBody';
+import { LinhaTableBody } from './LinhaTableBody'
 
 export const Tabela = () => {
-  const { infoTabela } = useProdutosEntrada();
-  if (!infoTabela?.length) return null;
+  const { infoTabela } = useProdutosEntrada()
+  if (!infoTabela?.length) return null
   return (
     <ScrollArea className="max-h-120 whitespace-nowrap">
       <Table className="text-center text-card-foreground">
-        <TableHeader className="sticky top-0 border-b-2 bg-card">
-          <TableRow className="hover:bg-card ">
+        <TableHeader className="sticky top-0 border-0">
+          <TableRow>
             <>
               <TableHead className="border-b-0 border-card-foreground text-center text-3xl font-black text-card-foreground">
                 Editar
@@ -56,5 +56,5 @@ export const Tabela = () => {
       </Table>
       <ScrollBar orientation="horizontal" />
     </ScrollArea>
-  );
-};
+  )
+}

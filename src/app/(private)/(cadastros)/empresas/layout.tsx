@@ -1,11 +1,11 @@
 export const metadata = {
-  title: 'Empresas - Estoque'
-};
+  title: 'Empresas - Estoque',
+}
 export default function EmpresasLayout({
   children,
-  modal
+  modal,
 }: {
-  children: React.ReactNode,
+  children: React.ReactNode
   modal: React.ReactNode
 }) {
   return (
@@ -13,5 +13,5 @@ export default function EmpresasLayout({
       {children}
       {modal}
     </>
-  );
+  )
 }

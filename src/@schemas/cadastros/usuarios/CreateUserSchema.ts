@@ -1,4 +1,4 @@
-import * as zod from 'zod';
+import * as zod from 'zod'
 
 export const CreateUserSchema = zod.object({
   S_NOME: zod
@@ -16,7 +16,7 @@ export const CreateUserSchema = zod.object({
   ID_GRUPO: zod
     .string()
     .min(36, { message: 'Selecione um grupo válida' })
-    .max(36, { message: 'Grupo incorreto!' })
-});
+    .max(36, { message: 'Grupo incorreto!' }),
+})
 // eslint-disable-next-line prettier/prettier
 export type CreateUserType = zod.infer<typeof CreateUserSchema>;

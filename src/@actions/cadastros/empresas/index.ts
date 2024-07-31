@@ -1,2 +1,2 @@
-export * from './atualizarEmpresa';
-export * from './criarEmpresa';
+export * from './atualizarEmpresa'
+export * from './criarEmpresa'

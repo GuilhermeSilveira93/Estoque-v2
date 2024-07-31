@@ -1,17 +1,17 @@
-import { memo } from 'react';
+import { memo } from 'react'
 
-import { Button } from '@/components/ui';
+import { Button } from '@/components/ui'
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger
-} from '@/components/ui/dialog';
+  DialogTrigger,
+} from '@/components/ui/dialog'
 
-import { criarEmpresa } from '@/@actions';
+import { criarEmpresa } from '@/@actions'
 
-import CreateEmpresaForm from './CreateEmpresaForm';
+import CreateEmpresaForm from './CreateEmpresaForm'
 
 const CreateEmpresa = memo(async () => {
   return (
@@ -28,7 +28,7 @@ const CreateEmpresa = memo(async () => {
         <CreateEmpresaForm criarEmpresa={criarEmpresa} />
       </DialogContent>
     </Dialog>
-  );
-});
-CreateEmpresa.displayName = 'CreateEmpresa';
-export default CreateEmpresa;
+  )
+})
+CreateEmpresa.displayName = 'CreateEmpresa'
+export default CreateEmpresa

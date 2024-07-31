@@ -1,8 +1,8 @@
 export const metadata = {
-  title: 'Login'
-};
+  title: 'Login',
+}
 export default function RootLayout({
-  children
+  children,
 }: {
   children: React.ReactNode
 }) {
@@ -10,5 +10,5 @@ export default function RootLayout({
     <main className="to-66% from-33% bg-gradient-to-r from-primary to-primary-foreground">
       {children}
     </main>
-  );
+  )
 }

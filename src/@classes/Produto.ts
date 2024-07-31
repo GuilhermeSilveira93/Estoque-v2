@@ -1,29 +1,29 @@
-import { CreateProdType, EditProdType } from '@/@schemas';
-import { ProdutosType, TabelaType } from '@/@types/api';
-import { ProdutosPageProps } from '@/app/(private)/(cadastros)/produtos/page';
+import { CreateProdType, EditProdType } from '@/@schemas'
+import { ProdutosType, TabelaType } from '@/@types/api'
+import { ProdutosPageProps } from '@/app/(private)/(cadastros)/produtos/page'
 
-import { AdapterRequest } from './RequestAdapter';
+import { AdapterRequest } from './RequestAdapter'
 type attProdParams = {
-  ID_PRODUTO: string,
+  ID_PRODUTO: string
   data: EditProdType
-};
+}
 type GetMovimentacaoType = {
-  itensEstoque: number,
+  itensEstoque: number
   anos: {
-    ano: string,
-    entrada: number,
-    saida: number,
-    meses: { name: string, entrada: number, saida: number }[]
+    ano: string
+    entrada: number
+    saida: number
+    meses: { name: string; entrada: number; saida: number }[]
   }[]
-};
+}
 export class Produto extends AdapterRequest {
   constructor() {
-    super();
+    super()
   }
   async getAllWithParams({ searchParams }: ProdutosPageProps) {
-    const { ID_PRODUTO, S_ATIVO, Search, Page, LimitPerPage } = searchParams;
+    const { ID_PRODUTO, S_ATIVO, Search, Page, LimitPerPage } = searchParams
     return await this.request<{
-      data: ProdutosType[],
+      data: ProdutosType[]
       total: number
     }>({
       method: 'get',
@@ -33,22 +33,22 @@ export class Produto extends AdapterRequest {
         ID_PRODUTO,
         Search,
         Page,
-        LimitPerPage
-      }
-    });
+        LimitPerPage,
+      },
+    })
   }
   async getAll() {
     return await this.request<{
-      data: ProdutosType[],
+      data: ProdutosType[]
       total: number
     }>({
       method: 'get',
-      url: '/produto'
-    });
+      url: '/produto',
+    })
   }
   async getTabela({ searchParams }: ProdutosPageProps) {
-    const { ID_PRODUTO, S_ATIVO, Search, Page, LimitPerPage } = searchParams;
-    return await this.request<{ data: TabelaType[], total: number }>({
+    const { ID_PRODUTO, S_ATIVO, Search, Page, LimitPerPage } = searchParams
+    return await this.request<{ data: TabelaType[]; total: number }>({
       method: 'get',
       url: '/produto/tabela',
       params: {
@@ -56,9 +56,9 @@ export class Produto extends AdapterRequest {
         ID_PRODUTO,
         Search,
         Page,
-        LimitPerPage
-      }
-    });
+        LimitPerPage,
+      },
+    })
   }
   async attProd({ ID_PRODUTO, data }: attProdParams) {
     return await this.request<{ message: string }>({
@@ -67,15 +67,15 @@ export class Produto extends AdapterRequest {
       body: {
         ...data,
         ID_TIPO: Number(data.ID_TIPO),
-        S_NOME: data.S_NOME.toUpperCase()
-      }
-    });
+        S_NOME: data.S_NOME.toUpperCase(),
+      },
+    })
   }
   async getMovimentacao() {
     return await this.request<GetMovimentacaoType>({
       method: 'get',
-      url: '/produto/movimentacao'
-    });
+      url: '/produto/movimentacao',
+    })
   }
   async createProd(data: CreateProdType) {
     return await this.request<{ message: string }>({
@@ -83,8 +83,8 @@ export class Produto extends AdapterRequest {
       url: '/produto',
       body: {
         ...data,
-        S_NOME: data.S_NOME.toUpperCase()
-      }
-    });
+        S_NOME: data.S_NOME.toUpperCase(),
+      },
+    })
   }
 }

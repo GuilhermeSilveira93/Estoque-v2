@@ -1,41 +1,38 @@
-'use client';
-import React, { memo } from 'react';
+'use client'
+import React, { memo } from 'react'
 
-import { Button, Input } from '@/components/ui';
+import { Button, Input } from '@/components/ui'
 import {
   Form as FormRoot,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage
-} from '@/components/ui/form';
+  FormMessage,
+} from '@/components/ui/form'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue
-} from '@/components/ui/select';
+  SelectValue,
+} from '@/components/ui/select'
 
-import { CreateUserSchema, CreateUserType } from '@/@schemas';
-import { GrupoType } from '@/@types/api';
-import { useUserCreateFormProps } from '@/hooks/cadastro/usuarios/useUserCreateForm';
-import {
-  ResponseReturn,
-  useGenericCreateForm
-} from '@/hooks/genericCreateForm';
+import { CreateUserSchema, CreateUserType } from '@/@schemas'
+import { GrupoType } from '@/@types/api'
+import { useUserCreateFormProps } from '@/hooks/cadastro/usuarios/useUserCreateForm'
+import { ResponseReturn, useGenericCreateForm } from '@/hooks/genericCreateForm'
 type CreateUserFormProps = useUserCreateFormProps & {
   grupos: GrupoType[]
-};
+}
 const CreateUserForm = memo(({ criarUsuario, grupos }: CreateUserFormProps) => {
   const { form, isSubmitting, submit } = useGenericCreateForm<
     CreateUserType,
     ResponseReturn
   >({
     requestHandler: criarUsuario,
-    schema: CreateUserSchema
-  });
+    schema: CreateUserSchema,
+  })
   return (
     <>
       <FormRoot {...form}>
@@ -127,7 +124,7 @@ const CreateUserForm = memo(({ criarUsuario, grupos }: CreateUserFormProps) => {
         </form>
       </FormRoot>
     </>
-  );
-});
-CreateUserForm.displayName = 'CreateUserForm';
-export default CreateUserForm;
+  )
+})
+CreateUserForm.displayName = 'CreateUserForm'
+export default CreateUserForm

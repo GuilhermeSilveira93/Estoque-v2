@@ -1,34 +1,34 @@
-import { FormEntradaProdutoSchemaType } from '@/@schemas/movimentacao/entrada/FormEntradaProdutoSchema';
+import { FormEntradaProdutoSchemaType } from '@/@schemas/movimentacao/entrada/FormEntradaProdutoSchema'
 
-import { AdapterRequest } from './RequestAdapter';
+import { AdapterRequest } from './RequestAdapter'
 export class Lote extends AdapterRequest {
   constructor() {
-    super();
+    super()
   }
   async insertProdutos({
     data,
-    ID_FORNECEDOR
+    ID_FORNECEDOR,
   }: {
-    data: FormEntradaProdutoSchemaType[],
+    data: FormEntradaProdutoSchemaType[]
     ID_FORNECEDOR: string
   }) {
     return await this.request<{ message: string }>({
       method: 'post',
       url: `lote/${ID_FORNECEDOR}`,
-      body: { DADOS: data }
-    });
+      body: { DADOS: data },
+    })
   }
   async removeProdutos({
     data,
-    ID_CLIENTE
+    ID_CLIENTE,
   }: {
-    data: FormEntradaProdutoSchemaType[],
+    data: FormEntradaProdutoSchemaType[]
     ID_CLIENTE: string
   }) {
     return await this.request<{ message: string }>({
       method: 'post',
       url: `lote/saida/${ID_CLIENTE}`,
-      body: {DADOS: data}
-    });
+      body: { DADOS: data },
+    })
   }
 }

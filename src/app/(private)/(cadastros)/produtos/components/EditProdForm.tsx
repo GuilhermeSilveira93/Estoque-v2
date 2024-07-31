@@ -1,36 +1,36 @@
-'use client';
-import React, { memo } from 'react';
+'use client'
+import React, { memo } from 'react'
 
-import { Button, Input } from '@/components/ui';
-import { Checkbox } from '@/components/ui/checkbox';
+import { Button, Input } from '@/components/ui'
+import { Checkbox } from '@/components/ui/checkbox'
 import {
   Form as FormRoot,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage
-} from '@/components/ui/form';
+  FormMessage,
+} from '@/components/ui/form'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue
-} from '@/components/ui/select';
+  SelectValue,
+} from '@/components/ui/select'
 
-import { TiposType } from '@/@types/api/ReqTipos';
-import { useProdEditForm, useProdEditFormProps } from '@/hooks/cadastro';
+import { TiposType } from '@/@types/api/ReqTipos'
+import { useProdEditForm, useProdEditFormProps } from '@/hooks/cadastro'
 type EditProdFormProps = useProdEditFormProps & {
   tipos: TiposType[]
-};
+}
 
 const EditProdForm = memo(
   ({ produto, atualizarProduto, tipos }: EditProdFormProps) => {
     const { form, updateProd, isSubmitting } = useProdEditForm({
       produto,
-      atualizarProduto
-    });
+      atualizarProduto,
+    })
     return (
       <>
         <FormRoot {...form}>
@@ -126,8 +126,8 @@ const EditProdForm = memo(
           </form>
         </FormRoot>
       </>
-    );
+    )
   }
-);
-EditProdForm.displayName = 'EditProdForm';
-export default EditProdForm;
+)
+EditProdForm.displayName = 'EditProdForm'
+export default EditProdForm

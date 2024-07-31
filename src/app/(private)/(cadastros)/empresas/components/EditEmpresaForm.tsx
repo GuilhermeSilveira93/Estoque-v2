@@ -1,26 +1,26 @@
-'use client';
-import React, { memo } from 'react';
+'use client'
+import React, { memo } from 'react'
 
-import { Button, Input } from '@/components/ui';
-import { Checkbox } from '@/components/ui/checkbox';
+import { Button, Input } from '@/components/ui'
+import { Checkbox } from '@/components/ui/checkbox'
 import {
   Form as FormRoot,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage
-} from '@/components/ui/form';
+  FormMessage,
+} from '@/components/ui/form'
 
-import { useEmpresaEditForm, useEmpresaEditFormProps } from '@/hooks/cadastro';
-type EditEmpresaFormProps = useEmpresaEditFormProps;
+import { useEmpresaEditForm, useEmpresaEditFormProps } from '@/hooks/cadastro'
+type EditEmpresaFormProps = useEmpresaEditFormProps
 
 const EditEmpresaForm = memo(
   ({ empresa, atualizarEmpresa }: EditEmpresaFormProps) => {
     const { form, updateEmpresa, isSubmitting } = useEmpresaEditForm({
       empresa,
-      atualizarEmpresa
-    });
+      atualizarEmpresa,
+    })
     return (
       <>
         <FormRoot {...form}>
@@ -67,8 +67,8 @@ const EditEmpresaForm = memo(
           </form>
         </FormRoot>
       </>
-    );
+    )
   }
-);
-EditEmpresaForm.displayName = 'EditEmpresaForm';
-export default EditEmpresaForm;
+)
+EditEmpresaForm.displayName = 'EditEmpresaForm'
+export default EditEmpresaForm

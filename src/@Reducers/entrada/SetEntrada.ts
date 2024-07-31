@@ -1,10 +1,10 @@
-import { FormEntradaProdutoSchemaType } from '@/@schemas/movimentacao/entrada/FormEntradaProdutoSchema';
-import { produce } from 'immer';
+import { FormEntradaProdutoSchemaType } from '@/@schemas/movimentacao/entrada/FormEntradaProdutoSchema'
+import { produce } from 'immer'
 
 import {
   EnumActionSetEntrada,
-  ReturnFunctionsTypes
-} from './ReturnFunctionsTypes';
+  ReturnFunctionsTypes,
+} from './ReturnFunctionsTypes'
 
 /*REDUCER RECEBE 2 PARAMETROS:
   1º O ESTADO ATUAL,
@@ -22,31 +22,31 @@ export const SetEntrada = (
   switch (action.type) {
     case EnumActionSetEntrada.InserirItem:
       return produce(state, (rascunho) => {
-        rascunho.unshift(action.payload);
-      });
+        rascunho.unshift(action.payload)
+      })
     case EnumActionSetEntrada.LimparEntrada:
-      return [];
+      return []
     case EnumActionSetEntrada.EditItemEntrada: {
       return produce(state, (rascunho) => {
         rascunho.forEach((produto) => {
           if (produto.ID_PRODUTO === action.payload.ID_PRODUTO) {
-            produto.N_QUANTIDADE = action.payload.payload.N_QUANTIDADE;
-            produto.N_VALOR = action.payload.payload.N_VALOR;
-            produto.S_DETALHES = action.payload.payload.S_DETALHES;
-            produto.S_DIMENSAO = action.payload.payload.S_DIMENSAO;
+            produto.N_QUANTIDADE = action.payload.payload.N_QUANTIDADE
+            produto.N_VALOR = action.payload.payload.N_VALOR
+            produto.S_DETALHES = action.payload.payload.S_DETALHES
+            produto.S_DIMENSAO = action.payload.payload.S_DIMENSAO
           }
-        });
-      });
+        })
+      })
     }
     case EnumActionSetEntrada.DeleteItemEntrada: {
       return produce(state, (rascunho) => {
         return rascunho.filter(
           (produto) => produto.ID_PRODUTO !== action.payload.ID_PRODUTO
-        );
-      });
+        )
+      })
     }
     default:
-      break;
+      break
   }
-  return state;
-};
+  return state
+}

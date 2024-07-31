@@ -1,29 +1,29 @@
-'use client';
-import React, { memo } from 'react';
+'use client'
+import React, { memo } from 'react'
 
-import { Button, Input } from '@/components/ui';
-import { Checkbox } from '@/components/ui/checkbox';
+import { Button, Input } from '@/components/ui'
+import { Checkbox } from '@/components/ui/checkbox'
 import {
   Form as FormRoot,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage
-} from '@/components/ui/form';
+  FormMessage,
+} from '@/components/ui/form'
 
 import {
   useFornecedorEditForm,
-  useFornecedorEditFormProps
-} from '@/hooks/cadastro';
-type EditFornecedorFormProps = useFornecedorEditFormProps;
+  useFornecedorEditFormProps,
+} from '@/hooks/cadastro'
+type EditFornecedorFormProps = useFornecedorEditFormProps
 
 const EditFornecedorForm = memo(
   ({ fornecedor, atualizarFornecedor }: EditFornecedorFormProps) => {
     const { form, updateFornecedor, isSubmitting } = useFornecedorEditForm({
       fornecedor,
-      atualizarFornecedor
-    });
+      atualizarFornecedor,
+    })
     return (
       <>
         <FormRoot {...form}>
@@ -71,8 +71,8 @@ const EditFornecedorForm = memo(
           </form>
         </FormRoot>
       </>
-    );
+    )
   }
-);
-EditFornecedorForm.displayName = 'EditFornecedorForm';
-export default EditFornecedorForm;
+)
+EditFornecedorForm.displayName = 'EditFornecedorForm'
+export default EditFornecedorForm

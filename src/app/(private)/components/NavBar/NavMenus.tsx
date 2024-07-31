@@ -1,6 +1,7 @@
-'use client';
+'use client'
 
-import * as React from 'react';
+import Link from 'next/link'
+import * as React from 'react'
 
 import {
   NavigationMenu as Navigation,
@@ -9,18 +10,17 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle
-} from '@/components/ui/navigation-menu';
+  navigationMenuTriggerStyle,
+} from '@/components/ui/navigation-menu'
 
-import { ListItem } from './ListItem';
-import Link from 'next/link';
+import { ListItem } from './ListItem'
 
 export const NavigationMenu = () => {
   return (
     <>
-      <Navigation orientation="vertical">
+      <Navigation>
         <NavigationMenuList>
-          <NavigationMenuItem className="relative">
+          <NavigationMenuItem>
             <NavigationMenuTrigger className="w-full">
               Home Page
             </NavigationMenuTrigger>
@@ -39,31 +39,16 @@ export const NavigationMenu = () => {
       </Navigation>
       <Navigation className="min-w-full" orientation="horizontal">
         <NavigationMenuList>
-          <NavigationMenuItem className="relative">
           <NavigationMenuItem>
-          <Link href="/movimentacao" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Documentation
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-            <NavigationMenuTrigger className="w-full">
-              Movimentação
-            </NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-4">
-                <ListItem href="/entrada" title="Entrada">
-                  Realize entrada de materiais.
-                </ListItem>
-                <ListItem href="/saida" title="Saida">
-                  Realize entrada de materiais.
-                </ListItem>
-              </ul>
-            </NavigationMenuContent>
+            <Link href="/movimentacao" legacyBehavior passHref>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                Movimentação
+              </NavigationMenuLink>
+            </Link>
           </NavigationMenuItem>
         </NavigationMenuList>
       </Navigation>
-      <Navigation className="min-w-full" orientation="horizontal">
+      <Navigation>
         <NavigationMenuList>
           <NavigationMenuItem className="relative">
             <NavigationMenuTrigger className="w-full">
@@ -94,8 +79,27 @@ export const NavigationMenu = () => {
           </NavigationMenuItem>
         </NavigationMenuList>
       </Navigation>
+      <Navigation>
+        <NavigationMenuList>
+          <NavigationMenuItem className="relative">
+            <NavigationMenuTrigger className="w-full">
+              Relatórios
+            </NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-4">
+                <ListItem href="/relatorio/entrada" title="Entrada">
+                  Baixe o relatório de entrada aqui.
+                </ListItem>
+                <ListItem href="/relatorio/saida" title="Saida">
+                  Baixe o relatório de saida aqui.
+                </ListItem>
+              </ul>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </Navigation>
     </>
-  );
-};
+  )
+}
 
-export default NavigationMenu;
+export default NavigationMenu

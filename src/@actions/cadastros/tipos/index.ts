@@ -1,2 +1,2 @@
-export * from './atualizarTipo';
-export * from './criarTipo';
+export * from './atualizarTipo'
+export * from './criarTipo'

@@ -1,19 +1,19 @@
-import { memo } from 'react';
+import { memo } from 'react'
 
 import {
   Popover,
   PopoverContent,
-  PopoverTrigger
-} from '@/components/ui/popover';
+  PopoverTrigger,
+} from '@/components/ui/popover'
 
-import { atualizarFornecedor } from '@/@actions';
-import { FornecedorType } from '@/@types/api';
-import { Settings } from 'lucide-react';
+import { atualizarFornecedor } from '@/@actions'
+import { FornecedorType } from '@/@types/api'
+import { Settings } from 'lucide-react'
 
-import EditFornecedorForm from './EditFornecedorForm';
+import EditFornecedorForm from './EditFornecedorForm'
 type EditFornecedorProps = {
   fornecedor: FornecedorType
-};
+}
 const EditFornecedor = memo(async ({ fornecedor }: EditFornecedorProps) => {
   return (
     <Popover>
@@ -27,7 +27,7 @@ const EditFornecedor = memo(async ({ fornecedor }: EditFornecedorProps) => {
         />
       </PopoverContent>
     </Popover>
-  );
-});
-EditFornecedor.displayName = 'EditFornecedor';
-export default EditFornecedor;
+  )
+})
+EditFornecedor.displayName = 'EditFornecedor'
+export default EditFornecedor

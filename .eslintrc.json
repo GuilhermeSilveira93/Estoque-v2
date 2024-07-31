@@ -1,19 +1,64 @@
 {
-  "extends": [
-    "@kalilasc/eslint-config/nextjs",
-    "eslint:recommended",
-    "plugin:react/recommended"
-  ],
-  "plugins": [
-    "react",
-    "react-native",
-    "@typescript-eslint",
-    "react-hooks",
-    "eslint-plugin-import-helpers"
-],
-  "parser": "@typescript-eslint/parser",
-  "rules": {
-    "no-unused-vars": "warn",
-    "@typescript-eslint/no-var-requires": "off"
+    "env": {
+      "browser": true,
+      "es2022": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:@next/next/recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react/recommended",
+      "plugin:prettier/recommended",
+      "prettier"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "react",
+      "@typescript-eslint",
+      "react-hooks",
+      "eslint-plugin-import-helpers"
+    ],
+    "rules": {
+      "@typescript-eslint/no-unused-vars": "off",
+      "no-use-before-define": "off",
+      "no-console": "warn",
+      "semi": ["error", "never"],
+      "react/no-unescaped-entities": "off",
+      "@next/next/no-page-custom-font": "off",
+      "no-unused-vars": "warn",
+      "react-hooks/rules-of-hooks": "error",
+      "react/prop-types": "off",
+      "react-hooks/exhaustive-deps": "warn",
+      "@typescript-eslint/no-var-requires": "off",
+      "react/react-in-jsx-scope": "off",
+      "prettier/prettier": "warn",
+      "no-undef": "off",
+      "import-helpers/order-imports": [
+        "warn",
+        {
+          "newlinesBetween": "always",
+          "groups": [
+            [
+              "/^react/",
+              "/^next/",
+              "/^@next/"
+            ],
+            "/components/",
+            "module",
+            "/^@shared/",
+            "/absolute/",
+            [
+              "parent",
+              "sibling",
+              "index"
+            ]
+          ],
+          "alphabetize": {
+            "order": "asc",
+            "ignoreCase": true
+          }
+        }
+      ]
+    }
   }
-}
+  

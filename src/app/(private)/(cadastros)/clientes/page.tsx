@@ -1,29 +1,29 @@
-import Link from 'next/link';
+import Link from 'next/link'
 
-import CreateCliente from './components/CreateCliente';
-import { Tabela } from './components/Tabela';
-import Pagination from '@/components/pagination';
-import { SearchData } from '@/components/search-data';
+import CreateCliente from './components/CreateCliente'
+import { Tabela } from './components/Tabela'
+import Pagination from '@/components/pagination'
+import { SearchData } from '@/components/search-data'
 
-import { Cliente } from '@/@classes';
-import { RolesRequired } from '@/@types';
-import { FiltersPage } from '@/@types/FiltersType';
-import { userCanSeePage } from '@/@utils';
+import { Cliente } from '@/@classes'
+import { RolesRequired } from '@/@types'
+import { FiltersPage } from '@/@types/FiltersType'
+import { userCanSeePage } from '@/@utils'
 
 export type ClientesPageProps = {
   searchParams: FiltersPage & {
     ID_CLIENTE: string
   }
-};
+}
 const ClientesPage = async ({ searchParams }: ClientesPageProps) => {
   await userCanSeePage({
     rolesRequired: [
       RolesRequired.ADM,
       RolesRequired.DESENV,
-      RolesRequired.SUPERVISOR
-    ]
-  });
-  const clientes = (await new Cliente().getAll({ searchParams })).body;
+      RolesRequired.SUPERVISOR,
+    ],
+  })
+  const clientes = (await new Cliente().getAll({ searchParams })).body
   return (
     <section>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
@@ -48,6 +48,6 @@ const ClientesPage = async ({ searchParams }: ClientesPageProps) => {
       </section>
       <CreateCliente />
     </section>
-  );
-};
-export default ClientesPage;
+  )
+}
+export default ClientesPage

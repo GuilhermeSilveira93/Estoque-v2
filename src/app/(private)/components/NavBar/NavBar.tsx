@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from 'react'
 
 import {
   Sheet,
@@ -7,17 +7,17 @@ import {
   SheetFooter,
   SheetHeader,
   SheetTitle,
-  SheetTrigger
-} from '@/components/ui/sheet';
+  SheetTrigger,
+} from '@/components/ui/sheet'
 
-import { PascalCase, getUserCurrent } from '@/@utils';
+import { PascalCase, getUserCurrent } from '@/@utils'
 
-import { LogoutButton } from './LogOut';
-import { Menu } from './Menu';
-import { NavigationMenu } from './NavMenus';
+import { LogoutButton } from './LogOut'
+import { Menu } from './Menu'
+import { NavigationMenu } from './NavMenus'
 
 const NavBar = async () => {
-  const user = await getUserCurrent();
+  const user = await getUserCurrent()
 
   return (
     <Sheet>
@@ -40,6 +40,6 @@ const NavBar = async () => {
         </SheetFooter>
       </SheetContent>
     </Sheet>
-  );
-};
-export default NavBar;
+  )
+}
+export default NavBar

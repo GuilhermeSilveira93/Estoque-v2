@@ -1,14 +1,14 @@
-'use client';
-import { useRouter } from 'next/navigation';
+'use client'
+import { useRouter } from 'next/navigation'
 
 import {
   Dialog,
   DialogContent,
   DialogHeader,
-  DialogTitle
-} from '@/components/ui/dialog';
+  DialogTitle,
+} from '@/components/ui/dialog'
 const EditEmp = ({ params }: { params: { idEmp: string } }) => {
-  const router = useRouter();
+  const router = useRouter()
   return (
     <Dialog open onOpenChange={() => router.back()}>
       <DialogContent className="sm:max-w-md">
@@ -17,6 +17,6 @@ const EditEmp = ({ params }: { params: { idEmp: string } }) => {
         </DialogHeader>
       </DialogContent>
     </Dialog>
-  );
-};
-export default EditEmp;
+  )
+}
+export default EditEmp

@@ -1,21 +1,21 @@
-import { memo } from 'react';
+import { memo } from 'react'
 
 import {
   Popover,
   PopoverContent,
-  PopoverTrigger
-} from '@/components/ui/popover';
+  PopoverTrigger,
+} from '@/components/ui/popover'
 
-import { atualizarEmpresa } from '@/@actions';
-import { EmpresaType } from '@/@types/api';
-import { Settings } from 'lucide-react';
+import { atualizarEmpresa } from '@/@actions'
+import { EmpresaType } from '@/@types/api'
+import { Settings } from 'lucide-react'
 
-import EditEmpresaForm from './EditEmpresaForm';
+import EditEmpresaForm from './EditEmpresaForm'
 type EditEmpresaProps = {
   empresa: EmpresaType
-};
+}
 const EditEmpresa = memo(async ({ empresa }: EditEmpresaProps) => {
-  console.log(empresa.S_NOME);
+  console.log(empresa.S_NOME)
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -28,7 +28,7 @@ const EditEmpresa = memo(async ({ empresa }: EditEmpresaProps) => {
         />
       </PopoverContent>
     </Popover>
-  );
-});
-EditEmpresa.displayName = 'EditEmpresa';
-export default EditEmpresa;
+  )
+})
+EditEmpresa.displayName = 'EditEmpresa'
+export default EditEmpresa

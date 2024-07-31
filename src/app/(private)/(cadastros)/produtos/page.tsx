@@ -1,33 +1,33 @@
-import Link from 'next/link';
+import Link from 'next/link'
 
-import { Tabela } from '../produtos/components/Tabela';
-import CreateProd from './components/createProd';
-import Pagination from '@/components/pagination';
-import { SearchData } from '@/components/search-data';
+import { Tabela } from '../produtos/components/Tabela'
+import CreateProd from './components/createProd'
+import Pagination from '@/components/pagination'
+import { SearchData } from '@/components/search-data'
 
-import { Produto } from '@/@classes';
-import { RolesRequired } from '@/@types';
-import { FiltersPage } from '@/@types/FiltersType';
-import { userCanSeePage } from '@/@utils';
+import { Produto } from '@/@classes'
+import { RolesRequired } from '@/@types'
+import { FiltersPage } from '@/@types/FiltersType'
+import { userCanSeePage } from '@/@utils'
 
 export type ProdutosPageProps = {
   searchParams: FiltersPage & {
     ID_PRODUTO: string
   }
-};
+}
 const ProdutosPage = async ({ searchParams }: ProdutosPageProps) => {
   await userCanSeePage({
     rolesRequired: [
       RolesRequired.ADM,
       RolesRequired.DESENV,
-      RolesRequired.SUPERVISOR
-    ]
-  });
+      RolesRequired.SUPERVISOR,
+    ],
+  })
   const produtos = (await new Produto().getAllWithParams({ searchParams }))
     .body ?? {
     data: [],
-    total: 0
-  };
+    total: 0,
+  }
   return (
     <section className="w-full">
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
@@ -47,7 +47,7 @@ const ProdutosPage = async ({ searchParams }: ProdutosPageProps) => {
                 'ID_TIPO',
                 'N_SERIAL',
                 'ST_TIPO',
-                'S_ATIVO'
+                'S_ATIVO',
               ]}
             />
           ) : (
@@ -62,6 +62,6 @@ const ProdutosPage = async ({ searchParams }: ProdutosPageProps) => {
       </section>
       <CreateProd />
     </section>
-  );
-};
-export default ProdutosPage;
+  )
+}
+export default ProdutosPage

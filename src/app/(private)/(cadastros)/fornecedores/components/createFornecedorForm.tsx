@@ -1,28 +1,25 @@
-'use client';
-import React, { memo } from 'react';
+'use client'
+import React, { memo } from 'react'
 
-import { Button, Input } from '@/components/ui';
+import { Button, Input } from '@/components/ui'
 import {
   Form as FormRoot,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage
-} from '@/components/ui/form';
+  FormMessage,
+} from '@/components/ui/form'
 
-import { CreateFornecedorSchema, CreateFornecedorType } from '@/@schemas';
-import {
-  ResponseReturn,
-  useGenericCreateForm
-} from '@/hooks/genericCreateForm';
-type CreateFornecedorFormProps = useFornecedorCreateFormProps;
+import { CreateFornecedorSchema, CreateFornecedorType } from '@/@schemas'
+import { ResponseReturn, useGenericCreateForm } from '@/hooks/genericCreateForm'
+type CreateFornecedorFormProps = useFornecedorCreateFormProps
 const CreateFornecedorForm = memo(
   ({ criarFornecedor }: CreateFornecedorFormProps) => {
     const { form, isSubmitting, submit } = useGenericCreateForm<
       CreateFornecedorType,
       ResponseReturn
-    >({ requestHandler: criarFornecedor, schema: CreateFornecedorSchema });
+    >({ requestHandler: criarFornecedor, schema: CreateFornecedorSchema })
     return (
       <>
         <FormRoot {...form}>
@@ -52,8 +49,8 @@ const CreateFornecedorForm = memo(
           </form>
         </FormRoot>
       </>
-    );
+    )
   }
-);
-CreateFornecedorForm.displayName = 'CreateFornecedorForm';
-export default CreateFornecedorForm;
+)
+CreateFornecedorForm.displayName = 'CreateFornecedorForm'
+export default CreateFornecedorForm

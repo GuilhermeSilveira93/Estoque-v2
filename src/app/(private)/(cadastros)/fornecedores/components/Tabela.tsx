@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 import {
   Table,
@@ -6,24 +6,22 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow
-} from '@/components/ui';
+  TableRow,
+} from '@/components/ui'
 
-import { FornecedorKeys, FornecedorType } from '@/@types/api';
-import { PascalCase } from '@/@utils';
+import { FornecedorKeys, FornecedorType } from '@/@types/api'
+import { PascalCase } from '@/@utils'
 
-import { FornecedorPageProps } from '../page';
-import EditFornecedor from './editFornecedor';
+import { FornecedorPageProps } from '../page'
+import EditFornecedor from './editFornecedor'
 
 type TabelaProps = {
-  data: FornecedorType[],
-  ocultar: string[],
+  data: FornecedorType[]
+  ocultar: string[]
   searchParams: FornecedorPageProps['searchParams']
-};
+}
 export const Tabela = async ({ data, ocultar }: TabelaProps) => {
-  const tableHeader = Object.keys(
-    data[0] as FornecedorType
-  ) as FornecedorKeys[];
+  const tableHeader = Object.keys(data[0] as FornecedorType) as FornecedorKeys[]
   return (
     <>
       <Table className="text-center text-card-foreground">
@@ -38,9 +36,9 @@ export const Tabela = async ({ data, ocultar }: TabelaProps) => {
                   >
                     {PascalCase(header)}
                   </TableHead>
-                );
+                )
               }
-              return null;
+              return null
             })}
             <TableHead className="border-b-0 border-card-foreground text-center text-3xl font-black text-card-foreground">
               Ações
@@ -62,9 +60,9 @@ export const Tabela = async ({ data, ocultar }: TabelaProps) => {
                       >
                         {fornecedor[header] !== undefined && fornecedor[header]}
                       </TableCell>
-                    );
+                    )
                   }
-                  return null;
+                  return null
                 })}
                 <TableCell
                   key={`${fornecedor.ID_FORNECEDOR}-actionsEditForn`}
@@ -76,10 +74,10 @@ export const Tabela = async ({ data, ocultar }: TabelaProps) => {
                   />
                 </TableCell>
               </TableRow>
-            );
+            )
           })}
         </TableBody>
       </Table>
     </>
-  );
-};
+  )
+}

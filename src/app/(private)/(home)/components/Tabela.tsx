@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 import {
   Table,
@@ -6,21 +6,21 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow
-} from '@/components/ui';
+  TableRow,
+} from '@/components/ui'
 
-import { TabelaType, TabelaTypeKeys } from '@/@types/api';
-import { PascalCase } from '@/@utils';
+import { TabelaType, TabelaTypeKeys } from '@/@types/api'
+import { PascalCase } from '@/@utils'
 
-import { HomePageProps } from '../page';
+import { HomePageProps } from '../page'
 
 type TabelaProps = {
-  data: TabelaType[],
-  ocultar: string[],
+  data: TabelaType[]
+  ocultar: string[]
   searchParams: HomePageProps['searchParams']
-};
+}
 export const Tabela = ({ data, ocultar }: TabelaProps) => {
-  const tableHeader = Object.keys(data[0] as TabelaType) as TabelaTypeKeys[];
+  const tableHeader = Object.keys(data[0] as TabelaType) as TabelaTypeKeys[]
   return (
     <Table className="text-center text-card-foreground">
       <TableHeader className="sticky top-0 border-b-2 bg-card">
@@ -34,9 +34,9 @@ export const Tabela = ({ data, ocultar }: TabelaProps) => {
                 >
                   {PascalCase(header)}
                 </TableHead>
-              );
+              )
             }
-            return null;
+            return null
           })}
         </TableRow>
       </TableHeader>
@@ -49,13 +49,13 @@ export const Tabela = ({ data, ocultar }: TabelaProps) => {
                   <TableCell key={`${item.ID_PRODUTO}-${header + index}`}>
                     {item[header]}
                   </TableCell>
-                );
+                )
               }
-              return null;
+              return null
             })}
           </TableRow>
         ))}
       </TableBody>
     </Table>
-  );
-};
+  )
+}

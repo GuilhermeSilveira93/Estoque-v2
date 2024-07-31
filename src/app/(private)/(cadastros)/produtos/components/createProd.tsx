@@ -1,22 +1,22 @@
-import Link from 'next/link';
-import { memo } from 'react';
+import Link from 'next/link'
+import { memo } from 'react'
 
-import { Button } from '@/components/ui';
+import { Button } from '@/components/ui'
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger
-} from '@/components/ui/dialog';
+  DialogTrigger,
+} from '@/components/ui/dialog'
 
-import { criarProduto } from '@/@actions';
-import { Tipo } from '@/@classes/Tipo';
+import { criarProduto } from '@/@actions'
+import { Tipo } from '@/@classes/Tipo'
 
-import CreateProdForm from './CreateProdForm';
+import CreateProdForm from './CreateProdForm'
 
 const CreateProd = memo(async () => {
-  const tipos = (await new Tipo().getAll()).body;
+  const tipos = (await new Tipo().getAll()).body
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -37,7 +37,7 @@ const CreateProd = memo(async () => {
         )}
       </DialogContent>
     </Dialog>
-  );
-});
-CreateProd.displayName = 'CreateProd';
-export default CreateProd;
+  )
+})
+CreateProd.displayName = 'CreateProd'
+export default CreateProd

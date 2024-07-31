@@ -1,13 +1,14 @@
-import { TableCell, TableRow } from '@/components/ui';
+import { TableCell, TableRow } from '@/components/ui'
 import {
   Popover,
   PopoverContent,
-  PopoverTrigger
-} from '@/components/ui/popover';
-import { Settings } from 'lucide-react';
+  PopoverTrigger,
+} from '@/components/ui/popover'
 
-import { InfoTabela } from '../provider/produtosEntrada';
-import { FormEntradaEditProduto } from './formEditEntradaProduto';
+import { Settings } from 'lucide-react'
+
+import { InfoTabela } from '../provider/produtosEntrada'
+import { FormEntradaEditProduto } from './formEditEntradaProduto'
 export const LinhaTableBody = ({ produto }: { produto: InfoTabela }) => {
   return (
     <TableRow className="border-card-foreground">
@@ -27,5 +28,5 @@ export const LinhaTableBody = ({ produto }: { produto: InfoTabela }) => {
       <TableCell>{produto.S_DETALHES}</TableCell>
       <TableCell>{produto.S_DIMENSAO}</TableCell>
     </TableRow>
-  );
+  )
 }
