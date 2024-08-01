@@ -23,7 +23,7 @@ const ClientesPage = async ({ searchParams }: ClientesPageProps) => {
       RolesRequired.SUPERVISOR,
     ],
   })
-  const clientes = (await new Cliente().getAll({ searchParams })).body
+  const clientes = (await new Cliente().getAllWithParams({ searchParams })).body
   return (
     <section>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">

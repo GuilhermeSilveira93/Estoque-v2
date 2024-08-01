@@ -6,10 +6,11 @@ export const EditProdSchema = zod.object({
     .min(1, { message: 'Edite o nome' })
     .max(150, { message: 'Tamanho máximo do e-mail é 150 caracteres.' }),
   S_ATIVO: zod.boolean(),
-  N_SERIAL: zod
-    .string()
-    .max(150, { message: 'Tamanho máximo do e-mail é 150 caracteres.' })
-    .optional(),
+  N_SERIAL: zod.optional(
+    zod
+      .string()
+      .max(150, { message: 'Tamanho máximo do e-mail é 150 caracteres.' })
+  ),
   ID_TIPO: zod
     .string()
     .min(36, { message: 'Selecione um tipo válido' })

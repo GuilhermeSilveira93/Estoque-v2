@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import Enviar from './components/enviar'
 import { FormEntradaProduto } from './components/formEntradaProduto'
 import { Tabela } from './components/Tabela'
@@ -22,6 +24,11 @@ const EntradaPage = async () => {
   const empresas = (await new Empresa().getAll()).body
   return (
     <>
+      <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
+        <Link href={{ pathname: '/movimentacao' }}>
+          Movimentação de Mercadoria
+        </Link>
+      </h1>
       <Container>
         <fieldset className="grid grid-flow-col grid-cols-2 gap-2 rounded-md border border-inherit p-2">
           <legend className="px-4">Movimentação de Mercadoria</legend>

@@ -5,7 +5,7 @@ export const CreateProdSchema = zod.object({
     .string()
     .min(1, { message: 'Edite o nome' })
     .max(150, { message: 'Tamanho máximo do e-mail é 150 caracteres.' }),
-  N_SERIAL: zod.string().optional(),
+  N_SERIAL: zod.optional(zod.string()),
   ID_TIPO: zod
     .string()
     .min(36, { message: 'Selecione um tipo válido' })

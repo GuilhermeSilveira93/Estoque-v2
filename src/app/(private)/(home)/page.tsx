@@ -7,6 +7,7 @@ import { Container } from '@/components/ui'
 
 import { Produto } from '@/@classes'
 import { FiltersPage } from '@/@types/FiltersType'
+import Link from 'next/link'
 
 export type HomePageProps = {
   searchParams: FiltersPage & {
@@ -18,7 +19,7 @@ const HomePage = async ({ searchParams }: HomePageProps) => {
   return (
     <>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
-        Estoque
+        <Link href={{ pathname: '/' }}>Usuários</Link>
       </h1>
       <Container>
         <section className="rounded-b-xl bg-card">

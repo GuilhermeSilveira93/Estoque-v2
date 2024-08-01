@@ -10,7 +10,7 @@ import { X } from 'lucide-react'
 import * as zod from 'zod'
 
 const SearchSchema = zod.object({
-  Search: zod.string().optional(),
+  Search: zod.optional(zod.string()),
 })
 // eslint-disable-next-line prettier/prettier
 type SearchSchemaType = zod.infer<typeof SearchSchema>

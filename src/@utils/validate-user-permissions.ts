@@ -17,6 +17,5 @@ export const ValidateUserPermissions = async ({
   if (!hasAllPermissions) {
     return null
   }
-  console.log('saida true')
   return true
 }

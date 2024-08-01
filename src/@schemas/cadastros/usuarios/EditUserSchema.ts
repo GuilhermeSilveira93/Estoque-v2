@@ -10,10 +10,12 @@ export const EditUserSchema = zod.object({
     .string()
     .min(1, { message: 'Edite o nome' })
     .max(150, { message: 'Tamanho máximo do e-mail é 150 caracteres.' }),
-  S_SENHA: zod
-    .string()
-    .max(150, { message: 'Tamanho máximo do e-mail é 150 caracteres.' })
-    .optional(),
+  S_SENHA: zod.optional(
+    zod
+      .string()
+      .max(150, { message: 'Tamanho máximo do e-mail é 150 caracteres.' })
+  ),
+
   ID_GRUPO: zod
     .string()
     .min(36, { message: 'Selecione um usuário válido' })

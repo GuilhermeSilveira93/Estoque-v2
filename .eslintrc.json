@@ -31,7 +31,9 @@
       "react-hooks/exhaustive-deps": "warn",
       "@typescript-eslint/no-var-requires": "off",
       "react/react-in-jsx-scope": "off",
-      "prettier/prettier": "warn",
+      "prettier/prettier": ["warn", {
+                              "endOfLine": "auto"
+      }],
       "no-undef": "off",
       "import-helpers/order-imports": [
         "warn",

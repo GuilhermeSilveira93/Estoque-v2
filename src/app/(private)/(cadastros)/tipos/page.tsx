@@ -7,6 +7,7 @@ import { Tipo } from '@/@classes'
 import { RolesRequired } from '@/@types'
 import { FiltersPage } from '@/@types/FiltersType'
 import { userCanSeePage } from '@/@utils'
+import Link from 'next/link'
 
 export type TiposPageProps = {
   searchParams: FiltersPage & {
@@ -25,7 +26,7 @@ const TiposPage = async ({ searchParams }: TiposPageProps) => {
   return (
     <section>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
-        Tipos
+        <Link href={{ pathname: '/tipos' }}>Tipos de Produtos</Link>
       </h1>
       <section className="rounded-b-xl bg-card">
         <header>

@@ -7,6 +7,7 @@ import { Usuario } from '@/@classes/Usuario'
 import { RolesRequired } from '@/@types'
 import { FiltersPage } from '@/@types/FiltersType'
 import { userCanSeePage } from '@/@utils'
+import Link from 'next/link'
 export type UserPageProps = {
   searchParams: FiltersPage & {
     ID_USUARIO: string
@@ -24,7 +25,7 @@ const UsuariosPage = async ({ searchParams }: UserPageProps) => {
   return (
     <section>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
-        Usuários
+        <Link href={{ pathname: '/usuarios' }}>Usuários</Link>
       </h1>
       <section className="rounded-b-xl bg-card">
         <header>
