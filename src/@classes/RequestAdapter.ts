@@ -28,9 +28,7 @@ export interface HttpClient<T = never> {
 }
 export class AdapterRequest implements HttpClient {
   constructor() {}
-  async request<T = never>(
-    data: HttpRequest
-  ): Promise<{
+  async request<T>(data: HttpRequest): Promise<{
     statusCode: number
     success: boolean
     body: T

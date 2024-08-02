@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 import { Tabela } from './components/Tabela'
@@ -7,7 +8,6 @@ import { Container } from '@/components/ui'
 
 import { Produto } from '@/@classes'
 import { FiltersPage } from '@/@types/FiltersType'
-import Link from 'next/link'
 
 export type HomePageProps = {
   searchParams: FiltersPage & {

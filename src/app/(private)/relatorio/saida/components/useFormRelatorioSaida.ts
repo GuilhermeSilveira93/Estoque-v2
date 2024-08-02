@@ -1,18 +1,18 @@
 import { useForm } from 'react-hook-form'
 
-import { EntradaRelatorioAction } from '@/@actions/relatorios/EntradaRelatorioAction'
+import { SaidaRelatorioAction } from '@/@actions/relatorios/SaidaRelatorioAction'
 import { RelatorioMovimentacaoExcel } from '@/@Relatorios/RelatorioMovimentacao'
 import {
-  FormRelatorioEntradaSchemaType,
-  FormRelatorioEntradaSchema,
+  FormRelatorioSaidaSchemaType,
+  FormRelatorioSaidaSchema,
 } from '@/@schemas/'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
-export const useFormRelatorioEntrada = () => {
+export const useFormRelatorioSaida = () => {
   const fromData = new Date().setDate(new Date().getDate() - 10)
-  const form = useForm<FormRelatorioEntradaSchemaType>({
+  const form = useForm<FormRelatorioSaidaSchemaType>({
     mode: 'all',
-    resolver: zodResolver(FormRelatorioEntradaSchema),
+    resolver: zodResolver(FormRelatorioSaidaSchema),
     defaultValues: {
       D_DATA: {
         D_INICIO: new Date(fromData),
@@ -20,17 +20,17 @@ export const useFormRelatorioEntrada = () => {
       },
     },
   })
-  const onSubmit = async (data: FormRelatorioEntradaSchemaType) => {
+  const onSubmit = async (data: FormRelatorioSaidaSchemaType) => {
     const response = (): Promise<string> => {
       return new Promise((resolve, reject) => {
-        EntradaRelatorioAction(data)
+        SaidaRelatorioAction(data)
           .then((res) => {
             if (!res.success) {
               reject(res.message)
             }
             RelatorioMovimentacaoExcel({
               data: res.body,
-              name: 'Relatório de Entrada',
+              name: 'Relatório de Saida',
             })
             resolve(res.message)
           })

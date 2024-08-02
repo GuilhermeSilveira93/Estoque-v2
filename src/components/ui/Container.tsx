@@ -12,7 +12,7 @@ export const Container = ({
   return (
     <section
       className={cn(
-        `p-4 w-full rounded-lg bg-card shadow-lg shadow-foreground ${className}`
+        `p-4 w-full rounded-lg bg-card shadow-sm shadow-foreground ${className}`
       )}
     >
       {children}

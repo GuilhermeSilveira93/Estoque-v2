@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+
 import { Button } from '@/components/ui/button'
 import { Calendar } from '@/components/ui/calendar'
 import {
@@ -23,21 +25,35 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 
-import { FornecedorType, ProdutosType } from '@/@types/api'
+import { Cliente } from '@/@classes'
+import { EmpresaType, ProdutosType } from '@/@types/api'
 import { cn } from '@/lib/utils'
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import { Calendar as CalendarIcon } from 'lucide-react'
 
-import { useFormRelatorioEntrada } from './useFormRelatorioEntrada'
-export const FormRelatorioEntrada = ({
-  fornecedores,
+import { useFormRelatorioSaida } from './useFormRelatorioSaida'
+export const FormRelatorioSaida = ({
+  empresas,
   produtos,
 }: {
-  fornecedores: FornecedorType[]
+  empresas: EmpresaType[]
   produtos: ProdutosType[]
 }) => {
-  const { form, onSubmit } = useFormRelatorioEntrada()
+  const [clientes, setClientes] = useState(
+    [] as { ID_CLIENTE: string; S_NOME: string }[]
+  )
+  const { form, onSubmit } = useFormRelatorioSaida()
+  const empresaSelecionada = form.watch('ID_EMPRESA')
+  useEffect(() => {
+    if (empresaSelecionada) {
+      new Cliente()
+        .getForCompany({ ID_EMPRESA: empresaSelecionada })
+        .then((res) => {
+          setClientes(res.body.data)
+        })
+    }
+  }, [empresaSelecionada])
   return (
     <Form {...form}>
       <form onSubmit={onSubmit} className="w-1/2">
@@ -106,6 +122,68 @@ export const FormRelatorioEntrada = ({
           )}
         />
         <FormField
+          name="ID_EMPRESA"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Empresa</FormLabel>
+              <Select
+                {...field}
+                onValueChange={field.onChange}
+                defaultValue={field.value}
+              >
+                <FormControl>
+                  <SelectTrigger className="placeholder:text-red-500">
+                    <SelectValue datatype="string" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {empresas.map((empresa) => (
+                    <SelectItem
+                      key={empresa.ID_EMPRESA}
+                      value={empresa.ID_EMPRESA}
+                    >
+                      {empresa.S_NOME}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        {clientes.length > 0 && (
+          <FormField
+            name="ID_CLIENTE"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Clientes</FormLabel>
+                <Select
+                  {...field}
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger className="placeholder:text-red-500">
+                      <SelectValue datatype="string" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    {clientes.map((cliente) => (
+                      <SelectItem
+                        key={cliente.ID_CLIENTE}
+                        value={cliente.ID_CLIENTE}
+                      >
+                        {cliente.S_NOME}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        )}
+        <FormField
           name="ID_PRODUTO"
           render={({ field }) => (
             <FormItem>
@@ -138,39 +216,7 @@ export const FormRelatorioEntrada = ({
             </FormItem>
           )}
         />
-        <FormField
-          name="ID_FORNECEDOR"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Fornecedor</FormLabel>
-              <Select
-                {...field}
-                onValueChange={field.onChange}
-                defaultValue={field.value}
-              >
-                <FormControl>
-                  <SelectTrigger className="placeholder:text-red-500">
-                    <SelectValue
-                      datatype="string"
-                      placeholder="Selecione um fornecedor especifico caso necessario."
-                    />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {fornecedores.map((fornecedor) => (
-                    <SelectItem
-                      key={fornecedor.ID_FORNECEDOR}
-                      value={fornecedor.ID_FORNECEDOR}
-                    >
-                      {fornecedor.S_NOME}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+
         <Button type="submit" className="w-full mt-4">
           Gerar Relatório
         </Button>

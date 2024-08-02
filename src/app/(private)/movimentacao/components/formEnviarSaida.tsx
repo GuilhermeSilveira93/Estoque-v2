@@ -20,7 +20,7 @@ import {
 } from '@/components/ui/select'
 
 import { Cliente } from '@/@classes'
-import { ClienteType, EmpresaType } from '@/@types/api'
+import { EmpresaType } from '@/@types/api'
 import { useEnviarProdutosSaidaForm } from '@/hooks/movimentacao/entrada/useEnviarProdutoSaidaForm'
 export const FormEnviarSaida = ({ empresas }: { empresas: EmpresaType[] }) => {
   const { form, onSubmit } = useEnviarProdutosSaidaForm()
