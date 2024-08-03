@@ -13,7 +13,10 @@ import {
 
 import { CreateFornecedorSchema, CreateFornecedorType } from '@/@schemas'
 import { ResponseReturn, useGenericCreateForm } from '@/hooks/genericCreateForm'
-type CreateFornecedorFormProps = useFornecedorCreateFormProps
+type CreateFornecedorFormProps = {
+  // eslint-disable-next-line no-unused-vars
+  criarFornecedor: (payload: CreateFornecedorType) => Promise<ResponseReturn>
+}
 const CreateFornecedorForm = memo(
   ({ criarFornecedor }: CreateFornecedorFormProps) => {
     const { form, isSubmitting, submit } = useGenericCreateForm<

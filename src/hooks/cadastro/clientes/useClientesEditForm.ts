@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
 export type useClientesEditFormProps = {
   cliente: ClienteType
+  // eslint-disable-next-line no-unused-vars
   atualizarCliente: ({ data, ID_CLIENTE }: atualizarClienteParam) => Promise<{
     statusCode: number
     success: boolean

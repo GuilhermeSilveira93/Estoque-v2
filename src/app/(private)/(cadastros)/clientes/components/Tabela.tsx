@@ -50,12 +50,10 @@ export const Tabela = async ({ data }: TabelaProps) => {
                 key={`${cliente.ID_CLIENTE}CLIENTE`}
                 className="border-card-foreground"
               >
-                {tableHeader.map((header, index) => {
+                {tableHeader.map((header) => {
                   return (
-                    <TableCell
-                      key={`${cliente.ID_CLIENTE}-${header + index}Cliente`}
-                    >
-                      {cliente.data[header]}
+                    <TableCell key={cliente.ID_CLIENTE}>
+                      {cliente.data[header as keyof typeof cliente.data]}
                     </TableCell>
                   )
                 })}

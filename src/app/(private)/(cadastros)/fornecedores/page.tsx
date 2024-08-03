@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import CreateFornecedor from './components/createFornecedor'
 import { Tabela } from './components/Tabela'
 import Pagination from '@/components/pagination'
@@ -7,7 +9,6 @@ import { Fornecedor } from '@/@classes/Fornecedor'
 import { RolesRequired } from '@/@types'
 import { FiltersPage } from '@/@types/FiltersType'
 import { userCanSeePage } from '@/@utils'
-import Link from 'next/link'
 
 export type FornecedorPageProps = {
   searchParams: FiltersPage & {
@@ -22,7 +23,9 @@ const FornecedoresPage = async ({ searchParams }: FornecedorPageProps) => {
       RolesRequired.SUPERVISOR,
     ],
   })
-  const fornecedores = (await new Fornecedor().getAllWithParams({ searchParams })).body
+  const fornecedores = (
+    await new Fornecedor().getAllWithParams({ searchParams })
+  ).body
   return (
     <section>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">

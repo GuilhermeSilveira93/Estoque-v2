@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form'
 
 import { EntradaRelatorioAction } from '@/@actions/relatorios/EntradaRelatorioAction'
+import { RelatorioEntradaType } from '@/@classes/Relatorio'
 import { RelatorioMovimentacaoExcel } from '@/@Relatorios/RelatorioMovimentacao'
 import {
   FormRelatorioEntradaSchemaType,
@@ -28,7 +29,7 @@ export const useFormRelatorioEntrada = () => {
             if (!res.success) {
               reject(res.message)
             }
-            RelatorioMovimentacaoExcel({
+            RelatorioMovimentacaoExcel<RelatorioEntradaType>({
               data: res.body,
               name: 'Relatório de Entrada',
             })

@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form'
 
 import { SaidaRelatorioAction } from '@/@actions/relatorios/SaidaRelatorioAction'
+import { RelatorioSaidaType } from '@/@classes/Relatorio'
 import { RelatorioMovimentacaoExcel } from '@/@Relatorios/RelatorioMovimentacao'
 import {
   FormRelatorioSaidaSchemaType,
@@ -28,7 +29,7 @@ export const useFormRelatorioSaida = () => {
             if (!res.success) {
               reject(res.message)
             }
-            RelatorioMovimentacaoExcel({
+            RelatorioMovimentacaoExcel<RelatorioSaidaType>({
               data: res.body,
               name: 'Relatório de Saida',
             })

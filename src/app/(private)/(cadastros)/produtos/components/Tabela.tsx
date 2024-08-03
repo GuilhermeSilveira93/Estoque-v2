@@ -10,19 +10,19 @@ import {
 } from '@/components/ui'
 
 import { Tipo } from '@/@classes/Tipo'
-import { Produtos, ProdutosKeys } from '@/@types/api'
+import { ProdutosType, ProdutosKeys } from '@/@types/api'
 import { PascalCase } from '@/@utils'
 
 import { ProdutosPageProps } from '../page'
 import EditProd from './editProd'
 
 type TabelaProps = {
-  data: Produtos[]
+  data: ProdutosType[]
   ocultar: string[]
   searchParams: ProdutosPageProps['searchParams']
 }
 export const Tabela = async ({ data, ocultar }: TabelaProps) => {
-  const tableHeader = Object.keys(data[0] as Produtos) as ProdutosKeys[]
+  const tableHeader = Object.keys(data[0] as ProdutosType) as ProdutosKeys[]
   const tipos = (await new Tipo().getAll()).body
   return (
     <>

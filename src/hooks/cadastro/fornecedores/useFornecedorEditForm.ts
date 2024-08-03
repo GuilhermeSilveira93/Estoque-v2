@@ -9,7 +9,9 @@ import { toast } from 'sonner'
 export type useFornecedorEditFormProps = {
   fornecedor: FornecedorType
   atualizarFornecedor: ({
+    // eslint-disable-next-line no-unused-vars
     data,
+    // eslint-disable-next-line no-unused-vars
     ID_FORNECEDOR,
   }: atualizarFornecedorParam) => Promise<{
     statusCode: number

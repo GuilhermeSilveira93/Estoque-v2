@@ -7,13 +7,13 @@ import {
 } from '@/components/ui/popover'
 
 import { atualizarProduto } from '@/@actions'
-import { Produtos } from '@/@types/api'
+import { ProdutosType } from '@/@types/api'
 import { TiposType } from '@/@types/api/ReqTipos'
 import { Settings } from 'lucide-react'
 
 import EditProdForm from './EditProdForm'
 type EditProdProps = {
-  produto: Produtos
+  produto: ProdutosType
   tipos: TiposType[]
 }
 const EditProd = memo(async ({ produto, tipos }: EditProdProps) => {

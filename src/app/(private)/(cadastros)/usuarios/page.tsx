@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import CreateUser from '../usuarios/components/createUser'
 import { Tabela } from '../usuarios/components/Tabela'
 import Pagination from '@/components/pagination'
@@ -7,7 +9,6 @@ import { Usuario } from '@/@classes/Usuario'
 import { RolesRequired } from '@/@types'
 import { FiltersPage } from '@/@types/FiltersType'
 import { userCanSeePage } from '@/@utils'
-import Link from 'next/link'
 export type UserPageProps = {
   searchParams: FiltersPage & {
     ID_USUARIO: string

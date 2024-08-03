@@ -3,11 +3,12 @@ import { useForm } from 'react-hook-form'
 
 import { atualizarProdutoParam } from '@/@actions'
 import { EditProdSchema, EditProdType } from '@/@schemas'
-import { Produtos } from '@/@types/api'
+import { ProdutosType } from '@/@types/api'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
 export type useProdEditFormProps = {
-  produto: Produtos
+  produto: ProdutosType
+  // eslint-disable-next-line no-unused-vars
   atualizarProduto: ({ data, ID_PRODUTO }: atualizarProdutoParam) => Promise<{
     statusCode: number
     success: boolean

@@ -1,23 +1,24 @@
-import { RelatorioEntradaType } from '@/@classes/Relatorio'
+/* eslint-disable */
+// @ts-nocheck
 import '@grapecity/wijmo.styles/wijmo.css'
 import * as wjGridXlsx from '@grapecity/wijmo.xlsx'
 
-type RelatorioMovimentacaoExcelParams = {
-  data: RelatorioEntradaType[]
+type RelatorioMovimentacaoExcelParams<T> = {
+  data: T[]
   name: string
 }
-export const RelatorioMovimentacaoExcel = async ({
+export const RelatorioMovimentacaoExcel = async <T>({
   data,
   name,
-}: RelatorioMovimentacaoExcelParams) => {
+}: RelatorioMovimentacaoExcelParams<T>) => {
   const workbook = exportExpenseReport({ data, name })
   workbook.saveAsync(`${name}.xlsx`)
 }
-const exportExpenseReport = ({
+const exportExpenseReport = <T>({
   data,
   name,
-}: RelatorioMovimentacaoExcelParams) => {
-  const chaves = Object.keys(data[0]!)
+}: RelatorioMovimentacaoExcelParams<T>) => {
+  const chaves = Object.keys(data[0]!) as (keyof T)[]
   const book = new wjGridXlsx.Workbook()
   const simpleCaptionStyle = new wjGridXlsx.WorkbookStyle(),
     accentCaptionStyle = new wjGridXlsx.WorkbookStyle(),
@@ -58,14 +59,18 @@ const exportExpenseReport = ({
   tableIntegerStyle.format = wjGridXlsx.Workbook.toXlsxNumberFormat('00')
 
   const aba = new wjGridXlsx.WorkSheet()
+  const colum = new wjGridXlsx.WorkbookColumn()
+  aba.columns.push(colum)
   const linhas = aba.rows
   book.sheets.push(aba)
   aba.name = name
 
   //DEFINIÇÃO DAS COLUNAS
   for (let i = 0; i < chaves.length; i++) {
-    aba.columns[i] = new wjGridXlsx.WorkbookColumn()
-    aba.columns[i].width = 200
+    if (aba?.columns[i] !== null) {
+      aba.columns[i]! = new wjGridXlsx.WorkbookColumn()
+      aba.columns[i]!.width = 200
+    }
   }
   //DEFINIÇÃO DAS LINHAS
 
@@ -96,8 +101,14 @@ const exportExpenseReport = ({
     //DEFINIÇÃO DO CONTEUDO DAS LINHAS
     for (let j = 0; j < chaves.length; j++) {
       linhas[i + 2]!.cells[j] = new wjGridXlsx.WorkbookCell()
-      if (data && i < data.length && chaves.length && j < chaves.length) {
-        linhas[i + 2].cells[j].value = data[i][chaves[j]]!
+      if (
+        linhas[i + 2] &&
+        linhas[i + 2]!.cells[j] &&
+        data &&
+        data[i] &&
+        chaves[j]
+      ) {
+        linhas[i + 2]!.cells[j]!.value = data[i][chaves[j]]
       }
     }
   }

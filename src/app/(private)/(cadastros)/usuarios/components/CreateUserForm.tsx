@@ -20,9 +20,10 @@ import {
 
 import { CreateUserSchema, CreateUserType } from '@/@schemas'
 import { GrupoType } from '@/@types/api'
-import { useUserCreateFormProps } from '@/hooks/cadastro/usuarios/useUserCreateForm'
 import { ResponseReturn, useGenericCreateForm } from '@/hooks/genericCreateForm'
-type CreateUserFormProps = useUserCreateFormProps & {
+type CreateUserFormProps = {
+  // eslint-disable-next-line no-unused-vars
+  criarUsuario: (data: CreateUserType) => Promise<ResponseReturn>
   grupos: GrupoType[]
 }
 const CreateUserForm = memo(({ criarUsuario, grupos }: CreateUserFormProps) => {

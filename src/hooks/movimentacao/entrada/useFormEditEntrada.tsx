@@ -1,11 +1,11 @@
 import { useForm } from 'react-hook-form'
 
-import { AlterarItem, InserirItem } from '@/@Reducers/entrada/ActionSetEntrada'
+import { AlterarItem } from '@/@Reducers/entrada/ActionSetEntrada'
 import {
   FormEntradaEditProdutoSchema,
   FormEntradaEditProdutoSchemaType,
 } from '@/@schemas/movimentacao/entrada/FormEntradaEditProdutoSchema'
-import { InfoTabela } from '@/app/(private)/(movimentacao)/entrada/provider/produtosEntrada'
+import { InfoTabela } from '@/app/(private)/movimentacao/provider/produtosEntrada'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import { useProdutosEntrada } from './useProdutosEntrada'

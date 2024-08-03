@@ -14,6 +14,7 @@ import {
 import { CreateEmpresaSchema, CreateEmpresaType } from '@/@schemas'
 import { ResponseReturn, useGenericCreateForm } from '@/hooks/genericCreateForm'
 type CreateEmpresaFormProps = {
+  // eslint-disable-next-line no-unused-vars
   criarEmpresa: (payload: CreateEmpresaType) => Promise<ResponseReturn>
 }
 const CreateEmpForm = memo(({ criarEmpresa }: CreateEmpresaFormProps) => {

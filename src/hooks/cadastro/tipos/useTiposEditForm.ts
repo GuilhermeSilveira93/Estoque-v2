@@ -8,6 +8,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
 export type useTipoEditFormProps = {
   tipo: TiposType
+
+  // eslint-disable-next-line no-unused-vars
   atualizarTipo: ({ data, ID_TIPO }: atualizarTipoParam) => Promise<{
     statusCode: number
     success: boolean

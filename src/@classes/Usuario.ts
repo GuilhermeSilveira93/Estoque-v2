@@ -26,14 +26,14 @@ export class Usuario extends AdapterRequest {
     ID_USUARIO: string
     data: EditUserType
   }) {
-    return await this.request({
+    return await this.request<{ message: string }>({
       method: 'patch',
       url: `/usuario/${ID_USUARIO}`,
       body: data,
     })
   }
   async createUser({ data }: { data: CreateUserType }) {
-    return await this.request({
+    return await this.request<{ message: string }>({
       method: 'post',
       url: `/usuario`,
       body: {

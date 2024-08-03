@@ -15,7 +15,6 @@ type EditEmpresaProps = {
   empresa: EmpresaType
 }
 const EditEmpresa = memo(async ({ empresa }: EditEmpresaProps) => {
-  console.log(empresa.S_NOME)
   return (
     <Popover>
       <PopoverTrigger asChild>

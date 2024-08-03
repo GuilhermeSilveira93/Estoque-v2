@@ -1,10 +1,11 @@
+import { env } from '@/@types/api'
 import axios from 'axios'
 export const api = axios.create({
-  baseURL: 'http://localhost:3002/',
+  baseURL: env.NEXT_PUBLIC_BASEURL,
   proxy: {
-    protocol: 'http',
-    host: 'localhost',
-    port: 3002,
+    protocol: env.NEXT_PUBLIC_PROTOCOL,
+    host: env.NEXT_PUBLIC_HOST,
+    port: env.NEXT_PUBLIC_PORTDATABASE,
   },
 })
 api.interceptors.request.use(

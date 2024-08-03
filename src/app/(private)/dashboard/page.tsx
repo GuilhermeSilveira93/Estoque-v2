@@ -8,7 +8,7 @@ import {
 import { Produto } from '@/@classes'
 import { ArrowUpRight } from 'lucide-react'
 
-const DashBoard = async ({ searchParams }: any) => {
+const DashBoard = async () => {
   const produtos = (await new Produto().getMovimentacao()).body
   const anoAtual = produtos.anos.length - 1
   return (

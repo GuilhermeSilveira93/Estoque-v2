@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import CreateTipo from './components/CreateTipo'
 import { Tabela } from './components/Tabela'
 import Pagination from '@/components/pagination'
@@ -7,7 +9,6 @@ import { Tipo } from '@/@classes'
 import { RolesRequired } from '@/@types'
 import { FiltersPage } from '@/@types/FiltersType'
 import { userCanSeePage } from '@/@utils'
-import Link from 'next/link'
 
 export type TiposPageProps = {
   searchParams: FiltersPage & {

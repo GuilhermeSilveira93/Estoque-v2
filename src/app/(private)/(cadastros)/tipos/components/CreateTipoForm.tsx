@@ -12,9 +12,11 @@ import {
 } from '@/components/ui/form'
 
 import { CreateTipoSchema, CreateTipoType } from '@/@schemas'
-import { useTipoCreateFormProps } from '@/hooks/cadastro'
 import { ResponseReturn, useGenericCreateForm } from '@/hooks/genericCreateForm'
-type CreateTipoFormProps = useTipoCreateFormProps
+type CreateTipoFormProps = {
+  // eslint-disable-next-line no-unused-vars
+  criarTipo: (payload: CreateTipoType) => Promise<ResponseReturn>
+}
 const CreateTipoForm = memo(({ criarTipo }: CreateTipoFormProps) => {
   const { form, isSubmitting, submit } = useGenericCreateForm<
     CreateTipoType,

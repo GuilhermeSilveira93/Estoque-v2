@@ -16,6 +16,7 @@ type UseGenericCreateFormProps<
   T extends FieldValues,
   R extends ResponseReturn,
 > = {
+  // eslint-disable-next-line no-unused-vars
   requestHandler: (data: T) => Promise<R>
   schema: z.ZodSchema<T>
 }

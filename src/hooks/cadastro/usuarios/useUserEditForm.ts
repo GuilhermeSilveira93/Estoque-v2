@@ -11,6 +11,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
 export type useUserEditFormProps = {
   usuario: UsuarioType
+
+  // eslint-disable-next-line no-unused-vars
   atualizarUsuario: ({ data, ID_USUARIO }: atualizarUsuarioParam) => Promise<{
     statusCode: number
     success: boolean

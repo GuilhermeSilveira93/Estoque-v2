@@ -7,13 +7,13 @@ import {
 } from '@/components/ui/popover'
 
 import { atualizarUsuario } from '@/@actions'
-import { Grupo, Usuario } from '@/@types/api'
+import { GrupoType, UsuarioType } from '@/@types/api'
 import { Settings } from 'lucide-react'
 
 import EditProdForm from './EditUserForm'
 type EditUserProps = {
-  usuario: Usuario
-  grupos: Grupo[]
+  usuario: UsuarioType
+  grupos: GrupoType[]
 }
 const EditUser = memo(({ usuario, grupos }: EditUserProps) => {
   return (

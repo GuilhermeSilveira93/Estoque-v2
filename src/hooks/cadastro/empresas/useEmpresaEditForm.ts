@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
 export type useEmpresaEditFormProps = {
   empresa: EmpresaType
+  // eslint-disable-next-line no-unused-vars
   atualizarEmpresa: ({ data, ID_EMPRESA }: atualizarEmpresaParam) => Promise<{
     statusCode: number
     success: boolean
