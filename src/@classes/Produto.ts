@@ -43,7 +43,7 @@ export class Produto extends AdapterRequest {
       total: number
     }>({
       method: 'get',
-      url: '/produto',
+      url: '/produto/getall',
     })
   }
   async getTabela({ searchParams }: ProdutosPageProps) {
