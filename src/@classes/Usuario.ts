@@ -15,7 +15,7 @@ export class Usuario extends AdapterRequest {
   async getAll({ searchParams }: UserPageProps) {
     return await this.request<getAllBodyType>({
       method: 'get',
-      url: '/usuario',
+      url: 'usuario',
       params: searchParams,
     })
   }
@@ -28,14 +28,14 @@ export class Usuario extends AdapterRequest {
   }) {
     return await this.request<{ message: string }>({
       method: 'patch',
-      url: `/usuario/${ID_USUARIO}`,
+      url: `usuario/${ID_USUARIO}`,
       body: data,
     })
   }
   async createUser({ data }: { data: CreateUserType }) {
     return await this.request<{ message: string }>({
       method: 'post',
-      url: `/usuario`,
+      url: `usuario`,
       body: {
         ...data,
         S_NOME: data.S_NOME.toUpperCase(),

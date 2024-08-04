@@ -23,11 +23,7 @@ const ProdutosPage = async ({ searchParams }: ProdutosPageProps) => {
       RolesRequired.SUPERVISOR,
     ],
   })
-  const produtos = (await new Produto().getAllWithParams({ searchParams }))
-    .body ?? {
-    data: [],
-    total: 0,
-  }
+  const produtos = (await new Produto().getAllWithParams({ searchParams })).body
   return (
     <section className="w-full">
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">

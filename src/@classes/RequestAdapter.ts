@@ -35,6 +35,19 @@ export class AdapterRequest implements HttpClient {
     message: string
   }> {
     let axiosResponse: AxiosResponse
+    /*     const response = await fetch(
+      `http://localhost:3002/${data.url}`,
+      {
+        body: data.body,
+        cache: 'no-store',
+        headers: data.headers
+          ? data.headers
+          : { 'Content-Type': 'application/json' },
+        method: data.method,
+        mode: 'cors',
+      }
+    ).then((T) => T.json())
+    console.log(response) */
     try {
       axiosResponse = await api({
         url: data.url,

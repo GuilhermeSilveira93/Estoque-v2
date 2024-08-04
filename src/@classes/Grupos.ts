@@ -11,7 +11,7 @@ export class Grupos extends AdapterRequest {
   async getAll() {
     return await this.request<getAllBodyType>({
       method: 'get',
-      url: '/grupo',
+      url: 'grupo',
     })
   }
 }

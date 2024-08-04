@@ -43,14 +43,14 @@ export class Produto extends AdapterRequest {
       total: number
     }>({
       method: 'get',
-      url: '/produto/getall',
+      url: 'produto/getall',
     })
   }
   async getTabela({ searchParams }: ProdutosPageProps) {
     const { ID_PRODUTO, S_ATIVO, Search, Page, LimitPerPage } = searchParams
     return await this.request<{ data: TabelaType[]; total: number }>({
       method: 'get',
-      url: '/produto/tabela',
+      url: 'produto/tabela',
       params: {
         S_ATIVO,
         ID_PRODUTO,

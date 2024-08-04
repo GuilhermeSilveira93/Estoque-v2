@@ -11,7 +11,7 @@ export class Empresa extends AdapterRequest {
     const { ID_EMPRESA, S_ATIVO, Search, Page, LimitPerPage } = searchParams
     return await this.request<{ data: EmpresaType[]; total: number }>({
       method: 'get',
-      url: '/empresa',
+      url: 'empresa',
       params: {
         S_ATIVO,
         ID_EMPRESA,
@@ -24,7 +24,7 @@ export class Empresa extends AdapterRequest {
   async getAll() {
     return await this.request<{ data: EmpresaType[]; total: number }>({
       method: 'get',
-      url: '/empresa/all',
+      url: 'empresa/all',
     })
   }
   async attEmpresa({
@@ -36,7 +36,7 @@ export class Empresa extends AdapterRequest {
   }) {
     return await this.request<{ message: string }>({
       method: 'patch',
-      url: `/empresa/${ID_EMPRESA}`,
+      url: `empresa/${ID_EMPRESA}`,
       body: {
         ...data,
         S_NOME: data.S_NOME.toUpperCase(),
@@ -46,7 +46,7 @@ export class Empresa extends AdapterRequest {
   async createEmp(data: CreateEmpresaType) {
     return await this.request<{ message: string }>({
       method: 'post',
-      url: '/empresa',
+      url: 'empresa',
       body: {
         S_NOME: data.S_NOME.toUpperCase(),
       },

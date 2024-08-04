@@ -12,14 +12,14 @@ export class Fornecedor extends AdapterRequest {
   async getAll() {
     return await this.request<{ data: FornecedorType[]; total: number }>({
       method: 'get',
-      url: '/fornecedor',
+      url: 'fornecedor',
     })
   }
   async getAllWithParams({ searchParams }: FornecedorPageProps) {
     const { ID_FORNECEDOR, S_ATIVO, Search, Page, LimitPerPage } = searchParams
     return await this.request<{ data: FornecedorType[]; total: number }>({
       method: 'get',
-      url: '/fornecedor',
+      url: 'fornecedor',
       params: {
         S_ATIVO,
         ID_FORNECEDOR,
@@ -32,7 +32,7 @@ export class Fornecedor extends AdapterRequest {
   async attFornecedor({ ID_FORNECEDOR, data }: atualizarFornecedorParam) {
     return await this.request<{ message: string }>({
       method: 'patch',
-      url: `/fornecedor/${ID_FORNECEDOR}`,
+      url: `fornecedor/${ID_FORNECEDOR}`,
       body: {
         ...data,
         S_NOME: data.S_NOME.toUpperCase(),
@@ -42,7 +42,7 @@ export class Fornecedor extends AdapterRequest {
   async createFornecedor(data: CreateFornecedorType) {
     return await this.request<{ message: string }>({
       method: 'post',
-      url: '/fornecedor',
+      url: 'fornecedor',
       body: {
         S_NOME: data.S_NOME.toUpperCase(),
       },

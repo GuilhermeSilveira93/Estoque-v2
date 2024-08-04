@@ -10,7 +10,7 @@ export class Cliente extends AdapterRequest {
   async getAllWithParams({ searchParams }: ClientesPageProps) {
     return await this.request<{ data: ClienteType[]; total: number }>({
       method: 'get',
-      url: '/cliente',
+      url: 'cliente',
       params: searchParams,
     })
   }
@@ -20,13 +20,13 @@ export class Cliente extends AdapterRequest {
       total: number
     }>({
       method: 'get',
-      url: `/cliente/${ID_EMPRESA}`,
+      url: `cliente/${ID_EMPRESA}`,
     })
   }
   async getAll() {
     return await this.request<{ data: ClienteType[]; total: number }>({
       method: 'get',
-      url: '/cliente',
+      url: 'cliente',
     })
   }
   async attCliente({
@@ -38,7 +38,7 @@ export class Cliente extends AdapterRequest {
   }) {
     return await this.request<{ message: string }>({
       method: 'patch',
-      url: `/cliente/${ID_CLIENTE}`,
+      url: `cliente/${ID_CLIENTE}`,
       body: {
         ...data,
         S_NOME: data.S_NOME.toUpperCase(),
@@ -48,7 +48,7 @@ export class Cliente extends AdapterRequest {
   async createCliente(data: CreateClienteType) {
     return await this.request<{ message: string }>({
       method: 'post',
-      url: '/cliente',
+      url: 'cliente',
       body: {
         S_NOME: data.S_NOME.toUpperCase(),
         ID_EMPRESA: data.ID_EMPRESA,

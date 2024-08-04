@@ -10,20 +10,20 @@ export class Tipo extends AdapterRequest {
   async getAll() {
     return await this.request<{ data: TiposType[]; total: number }>({
       method: 'get',
-      url: '/tipos/all',
+      url: 'tipos/all',
     })
   }
   async getWithParams({ searchParams }: TiposPageProps) {
     return await this.request<{ data: TiposType[]; total: number }>({
       method: 'get',
-      url: '/tipos',
+      url: 'tipos',
       params: searchParams,
     })
   }
   async attTipo({ ID_TIPO, data }: { ID_TIPO: string; data: EditTipoType }) {
     return await this.request<{ message: string }>({
       method: 'patch',
-      url: `/tipos/${ID_TIPO}`,
+      url: `tipos/${ID_TIPO}`,
       body: {
         ...data,
         S_NOME: data.S_NOME.toUpperCase(),
@@ -33,7 +33,7 @@ export class Tipo extends AdapterRequest {
   async createTipo(data: CreateTipoType) {
     return await this.request<{ message: string }>({
       method: 'post',
-      url: '/tipos',
+      url: 'tipos',
       body: {
         S_NOME: data.S_NOME.toUpperCase(),
       },
