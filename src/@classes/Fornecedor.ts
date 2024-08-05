@@ -12,7 +12,7 @@ export class Fornecedor extends AdapterRequest {
   async getAll() {
     return await this.request<{ data: FornecedorType[]; total: number }>({
       method: 'get',
-      url: '/fornecedor',
+      url: '/fornecedor/getAll',
     })
   }
   async getAllWithParams({ searchParams }: FornecedorPageProps) {

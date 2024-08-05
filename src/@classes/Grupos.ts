@@ -3,6 +3,7 @@ import { GrupoType } from '@/@types/api'
 import { AdapterRequest } from './RequestAdapter'
 type getAllBodyType = {
   data: GrupoType[]
+  total: number
 }
 export class Grupos extends AdapterRequest {
   constructor() {
