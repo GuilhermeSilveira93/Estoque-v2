@@ -26,7 +26,7 @@ export class Cliente extends AdapterRequest {
   async getAll() {
     return await this.request<{ data: ClienteType[]; total: number }>({
       method: 'get',
-      url: 'cliente',
+      url: '/cliente/getAll',
     })
   }
   async attCliente({

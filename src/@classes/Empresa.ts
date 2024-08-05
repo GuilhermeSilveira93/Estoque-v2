@@ -24,7 +24,7 @@ export class Empresa extends AdapterRequest {
   async getAll() {
     return await this.request<{ data: EmpresaType[]; total: number }>({
       method: 'get',
-      url: 'empresa/all',
+      url: '/empresa/getAll',
     })
   }
   async attEmpresa({
