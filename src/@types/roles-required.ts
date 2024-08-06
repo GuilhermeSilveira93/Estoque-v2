@@ -1,10 +1,10 @@
 export enum RolesRequired {
   // eslint-disable-next-line no-unused-vars
-  DESENV = 0,
+  DESENV = 1,
   // eslint-disable-next-line no-unused-vars
-  SUPERVISOR = 1,
+  SUPERVISOR = 2,
   // eslint-disable-next-line no-unused-vars
-  ADM = 2,
+  ADM = 3,
   // eslint-disable-next-line no-unused-vars
-  CONSULTA = 3,
+  CONSULTA = 4,
 }

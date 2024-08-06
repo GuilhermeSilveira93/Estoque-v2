@@ -27,6 +27,7 @@ export default async function middleware(req: NextRequest) {
         )
       : null
     const path = req.nextUrl.pathname
+    console.log('user: ', user)
     if (!user && paginasPrivadas.includes(path)) {
       return NextResponse.redirect(new URL('/login', req.url))
     } else if (
