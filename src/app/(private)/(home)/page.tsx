@@ -19,7 +19,7 @@ const HomePage = async ({ searchParams }: HomePageProps) => {
   return (
     <>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
-        <Link href={{ pathname: '/' }}>Usuários</Link>
+        <Link href={{ pathname: '/' }}>Estoque</Link>
       </h1>
       <Container>
         <section className="rounded-b-xl bg-card">
