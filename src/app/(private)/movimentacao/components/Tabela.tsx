@@ -24,22 +24,22 @@ export const Tabela = () => {
         <TableHeader className="sticky top-0 border-0">
           <TableRow>
             <>
-              <TableHead className="border-b-0 border-card-foreground text-center text-3xl font-black text-card-foreground">
+              <TableHead className="border-b-0 border-card-foreground text-center text-base font-black text-card-foreground">
                 Editar
               </TableHead>
-              <TableHead className="border-b-0 border-card-foreground text-center text-3xl font-black text-card-foreground">
+              <TableHead className="border-b-0 border-card-foreground text-center text-base font-black text-card-foreground">
                 Produto
               </TableHead>
-              <TableHead className="border-b-0 border-card-foreground text-center text-3xl font-black text-card-foreground">
+              <TableHead className="border-b-0 border-card-foreground text-center text-base font-black text-card-foreground">
                 Quantidade
               </TableHead>
-              <TableHead className="border-b-0 border-card-foreground text-center text-3xl font-black text-card-foreground">
+              <TableHead className="border-b-0 border-card-foreground text-center text-base font-black text-card-foreground">
                 Valor
               </TableHead>
-              <TableHead className="border-b-0 border-card-foreground text-center text-3xl font-black text-card-foreground">
+              <TableHead className="border-b-0 border-card-foreground text-center text-base font-black text-card-foreground">
                 Detalhes
               </TableHead>
-              <TableHead className="border-b-0 border-card-foreground text-center text-3xl font-black text-card-foreground">
+              <TableHead className="border-b-0 border-card-foreground text-center text-base font-black text-card-foreground">
                 Dimensao
               </TableHead>
             </>
