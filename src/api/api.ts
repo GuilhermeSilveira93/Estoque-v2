@@ -7,6 +7,7 @@ export const api = axios.create({
     host: env.NEXT_PUBLIC_HOST,
     port: env.NEXT_PUBLIC_PORTDATABASE,
   },
+  withCredentials: true,
 })
 api.interceptors.request.use(
   function (request) {
