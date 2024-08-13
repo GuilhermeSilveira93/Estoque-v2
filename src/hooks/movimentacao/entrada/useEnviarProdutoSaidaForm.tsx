@@ -3,7 +3,6 @@ import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 
 import { submitSaidaLote } from '@/@actions'
-import { Lote } from '@/@classes/Lote'
 import { LimparEntrada } from '@/@Reducers/entrada/ActionSetEntrada'
 import {
   FormEnviarProdutoSchema,
