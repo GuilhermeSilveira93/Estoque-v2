@@ -9,17 +9,20 @@ export class Empresa extends AdapterRequest {
   }
   async getWithParams({ searchParams }: EmpresaPageProps) {
     const { ID_EMPRESA, S_ATIVO, Search, Page, LimitPerPage } = searchParams
-    return await this.request<{ data: EmpresaType[]; total: number }>({
-      method: 'get',
-      url: 'empresa',
-      params: {
-        S_ATIVO,
-        ID_EMPRESA,
-        Search,
-        Page,
-        LimitPerPage,
-      },
-    })
+    const consulta = await this.request<{ data: EmpresaType[]; total: number }>(
+      {
+        method: 'get',
+        url: 'empresa',
+        params: {
+          S_ATIVO,
+          ID_EMPRESA,
+          Search,
+          Page,
+          LimitPerPage,
+        },
+      }
+    )
+    return consulta
   }
   async getAll() {
     return await this.request<{ data: EmpresaType[]; total: number }>({

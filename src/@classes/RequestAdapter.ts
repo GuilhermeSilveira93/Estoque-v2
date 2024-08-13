@@ -1,3 +1,5 @@
+import { cookies, headers } from 'next/headers'
+
 import { api } from '@/api'
 import { AxiosError, AxiosResponse } from 'axios'
 type HttpRequest = {
@@ -35,19 +37,6 @@ export class AdapterRequest implements HttpClient {
     message: string
   }> {
     let axiosResponse: AxiosResponse
-    /*     const response = await fetch(
-      `http://localhost:3002/${data.url}`,
-      {
-        body: data.body,
-        cache: 'no-store',
-        headers: data.headers
-          ? data.headers
-          : { 'Content-Type': 'application/json' },
-        method: data.method,
-        mode: 'cors',
-      }
-    ).then((T) => T.json())
-    console.log(response) */
     try {
       axiosResponse = await api({
         url: data.url,
@@ -55,7 +44,9 @@ export class AdapterRequest implements HttpClient {
         params: data.params,
         method: data.method,
         data: data.body,
-        headers: data.headers,
+        headers: {
+          ...data.headers,
+        },
       })
       return {
         statusCode: axiosResponse.status,

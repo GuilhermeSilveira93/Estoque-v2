@@ -1,4 +1,5 @@
 import { env } from '@/@types/api'
+import { token } from '@/@utils'
 import axios from 'axios'
 export const api = axios.create({
   baseURL: env.NEXT_PUBLIC_BASEURL,
@@ -10,8 +11,12 @@ export const api = axios.create({
   withCredentials: true,
 })
 api.interceptors.request.use(
-  function (request) {
-    return request
+  async (config) => {
+    const accessToken = await token()
+    if (accessToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`
+    }
+    return config
   },
   function (error) {
     return Promise.reject(error)

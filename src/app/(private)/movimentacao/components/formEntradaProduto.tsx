@@ -47,7 +47,7 @@ export const FormEntradaProduto = ({
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  {produtos.data.map((produto) => (
+                  {produtos?.data?.map((produto) => (
                     <SelectItem
                       key={produto.ID_PRODUTO}
                       value={produto.ID_PRODUTO}

@@ -19,7 +19,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 
-import { Cliente } from '@/@classes'
+import { getClientForCompany } from '@/@actions/movimentacao/getClientForCompany'
 import { EmpresaType } from '@/@types/api'
 import { useEnviarProdutosSaidaForm } from '@/hooks/movimentacao/entrada/useEnviarProdutoSaidaForm'
 export const FormEnviarSaida = ({ empresas }: { empresas: EmpresaType[] }) => {
@@ -30,11 +30,9 @@ export const FormEnviarSaida = ({ empresas }: { empresas: EmpresaType[] }) => {
   const empresaSelecionada = form.watch('ID_EMPRESA')
   useEffect(() => {
     if (empresaSelecionada) {
-      new Cliente()
-        .getForCompany({ ID_EMPRESA: empresaSelecionada })
-        .then((res) => {
-          setClientes(res.body.data)
-        })
+      getClientForCompany({ empresaSelecionada }).then((res) => {
+        setClientes(res)
+      })
     }
   }, [empresaSelecionada])
   return (
@@ -70,7 +68,7 @@ export const FormEnviarSaida = ({ empresas }: { empresas: EmpresaType[] }) => {
             </FormItem>
           )}
         />
-        {clientes.length > 0 && (
+        {clientes?.length > 0 && (
           <FormField
             name="ID_CLIENTE"
             render={({ field }) => (

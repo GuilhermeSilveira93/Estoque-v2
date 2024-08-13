@@ -2,6 +2,7 @@
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 
+import { submitEntradaLote } from '@/@actions/movimentacao/submitEntradaLote'
 import { Lote } from '@/@classes/Lote'
 import { LimparEntrada } from '@/@Reducers/entrada/ActionSetEntrada'
 import {
@@ -26,11 +27,7 @@ export const useEnviarProdutosEntradaForm = () => {
   const onSubmit = async (data: FormEnviarProdutoSchemaType) => {
     const response = (): Promise<string> => {
       return new Promise((resolve, reject) => {
-        new Lote()
-          .insertProdutos({
-            ID_FORNECEDOR: data.ID_FORNECEDOR,
-            data: entrada,
-          })
+        submitEntradaLote({ data: entrada, ID_FORNECEDOR: data.ID_FORNECEDOR })
           .then((res) => {
             if (!res.success) {
               throw new Error(res.message)

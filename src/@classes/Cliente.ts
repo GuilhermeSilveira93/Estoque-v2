@@ -1,10 +1,9 @@
-import { headers } from 'next/headers'
-
 import { CreateClienteType, EditClienteType } from '@/@schemas'
 import { ClienteType } from '@/@types/api/ReqCliente'
 import { ClientesPageProps } from '@/app/(private)/(cadastros)/clientes/page'
 
 import { AdapterRequest } from './RequestAdapter'
+
 export class Cliente extends AdapterRequest {
   constructor() {
     super()
@@ -14,7 +13,6 @@ export class Cliente extends AdapterRequest {
       method: 'get',
       url: 'cliente',
       params: searchParams,
-      headers: { ...headers() },
     })
   }
   async getForCompany({ ID_EMPRESA }: { ID_EMPRESA: string }) {
