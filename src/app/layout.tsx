@@ -22,14 +22,15 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://nextjs-postgres-auth.vercel.app'),
 }
 
-export default async function MainLayout({
+export const MainLayout = async ({
   children,
   params: { locale },
 }: Readonly<{
   children: React.ReactNode
   params: { locale: string }
-}>) {
-  const idioma = await getMessages()
+}>) => {
+  const idioma = await getMessages({ locale })
+
   return (
     <html lang={locale}>
       <body>
@@ -46,3 +47,4 @@ export default async function MainLayout({
     </html>
   )
 }
+export default MainLayout
