@@ -20,7 +20,9 @@ export class Produto extends AdapterRequest {
   constructor() {
     super()
   }
-  async getAllWithParams({ searchParams }: ProdutosPageProps) {
+  async getAllWithParams({
+    searchParams,
+  }: Pick<ProdutosPageProps, 'searchParams'>) {
     const { ID_PRODUTO, S_ATIVO, Search, Page, LimitPerPage } = searchParams
     return await this.request<{
       data: ProdutosType[]
@@ -46,7 +48,7 @@ export class Produto extends AdapterRequest {
       url: '/produto/getAll',
     })
   }
-  async getTabela({ searchParams }: ProdutosPageProps) {
+  async getTabela({ searchParams }: Pick<ProdutosPageProps, 'searchParams'>) {
     const { ID_PRODUTO, S_ATIVO, Search, Page, LimitPerPage } = searchParams
     return await this.request<{ data: TabelaType[]; total: number }>({
       method: 'get',

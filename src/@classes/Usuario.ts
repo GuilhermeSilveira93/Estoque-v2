@@ -12,7 +12,7 @@ export class Usuario extends AdapterRequest {
   constructor() {
     super()
   }
-  async getAll({ searchParams }: UserPageProps) {
+  async getAll({ searchParams }: Pick<UserPageProps, 'searchParams'>) {
     return await this.request<getAllBodyType>({
       method: 'get',
       url: 'usuario',

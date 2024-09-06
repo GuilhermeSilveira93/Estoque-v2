@@ -8,7 +8,9 @@ export class Cliente extends AdapterRequest {
   constructor() {
     super()
   }
-  async getAllWithParams({ searchParams }: ClientesPageProps) {
+  async getAllWithParams({
+    searchParams,
+  }: Pick<ClientesPageProps, 'searchParams'>) {
     return await this.request<{ data: ClienteType[]; total: number }>({
       method: 'get',
       url: 'cliente',

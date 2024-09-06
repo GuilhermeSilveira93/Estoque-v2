@@ -13,7 +13,7 @@ export class Tipo extends AdapterRequest {
       url: 'tipos/all',
     })
   }
-  async getWithParams({ searchParams }: TiposPageProps) {
+  async getWithParams({ searchParams }: Pick<TiposPageProps, 'searchParams'>) {
     return await this.request<{ data: TiposType[]; total: number }>({
       method: 'get',
       url: 'tipos',

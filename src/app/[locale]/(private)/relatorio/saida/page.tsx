@@ -5,7 +5,6 @@ import { FormRelatorioSaida } from './components'
 import { Container } from '@/components/ui'
 
 import { Empresa, Produto } from '@/@classes'
-
 const RelatorioSaida = async () => {
   const empresas = (await new Empresa().getAll()).body
   const produtos = (await new Produto().getAll()).body

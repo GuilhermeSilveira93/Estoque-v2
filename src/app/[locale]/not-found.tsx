@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export default function NotFound() {
+export default async function NotFoundPage() {
   return (
     <div className="flex h-screen flex-col items-center justify-center">
       <h2>Página não encontrada</h2>
