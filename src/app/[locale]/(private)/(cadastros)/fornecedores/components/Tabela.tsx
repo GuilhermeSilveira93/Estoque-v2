@@ -11,7 +11,6 @@ import {
 } from '@/components/ui'
 
 import { FornecedorKeys, FornecedorType } from '@/@types/api'
-import { PascalCase } from '@/@utils'
 
 import { FornecedorPageProps } from '../page'
 import EditFornecedor from './editFornecedor'

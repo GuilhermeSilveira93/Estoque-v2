@@ -12,7 +12,7 @@ import {
 import { Grupos } from '@/@classes/Grupos'
 import { UserProps } from '@/@types'
 import { UsuarioType, UsuarioKeys } from '@/@types/api'
-import { PascalCase, getUserCurrent } from '@/@utils'
+import { getUserCurrent } from '@/@utils'
 
 import EditUser from './editUser'
 

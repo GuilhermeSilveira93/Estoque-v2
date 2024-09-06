@@ -1,66 +1,67 @@
 {
-  "env": {
-    "browser": true,
-    "es2022": true
-  },
-  "extends": [
-    "eslint:recommended",
-    "plugin:@next/next/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended",
-    "plugin:prettier/recommended",
-    "prettier"
-  ],
-  "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "react",
-    "@typescript-eslint",
-    "react-hooks",
-    "eslint-plugin-import-helpers"
-  ],
-  "rules": {
-    "@typescript-eslint/no-unused-vars": "off",
-    "@typescript-eslint/no-explicit-any": "warn",
-    "no-use-before-define": "off",
-    "no-console": "warn",
-    "semi": ["error", "never"],
-    "react/no-unescaped-entities": "off",
-    "@next/next/no-page-custom-font": "off",
-    "no-unused-vars": "warn",
-    "react-hooks/rules-of-hooks": "error",
-    "react/prop-types": "off",
-    "react-hooks/exhaustive-deps": "warn",
-    "@typescript-eslint/no-var-requires": "off",
-    "react/react-in-jsx-scope": "off",
-    "prettier/prettier": ["warn", {
-                            "endOfLine": "auto"
-    }],
-    "no-undef": "off",
-    "import-helpers/order-imports": [
-      "warn",
-      {
-        "newlinesBetween": "always",
-        "groups": [
-          [
-            "/^react/",
-            "/^next/",
-            "/^@next/"
+    "env": {
+      "browser": true,
+      "es2022": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:@next/next/recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react/recommended",
+      "plugin:prettier/recommended",
+      "prettier"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "react",
+      "@typescript-eslint",
+      "react-hooks",
+      "eslint-plugin-import-helpers"
+    ],
+    "rules": {
+      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/no-explicit-any": "warn",
+      "no-use-before-define": "off",
+      "no-console": "warn",
+      "semi": ["error", "never"],
+      "react/no-unescaped-entities": "off",
+      "@next/next/no-page-custom-font": "off",
+      "no-unused-vars": "warn",
+      "react-hooks/rules-of-hooks": "error",
+      "react/prop-types": "off",
+      "react-hooks/exhaustive-deps": "warn",
+      "@typescript-eslint/no-var-requires": "off",
+      "react/react-in-jsx-scope": "off",
+      "prettier/prettier": ["warn", {
+                              "endOfLine": "auto"
+      }],
+      "no-undef": "off",
+      "import-helpers/order-imports": [
+        "warn",
+        {
+          "newlinesBetween": "always",
+          "groups": [
+            [
+              "/^react/",
+              "/^next/",
+              "/^@next/"
+            ],
+            "/components/",
+            "module",
+            "/^@shared/",
+            "/absolute/",
+            [
+              "parent",
+              "sibling",
+              "index"
+            ]
           ],
-          "/components/",
-          "module",
-          "/^@shared/",
-          "/absolute/",
-          [
-            "parent",
-            "sibling",
-            "index"
-          ]
-        ],
-        "alphabetize": {
-          "order": "asc",
-          "ignoreCase": true
+          "alphabetize": {
+            "order": "asc",
+            "ignoreCase": true
+          }
         }
-      }
-    ]
+      ]
+    }
   }
-}
+  

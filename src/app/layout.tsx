@@ -1,4 +1,4 @@
-import { Metadata, Viewport } from 'next'
+import { Metadata } from 'next'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import React from 'react'
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://nextjs-postgres-auth.vercel.app'),
 }
 
-export default async function RootLayout({
+export default async function MainLayout({
   children,
   params: { locale },
 }: Readonly<{

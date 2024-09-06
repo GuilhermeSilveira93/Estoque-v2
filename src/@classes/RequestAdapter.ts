@@ -1,5 +1,4 @@
 import { getTranslations } from 'next-intl/server'
-import { cookies, headers } from 'next/headers'
 
 import { api } from '@/api'
 import { AxiosError, AxiosResponse } from 'axios'
