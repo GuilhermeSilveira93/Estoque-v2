@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import React, { useCallback, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
@@ -18,6 +19,7 @@ type SearchProps = {
   Search: string
 }
 export const SearchData = ({ Search }: SearchProps) => {
+  const t = useTranslations('PESQUISAR')
   const router = useRouter()
   const { createParam, deleteParam } = useCustomParam()
   const { handleSubmit, register, reset } = useForm<SearchSchemaType>({
@@ -58,7 +60,7 @@ export const SearchData = ({ Search }: SearchProps) => {
       <input
         className="outline-none bg-colors-light-card dark:bg-colors-dark-card p-2 w-full focus:outline-colors-dark-secundaria dark:focus:outline-colors-dark-terciaria"
         type="text"
-        placeholder="Pesquisar"
+        placeholder={t('TITLE')}
         {...register('Search')}
       />
 

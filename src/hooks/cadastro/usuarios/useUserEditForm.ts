@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 
@@ -25,6 +26,7 @@ export const useUserEditForm = ({
   atualizarUsuario,
 }: useUserEditFormProps) => {
   const router = useRouter()
+  const t = useTranslations('REQUESTS')
   const form = useForm<EditUserType>({
     mode: 'all',
     defaultValues: {
@@ -53,12 +55,12 @@ export const useUserEditForm = ({
       })
     }
     toast.promise(response, {
-      loading: 'Atualizando Usuário...',
+      loading: t('SENDREQ'),
       success: (data) => {
-        return data
+        return t(data as 'USER.ALTERSUCCESS')
       },
       error: (data) => {
-        return data
+        return t(data as 'USER.ALTERSUCCESS')
       },
     })
   }

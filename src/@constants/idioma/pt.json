@@ -1,0 +1,242 @@
+{
+  "SIDEBAR": {
+    "SAUDACAO": "Olá",
+    "HOMEPAGE": "Pagina Inicial",
+    "TABELADOESTOQUE": "Tabela do Estoque",
+    "DASHDESCRIPTION": "DashBoard das movimentações do estoque.",
+    "MOVIMENT": "Movimentação",
+    "REGISTER": "Cadastro",
+    "CREAT/EDIT": "Crie/Edite",
+    "USERS": "Usuários",
+    "PRODUCTS": "Produtos",
+    "COMPANIES": "Empresas",
+    "SUPPLIERS": "Fornecedores",
+    "CUSTOMERS": "Clientes",
+    "TYPEOFPRODUCTS": "Tipos de Produtos",
+    "REPORTS": "Relatórios",
+    "ENTRY": "Entrada",
+    "EXIT": "Saida",
+    "RELOUT": "Baixe o relatório de saida aqui",
+    "RELIN": "Baixe o relatório de entrada aqui",
+    "LEAVING": "Saindo...",
+    "LOGGEDOUT": "Deslogado com sucesso!",
+    "LOGOUT": "Sair"
+  },
+  "LIMITOFTABLE": {
+    "ITEMSPERPAGE": "Itens por página."
+  },
+  "LOGIN": {
+    "EMAIL": "E-mail",
+    "PASSWORD": "Senha",
+    "REQUIRE_PASSWORD": "Digite sua senha",
+    "MAX_LENGHT_PASSWORD": "Tamanho máximo da senha é 150 caracteres.",
+    "REQUIRE_EMAIL": "Digite um e-mail",
+    "MAX_LENGHT_EMAIL": "Tamanho máximo do e-mail é 150 caracteres.",
+    "LOOKING_USER": "Consultando seu usuário.",
+    "AUTH_SUCCESS": "Login realizado com sucesso!",
+    "INVALID_PASSWORD": "Senha inválida.",
+    "INVALID_EMAIL": "E-mail inválido."
+  },
+  "HOME": {
+    "TITLE": "Estoque",
+    "NO_DATA": "Não há dados",
+    "PRODUTO": "Produto",
+    "QUANTIDADE": "Quantidade"
+  },
+  "MOVEMENT": {
+    "TITLE": "Movimentação de Mercadoria",
+    "IN": "Entrada",
+    "OUT": "Saida",
+    "PRODSUPL": "Fornecedor dos Produtos",
+    "OUTFORCOMPANY": "Saida para qual empresa?",
+    "SUPPLIER": "Fornecedor",
+    "PRODUCT": "Produto",
+    "DIMENSIONS": "Dimensões",
+    "DIMENSIONSPH": "Dimensão do produto",
+    "DETAILS": "Detalhes",
+    "DETAILSPH": "Detalhes do produto",
+    "VALUE": "Valor",
+    "AMOUNT": "Quantidade",
+    "INSERT": "Inserir",
+    "CANCEL": "Cancelar",
+    "EDIT": "Editar",
+    "SAVE": "Salvar",
+    "DELETE": "Excluir",
+    "COMPANY": "Empresa",
+    "CUSTOMER": "Cliente",
+    "PRODOUT": "Realizar Saida de Produtos"
+  },
+  "USERS": {
+    "TITLE": "Usuários",
+    "NO_DATA": "Não há dados",
+    "TABLE": {
+      "ACTIONS": "Opções",
+      "S_EMAIL": "E-mail",
+      "S_EMAILPH": "Digite o e-mail do usuário",
+      "S_NOME": "Nome",
+      "S_NOMEPH": "Digite o nome do usuário",
+      "S_SENHA": "Senha",
+      "S_SENHAPH": "Caso precise altera-la",
+      "S_GRUPO": "Grupo",
+      "S_ATIVO": "Ativo",
+      "SAVE": "Salvar",
+      "SUBMITTING": "Enviando..."
+    },
+    "CADUSER": "Cadastro de Usuário",
+    "CREATEUSER": "Criar novo usuário",
+    "S_SENHAPH": "Senha do novo usuário"
+  },
+  "PRODUCT": {
+    "TITLE": "Produtos",
+    "NO_DATA": "Não há dados",
+    "TABLE": {
+      "ACTIONS": "Opções",
+      "S_NOME": "Nome",
+      "S_NOMEPH": "Digite o nome do produto",
+      "S_TIPO": "Tipo do Produto",
+      "S_SERIAL": "Serial",
+      "S_SERIALPH": "Serial do produto",
+      "S_ATIVO": "Ativo",
+      "SAVE": "Salvar",
+      "SUBMITTING": "Enviando..."
+    },
+    "CADPROD": "Cadastro de Produto",
+    "CREATEPROD": "Criar novo Produto",
+    "NOTIPO": "Crie um tipo antes de criar um produto"
+  },
+  "SUPPLIERS": {
+    "TITLE": "Fornecedores",
+    "NO_DATA": "Não há dados",
+    "TABLE": {
+      "ACTIONS": "Opções",
+      "S_NOME": "Nome",
+      "S_NOMEPH": "Digite o nome do fornecedor",
+      "S_ATIVO": "Ativo",
+      "SAVE": "Salvar",
+      "SUBMITTING": "Enviando..."
+    },
+    "CADSUPL": "Cadastro de fornecedor",
+    "CREATESUPL": "Criar novo fornecedor"
+  },
+  "TYPES": {
+    "TITLE": "Tipos de produtos",
+    "NO_DATA": "Não há dados",
+    "TABLE": {
+      "ACTIONS": "Opções",
+      "S_NOME": "Nome",
+      "S_NOMEPH": "Digite o nome do tipo",
+      "S_ATIVO": "Ativo",
+      "SAVE": "Salvar",
+      "SUBMITTING": "Enviando..."
+    },
+    "CADTYPE": "Cadastrar tipo",
+    "CREATETYPE": "Criar novo tipo"
+  },
+  "COMPANIE": {
+    "TITLE": "Empresas",
+    "NO_DATA": "Não há dados",
+    "TABLE": {
+      "ACTIONS": "Opções",
+      "S_NOME": "Nome",
+      "S_NOMEPH": "Digite o nome do tipo",
+      "S_ATIVO": "Ativo",
+      "SAVE": "Salvar",
+      "SUBMITTING": "Enviando..."
+    },
+    "CADCOMP": "Cadastrar empresa",
+    "CREATECOMP": "Criar nova empresa"
+  },
+  "CUSTOMERS": {
+    "TITLE": "Clientes",
+    "NO_DATA": "Não há dados",
+    "TABLE": {
+      "COMPANIE": "Empresas",
+      "ACTIONS": "Opções",
+      "S_NOME": "Nome",
+      "S_NOMEPH": "Digite o nome do cliente",
+      "S_ATIVO": "Ativo",
+      "SAVE": "Salvar",
+      "SUBMITTING": "Enviando..."
+    },
+    "CADCUSTOMER": "Cadastrar cliente",
+    "CREATECUSTOMER": "Criar novo cliente"
+  },
+  "DASHBOARD": {},
+  "RELATORIO": {
+    "PERIOD": "Periodo",
+    "PRODUCT": "Produto",
+    "COMPANIE": "Empresa",
+    "CUSTOMER": "Cliente",
+    "PRODUCTPH": "Selecione um produto especifico caso necessario.",
+    "SUPPLIER": "Fornecedor",
+    "SUPPLIERPH": "Selecione um fornecedor especifico caso necessario.",
+    "SELECTADATE": "selecione uma data",
+    "ENTRADA": {
+      "TITLE": "Relatório de Entrada"
+    },
+    "SAIDA": {
+      "TITLE": "Relatório de Saida"
+    },
+    "GENERATEREPORT": "Gerar Relatório",
+    "GENERATINGREPORT": "Gerando Relatório...",
+    "PRODUTO": "Produto",
+    "QUANTIDADE": "Quantidade",
+    "CLIENTE": "Cliente",
+    "EMPRESA": "Empresa",
+    "DATA": "Data",
+    "FORNECEDOR": "Fornecedor"
+  },
+  "PESQUISAR": {
+    "TITLE": "Pesquisar"
+  },
+  "REQUESTS": {
+    "SENDREQ": "Enviando solicitação...",
+    "CLIENTE": {
+      "CREATESUCCESS": "Cliente criado com sucesso!",
+      "ALTERSUCCESS": "Cliente alterado com sucesso!"
+    },
+    "USER": {
+      "CREATESUCCESS": "Usuário criado com sucesso!",
+      "ALTERSUCCESS": "Usuário alterado com sucesso!",
+      "EXIST": "Usuário já existe"
+    },
+    "COMPANIE": {
+      "CREATESUCCESS": "Empresa criada com sucesso!",
+      "ALTERSUCCESS": "Empresa alterada com sucesso!"
+    },
+    "SUPPLIER": {
+      "CREATESUCCESS": "Fornecedor criado com sucesso!",
+      "ALTERSUCCESS": "Fornecedor alterado com sucesso!"
+    },
+    "TYPES": {
+      "CREATESUCCESS": "Tipo criado com sucesso!",
+      "ALTERSUCCESS": "Tipo alterado com sucesso!"
+    },
+    "PRODUCT": {
+      "CREATESUCCESS": "Produto criado com sucesso!",
+      "ALTERSUCCESS": "Produto alterado com sucesso !",
+      "EXIST": "Produto com este nome já existe"
+    },
+    "GROUP": {
+      "CREATESUCCESS": "Grupo criado com sucesso!"
+    },
+    "ENTRY": {
+      "CREATESUCCESS": "Entrada de Produtos realizada com sucesso!"
+    },
+    "EXIT": {
+      "CREATESUCCESS": "Saida de Produtos realizada com sucesso!"
+    },
+    "REPORTS": {
+      "ENTRY": {
+        "CREATESUCCESS": "Relatório gerado com sucesso!",
+        "NOTFOUND": "Não foi encontrado movimentação para o filtro selecionado."
+      },
+      "EXIT": {
+        "CREATESUCCESS": "Relatório gerado com sucesso!",
+        "NOTFOUND": "Não foi encontrado movimentação para o filtro selecionado."
+      }
+    },
+    "REQUESTSUCCESS": "Requisição feita com sucesso!",
+    "REQUESTFAILED": "Requisição falhou!"
+  }
+}

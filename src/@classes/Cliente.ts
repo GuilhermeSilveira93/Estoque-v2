@@ -1,6 +1,6 @@
 import { CreateClienteType, EditClienteType } from '@/@schemas'
 import { ClienteType } from '@/@types/api/ReqCliente'
-import { ClientesPageProps } from '@/app/(private)/(cadastros)/clientes/page'
+import { ClientesPageProps } from '@/app/[locale]/(private)/(cadastros)/clientes/page'
 
 import { AdapterRequest } from './RequestAdapter'
 

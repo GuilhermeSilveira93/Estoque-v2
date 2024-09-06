@@ -1,4 +1,6 @@
-import { Metadata, Viewport } from 'next'
+import { Metadata } from 'next'
+import { NextIntlClientProvider } from 'next-intl'
+import { getMessages } from 'next-intl/server'
 import React from 'react'
 
 import { ThemeChanger } from '@/components/theme-mode'
@@ -19,22 +21,27 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL('https://nextjs-postgres-auth.vercel.app'),
 }
-export const viewport: Viewport = {
-  themeColor: '#ddd',
-}
-export default function RootLayout({
+
+export default async function RootLayout({
   children,
+  params: { locale },
 }: Readonly<{
   children: React.ReactNode
+  params: { locale: string }
 }>) {
+  const idioma = await getMessages()
   return (
-    <html lang="pt-BR" suppressHydrationWarning>
+    <html lang={locale}>
       <body>
-        <Providers>
-          <div className="max-h-screen min-h-screen min-w-full">{children}</div>
-          <Toaster richColors position="top-right" />
-          <ThemeChanger />
-        </Providers>
+        <NextIntlClientProvider messages={idioma}>
+          <Providers>
+            <div className="max-h-screen min-h-screen min-w-full">
+              {children}
+            </div>
+            <Toaster richColors position="top-right" />
+            <ThemeChanger />
+          </Providers>
+        </NextIntlClientProvider>
       </body>
     </html>
   )

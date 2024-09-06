@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 
@@ -29,6 +30,7 @@ export const useEmpresaEditForm = ({
     },
     resolver: zodResolver(EditEmpresaSchema),
   })
+  const t = useTranslations('REQUESTS')
   const updateEmpresa = async (data: EditEmpresaType): Promise<void> => {
     const response = (): Promise<string> => {
       return new Promise((resolve, reject) => {
@@ -46,9 +48,9 @@ export const useEmpresaEditForm = ({
       })
     }
     toast.promise(response, {
-      loading: 'Atualizando Usuário...',
+      loading: t('SENDREQ'),
       success: (data) => {
-        return data
+        return t(data as 'COMPANIE.ALTERSUCCESS')
       },
       error: (data) => {
         return data

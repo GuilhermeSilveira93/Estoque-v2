@@ -1,3 +1,4 @@
+import { getTranslations } from 'next-intl/server'
 import { cookies, headers } from 'next/headers'
 
 import { api } from '@/api'
@@ -37,6 +38,7 @@ export class AdapterRequest implements HttpClient {
     message: string
   }> {
     let axiosResponse: AxiosResponse
+    const t = await getTranslations('REQUESTS')
     try {
       axiosResponse = await api({
         url: data.url,
@@ -44,14 +46,12 @@ export class AdapterRequest implements HttpClient {
         params: data.params,
         method: data.method,
         data: data.body,
-        headers: {
-          ...data.headers,
-        },
+        headers: data.headers,
       })
       return {
         statusCode: axiosResponse.status,
         success: true,
-        message: 'Requisição feita com sucesso!',
+        message: t('REQUESTSUCCESS'),
         body: axiosResponse.data,
       }
     } catch (error) {
@@ -59,7 +59,7 @@ export class AdapterRequest implements HttpClient {
 
       return {
         statusCode: _error.response?.status ?? 200,
-        message: _error.response?.data.message ?? 'Error',
+        message: t(_error.response?.data.message as 'REQUESTFAILED') ?? 'Error',
         success: false,
         body: [] as T,
       }

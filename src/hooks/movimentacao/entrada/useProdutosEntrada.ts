@@ -1,4 +1,4 @@
-import { ProdutosEntradaContext } from '@/app/(private)/movimentacao/provider/produtosEntrada'
+import { ProdutosEntradaContext } from '@/app/[locale]/(private)/movimentacao/provider/produtosEntrada'
 import { useContextSelector } from 'use-context-selector'
 
 export const useProdutosEntrada = () => {

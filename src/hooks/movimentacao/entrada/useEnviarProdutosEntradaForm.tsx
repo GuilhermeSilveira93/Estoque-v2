@@ -1,9 +1,9 @@
 'use client'
+import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 
 import { submitEntradaLote } from '@/@actions/movimentacao/submitEntradaLote'
-import { Lote } from '@/@classes/Lote'
 import { LimparEntrada } from '@/@Reducers/entrada/ActionSetEntrada'
 import {
   FormEnviarProdutoSchema,
@@ -16,6 +16,7 @@ import { useProdutosEntrada } from './useProdutosEntrada'
 
 export const useEnviarProdutosEntradaForm = () => {
   const { entrada, setEntrada } = useProdutosEntrada()
+  const t = useTranslations('REQUESTS')
   const router = useRouter()
   const form = useForm<FormEnviarProdutoSchemaType>({
     mode: 'all',
@@ -42,9 +43,9 @@ export const useEnviarProdutosEntradaForm = () => {
       })
     }
     toast.promise(response, {
-      loading: 'Enviando solicitação...',
+      loading: t('SENDREQ'),
       success: (data) => {
-        return data
+        return t(data as 'ENTRY.CREATESUCCESS')
       },
       error: (data) => {
         return data
