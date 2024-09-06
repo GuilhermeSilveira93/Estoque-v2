@@ -1,7 +1,7 @@
 import { atualizarFornecedorParam } from '@/@actions'
 import { CreateFornecedorType } from '@/@schemas'
 import { FornecedorType } from '@/@types/api'
-import { FornecedorPageProps } from '@/app/[locale]/(private)/(cadastros)/fornecedores/page'
+import { FornecedorPageProps } from '@/app/(private)/(cadastros)/fornecedores/page'
 
 import { AdapterRequest } from './RequestAdapter'
 

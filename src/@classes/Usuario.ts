@@ -1,7 +1,7 @@
 import { CreateUserType } from '@/@schemas/cadastros/usuarios/CreateUserSchema'
 import { EditUserType } from '@/@schemas/cadastros/usuarios/EditUserSchema'
 import { UsuarioType } from '@/@types/api'
-import { UserPageProps } from '@/app/[locale]/(private)/(cadastros)/usuarios/page'
+import { UserPageProps } from '@/app/(private)/(cadastros)/usuarios/page'
 
 import { AdapterRequest } from './RequestAdapter'
 type getAllBodyType = {

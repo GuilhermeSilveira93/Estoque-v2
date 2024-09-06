@@ -1,6 +1,6 @@
 import { CreateEmpresaType, EditEmpresaType } from '@/@schemas'
 import { EmpresaType } from '@/@types/api'
-import { EmpresaPageProps } from '@/app/[locale]/(private)/(cadastros)/empresas/page'
+import { EmpresaPageProps } from '@/app/(private)/(cadastros)/empresas/page'
 
 import { AdapterRequest } from './RequestAdapter'
 export class Empresa extends AdapterRequest {

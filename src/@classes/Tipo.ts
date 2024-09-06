@@ -1,6 +1,6 @@
 import { CreateTipoType, EditTipoType } from '@/@schemas'
 import { TiposType } from '@/@types/api/ReqTipos'
-import { TiposPageProps } from '@/app/[locale]/(private)/(cadastros)/tipos/page'
+import { TiposPageProps } from '@/app/(private)/(cadastros)/tipos/page'
 
 import { AdapterRequest } from './RequestAdapter'
 export class Tipo extends AdapterRequest {
