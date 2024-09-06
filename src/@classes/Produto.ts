@@ -1,6 +1,6 @@
 import { CreateProdType, EditProdType } from '@/@schemas'
 import { ProdutosType, TabelaType } from '@/@types/api'
-import { ProdutosPageProps } from '@/app/(private)/(cadastros)/produtos/page'
+import { ProdutosPageProps } from '@/app/[locale]/(private)/(cadastros)/produtos/page'
 
 import { AdapterRequest } from './RequestAdapter'
 type attProdParams = {
