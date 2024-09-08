@@ -30,6 +30,7 @@ export const useFormRelatorioEntrada = () => {
       return new Promise((resolve, reject) => {
         EntradaRelatorioAction(data)
           .then((res) => {
+            console.log('res: ', res)
             if (!res.success) {
               reject(res.message)
             }
@@ -52,10 +53,10 @@ export const useFormRelatorioEntrada = () => {
     toast.promise(response, {
       loading: t('GENERATINGREPORT'),
       success: (data) => {
-        return d(data as 'REPORTS.ENTRY.CREATESUCCESS')
+        return data
       },
       error: (data) => {
-        return d(data as 'REPORTS.ENTRY.NOTFOUND')
+        return data
       },
     })
   }
