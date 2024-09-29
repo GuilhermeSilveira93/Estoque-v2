@@ -86,33 +86,36 @@ const EditProdForm = memo(
             <FormField
               control={form.control}
               name="ID_GRUPO"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{t('S_GRUPO')}:</FormLabel>
-                  <Select
-                    {...field}
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue datatype="number" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {grupos.map((grupo) => (
-                        <SelectItem
-                          key={grupo.ID_GRUPO + 'GrupoID'}
-                          value={grupo.ID_GRUPO.toString()}
-                        >
-                          {grupo.S_NOME}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
+              render={({ field }) => {
+                console.log(field)
+                return (
+                  <FormItem>
+                    <FormLabel>{t('S_GRUPO')}:</FormLabel>
+                    <Select
+                      {...field}
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue datatype="number" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {grupos.map((grupo) => (
+                          <SelectItem
+                            key={grupo.ID_GRUPO + 'GrupoID'}
+                            value={grupo.ID_GRUPO.toString()}
+                          >
+                            {grupo.S_NOME}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )
+              }}
             />
             <FormField
               control={form.control}
