@@ -10,7 +10,7 @@ import { atualizarUsuario } from '@/@actions'
 import { GrupoType, UsuarioType } from '@/@types/api'
 import { Settings } from 'lucide-react'
 
-import EditProdForm from './EditUserForm'
+import EditUserForm from './EditUserForm'
 type EditUserProps = {
   usuario: UsuarioType
   grupos: GrupoType[]
@@ -22,7 +22,7 @@ const EditUser = memo(({ usuario, grupos }: EditUserProps) => {
         <Settings className="cursor-pointer text-secondary" />
       </PopoverTrigger>
       <PopoverContent side="left" align="center">
-        <EditProdForm
+        <EditUserForm
           usuario={usuario}
           grupos={grupos}
           atualizarUsuario={atualizarUsuario}
