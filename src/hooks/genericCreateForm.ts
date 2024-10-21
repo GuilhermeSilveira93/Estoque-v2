@@ -2,6 +2,7 @@ import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { DefaultValues, FieldValues, useForm } from 'react-hook-form'
 
+import { Usuario } from '@/@classes/Usuario'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
 import * as z from 'zod'

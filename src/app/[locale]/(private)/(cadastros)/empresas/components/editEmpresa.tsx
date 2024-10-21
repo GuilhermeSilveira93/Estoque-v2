@@ -6,7 +6,7 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover'
 
-import { atualizarEmpresa } from '@/@actions'
+import { atualizarEmpresa } from '@/@actions/cadastros/empresas/atualizarEmpresa'
 import { EmpresaType } from '@/@types/api'
 import { Settings } from 'lucide-react'
 

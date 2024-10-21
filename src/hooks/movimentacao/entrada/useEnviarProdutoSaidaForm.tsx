@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 
-import { submitSaidaLote } from '@/@actions'
+import { submitSaidaLote } from '@/@actions/movimentacao'
 import { LimparEntrada } from '@/@Reducers/entrada/ActionSetEntrada'
 import {
   FormEnviarProdutoSchema,

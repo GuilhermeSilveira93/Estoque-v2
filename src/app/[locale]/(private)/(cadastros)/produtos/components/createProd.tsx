@@ -11,7 +11,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 
-import { criarProduto } from '@/@actions'
+import { criarProduto } from '@/@actions/cadastros/produtos/criarProduto'
 import { Tipo } from '@/@classes/Tipo'
 
 import CreateProdForm from './CreateProdForm'

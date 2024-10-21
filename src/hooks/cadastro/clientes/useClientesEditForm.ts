@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 
-import { atualizarClienteParam } from '@/@actions'
+import { atualizarClienteParam } from '@/@actions/cadastros/clientes/atualizarCliente'
 import { EditClienteType, EditTipoSchema, EditTipoType } from '@/@schemas'
 import { ClienteType } from '@/@types/api'
 import { zodResolver } from '@hookform/resolvers/zod'

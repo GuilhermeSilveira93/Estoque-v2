@@ -6,7 +6,7 @@ import CreateProd from './components/createProd'
 import Pagination from '@/components/pagination'
 import { SearchData } from '@/components/search-data'
 
-import { Produto } from '@/@classes'
+import { Produto } from '@/@classes/Produto'
 import { RolesRequired } from '@/@types'
 import { FiltersPage } from '@/@types/FiltersType'
 import { userCanSeePage } from '@/@utils'

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 
-import { criarEmpresa } from '@/@actions'
+import { criarEmpresa } from '@/@actions/cadastros/empresas/criarEmpresa'
 
 import CreateEmpresaForm from './CreateEmpresaForm'
 

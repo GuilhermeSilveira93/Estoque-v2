@@ -87,7 +87,6 @@ const EditProdForm = memo(
               control={form.control}
               name="ID_GRUPO"
               render={({ field }) => {
-                console.log(field)
                 return (
                   <FormItem>
                     <FormLabel>{t('S_GRUPO')}:</FormLabel>

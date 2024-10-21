@@ -1,6 +1,6 @@
 'use server'
 
-import { Cliente } from '@/@classes'
+import { Cliente } from '@/@classes/Cliente'
 
 export const getClientForCompany = async ({
   empresaSelecionada,

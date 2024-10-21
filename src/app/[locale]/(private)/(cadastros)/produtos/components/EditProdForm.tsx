@@ -1,6 +1,6 @@
 'use client'
 import { useTranslations } from 'next-intl'
-import React, { memo, useTransition } from 'react'
+import React, { memo } from 'react'
 
 import { Button, Input } from '@/components/ui'
 import { Checkbox } from '@/components/ui/checkbox'

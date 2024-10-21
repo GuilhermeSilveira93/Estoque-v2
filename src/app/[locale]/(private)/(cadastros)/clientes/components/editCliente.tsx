@@ -6,7 +6,7 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover'
 
-import { atualizarCliente } from '@/@actions'
+import { atualizarCliente } from '@/@actions/cadastros/clientes/atualizarCliente'
 import { ClienteType } from '@/@types/api/ReqCliente'
 import { Settings } from 'lucide-react'
 

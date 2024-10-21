@@ -40,6 +40,8 @@ export class Usuario extends AdapterRequest {
         ...data,
         S_NOME: data.S_NOME.toUpperCase(),
       },
+    }).then((res) => {
+      return res
     })
   }
 }

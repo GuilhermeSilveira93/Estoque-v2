@@ -6,7 +6,7 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover'
 
-import { atualizarProduto } from '@/@actions'
+import { atualizarProduto } from '@/@actions/cadastros/produtos/atualizarProduto'
 import { ProdutosType } from '@/@types/api'
 import { TiposType } from '@/@types/api/ReqTipos'
 import { Settings } from 'lucide-react'

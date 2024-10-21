@@ -4,7 +4,8 @@ import Link from 'next/link'
 import { FormRelatorioSaida } from './components'
 import { Container } from '@/components/ui'
 
-import { Empresa, Produto } from '@/@classes'
+import { Empresa } from '@/@classes/Empresa'
+import { Produto } from '@/@classes/Produto'
 const RelatorioSaida = async () => {
   const empresas = (await new Empresa().getAll()).body
   const produtos = (await new Produto().getAll()).body

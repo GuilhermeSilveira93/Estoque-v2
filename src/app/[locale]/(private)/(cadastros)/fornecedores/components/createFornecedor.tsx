@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 
-import { criarFornecedor } from '@/@actions'
+import { criarFornecedor } from '@/@actions/cadastros/fornecedores/criarFornecedor'
 
 import CreateFornecedorForm from './createFornecedorForm'
 

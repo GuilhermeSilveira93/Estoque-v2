@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 
-import { criarTipo } from '@/@actions'
+import { criarTipo } from '@/@actions/cadastros/tipos/criarTipo'
 
 import CreateTipoForm from './CreateTipoForm'
 

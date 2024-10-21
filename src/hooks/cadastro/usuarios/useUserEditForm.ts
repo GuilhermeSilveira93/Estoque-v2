@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 
-import { atualizarUsuarioParam } from '@/@actions'
+import { atualizarUsuarioParam } from '@/@actions/cadastros/usuarios/atualizarUsuario'
 import {
   EditUserSchema,
   EditUserType,
@@ -12,7 +12,6 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
 export type useUserEditFormProps = {
   usuario: UsuarioType
-
   // eslint-disable-next-line no-unused-vars
   atualizarUsuario: ({ data, ID_USUARIO }: atualizarUsuarioParam) => Promise<{
     statusCode: number

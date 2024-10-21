@@ -6,8 +6,9 @@ import { FormEntradaProduto } from './components/formEntradaProduto'
 import { Tabela } from './components/Tabela'
 import { Container } from '@/components/ui'
 
-import { Empresa, Produto } from '@/@classes'
+import { Empresa } from '@/@classes/Empresa'
 import { Fornecedor } from '@/@classes/Fornecedor'
+import { Produto } from '@/@classes/Produto'
 import { RolesRequired } from '@/@types'
 import { userCanSeePage } from '@/@utils'
 

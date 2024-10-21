@@ -6,7 +6,7 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover'
 
-import { atualizarUsuario } from '@/@actions'
+import { atualizarUsuario } from '@/@actions/cadastros/usuarios/atualizarUsuario'
 import { GrupoType, UsuarioType } from '@/@types/api'
 import { Settings } from 'lucide-react'
 

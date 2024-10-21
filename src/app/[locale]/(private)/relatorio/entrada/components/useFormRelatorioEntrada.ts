@@ -30,7 +30,6 @@ export const useFormRelatorioEntrada = () => {
       return new Promise((resolve, reject) => {
         EntradaRelatorioAction(data)
           .then((res) => {
-            console.log('res: ', res)
             if (!res.success) {
               reject(res.message)
             }

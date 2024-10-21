@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 
-import { criarUsuario } from '@/@actions'
+import { criarUsuario } from '@/@actions/cadastros/usuarios/criarUsuario'
 import { Grupos } from '@/@classes/Grupos'
 
 import CreateUserForm from './CreateUserForm'

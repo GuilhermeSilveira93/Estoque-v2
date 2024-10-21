@@ -6,7 +6,7 @@ import { Tabela } from './components/Tabela'
 import Pagination from '@/components/pagination'
 import { SearchData } from '@/components/search-data'
 
-import { Cliente } from '@/@classes'
+import { Cliente } from '@/@classes/Cliente'
 import { RolesRequired } from '@/@types'
 import { FiltersPage } from '@/@types/FiltersType'
 import { userCanSeePage } from '@/@utils'

@@ -1,4 +1,4 @@
-import { atualizarFornecedorParam } from '@/@actions'
+import { atualizarFornecedorParam } from '@/@actions/cadastros/fornecedores/atualizarFornecedor'
 import { CreateFornecedorType } from '@/@schemas'
 import { FornecedorType } from '@/@types/api'
 import { FornecedorPageProps } from '@/app/[locale]/(private)/(cadastros)/fornecedores/page'

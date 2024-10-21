@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 
-import { atualizarProdutoParam } from '@/@actions'
+import { atualizarProdutoParam } from '@/@actions/cadastros/produtos/atualizarProduto'
 import { EditProdSchema, EditProdType } from '@/@schemas'
 import { ProdutosType } from '@/@types/api'
 import { zodResolver } from '@hookform/resolvers/zod'

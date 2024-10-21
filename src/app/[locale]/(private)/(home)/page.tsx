@@ -7,7 +7,7 @@ import Pagination from '@/components/pagination'
 import { SearchData } from '@/components/search-data'
 import { Container } from '@/components/ui'
 
-import { Produto } from '@/@classes'
+import { Produto } from '@/@classes/Produto'
 import { FiltersPage } from '@/@types/FiltersType'
 export type HomePageProps = {
   searchParams: FiltersPage & {

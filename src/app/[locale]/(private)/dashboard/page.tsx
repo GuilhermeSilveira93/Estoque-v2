@@ -5,7 +5,7 @@ import {
   CardDescription,
 } from '@/components/ui/card'
 
-import { Produto } from '@/@classes'
+import { Produto } from '@/@classes/Produto'
 import { ArrowUpRight } from 'lucide-react'
 
 const DashBoard = async () => {

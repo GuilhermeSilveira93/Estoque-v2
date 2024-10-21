@@ -26,7 +26,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 
-import { Cliente } from '@/@classes'
+import { Cliente } from '@/@classes/Cliente'
 import { EmpresaType, ProdutosType } from '@/@types/api'
 import { cn } from '@/lib/utils'
 import { format } from 'date-fns'

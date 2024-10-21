@@ -10,8 +10,8 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 
-import { criarCliente } from '@/@actions'
-import { Empresa } from '@/@classes'
+import { criarCliente } from '@/@actions/cadastros/clientes/criarCliente'
+import { Empresa } from '@/@classes/Empresa'
 
 import CreateTipoForm from './CreateClienteForm'
 
