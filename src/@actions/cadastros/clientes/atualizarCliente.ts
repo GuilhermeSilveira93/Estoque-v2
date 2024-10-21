@@ -1,5 +1,5 @@
 'use server'
-import { Cliente } from '@/@classes'
+import { Cliente } from '@/@classes/Cliente'
 import { EditClienteType } from '@/@schemas'
 export type atualizarClienteParam = {
   data: EditClienteType

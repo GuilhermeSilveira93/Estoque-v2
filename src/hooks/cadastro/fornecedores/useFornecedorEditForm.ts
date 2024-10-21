@@ -1,7 +1,8 @@
+import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 
-import { atualizarFornecedorParam } from '@/@actions'
+import { atualizarFornecedorParam } from '@/@actions/cadastros/fornecedores/atualizarFornecedor'
 import { EditEmpresaSchema, EditEmpresaType } from '@/@schemas'
 import { FornecedorType } from '@/@types/api'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -33,6 +34,7 @@ export const useFornecedorEditForm = ({
     },
     resolver: zodResolver(EditEmpresaSchema),
   })
+  const t = useTranslations('REQUESTS')
   const updateFornecedor = async (data: EditEmpresaType): Promise<void> => {
     const response = (): Promise<string> => {
       return new Promise((resolve, reject) => {
@@ -50,9 +52,9 @@ export const useFornecedorEditForm = ({
       })
     }
     toast.promise(response, {
-      loading: 'Atualizando Fornecedor...',
+      loading: t('SENDREQ'),
       success: (data) => {
-        return data
+        return t(data as 'COMPANIE.ALTERSUCCESS')
       },
       error: (data) => {
         return data

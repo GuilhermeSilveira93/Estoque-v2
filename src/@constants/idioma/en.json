@@ -1,0 +1,244 @@
+{
+  "SIDEBAR": {
+    "SAUDACAO": "Hello",
+    "HOMEPAGE": "Home Page",
+    "TABELADOESTOQUE": "Stock Table",
+    "DASHDESCRIPTION": "DashBoard of stock movements.",
+    "MOVIMENT": "Movement",
+    "REGISTER": "Register",
+    "CREAT/EDIT": "Create/Edit",
+    "USERS": "Users",
+    "PRODUCTS": "Products",
+    "COMPANIES": "Companies",
+    "SUPPLIERS": "Suppliers",
+    "CUSTOMERS": "Customers",
+    "TYPEOFPRODUCTS": "Type of Products",
+    "REPORTS": "Reports",
+    "ENTRY": "Entry",
+    "EXIT": "Exit",
+    "RELOUT": "Download the output report here",
+    "RELIN": "Download entry report here",
+    "LEAVING": "Leaving...",
+    "LOGGEDOUT": "Logged out successfully!",
+    "LOGOUT": "Logout"
+  },
+  "LIMITOFTABLE": {
+    "ITEMSPERPAGE": "Items per page."
+  },
+  "LOGIN": {
+    "EMAIL": "E-mail",
+    "PASSWORD": "Password",
+    "REQUIRE_PASSWORD": "Enter your password",
+    "MAX_LENGHT_PASSWORD": "Maximum password length is 150 characters.",
+    "REQUIRE_EMAIL": "Enter an e-mail",
+    "MAX_LENGHT_EMAIL": "Maximum e-mail length is 150 characters.",
+    "LOOKING_USER": "Querying your user.",
+    "AUTH_SUCCESS": "Login successfully!",
+    "INVALID_PASSWORD": "Invalid password.",
+    "INVALID_EMAIL": "Invalid E-mail."
+  },
+  "HOME": {
+    "TITLE": "Stock",
+    "NO_DATA": "There is no data",
+    "PRODUTO": "Product",
+    "QUANTIDADE": "Amount"
+  },
+  "MOVEMENT": {
+    "TITLE": "Movement of Goods",
+    "IN": "In",
+    "OUT": "Out",
+    "PRODSUPL": "Product Supplier",
+    "OUTFORCOMPANY": "Departure for which company?",
+    "SUPPLIER": "Supplier",
+    "PRODUCT": "Product",
+    "DIMENSIONS": "Dimensions",
+    "DIMENSIONSPH": "Product Dimension",
+    "DETAILS": "Details",
+    "DETAILSPH": "Product Details",
+    "VALUE": "Value",
+    "VALUEPH": "Product Value",
+    "AMOUNT": "Amount",
+    "AMOUNTPH": "Product Amount",
+    "INSERT": "Insert",
+    "CANCEL": "Cancel",
+    "EDIT": "Edit",
+    "SAVE": "Save",
+    "DELETE": "Delete",
+    "COMPANY": "Company",
+    "CUSTOMER": "Customer",
+    "PRODOUT": "Carry out Product Output."
+  },
+  "USERS": {
+    "TITLE": "Users",
+    "NO_DATA": "There is no data",
+    "TABLE": {
+      "ACTIONS": "Options",
+      "S_EMAIL": "E-mail",
+      "S_EMAILPH": "Enter the user's email",
+      "S_NOME": "Name",
+      "S_NOMEPH": "Enter the user name",
+      "S_SENHA": "Password",
+      "S_SENHAPH": "If you need to change it",
+      "S_GRUPO": "Group",
+      "S_ATIVO": "Active",
+      "SAVE": "Save",
+      "SUBMITTING": "Submitting..."
+    },
+    "CADUSER": "User Registration",
+    "CREATEUSER": "Create a new user",
+    "S_SENHAPH": "New user password"
+  },
+  "PRODUCT": {
+    "TITLE": "Products",
+    "NO_DATA": "There is no data",
+    "TABLE": {
+      "ACTIONS": "Options",
+      "S_NOME": "Name",
+      "S_NOMEPH": "Enter the product name",
+      "S_TIPO": "Product type",
+      "S_SERIAL": "Serial",
+      "S_SERIALPH": "Product Serial",
+      "S_ATIVO": "Active",
+      "SAVE": "Save",
+      "SUBMITTING": "Submitting..."
+    },
+    "CADPROD": "Product Registration",
+    "CREATEPROD": "Create a new product",
+    "NOTIPO": "Create a type before creating a product"
+  },
+  "SUPPLIERS": {
+    "TITLE": "Suppliers",
+    "NO_DATA": "There is no data",
+    "TABLE": {
+      "ACTIONS": "Options",
+      "S_NOME": "Name",
+      "S_NOMEPH": "Enter the suppliers name",
+      "S_ATIVO": "Active",
+      "SAVE": "Save",
+      "SUBMITTING": "Submitting..."
+    },
+    "CADSUPL": "Suppliers Registration",
+    "CREATESUPL": "Create a new suppliers"
+  },
+  "TYPES": {
+    "TITLE": "Products Types",
+    "NO_DATA": "There is no data",
+    "TABLE": {
+      "ACTIONS": "Options",
+      "S_NOME": "Name",
+      "S_NOMEPH": "Enter the type name",
+      "S_ATIVO": "Active",
+      "SAVE": "Save",
+      "SUBMITTING": "Submitting..."
+    },
+    "CADTYPE": "Type Registration",
+    "CREATETYPE": "Create a new type"
+  },
+  "COMPANIE": {
+    "TITLE": "Companies",
+    "NO_DATA": "There is no data",
+    "TABLE": {
+      "ACTIONS": "Options",
+      "S_NOME": "Name",
+      "S_NOMEPH": "Enter the companie name",
+      "S_ATIVO": "Active",
+      "SAVE": "Save",
+      "SUBMITTING": "Submitting..."
+    },
+    "CADCOMP": "Companie Registration",
+    "CREATECOMP": "Create new companie"
+  },
+  "CUSTOMERS": {
+    "TITLE": "Customer",
+    "NO_DATA": "There is no data",
+    "TABLE": {
+      "ACTIONS": "Options",
+      "COMPANIE": "Companie",
+      "S_NOME": "Name",
+      "S_NOMEPH": "Enter the customer name",
+      "S_ATIVO": "Active",
+      "SAVE": "Save",
+      "SUBMITTING": "Submitting..."
+    },
+    "CADCUSTOMER": "Customer Registration",
+    "CREATECUSTOMER": "Create new Customer"
+  },
+  "RELATORIO": {
+    "PERIOD": "Period",
+    "PRODUCT": "Product",
+    "COMPANIE": "Companie",
+    "CUSTOMER": "Customer",
+    "PRODUCTPH": "Select a specific product if necessary.",
+    "SUPPLIER": "Supplier",
+    "SUPPLIERPH": "Select a specific supplier if necessary.",
+    "SELECTADATE": "select a date",
+    "ENTRADA": {
+      "TITLE": "Entry Report"
+    },
+    "SAIDA": {
+      "TITLE": "Exit Report"
+    },
+    "GENERATEREPORT": "Generate Report.",
+    "GENERATINGREPORT": "Generating Report...",
+    "PRODUTO": "Product",
+    "QUANTIDADE": "Amount",
+    "CLIENTE": "Customer",
+    "EMPRESA": "Companie",
+    "DATA": "Date",
+    "FORNECEDOR": "Supplier"
+  },
+  "DASHBOARD": {},
+  "PESQUISAR": {
+    "TITLE": "Search"
+  },
+  "REQUESTS": {
+    "SENDREQ": "Sending request...",
+    "CLIENTE": {
+      "CREATESUCCESS": "Customer created!",
+      "ALTERSUCCESS": "Client changed successfully!"
+    },
+    "USER": {
+      "CREATESUCCESS": "User created successfully!",
+      "ALTERSUCCESS": "User changed successfully!",
+      "EXIST": "User already exists"
+    },
+    "COMPANIE": {
+      "CREATESUCCESS": "Companie created successfully!",
+      "ALTERSUCCESS": "Companie changed successfully!"
+    },
+    "SUPPLIER": {
+      "CREATESUCCESS": "Sipplier created successfully!",
+      "ALTERSUCCESS": "Sipplier changed successfully!"
+    },
+    "TYPES": {
+      "CREATESUCCESS": "Type created successfully!",
+      "ALTERSUCCESS": "Type changed successfully!"
+    },
+    "PRODUCT": {
+      "CREATESUCCESS": "Product created successfully!",
+      "ALTERSUCCESS": "Product changed successfully!",
+      "EXIST": "Product with this name already exists"
+    },
+    "GROUP": {
+      "CREATESUCCESS": "Group created successfully!"
+    },
+    "ENTRY": {
+      "CREATESUCCESS": "Product Entry Successful!"
+    },
+    "EXIT": {
+      "CREATESUCCESS": "Product release completed successfully!"
+    },
+    "REPORTS": {
+      "ENTRY": {
+        "CREATESUCCESS": "Report generated successfully!",
+        "NOTFOUND": "No movement found for the selected filter."
+      },
+      "EXIT": {
+        "CREATESUCCESS": "Report generated successfully!",
+        "NOTFOUND": "No movement found for the selected filter."
+      }
+    },
+    "REQUESTSUCCESS": "Request made successfully!",
+    "REQUESTFAILED": "Request Failed"
+  }
+}

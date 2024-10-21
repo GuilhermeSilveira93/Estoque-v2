@@ -1,6 +1,6 @@
 import { CreateTipoType, EditTipoType } from '@/@schemas'
 import { TiposType } from '@/@types/api/ReqTipos'
-import { TiposPageProps } from '@/app/(private)/(cadastros)/tipos/page'
+import { TiposPageProps } from '@/app/[locale]/(private)/(cadastros)/tipos/page'
 
 import { AdapterRequest } from './RequestAdapter'
 export class Tipo extends AdapterRequest {
@@ -13,7 +13,7 @@ export class Tipo extends AdapterRequest {
       url: 'tipos/all',
     })
   }
-  async getWithParams({ searchParams }: TiposPageProps) {
+  async getWithParams({ searchParams }: Pick<TiposPageProps, 'searchParams'>) {
     return await this.request<{ data: TiposType[]; total: number }>({
       method: 'get',
       url: 'tipos',

@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import * as React from 'react'
 
@@ -16,6 +17,7 @@ type LimitOfTableProps = {
   LimitPerPage: string
 }
 export const LimitOfTable = ({ LimitPerPage }: LimitOfTableProps) => {
+  const t = useTranslations('LIMITOFTABLE')
   const { createParam } = useCustomParam()
   const router = useRouter()
   const changeLimitPerPage = (value: string) => {
@@ -25,7 +27,7 @@ export const LimitOfTable = ({ LimitPerPage }: LimitOfTableProps) => {
   return (
     <Select onValueChange={changeLimitPerPage}>
       <SelectTrigger className="h-9 w-44" defaultValue={LimitPerPage}>
-        <SelectValue placeholder="Itens por página." />
+        <SelectValue placeholder={t('ITEMSPERPAGE')} />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup datatype="string">

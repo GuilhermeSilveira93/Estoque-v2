@@ -3,5 +3,5 @@ import { cookies } from 'next/headers'
 
 export const DeleteCookie = async (key: string) => {
   cookies().delete(key)
-  return { message: 'Deslogado com sucesso!' }
+  return { message: 'LOGGEDOUT' }
 }

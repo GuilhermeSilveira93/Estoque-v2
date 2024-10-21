@@ -5,17 +5,20 @@ import * as wjGridXlsx from '@grapecity/wijmo.xlsx'
 
 type RelatorioMovimentacaoExcelParams<T> = {
   data: T[]
+  headers: (keyof T)[]
   name: string
 }
 export const RelatorioMovimentacaoExcel = async <T>({
   data,
+  headers,
   name,
 }: RelatorioMovimentacaoExcelParams<T>) => {
-  const workbook = exportExpenseReport({ data, name })
+  const workbook = exportExpenseReport({ data, name, headers })
   workbook.saveAsync(`${name}.xlsx`)
 }
 const exportExpenseReport = <T>({
   data,
+  headers,
   name,
 }: RelatorioMovimentacaoExcelParams<T>) => {
   const chaves = Object.keys(data[0]!) as (keyof T)[]
@@ -66,7 +69,7 @@ const exportExpenseReport = <T>({
   aba.name = name
 
   //DEFINIÇÃO DAS COLUNAS
-  for (let i = 0; i < chaves.length; i++) {
+  for (let i = 0; i < headers.length; i++) {
     if (aba?.columns[i] !== null) {
       aba.columns[i]! = new wjGridXlsx.WorkbookColumn()
       aba.columns[i]!.width = 200
@@ -79,7 +82,7 @@ const exportExpenseReport = <T>({
   linhas[0].cells[0] = new wjGridXlsx.WorkbookCell()
   linhas[0].cells[0].style = new wjGridXlsx.WorkbookStyle()
   linhas[0].cells[0].style.font = new wjGridXlsx.WorkbookFont()
-  linhas[0].cells[0].colSpan = chaves.length
+  linhas[0].cells[0].colSpan = headers.length
   linhas[0].cells[0].style.font.bold = true
   linhas[0].height = 45
   linhas[0].cells[0].style.font.size = 32
@@ -87,26 +90,26 @@ const exportExpenseReport = <T>({
 
   //HEADER
   linhas[1] = new wjGridXlsx.WorkbookRow()
-  for (let i = 0; i < chaves?.length; i++) {
+  for (let i = 0; i < headers?.length; i++) {
     linhas[1].cells[i] = new wjGridXlsx.WorkbookCell()
     linhas[1].cells[i]!.style = new wjGridXlsx.WorkbookStyle()
     linhas[1].cells[i]!.style.font = new wjGridXlsx.WorkbookFont()
     linhas[1].cells[i]!.style.font.bold = true
-    linhas[1].cells[i]!.value = chaves?.[i]
+    linhas[1].cells[i]!.value = headers?.[i]
   }
 
   //BODY
   for (let i = 0; i < data?.length; i++) {
     linhas[i + 2] = new wjGridXlsx.WorkbookRow()
     //DEFINIÇÃO DO CONTEUDO DAS LINHAS
-    for (let j = 0; j < chaves.length; j++) {
+    for (let j = 0; j < headers.length; j++) {
       linhas[i + 2]!.cells[j] = new wjGridXlsx.WorkbookCell()
       if (
         linhas[i + 2] &&
         linhas[i + 2]!.cells[j] &&
         data &&
         data[i] &&
-        chaves[j]
+        headers[j]
       ) {
         linhas[i + 2]!.cells[j]!.value = data[i][chaves[j]]
       }

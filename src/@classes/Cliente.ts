@@ -1,6 +1,6 @@
 import { CreateClienteType, EditClienteType } from '@/@schemas'
 import { ClienteType } from '@/@types/api/ReqCliente'
-import { ClientesPageProps } from '@/app/(private)/(cadastros)/clientes/page'
+import { ClientesPageProps } from '@/app/[locale]/(private)/(cadastros)/clientes/page'
 
 import { AdapterRequest } from './RequestAdapter'
 
@@ -8,7 +8,9 @@ export class Cliente extends AdapterRequest {
   constructor() {
     super()
   }
-  async getAllWithParams({ searchParams }: ClientesPageProps) {
+  async getAllWithParams({
+    searchParams,
+  }: Pick<ClientesPageProps, 'searchParams'>) {
     return await this.request<{ data: ClienteType[]; total: number }>({
       method: 'get',
       url: 'cliente',

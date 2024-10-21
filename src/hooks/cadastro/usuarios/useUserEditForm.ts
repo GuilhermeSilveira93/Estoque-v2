@@ -1,7 +1,8 @@
+import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 
-import { atualizarUsuarioParam } from '@/@actions'
+import { atualizarUsuarioParam } from '@/@actions/cadastros/usuarios/atualizarUsuario'
 import {
   EditUserSchema,
   EditUserType,
@@ -11,7 +12,6 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
 export type useUserEditFormProps = {
   usuario: UsuarioType
-
   // eslint-disable-next-line no-unused-vars
   atualizarUsuario: ({ data, ID_USUARIO }: atualizarUsuarioParam) => Promise<{
     statusCode: number
@@ -25,6 +25,7 @@ export const useUserEditForm = ({
   atualizarUsuario,
 }: useUserEditFormProps) => {
   const router = useRouter()
+  const t = useTranslations('REQUESTS')
   const form = useForm<EditUserType>({
     mode: 'all',
     defaultValues: {
@@ -53,12 +54,12 @@ export const useUserEditForm = ({
       })
     }
     toast.promise(response, {
-      loading: 'Atualizando Usuário...',
+      loading: t('SENDREQ'),
       success: (data) => {
-        return data
+        return t(data as 'USER.ALTERSUCCESS')
       },
       error: (data) => {
-        return data
+        return t(data as 'USER.ALTERSUCCESS')
       },
     })
   }

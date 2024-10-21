@@ -1,6 +1,8 @@
+import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { DefaultValues, FieldValues, useForm } from 'react-hook-form'
 
+import { Usuario } from '@/@classes/Usuario'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
 import * as z from 'zod'
@@ -34,7 +36,7 @@ export const useGenericCreateForm = <
     defaultValues: {} as DefaultValues<T>,
     resolver: zodResolver(schema),
   })
-
+  const t = useTranslations('REQUESTS')
   const handleSubmit = async (data: T): Promise<void> => {
     const response = (): Promise<string> => {
       return new Promise((resolve, reject) => {
@@ -53,9 +55,9 @@ export const useGenericCreateForm = <
     }
 
     toast.promise(response, {
-      loading: 'Criando...',
+      loading: t('SENDREQ'),
       success: (data) => {
-        return data
+        return t(data as 'CLIENTE.CREATESUCCESS')
       },
       error: (data) => {
         return data

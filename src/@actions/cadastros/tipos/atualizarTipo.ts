@@ -1,5 +1,5 @@
 'use server'
-import { Tipo } from '@/@classes'
+import { Tipo } from '@/@classes/Tipo'
 import { EditTipoType } from '@/@schemas'
 export type atualizarTipoParam = {
   data: EditTipoType
