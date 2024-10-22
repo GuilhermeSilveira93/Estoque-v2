@@ -10,12 +10,15 @@ import { Container } from '@/components/ui'
 import { Produto } from '@/@classes/Produto'
 import { FiltersPage } from '@/@types/FiltersType'
 export type HomePageProps = {
-  searchParams: FiltersPage & {
-    ID_PRODUTO: string
-  }
+  searchParams: Promise<
+    FiltersPage & {
+      ID_PRODUTO: string
+    }
+  >
 }
 const HomePage = async ({ searchParams }: HomePageProps) => {
-  const produtos = (await new Produto().getTabela({ searchParams }))?.body
+  const urlParams = await searchParams
+  const produtos = (await new Produto().getTabela(urlParams))?.body
   const t = await getTranslations('HOME')
   return (
     <>
@@ -25,7 +28,7 @@ const HomePage = async ({ searchParams }: HomePageProps) => {
       <Container>
         <section className="rounded-b-xl bg-card">
           <header>
-            <SearchData Search={searchParams.Search} />
+            <SearchData Search={urlParams.Search} />
           </header>
           <div className="max-h-132 overflow-auto">
             {produtos.total > 0 ? (

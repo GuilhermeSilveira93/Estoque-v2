@@ -1,6 +1,6 @@
 import { CreateEmpresaType, EditEmpresaType } from '@/@schemas'
 import { EmpresaType } from '@/@types/api'
-import { EmpresaPageProps } from '@/app/[locale]/(private)/(cadastros)/empresas/page'
+import { FiltersPage } from '@/@types/FiltersType'
 
 import { AdapterRequest } from './RequestAdapter'
 export class Empresa extends AdapterRequest {
@@ -9,7 +9,11 @@ export class Empresa extends AdapterRequest {
   }
   async getWithParams({
     searchParams,
-  }: Pick<EmpresaPageProps, 'searchParams'>) {
+  }: {
+    searchParams: FiltersPage & {
+      ID_EMPRESA: string
+    }
+  }) {
     const { ID_EMPRESA, S_ATIVO, Search, Page, LimitPerPage } = searchParams
     const consulta = await this.request<{ data: EmpresaType[]; total: number }>(
       {

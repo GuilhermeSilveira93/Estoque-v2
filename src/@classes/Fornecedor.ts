@@ -1,7 +1,7 @@
 import { atualizarFornecedorParam } from '@/@actions/cadastros/fornecedores/atualizarFornecedor'
 import { CreateFornecedorType } from '@/@schemas'
 import { FornecedorType } from '@/@types/api'
-import { FornecedorPageProps } from '@/app/[locale]/(private)/(cadastros)/fornecedores/page'
+import { FiltersPage } from '@/@types/FiltersType'
 
 import { AdapterRequest } from './RequestAdapter'
 
@@ -17,7 +17,11 @@ export class Fornecedor extends AdapterRequest {
   }
   async getAllWithParams({
     searchParams,
-  }: Pick<FornecedorPageProps, 'searchParams'>) {
+  }: {
+    searchParams: FiltersPage & {
+      ID_FORNECEDOR: string
+    }
+  }) {
     const { ID_FORNECEDOR, S_ATIVO, Search, Page, LimitPerPage } = searchParams
     return await this.request<{ data: FornecedorType[]; total: number }>({
       method: 'get',

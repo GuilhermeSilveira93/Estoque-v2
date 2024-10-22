@@ -12,11 +12,14 @@ import { FiltersPage } from '@/@types/FiltersType'
 import { userCanSeePage } from '@/@utils'
 
 export type ProdutosPageProps = {
-  searchParams: FiltersPage & {
-    ID_PRODUTO: string
-  }
+  searchParams: Promise<
+    FiltersPage & {
+      ID_PRODUTO: string
+    }
+  >
 }
 const ProdutosPage = async ({ searchParams }: ProdutosPageProps) => {
+  const urlParams = await searchParams
   await userCanSeePage({
     rolesRequired: [
       RolesRequired.ADM,
@@ -25,7 +28,7 @@ const ProdutosPage = async ({ searchParams }: ProdutosPageProps) => {
     ],
   })
   const t = await getTranslations('PRODUCT')
-  const produtos = (await new Produto().getAllWithParams({ searchParams })).body
+  const produtos = (await new Produto().getAllWithParams(urlParams)).body
   return (
     <section className="w-full">
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
@@ -33,7 +36,7 @@ const ProdutosPage = async ({ searchParams }: ProdutosPageProps) => {
       </h1>
       <section className="rounded-b-xl bg-card">
         <header>
-          <SearchData Search={searchParams.Search} />
+          <SearchData Search={urlParams.Search} />
         </header>
         <div className="max-h-132 overflow-auto">
           {produtos.total > 0 ? (

@@ -11,11 +11,10 @@ import { RolesRequired } from '@/@types'
 import { FiltersPage } from '@/@types/FiltersType'
 import { userCanSeePage } from '@/@utils'
 export type UserPageProps = {
-  searchParams: FiltersPage & {
-    ID_USUARIO: string
-  }
+  searchParams: Promise<FiltersPage & { ID_USUARIO: string }>
 }
 const UsuariosPage = async ({ searchParams }: UserPageProps) => {
+  const urlParams = await searchParams
   await userCanSeePage({
     rolesRequired: [
       RolesRequired.ADM,
@@ -24,7 +23,7 @@ const UsuariosPage = async ({ searchParams }: UserPageProps) => {
     ],
   })
   const t = await getTranslations('USERS')
-  const users = (await new Usuario().getAll({ searchParams })).body
+  const users = (await new Usuario().getAll({ searchParams: urlParams })).body
   return (
     <section>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
@@ -32,13 +31,13 @@ const UsuariosPage = async ({ searchParams }: UserPageProps) => {
       </h1>
       <section className="rounded-b-xl bg-card">
         <header>
-          <SearchData Search={searchParams.Search} />
+          <SearchData Search={urlParams.Search} />
         </header>
         <div className="max-h-132 overflow-auto">
           {users.total > 0 ? (
             <Tabela
               data={users.data}
-              searchParams={searchParams}
+              searchParams={urlParams}
               ocultar={[
                 'ID_USUARIO',
                 'S_ATIVO',

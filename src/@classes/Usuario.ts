@@ -1,7 +1,7 @@
 import { CreateUserType } from '@/@schemas/cadastros/usuarios/CreateUserSchema'
 import { EditUserType } from '@/@schemas/cadastros/usuarios/EditUserSchema'
 import { UsuarioType } from '@/@types/api'
-import { UserPageProps } from '@/app/[locale]/(private)/(cadastros)/usuarios/page'
+import { FiltersPage } from '@/@types/FiltersType'
 
 import { AdapterRequest } from './RequestAdapter'
 type getAllBodyType = {
@@ -12,7 +12,11 @@ export class Usuario extends AdapterRequest {
   constructor() {
     super()
   }
-  async getAll({ searchParams }: Pick<UserPageProps, 'searchParams'>) {
+  async getAll({
+    searchParams,
+  }: {
+    searchParams: FiltersPage & { ID_USUARIO: string }
+  }) {
     return await this.request<getAllBodyType>({
       method: 'get',
       url: 'usuario',

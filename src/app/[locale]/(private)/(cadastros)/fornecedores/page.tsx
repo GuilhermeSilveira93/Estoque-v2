@@ -12,11 +12,14 @@ import { FiltersPage } from '@/@types/FiltersType'
 import { userCanSeePage } from '@/@utils'
 
 export type FornecedorPageProps = {
-  searchParams: FiltersPage & {
-    ID_FORNECEDOR: string
-  }
+  searchParams: Promise<
+    FiltersPage & {
+      ID_FORNECEDOR: string
+    }
+  >
 }
 const FornecedoresPage = async ({ searchParams }: FornecedorPageProps) => {
+  const urlParams = await searchParams
   const t = await getTranslations('SUPPLIERS')
   await userCanSeePage({
     rolesRequired: [
@@ -26,7 +29,7 @@ const FornecedoresPage = async ({ searchParams }: FornecedorPageProps) => {
     ],
   })
   const fornecedores = (
-    await new Fornecedor().getAllWithParams({ searchParams })
+    await new Fornecedor().getAllWithParams({ searchParams: urlParams })
   ).body
   return (
     <section>
@@ -35,7 +38,7 @@ const FornecedoresPage = async ({ searchParams }: FornecedorPageProps) => {
       </h1>
       <section className="rounded-b-xl bg-card">
         <header>
-          <SearchData Search={searchParams.Search} />
+          <SearchData Search={urlParams.Search} />
         </header>
         <div className="max-h-132 overflow-auto">
           {fornecedores.total > 0 ? (

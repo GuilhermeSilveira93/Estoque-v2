@@ -12,11 +12,14 @@ import { FiltersPage } from '@/@types/FiltersType'
 import { userCanSeePage } from '@/@utils'
 
 export type ClientesPageProps = {
-  searchParams: FiltersPage & {
-    ID_CLIENTE: string
-  }
+  searchParams: Promise<
+    FiltersPage & {
+      ID_CLIENTE: string
+    }
+  >
 }
 const ClientesPage = async ({ searchParams }: ClientesPageProps) => {
+  const urlParams = await searchParams
   await userCanSeePage({
     rolesRequired: [
       RolesRequired.ADM,
@@ -25,7 +28,9 @@ const ClientesPage = async ({ searchParams }: ClientesPageProps) => {
     ],
   })
   const t = await getTranslations('CUSTOMERS')
-  const clientes = (await new Cliente().getAllWithParams({ searchParams })).body
+  const clientes = (
+    await new Cliente().getAllWithParams({ searchParams: urlParams })
+  ).body
   return (
     <section>
       <h1 className="text-3xl font-bold tracking-tighter text-primary-foreground">
@@ -33,7 +38,7 @@ const ClientesPage = async ({ searchParams }: ClientesPageProps) => {
       </h1>
       <section className="rounded-b-xl bg-card">
         <header>
-          <SearchData Search={searchParams.Search} />
+          <SearchData Search={urlParams.Search} />
         </header>
         <div className="max-h-132 overflow-auto">
           {clientes.total > 0 ? (
