@@ -6,5 +6,5 @@ export default function EmpresasLayout({
 }: {
   children: React.ReactNode
 }) {
-  return { children }
+  return  children 
 }
